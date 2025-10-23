@@ -86,40 +86,185 @@
   word-break: keep-all;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+/* Responsive - Tablet and Desktop */
+@media (max-width: 1600px) {
   .content {
-    flex-direction: column;
-    padding: 0 40px;
-    gap: 60px;
+    padding: 0 60px;
+    gap: 70px;
   }
 
   .leftSection {
-    width: 100%;
-    max-width: 410px;
-    margin: 0 auto;
-  }
-
-  .title {
-    font-size: 28px;
+    max-width: 550px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
+  .container {
+    padding: 100px 0;
+  }
+
+  .containerMainTitle {
+    gap: 18px;
+  }
+
+  .content {
+    padding: 0 60px;
+    gap: 60px;
+    margin-top: 70px;
+  }
+
+  .leftSection {
+    max-width: 500px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .title {
+    font-size: 44px;
+  }
+
+  .description {
+    gap: 22px;
+  }
+
+  .description p {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 90px 0;
+  }
+
+  .containerMainTitle {
+    gap: 16px;
+  }
+
+  .content {
+    padding: 0 50px;
+    gap: 50px;
+    margin-top: 60px;
+  }
+
+  .leftSection {
+    max-width: 450px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .description {
+    gap: 20px;
+  }
+
+  .description p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 1024px) {
   .container {
     padding: 80px 0;
   }
 
+  .containerMainTitle {
+    gap: 14px;
+  }
+
   .content {
-    padding: 0 20px;
-    gap: 40px;
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 50px;
+    margin-top: 50px;
+  }
+
+  .leftSection {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .subtitle {
+    font-size: 16px;
   }
 
   .title {
-    font-size: 24px;
+    font-size: 34px;
+  }
+
+  .description {
+    gap: 18px;
+  }
+
+  .description p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 35px;
+    gap: 45px;
+  }
+
+  .leftSection {
+    max-width: 400px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .description p {
+    font-size: 15px;
+  }
+}
+
+/* Hide on mobile - will be implemented later */
+@media (max-width: 768px) {
+  .container {
+    padding: 70px 0;
+  }
+
+  .containerMainTitle {
+    gap: 12px;
+  }
+
+  .content {
+    padding: 0 24px;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .leftSection {
+    max-width: 350px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .description {
+    gap: 16px;
   }
 
   .description p {
     font-size: 14px;
+    line-height: 1.7;
   }
 }

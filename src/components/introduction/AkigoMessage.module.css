@@ -62,7 +62,77 @@
   object-fit: contain;
 }
 
-/* Responsive */
+/* Responsive - Tablet and Desktop */
+@media (max-width: 1600px) {
+  .container {
+    height: 1700px;
+    padding: 70px 0;
+  }
+
+  .content {
+    max-width: 1300px;
+    gap: 55px;
+  }
+
+  .diagramContainer {
+    max-width: 1200px;
+    margin-top: 150px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .container {
+    height: 1600px;
+    padding: 70px 20px;
+  }
+
+  .content {
+    max-width: 1200px;
+    gap: 50px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .title {
+    font-size: 44px;
+    line-height: 1.4;
+  }
+
+  .diagramContainer {
+    max-width: 1100px;
+    margin-top: 140px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    height: auto;
+    min-height: 1400px;
+    padding: 60px 20px;
+  }
+
+  .content {
+    max-width: 1000px;
+    gap: 45px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .title {
+    font-size: 38px;
+    line-height: 1.4;
+  }
+
+  .diagramContainer {
+    max-width: 1000px;
+    margin-top: 120px;
+  }
+}
+
 @media (max-width: 1024px) {
   .container {
     height: auto;
@@ -70,30 +140,67 @@
     padding: 60px 20px;
   }
 
+  .content {
+    gap: 40px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
   .title {
-    font-size: 28px;
+    font-size: 34px;
+    line-height: 1.5;
   }
 
   .diagramContainer {
     max-width: 900px;
+    margin-top: 100px;
   }
 }
 
+@media (max-width: 900px) {
+  .container {
+    min-height: 1000px;
+    padding: 50px 20px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .diagramContainer {
+    max-width: 800px;
+    margin-top: 80px;
+  }
+}
+
+/* Hide on mobile - will be implemented later */
 @media (max-width: 768px) {
   .container {
     min-height: 800px;
     padding: 40px 20px;
   }
 
-  .title {
-    font-size: 24px;
+  .content {
+    gap: 35px;
   }
 
-  .content {
-    gap: 40px;
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 26px;
+    line-height: 1.5;
   }
 
   .diagramContainer {
-    margin-top: 20px;
+    max-width: 100%;
+    margin-top: 60px;
   }
 }

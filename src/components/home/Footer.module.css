@@ -81,7 +81,6 @@
 .infoGroup {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
 }
 
@@ -89,20 +88,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 8px;
   font-size: 14px;
   line-height: 1.6;
+  white-space: nowrap;
 }
 .contactRow {
   display: flex;
   gap: 5px;
   width: 300px;
+  white-space: nowrap;
 }
 .addressofproject {
   display: flex;
   flex-direction: row;
   gap: 15px;
+  white-space: nowrap;
 }
 
 .label {
@@ -141,7 +142,7 @@
 
 .partnerLogo {
   width: auto;
-  height: auto;
+  height: 32px;
   object-fit: contain;
 }
 
@@ -150,16 +151,156 @@
   justify-self: end;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+/* Responsive - Tablet and Desktop */
+@media (max-width: 1600px) {
   .topNavContainer {
-    flex-wrap: wrap;
-    gap: 20px;
+    padding: 0 40px !important;
+    gap: 35px;
   }
 
   .container {
+    padding: 0 20px !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  .topNavContainer {
+    padding: 0 60px;
+    gap: 30px;
+  }
+
+  .navLink {
+    font-size: 13px;
+  }
+
+  .naverLogo img {
+    height: 32px;
+  }
+
+  .mainFooter {
+    padding: 50px 20px;
+  }
+
+  .container {
+    padding: 0 60px;
+    gap: 50px;
+  }
+
+  .mainLogo {
+    width: 130px;
+  }
+
+  .infoRow {
+    font-size: 13px;
+  }
+
+  .logoGrid {
+    gap: 25px 35px;
+  }
+
+  .partnerLogo {
+    height: 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .topNav {
+    padding: 22px 0;
+  }
+
+  .topNavContainer {
+    padding: 0 50px;
+    gap: 28px;
+  }
+
+  .navLink {
+    font-size: 12px;
+  }
+
+  .naverLogo img {
+    height: 30px;
+  }
+
+  .mainFooter {
+    padding: 45px 20px;
+  }
+
+  .container {
+    padding: 0 50px;
+    gap: 45px;
+  }
+
+  .mainLogo {
+    width: 120px;
+    margin-bottom: 8px;
+  }
+
+  .infoGroup {
+    gap: 7px;
+  }
+
+  .infoRow {
+    font-size: 12px;
+  }
+
+  .addressofproject {
+    gap: 12px;
+  }
+
+  .contactRow {
+    width: 280px;
+    gap: 4px;
+  }
+
+  .copyright {
+    font-size: 11px;
+    margin-top: 18px;
+  }
+
+  .logoGrid {
+    gap: 22px 32px;
+  }
+
+  .partnerLogo {
+    height: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .topNav {
+    padding: 20px 0;
+  }
+
+  .topNavContainer {
+    padding: 0 40px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .navLink {
+    font-size: 11px;
+  }
+
+  .naverLogo {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .naverLogo img {
+    height: 28px;
+  }
+
+  .mainFooter {
+    padding: 40px 20px;
+  }
+
+  .container {
+    padding: 0 40px;
     flex-direction: column;
     align-items: center;
+    gap: 40px;
   }
 
   .leftSection {
@@ -168,27 +309,128 @@
     text-align: center;
   }
 
-  .infoRow,
-  .contactRow {
+  .mainLogo {
+    width: 110px;
+  }
+
+  .infoRow {
     justify-content: center;
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+
+  .addressofproject {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contactRow {
+    width: auto;
+    justify-content: center;
+  }
+
+  .copyright {
+    text-align: center;
+  }
+
+  .rightSection {
+    width: 100%;
   }
 
   .logoGrid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 20px 28px;
+    justify-items: center;
+  }
+
+  .partnerLogo {
+    height: 26px;
+  }
+
+  .partnerLogo:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 }
 
-@media (max-width: 768px) {
-  .logoGrid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 900px) {
+  .topNavContainer {
+    padding: 0 35px;
+    gap: 20px;
   }
 
-  .infoRow,
-  .contactRow {
-    flex-wrap: wrap;
+  .container {
+    padding: 0 35px;
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 24px;
+  }
+
+  .partnerLogo {
+    height: 24px;
+  }
+}
+
+/* Hide on mobile - will be implemented later */
+@media (max-width: 768px) {
+  .topNav {
+    padding: 18px 0;
+  }
+
+  .topNavContainer {
+    padding: 0 24px;
+    gap: 16px;
   }
 
   .navLink {
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+  .naverLogo img {
+    height: 26px;
+  }
+
+  .mainFooter {
+    padding: 35px 15px;
+  }
+
+  .container {
+    padding: 0 24px;
+    gap: 35px;
+  }
+
+  .mainLogo {
+    width: 100px;
+  }
+
+  .infoRow {
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .addressofproject {
+    gap: 8px;
+  }
+
+  .contactRow {
+    gap: 3px;
+  }
+
+  .copyright {
+    font-size: 10px;
+    margin-top: 16px;
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+  }
+
+  .partnerLogo {
+    height: 20px;
+    max-width: 80px;
   }
 }

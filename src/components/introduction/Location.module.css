@@ -154,64 +154,126 @@
   color: #333333;
 }
 
-/* Tablet */
+/* Responsive - Tablet and Desktop */
+@media (max-width: 1600px) {
+  .content {
+    padding: 0 60px;
+  }
+
+  .officeSection {
+    gap: 35px;
+    margin-bottom: 90px;
+  }
+
+  .mapContainer {
+    width: 750px;
+    height: 390px;
+  }
+}
+
 @media (max-width: 1400px) {
+  .container {
+    padding: 100px 0;
+  }
+
+  .content {
+    padding: 0 60px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  .title {
+    font-size: 44px;
+    margin-bottom: 70px;
+  }
+
   .officeSection {
     flex-direction: column;
     align-items: center;
+    gap: 35px;
+    margin-bottom: 85px;
   }
 
   .mapContainer {
     width: 100%;
-    max-width: 817px;
+    max-width: 750px;
+    height: 390px;
   }
 
   .infoContainer {
     width: 100%;
-    max-width: 817px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .content {
-    padding: 0 40px;
+    max-width: 750px;
   }
 
-  .title {
-    font-size: 40px;
+  .officeLabel {
+    font-size: 17px;
+    margin-bottom: 7px;
   }
 
   .officeName {
-    font-size: 28px;
+    font-size: 30px;
+    margin-bottom: 28px;
+  }
+
+  .infoRow {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .infoLabel {
+    font-size: 15px;
+  }
+
+  .infoValue {
+    font-size: 17px;
+  }
+
+  .contactLabel {
+    font-size: 15px;
+  }
+
+  .contactValue {
+    font-size: 17px;
+  }
+
+  .contactRow {
+    gap: 55px;
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .container {
-    padding: 80px 0;
+    padding: 90px 0;
   }
 
   .content {
-    padding: 0 20px;
+    padding: 0 50px;
   }
 
   .subtitle {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .title {
-    font-size: 24px;
-    margin-bottom: 40px;
+    font-size: 38px;
+    margin-bottom: 60px;
   }
 
   .officeSection {
-    margin-bottom: 60px;
-    gap: 24px;
+    gap: 30px;
+    margin-bottom: 80px;
   }
 
   .mapContainer {
-    height: 300px;
+    max-width: 700px;
+    height: 365px;
+  }
+
+  .infoContainer {
+    max-width: 700px;
   }
 
   .officeLabel {
@@ -219,12 +281,76 @@
   }
 
   .officeName {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 26px;
+  }
+
+  .infoLabel {
+    font-size: 14px;
+  }
+
+  .infoValue {
+    font-size: 16px;
+  }
+
+  .contactLabel {
+    font-size: 14px;
+  }
+
+  .contactValue {
+    font-size: 16px;
+  }
+
+  .contactRow {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 80px 0;
+  }
+
+  .content {
+    padding: 0 40px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 34px;
+    margin-bottom: 55px;
+  }
+
+  .officeSection {
+    gap: 28px;
+    margin-bottom: 70px;
+  }
+
+  .mapContainer {
+    max-width: 650px;
+    height: 340px;
+  }
+
+  .infoContainer {
+    max-width: 650px;
+    padding: 18px 0;
+  }
+
+  .officeLabel {
+    font-size: 15px;
+  }
+
+  .officeName {
+    font-size: 26px;
+    margin-bottom: 24px;
   }
 
   .infoRow {
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 16px;
   }
 
@@ -235,10 +361,100 @@
 
   .infoValue,
   .contactValue {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .contactRow {
-    gap: 30px;
+    gap: 45px;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 35px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+
+  .officeSection {
+    margin-bottom: 65px;
+  }
+
+  .mapContainer {
+    max-width: 600px;
+    height: 315px;
+  }
+
+  .infoContainer {
+    max-width: 600px;
+  }
+
+  .officeName {
+    font-size: 24px;
+  }
+}
+
+/* Hide on mobile - will be implemented later */
+@media (max-width: 768px) {
+  .container {
+    padding: 70px 0;
+  }
+
+  .content {
+    padding: 0 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 45px;
+  }
+
+  .officeSection {
+    margin-bottom: 60px;
+    gap: 24px;
+  }
+
+  .mapContainer {
+    height: 280px;
+  }
+
+  .infoContainer {
+    padding: 16px 0;
+  }
+
+  .officeLabel {
+    font-size: 14px;
+  }
+
+  .officeName {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .infoRow {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .infoLabel,
+  .contactLabel {
+    font-size: 13px;
+  }
+
+  .infoValue,
+  .contactValue {
+    font-size: 14px;
+  }
+
+  .contactRow {
+    gap: 35px;
   }
 }

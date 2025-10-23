@@ -285,24 +285,55 @@
   color: rgba(51, 51, 51, 0.3);
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
+/* Responsive - Tablet and Desktop */
+@media (max-width: 1600px) {
+  .mainConNavLinks {
+    gap: 80px;
+  }
+
   .navLinks {
-    gap: 32px;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .navbarContainer {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .mainConNavLinks {
+    gap: 60px;
+  }
+
+  .navLinks {
+    gap: 40px;
   }
 
   .navLink {
     font-size: 16px;
   }
+
+  .dropdownContent {
+    padding: 40px 0 60px 80px;
+  }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   .navbarContainer {
-    padding: 0 24px;
+    padding: 0 30px;
+  }
+
+  .mainConNavLinks {
+    gap: 40px;
   }
 
   .navLinks {
-    gap: 24px;
+    gap: 30px;
   }
 
   .navLink {
@@ -310,16 +341,95 @@
   }
 
   .dropdownContent {
-    min-width: 280px;
+    padding: 30px 0 50px 60px;
+    min-height: 400px;
+  }
+
+  .dropdown::after {
+    width: 300px;
+    height: 300px;
   }
 }
 
+@media (max-width: 1024px) {
+  .navbarContainer {
+    padding: 0 24px;
+    height: 70px;
+  }
+
+  .navItem {
+    height: 70px;
+  }
+
+  .dropdown {
+    top: 70px;
+  }
+
+  .mainConNavLinks {
+    gap: 30px;
+  }
+
+  .navLinks {
+    gap: 24px;
+  }
+
+  .navLink {
+    font-size: 14px;
+    padding: 24px 0;
+  }
+
+  .logoDefault,
+  .logoHover {
+    height: 35px;
+  }
+
+  .dropdownContent {
+    padding: 25px 0 40px 40px;
+    min-height: 350px;
+  }
+
+  .childTitle {
+    font-size: 15px;
+  }
+
+  .childSubtitle {
+    font-size: 14px;
+  }
+
+  .dropdownItem {
+    padding: 15px 24px 15px 0;
+  }
+
+  .languageToggle {
+    gap: 6px;
+  }
+
+  .langButton {
+    font-size: 14px;
+    padding: 4px 6px;
+  }
+
+  .dropdown::after {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Hide navbar on mobile - will be implemented later */
 @media (max-width: 768px) {
   .navLinks {
     display: none;
   }
 
+  .languageToggle {
+    display: none;
+  }
+
   .navbarContainer {
-    justify-content: space-between;
+    justify-content: center;
+  }
+
+  .logo {
+    margin-left: 0;
   }
 }

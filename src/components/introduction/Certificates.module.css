@@ -93,7 +93,7 @@
 }
 
 /* Tablet */
-@media (max-width: 1400px) {
+@media (max-width: 1540px) {
   .certificateGrid {
     grid-template-columns: repeat(4, 264px);
   }
