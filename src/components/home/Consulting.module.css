@@ -1,0 +1,373 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.consulting {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-image: url("/assets/homepage/backColor.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+}
+
+.header {
+  max-width: 1472px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.category {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #0088ff;
+  margin: 0 0 16px 0;
+  text-transform: capitalize;
+}
+
+.title {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 140%;
+  color: #081032;
+  margin: 0 0 32px 0;
+}
+
+.moreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  border-radius: 4px;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.moreButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Cards Container - Max width constraint */
+.cardsContainer {
+  max-width: 1696px;
+  width: 100%;
+  margin: 0 0 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overflow wrapper - allows right overflow only */
+.cardsOverflow {
+  overflow: visible;
+  position: relative;
+}
+
+/* Cards Wrapper - Will be animated by GSAP */
+.cardsWrapper {
+  display: flex;
+  gap: 22px;
+  padding-left: 80px;
+  width: fit-content;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Individual Card */
+.card {
+  width: 656px;
+  height: 340px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border: 1.4px solid #a1d5ff;
+  border-radius: 12px;
+  padding: 48px 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 32px rgba(0, 102, 204, 0.15);
+  z-index: 10;
+}
+
+/* Card Number */
+.cardNumber {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #0088ff;
+  margin-bottom: 24px;
+}
+
+/* Card Content */
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Card Icon */
+.cardIcon {
+  position: absolute;
+  right: 54px;
+  top: 41px;
+  width: 142px;
+  height: 142px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* Card Title */
+.cardTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 120%;
+  letter-spacing: -2%;
+  color: #081032;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1600px) {
+  .header {
+    padding: 0 60px;
+  }
+
+  .cardsWrapper {
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 0 40px;
+  }
+
+  .cardsWrapper {
+    padding: 0 40px;
+  }
+
+  .card {
+    width: 560px;
+    height: 300px;
+    padding: 40px 32px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .cardIcon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 24px;
+    margin-bottom: 40px;
+  }
+
+  .cardsWrapper {
+    padding: 0 24px;
+  }
+
+  .card {
+    width: 480px;
+    height: 280px;
+    padding: 32px 24px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardIcon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Solution Section */
+.solutionSection {
+  width: 100%;
+  padding: 120px 0;
+  background: #ffffff;
+  background-image: url("../../../public/assets/homepage/leftBack.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.solutionContainer {
+  max-width: 1472px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.solutionLeft {
+  flex: 1;
+  max-width: 656px;
+  background-image: url("../../../public/assets/homepage/leftBack.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.solutionDescription {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 160%;
+  color: #081032;
+  margin: 0 0 48px 0;
+}
+
+.solutionBox {
+  background: #f8f9fa;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.solutionBoxHeader {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 120%;
+  letter-spacing: -2%;
+  color: #081032;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.solutionBoxTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  color: #081032;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.systemImage {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.systemImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.solutionRight {
+  flex: 1;
+  max-width: 685px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.solutionRight img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.imageCaption {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333333;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Responsive for Solution Section */
+@media (max-width: 1200px) {
+  .solutionContainer {
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 60px;
+  }
+
+  .solutionLeft,
+  .solutionRight {
+    max-width: 100%;
+  }
+
+  .solutionTitle {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .solutionSection {
+    padding: 80px 0;
+  }
+
+  .solutionContainer {
+    padding: 0 24px;
+    gap: 40px;
+  }
+
+  .solutionTitle {
+    font-size: 28px;
+  }
+
+  .solutionBox {
+    padding: 24px;
+  }
+
+  .solutionBoxTitle {
+    font-size: 18px;
+  }
+}

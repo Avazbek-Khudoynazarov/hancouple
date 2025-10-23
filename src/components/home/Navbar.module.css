@@ -1,0 +1,325 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.navbar {
+  width: 100%;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  position: fixed;
+  top: 0;
+  z-index: 1000 !important;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #ffffff03;
+}
+
+.navbar:hover {
+  background: #ffffff;
+}
+
+.navbar.scrolled {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.navbar.scrolled .navLink {
+  color: #333333;
+}
+
+.navbar.scrolled .logoDefault {
+  opacity: 0;
+}
+
+.navbar.scrolled .logoHover {
+  opacity: 1;
+}
+
+.navbar.scrolled .langButton {
+  color: rgba(51, 51, 51, 0.4);
+}
+
+.navbar.scrolled .langButton.active {
+  color: #333333;
+}
+
+.navbar.scrolled .separator {
+  color: rgba(51, 51, 51, 0.3);
+}
+
+.navbarContainer {
+  max-width: 1695px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 40px;
+  position: relative;
+}
+
+.logoDefault,
+.logoHover {
+  height: 40px;
+  width: auto;
+  transition: opacity 0.3s ease;
+}
+
+.logoDefault {
+  opacity: 1;
+}
+
+.logoHover {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+}
+
+.navbar:hover .logoDefault {
+  opacity: 0;
+}
+
+.navbar:hover .logoHover {
+  opacity: 1;
+}
+.mainConNavLinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 120px;
+}
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 87px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.navItem {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 28px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar:hover .navLink {
+  color: #333333;
+}
+
+.navLink:hover {
+  opacity: 0.8;
+}
+
+.dropdown {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100vw;
+  padding-top: 0;
+  opacity: 1;
+  animation: fadeIn 0.3s ease;
+  z-index: 999;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid #ffffff03;
+  overflow: hidden;
+}
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background-image: url("/assets/homepage/mask.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownContent {
+  min-height: 500px;
+  width: 100%;
+  padding: 40px 0 60px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 32px 18px 0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  gap: 20px;
+  width: auto;
+  border-radius: 0;
+}
+
+.dropdownItem:hover {
+  background-color: transparent;
+}
+
+.dropdownItem:hover .childArrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.dropdownItemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.childTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333333;
+  opacity: 0.9;
+  line-height: 100%;
+}
+
+.childSubtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #333333;
+  opacity: 0.5;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.childArrow {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  background-color: #333333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.languageToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.langButton {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  transition: color 0.3s ease;
+}
+
+.navbar:hover .langButton {
+  color: rgba(51, 51, 51, 0.4);
+}
+
+.langButton.active {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.navbar:hover .langButton.active {
+  color: #333333;
+  font-weight: 700;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.navbar:hover .separator {
+  color: rgba(51, 51, 51, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .navLinks {
+    gap: 32px;
+  }
+
+  .navLink {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbarContainer {
+    padding: 0 24px;
+  }
+
+  .navLinks {
+    gap: 24px;
+  }
+
+  .navLink {
+    font-size: 15px;
+  }
+
+  .dropdownContent {
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .navbarContainer {
+    justify-content: space-between;
+  }
+}

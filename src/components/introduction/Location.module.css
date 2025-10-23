@@ -1,0 +1,244 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0;
+  background-color: #ffffff;
+}
+
+.content {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.highlight {
+  color: #0088ff;
+}
+
+/* Office Section */
+.officeSection {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  margin-bottom: 100px;
+  align-items: flex-start;
+}
+
+.officeSection:last-child {
+  margin-bottom: 0;
+}
+
+.mapContainer {
+  width: 817px;
+  height: 426px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.infoContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.officeLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0088ff;
+  margin-bottom: 8px;
+}
+
+.officeName {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 32px;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.infoLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #666666;
+}
+
+.infoValue {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.contactRow {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #666666;
+}
+
+.contactValue {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* Tablet */
+@media (max-width: 1400px) {
+  .officeSection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mapContainer {
+    width: 100%;
+    max-width: 817px;
+  }
+
+  .infoContainer {
+    width: 100%;
+    max-width: 817px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    padding: 0 40px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .officeName {
+    font-size: 28px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 0;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .officeSection {
+    margin-bottom: 60px;
+    gap: 24px;
+  }
+
+  .mapContainer {
+    height: 300px;
+  }
+
+  .officeLabel {
+    font-size: 16px;
+  }
+
+  .officeName {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .infoRow {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .infoLabel,
+  .contactLabel {
+    font-size: 14px;
+  }
+
+  .infoValue,
+  .contactValue {
+    font-size: 16px;
+  }
+
+  .contactRow {
+    gap: 30px;
+  }
+}

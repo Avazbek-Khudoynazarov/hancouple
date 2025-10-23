@@ -1,0 +1,299 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background Images */
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.backgroundImage.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 3;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 150px;
+}
+
+.textContent {
+  margin-bottom: 80px;
+  margin-left: 74px;
+}
+
+/* Title - Main heading (탄소중립·ESG경영평가자) */
+.title {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 90px;
+  color: #ffffff;
+  margin: 0 0 27px 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0%;
+}
+
+/* Description - Smaller text */
+.description {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 0%;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0%;
+  margin-top: 60px;
+}
+
+/* Controls Container */
+.controls {
+  position: absolute;
+  bottom: 80px;
+  left: 224px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  z-index: 5;
+}
+
+/* Pause/Play Button with Progress Ring */
+.pauseContainer {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.progressRing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.progressRingCircle {
+  opacity: 0.3;
+}
+
+.progressRingProgress {
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+.pauseButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.pauseButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation Buttons */
+.navButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.navButton:hover {
+  opacity: 0.7;
+}
+
+.navButton img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Counter */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  color: #ffffff;
+}
+
+.currentNumber {
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  text-align: center;
+}
+
+.divider {
+  font-weight: 700;
+  font-size: 15px;
+  opacity: 0.5;
+}
+
+.totalNumber {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  text-align: center;
+  opacity: 0.5;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 80px;
+  right: 150px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 5;
+}
+
+.scrollText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.scrollIcon {
+  width: 29px;
+  height: 29px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scrollDot {
+  width: 3px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: scrollAnimation 2s infinite;
+}
+
+@keyframes scrollAnimation {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .content {
+    padding: 0 60px;
+  }
+
+  .controls {
+    left: 60px;
+    bottom: 60px;
+  }
+
+  .scrollIndicator {
+    right: 60px;
+    bottom: 60px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0 30px;
+  }
+
+  .controls {
+    left: 30px;
+    bottom: 40px;
+  }
+
+  .scrollIndicator {
+    right: 30px;
+    bottom: 40px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
