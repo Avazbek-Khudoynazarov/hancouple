@@ -415,7 +415,172 @@
   }
 }
 
-/* Hide navbar on mobile - will be implemented later */
+/* Mobile Menu Styles */
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #333333;
+  transition: color 0.3s ease;
+}
+
+.mobileMenuButton svg {
+  font-size: 28px;
+}
+
+.navbar:not(.scrolled) .mobileMenuButton {
+  color: #ffffff;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 390px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 2000;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobileMenuOpen {
+  right: 0;
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.mobileLogo img {
+  height: 30px;
+  width: auto;
+}
+
+.mobileCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #333333;
+}
+
+.mobileCloseButton svg {
+  font-size: 28px;
+}
+
+.mobileMenuContent {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.mobileMenuItem {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.mobileMenuItemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  cursor: pointer;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333333;
+  transition: background-color 0.2s ease;
+}
+
+.mobileMenuItemHeader:active {
+  background-color: #f5f5f5;
+}
+
+.mobileMenuItemHeader svg {
+  font-size: 24px;
+  color: #666666;
+}
+
+.mobileSubmenu {
+  background-color: #f9f9f9;
+  padding: 8px 0;
+}
+
+.mobileSubmenuItem {
+  display: block;
+  padding: 16px 24px 16px 40px;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #666666;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobileSubmenuItem:active {
+  background-color: #eeeeee;
+  color: #333333;
+}
+
+.mobileLanguageToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.mobileLangButton {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(51, 51, 51, 0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: color 0.2s ease;
+}
+
+.mobileLangButton.active {
+  color: #333333;
+  font-weight: 700;
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1999;
+  animation: fadeInOverlay 0.3s ease;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .navLinks {
     display: none;
@@ -425,11 +590,29 @@
     display: none;
   }
 
+  .mainConNavLinks {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: block;
+    position: absolute;
+    right: 24px;
+  }
+
   .navbarContainer {
     justify-content: center;
+    position: relative;
+    padding: 0 24px;
+    height: 60px;
   }
 
   .logo {
     margin-left: 0;
+  }
+
+  .logoDefault,
+  .logoHover {
+    height: 30px;
   }
 }

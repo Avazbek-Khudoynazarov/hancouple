@@ -3,6 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 interface SubItem {
   title: string;
@@ -35,32 +39,32 @@ const navDataKor: NavItem[] = [
       {
         title: "실시간 피크전력 모니터링",
         subtitle: "요금 폭탄 방지",
-        href: "/remote-inspection/monitoring",
+        href: "/remote-inspection?menu=실시간 피크전력 모니터링",
       },
       {
         title: "배전반 차단기별 전력관리 모니터링",
         subtitle: "",
-        href: "/remote-inspection/circuit-breaker",
+        href: "/remote-inspection?menu=배전반 차단기별 전력관리 모니터링",
       },
       {
         title: "차단기별 전기 화재 안전 모니터링",
         subtitle: "누전, 과부하, 온도 이상 즉시 차단",
-        href: "/remote-inspection/fire-safety",
+        href: "/remote-inspection?menu=차단기별 전기 화재 안전 모니터링",
       },
       {
         title: "위험성 판단 & 2차 사고 예방 모니터링",
         subtitle: "전원차점으로 인한 2차 사고방생",
-        href: "/remote-inspection/risk-assessment",
+        href: "/remote-inspection?menu=위험성 판단 & 2차 사고 예방 모니터링",
       },
       {
         title: "에너지 절감 운영매뉴얼 제공",
         subtitle: "전단 후 절감 실행 가이드",
-        href: "/remote-inspection/energy-saving",
+        href: "/remote-inspection?menu=에너지 절감 운영매뉴얼 제공",
       },
       {
         title: "전기안전 직무고시 원격제출 / 자동 리포트 생성",
         subtitle: "",
-        href: "/remote-inspection/report-generation",
+        href: "/remote-inspection?menu=전기안전 직무고시 원격계측 / 자동 리포트 생성",
       },
     ],
   },
@@ -148,32 +152,32 @@ const navDataEng: NavItem[] = [
       {
         title: "Real-time Peak Power Monitoring",
         subtitle: "Prevent Bill Shock",
-        href: "/remote-inspection/monitoring",
+        href: "/remote-inspection?menu=실시간 피크전력 모니터링",
       },
       {
         title: "Circuit Breaker Power Management",
         subtitle: "",
-        href: "/remote-inspection/circuit-breaker",
+        href: "/remote-inspection?menu=배전반 차단기별 전력관리 모니터링",
       },
       {
         title: "Electrical Fire Safety Monitoring",
         subtitle: "Instant shutdown on leakage, overload, temp. abnormality",
-        href: "/remote-inspection/fire-safety",
+        href: "/remote-inspection?menu=차단기별 전기 화재 안전 모니터링",
       },
       {
         title: "Risk Assessment & Secondary Accident Prevention",
         subtitle: "Prevent secondary accidents from power issues",
-        href: "/remote-inspection/risk-assessment",
+        href: "/remote-inspection?menu=위험성 판단 %26 2차 사고 예방 모니터링",
       },
       {
         title: "Energy Saving Operation Manual",
         subtitle: "Before & after savings execution guide",
-        href: "/remote-inspection/energy-saving",
+        href: "/remote-inspection?menu=에너지 절감 운영매뉴얼 제공",
       },
       {
         title: "Remote Submission / Auto Report Generation",
         subtitle: "",
-        href: "/remote-inspection/report-generation",
+        href: "/remote-inspection?menu=전기안전 직무고시 원격계측 / 자동 리포트 생성",
       },
     ],
   },
@@ -257,6 +261,8 @@ export default function Navbar() {
   const [dropdownPosition, setDropdownPosition] = useState<number>(0);
   const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileExpandedItem, setMobileExpandedItem] = useState<number | null>(null);
   const navItemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const navData = language === "KOR" ? navDataKor : navDataEng;
@@ -292,6 +298,15 @@ export default function Navbar() {
     setLanguage(lang);
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileExpandedItem(null);
+  };
+
+  const toggleMobileItem = (index: number) => {
+    setMobileExpandedItem(mobileExpandedItem === index ? null : index);
+  };
+
   if (!isMounted) {
     return null;
   }
@@ -311,6 +326,12 @@ export default function Navbar() {
             className={styles.logoHover}
           />
         </Link>
+
+        {/* Mobile Menu Button */}
+        <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
+          <MenuIcon />
+        </button>
+
         <div className={styles.mainConNavLinks}>
           <div className={styles.navLinks}>
             {navData.map((item, index) => (
@@ -381,6 +402,71 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Drawer */}
+      <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}>
+        <div className={styles.mobileMenuHeader}>
+          <Link href="/" className={styles.mobileLogo} onClick={toggleMobileMenu}>
+            <img
+              src="/assets/homepage/mainLogo2.svg"
+              alt="NetWork Korea"
+            />
+          </Link>
+          <button className={styles.mobileCloseButton} onClick={toggleMobileMenu}>
+            <CloseIcon />
+          </button>
+        </div>
+
+        <div className={styles.mobileMenuContent}>
+          {navData.map((item, index) => (
+            <div key={index} className={styles.mobileMenuItem}>
+              <div className={styles.mobileMenuItemHeader} onClick={() => toggleMobileItem(index)}>
+                <span>{item.title}</span>
+                {item.children && (
+                  mobileExpandedItem === index ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />
+                )}
+              </div>
+
+              {item.children && mobileExpandedItem === index && (
+                <div className={styles.mobileSubmenu}>
+                  {item.children.map((child, childIndex) => (
+                    <Link
+                      key={childIndex}
+                      href={child.href}
+                      className={styles.mobileSubmenuItem}
+                      onClick={toggleMobileMenu}>
+                      {child.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.mobileLanguageToggle}>
+          <button
+            className={`${styles.mobileLangButton} ${
+              language === "KOR" ? styles.active : ""
+            }`}
+            onClick={() => toggleLanguage("KOR")}>
+            KOR
+          </button>
+          <span className={styles.separator}>|</span>
+          <button
+            className={`${styles.mobileLangButton} ${
+              language === "ENG" ? styles.active : ""
+            }`}
+            onClick={() => toggleLanguage("ENG")}>
+            ENG
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className={styles.mobileMenuOverlay} onClick={toggleMobileMenu} />
+      )}
     </nav>
   );
 }

@@ -1,0 +1,1057 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0;
+}
+
+.content {
+  max-width: 1294px;
+  width: 100%;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pageTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0088ff;
+  text-align: center;
+  margin: 0 0 24px 0;
+}
+
+.mainTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  margin: 0 0 80px 0;
+  letter-spacing: -0.5px;
+}
+
+.comparisonContainer {
+  display: flex;
+  gap: 60px;
+  width: 100%;
+  justify-content: center;
+}
+
+.comparisonContainerReport {
+  display: flex;
+  gap: 13px;
+  width: 100%;
+  justify-content: center;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 390px;
+}
+
+/* Top Cards (AS-IS) */
+.card {
+  width: 100%;
+  min-height: 177px;
+  background: #ffffff;
+  border: 1.5px solid rgba(37, 196, 146, 0.5);
+  border-radius: 16px;
+  padding: 40px 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card2 {
+  width: 100%;
+  min-height: 177px;
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 183, 221, 0.5);
+  border-radius: 16px;
+  padding: 40px 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card3 {
+  width: 100%;
+  min-height: 177px;
+  background: #ffffff;
+  border: 1.5px solid rgba(0, 136, 255, 0.5);
+  border-radius: 16px;
+  padding: 40px 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.card4 {
+  width: 100%;
+  min-height: 177px;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 179, 0, 0.5);
+  border-radius: 16px;
+  padding: 40px 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.cardReport2 {
+  width: 100%;
+  min-height: 177px;
+  background: #ffffff;
+  border: 1.5px solid rgba(40, 199, 200, 0.5);
+  border-radius: 16px;
+  padding: 40px 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.cardNumber {
+  border: 1.5px solid rgba(37, 196, 146, 0.5);
+  color: rgba(37, 196, 146, 0.7);
+}
+.cardNumber2 {
+  border: 1.5px solid rgba(0, 183, 221, 0.5);
+  color: rgba(0, 183, 221, 0.7);
+}
+.cardNumber3 {
+  border: 1.5px solid rgba(0, 136, 255, 0.5);
+  color: rgba(0, 136, 255, 0.7);
+}
+.cardNumber4 {
+  border: 1.5px solid rgba(255, 179, 0, 0.5);
+  color: rgba(255, 179, 0, 0.7);
+}
+.cardNumberReport2 {
+  border: 1.5px solid rgba(40, 199, 200, 0.5);
+  color: rgba(40, 199, 200, 0.7);
+}
+.cardNumber,
+.cardNumber2,
+.cardNumber3,
+.cardNumber4,
+.cardNumberReport2 {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cardLabel,
+.cardLabel2,
+.cardLabel3,
+.cardLabel4,
+.cardLabelReport2 {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  letter-spacing: 0%;
+  line-height: 138%;
+}
+.cardLabel {
+  color: #23d8d8;
+}
+.cardLabel2 {
+  color: #00b7dd80;
+}
+.cardLabel3 {
+  color: rgba(0, 136, 255, 0.5);
+}
+.cardLabel4 {
+  color: rgba(255, 179, 0, 0.5);
+}
+.cardLabelReport2 {
+  color: rgba(40, 199, 200, 0.5);
+}
+
+.cardSubtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 150%;
+}
+
+.cardSubtitleReport {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 150%;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardContentCenter {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  line-height: 150%;
+}
+.cardContentCenterMain {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.arrowIcon {
+  font-size: 16px;
+  color: #333333;
+}
+
+.cardText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  line-height: 150%;
+}
+
+/* Connector */
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.verticalLine {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(106, 240, 198, 0.5) 0%,
+    rgba(106, 240, 198, 0.5) 50%,
+    transparent 50%
+  );
+  background-size: 2px 8px;
+  margin-top: -1px;
+}
+
+.verticalLine2 {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 183, 221, 0.5) 0%,
+    rgba(0, 183, 221, 0.5) 50%,
+    transparent 50%
+  );
+  background-size: 2px 8px;
+  margin-top: -1px;
+}
+
+.verticalLine3 {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 136, 255, 0.5) 0%,
+    rgba(0, 136, 255, 0.5) 50%,
+    transparent 50%
+  );
+  background-size: 2px 8px;
+  margin-top: -1px;
+}
+
+.verticalLine4 {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 179, 0, 0.5) 0%,
+    rgba(255, 179, 0, 0.5) 50%,
+    transparent 50%
+  );
+  background-size: 2px 8px;
+  margin-top: -1px;
+}
+
+.verticalLineReport2 {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(40, 199, 200, 0.5) 0%,
+    rgba(40, 199, 200, 0.5) 50%,
+    transparent 50%
+  );
+  background-size: 2px 8px;
+  margin-top: -1px;
+}
+
+.dot,
+.dot2,
+.dot3,
+.dot4,
+.dotReport2 {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0px 2px 16.5px 0px #008bff27;
+  position: absolute;
+  top: -7.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.dot {
+  background: #6af0c6;
+}
+
+.dot2 {
+  background: #00b7dd;
+}
+
+.dot3 {
+  background: #0088ff;
+}
+
+.dot4 {
+  background: #ffb300;
+}
+
+.dotReport2 {
+  background: #28c7c8;
+}
+
+/* Bottom Cards (TO-BE) */
+.cardBottom {
+  width: 100%;
+  min-height: 369px;
+  background: rgba(245, 254, 255, 0.4);
+  border: 1.5px solid rgba(37, 196, 146, 0.5);
+  border-radius: 16px;
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.cardBottom2 {
+  width: 100%;
+  min-height: 369px;
+  background: rgba(245, 254, 255, 0.4);
+  border: 1.5px solid rgba(0, 183, 221, 0.5);
+  border-radius: 16px;
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.cardBottom3 {
+  width: 100%;
+  min-height: 369px;
+  background: rgba(245, 254, 255, 0.4);
+  border: 1.5px solid rgba(0, 136, 255, 0.5);
+  border-radius: 16px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.cardBottom4 {
+  width: 100%;
+  min-height: 369px;
+  background: rgba(245, 254, 255, 0.4);
+  border: 1.5px solid rgba(255, 179, 0, 0.5);
+  border-radius: 16px;
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.cardBottomReport2 {
+  width: 100%;
+  min-height: 369px;
+  background: rgba(245, 254, 255, 0.4);
+  border: 1.5px solid rgba(40, 199, 200, 0.5);
+  border-radius: 16px;
+  padding: 40px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.cardLabelBottom {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #23d8d8;
+  margin: 0 0 30px 0;
+  letter-spacing: 0%;
+  line-height: 138%;
+}
+
+.cardLabelBottom2 {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #00b7dd80;
+  margin: 0 0 30px 0;
+  letter-spacing: 0%;
+  line-height: 138%;
+}
+
+.cardLabelBottom3 {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(0, 136, 255, 0.5);
+  margin: 0 0 30px 0;
+  letter-spacing: 0%;
+  line-height: 138%;
+}
+
+.cardLabelBottom4 {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255, 179, 0, 0.5);
+  margin: 0 0 30px 0;
+  letter-spacing: 0%;
+  line-height: 138%;
+}
+
+.cardLabelBottomReport2 {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(40, 199, 200, 0.5);
+  margin: 0 0 30px 0;
+  letter-spacing: 0%;
+  line-height: 138%;
+}
+
+.imageContainer {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cardBottomText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333333;
+  line-height: 150%;
+}
+
+.cardHighlight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  justify-content: center;
+}
+
+.arrowIconHighlight {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.highlightText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  line-height: 150%;
+  position: relative;
+  display: inline-block;
+}
+
+/* Highlight underlines with specific colors and dimensions */
+.highlightUnderline1 {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  width: 182px;
+  height: 13px;
+  background: rgba(106, 240, 198, 0.3);
+}
+
+.highlightUnderline2 {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 230px;
+  height: 13px;
+  background: rgba(0, 183, 221, 0.2);
+}
+
+.highlightUnderline3 {
+  position: absolute;
+  bottom: 1px;
+  left: 10px;
+  width: 120px;
+  height: 13px;
+  background: rgba(0, 136, 255, 0.2);
+}
+
+/* PowerManagement specific highlight underlines */
+.highlightUnderlinePower1 {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  width: 272px;
+  height: 13px;
+  background: rgba(106, 240, 198, 0.3);
+}
+
+.highlightUnderlinePower2 {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 307px;
+  height: 13px;
+  background: rgba(0, 183, 221, 0.2);
+}
+
+.highlightUnderlinePower3 {
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  width: 245px;
+  height: 13px;
+  background: rgba(0, 136, 255, 0.2);
+}
+
+/* FireSafety specific highlight underlines */
+.highlightUnderlineFire1 {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  width: 145px;
+  height: 13px;
+  background: rgba(106, 240, 198, 0.3);
+}
+
+.highlightUnderlineFire2 {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 138px;
+  height: 13px;
+  background: rgba(0, 183, 221, 0.2);
+}
+
+.highlightUnderlineFire3 {
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  width: 295px;
+  height: 13px;
+  background: rgba(0, 136, 255, 0.2);
+}
+
+/* RiskAssessment specific highlight underlines */
+.highlightUnderlineRisk1 {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  width: 200px;
+  height: 13px;
+  background: rgba(106, 240, 198, 0.3);
+}
+
+.highlightUnderlineRisk2 {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 172px;
+  height: 13px;
+  background: rgba(0, 183, 221, 0.2);
+}
+
+.highlightUnderlineRisk3 {
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  width: 245px;
+  height: 13px;
+  background: rgba(0, 136, 255, 0.2);
+}
+
+/* EnergySaving specific highlight underlines */
+.highlightUnderlineEnergy1 {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+  width: 200px;
+  height: 13px;
+  background: rgba(106, 240, 198, 0.3);
+}
+
+.highlightUnderlineEnergy2 {
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 273px;
+  height: 13px;
+  background: rgba(0, 183, 221, 0.2);
+}
+
+.highlightUnderlineEnergy3 {
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  width: 247px;
+  height: 13px;
+  background: rgba(0, 136, 255, 0.2);
+}
+
+/* AutoReport specific highlight underlines */
+.highlightUnderlineReport1 {
+  position: absolute;
+  bottom: 1px;
+  left: 14px;
+  width: 172px;
+  height: 13px;
+  background: rgba(106, 240, 198, 0.3);
+}
+
+.highlightUnderlineReport2 {
+  position: absolute;
+  bottom: 1px;
+  left: 10%;
+  width: 80%;
+  height: 13px;
+  background: rgba(40, 199, 200, 0.2);
+}
+
+.highlightUnderlineReport3 {
+  position: absolute;
+  bottom: 1px;
+  left: 20%;
+  right: 0;
+  height: 13px;
+  width: 114px;
+  background: rgba(0, 183, 221, 0.2);
+  pointer-events: none;
+}
+
+.highlightUnderlineReport4 {
+  position: absolute;
+  bottom: 1px;
+  right: 0;
+
+  width: 155px;
+  height: 13px;
+  background: rgba(0, 136, 255, 0.2);
+}
+
+/* Responsive */
+/* Tablet (1200px and below) */
+@media (max-width: 1200px) {
+  .container {
+    padding: 100px 0;
+  }
+
+  .content {
+    padding: 0 30px;
+  }
+
+  .comparisonContainer {
+    gap: 40px;
+  }
+
+  .comparisonContainerReport {
+    gap: 20px;
+  }
+
+  .mainTitle {
+    font-size: 40px;
+    margin-bottom: 60px;
+  }
+
+  .pageTitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .card,
+  .card2,
+  .card3,
+  .card4,
+  .cardReport2 {
+    padding: 30px 20px;
+    min-height: 150px;
+  }
+
+  .cardBottom,
+  .cardBottom2,
+  .cardBottom3,
+  .cardBottom4,
+  .cardBottomReport2 {
+    padding: 30px 20px;
+    min-height: 250px;
+  }
+
+  .cardNumber,
+  .cardNumber2,
+  .cardNumber3,
+  .cardNumber4,
+  .cardNumberReport2 {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    top: -15px;
+  }
+
+  .cardLabel,
+  .cardLabel2,
+  .cardLabel3,
+  .cardLabel4,
+  .cardLabelReport2 {
+    font-size: 14px;
+    top: -6px;
+  }
+
+  .cardLabelBottom,
+  .cardLabelBottom2,
+  .cardLabelBottom3,
+  .cardLabelBottom4,
+  .cardLabelBottomReport2 {
+    font-size: 14px;
+    top: -6px;
+  }
+
+  .cardSubtitle,
+  .cardSubtitleReport {
+    font-size: 16px;
+  }
+
+  .cardText,
+  .cardBottomText {
+    font-size: 14px;
+  }
+
+  .imageContainer {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+
+  .imageContainer img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Tablet Small (900px and below) */
+@media (max-width: 900px) {
+  .container {
+    padding: 80px 0;
+  }
+
+  .comparisonContainer {
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .comparisonContainerReport {
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .column {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .mainTitle {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+
+  .connector {
+    height: 60px;
+  }
+
+  .verticalLine,
+  .verticalLine2,
+  .verticalLine3,
+  .verticalLine4,
+  .verticalLineReport2 {
+    height: 60px;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+    margin-bottom: 40px;
+    line-height: 1.3;
+  }
+
+  .pageTitle {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .card,
+  .card2,
+  .card3,
+  .card4,
+  .cardReport2 {
+    padding: 24px 16px;
+    min-height: 130px;
+  }
+
+  .cardBottom,
+  .cardBottom2,
+  .cardBottom3,
+  .cardBottom4,
+  .cardBottomReport2 {
+    padding: 24px 16px;
+    min-height: 220px;
+  }
+
+  .cardNumber,
+  .cardNumber2,
+  .cardNumber3,
+  .cardNumber4,
+  .cardNumberReport2 {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+    top: -13px;
+  }
+
+  .cardLabel,
+  .cardLabel2,
+  .cardLabel3,
+  .cardLabel4,
+  .cardLabelReport2,
+  .cardLabelBottom,
+  .cardLabelBottom2,
+  .cardLabelBottom3,
+  .cardLabelBottom4,
+  .cardLabelBottomReport2 {
+    font-size: 12px;
+  }
+
+  .cardSubtitle,
+  .cardSubtitleReport {
+    font-size: 14px;
+  }
+
+  .cardText,
+  .cardBottomText,
+  .cardContentCenter {
+    font-size: 13px;
+  }
+
+  .imageContainer {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 16px;
+  }
+
+  .imageContainer img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .arrowIcon,
+  .arrowIconHighlight {
+    font-size: 16px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  .column {
+    max-width: 100%;
+  }
+
+  .connector {
+    height: 50px;
+  }
+
+  .verticalLine,
+  .verticalLine2,
+  .verticalLine3,
+  .verticalLine4,
+  .verticalLineReport2 {
+    height: 50px;
+  }
+
+  .dot,
+  .dot2,
+  .dot3,
+  .dot4,
+  .dotReport2 {
+    width: 8px;
+    height: 8px;
+    top: -4px;
+  }
+
+  .highlightText {
+    font-size: 14px;
+  }
+
+  .highlightUnderline1,
+  .highlightUnderline2,
+  .highlightUnderline3,
+  .highlightUnderlineEnergy1,
+  .highlightUnderlineEnergy2,
+  .highlightUnderlineEnergy3,
+  .highlightUnderlineReport1,
+  .highlightUnderlineReport2,
+  .highlightUnderlineReport3,
+  .highlightUnderlineReport4 {
+    height: 10px;
+  }
+}
+
+/* Mobile Small (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 40px 0;
+  }
+
+  .content {
+    padding: 0 16px;
+  }
+
+  .mainTitle {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .pageTitle {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .card,
+  .card2,
+  .card3,
+  .card4,
+  .cardReport2 {
+    padding: 20px 12px;
+    min-height: 120px;
+  }
+
+  .cardBottom,
+  .cardBottom2,
+  .cardBottom3,
+  .cardBottom4,
+  .cardBottomReport2 {
+    padding: 20px 12px;
+    min-height: 200px;
+  }
+
+  .cardSubtitle,
+  .cardSubtitleReport {
+    font-size: 13px;
+  }
+
+  .cardText,
+  .cardBottomText,
+  .cardContentCenter {
+    font-size: 12px;
+  }
+
+  .imageContainer {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .imageContainer img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .highlightText {
+    font-size: 13px;
+  }
+}
