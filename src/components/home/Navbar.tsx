@@ -141,7 +141,10 @@ const navDataEng: NavItem[] = [
       { title: "Greeting", href: "/introduction?menu=인사말" },
       { title: "History", href: "/introduction?menu=연혁" },
       { title: "Vision", href: "/introduction?menu=비전" },
-      { title: "Certifications & Patents", href: "/introduction?menu=인증특허" },
+      {
+        title: "Certifications & Patents",
+        href: "/introduction?menu=인증특허",
+      },
       { title: "Location", href: "/introduction?menu=오시는 길" },
     ],
   },
@@ -262,7 +265,9 @@ export default function Navbar() {
   const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileExpandedItem, setMobileExpandedItem] = useState<number | null>(null);
+  const [mobileExpandedItem, setMobileExpandedItem] = useState<number | null>(
+    null
+  );
   const navItemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const navData = language === "KOR" ? navDataKor : navDataEng;
@@ -327,7 +332,6 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Mobile Menu Button */}
         <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
           <MenuIcon />
         </button>
@@ -404,15 +408,20 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Drawer */}
-      <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ""}`}>
+      <div
+        className={`${styles.mobileMenu} ${
+          mobileMenuOpen ? styles.mobileMenuOpen : ""
+        }`}>
         <div className={styles.mobileMenuHeader}>
-          <Link href="/" className={styles.mobileLogo} onClick={toggleMobileMenu}>
-            <img
-              src="/assets/homepage/mainLogo2.svg"
-              alt="NetWork Korea"
-            />
+          <Link
+            href="/"
+            className={styles.mobileLogo}
+            onClick={toggleMobileMenu}>
+            <img src="/assets/homepage/mainLogo2.svg" alt="NetWork Korea" />
           </Link>
-          <button className={styles.mobileCloseButton} onClick={toggleMobileMenu}>
+          <button
+            className={styles.mobileCloseButton}
+            onClick={toggleMobileMenu}>
             <CloseIcon />
           </button>
         </div>
@@ -420,11 +429,16 @@ export default function Navbar() {
         <div className={styles.mobileMenuContent}>
           {navData.map((item, index) => (
             <div key={index} className={styles.mobileMenuItem}>
-              <div className={styles.mobileMenuItemHeader} onClick={() => toggleMobileItem(index)}>
+              <div
+                className={styles.mobileMenuItemHeader}
+                onClick={() => toggleMobileItem(index)}>
                 <span>{item.title}</span>
-                {item.children && (
-                  mobileExpandedItem === index ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />
-                )}
+                {item.children &&
+                  (mobileExpandedItem === index ? (
+                    <KeyboardArrowUpIcon />
+                  ) : (
+                    <KeyboardArrowDownIcon />
+                  ))}
               </div>
 
               {item.children && mobileExpandedItem === index && (

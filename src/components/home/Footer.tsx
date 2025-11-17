@@ -1,18 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
+import FooterMobile from "./FooterMobile";
 
 export default function Footer() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <FooterMobile />;
+  }
+
   return (
     <footer className={styles.footer}>
       {/* Top Navigation */}
       <div className={styles.topNav}>
         <div className={styles.topNavContainer}>
-          <a href="#" className={styles.navLink}>
+          <a href="/introduction" className={styles.navLink}>
             회사소개
           </a>
-          <a href="#" className={styles.navLink}>
+          <a href="/remote-inspection" className={styles.navLink}>
             전자결함/리포트생성
           </a>
           <a href="#" className={styles.navLink}>

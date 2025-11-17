@@ -15,9 +15,18 @@ export default function Contact() {
               className={styles.backgroundText}
             />
             <h2 className={styles.heading}>
-              제품 문의부터 비즈니스 제휴까지
-              <br />
-              무엇이든 물어보세요.
+              <span className={styles.desktopBreak}>
+                제품 문의부터 비즈니스 제휴까지
+                <br />
+                무엇이든 물어보세요.
+              </span>
+              <span className={styles.mobileBreak}>
+                제품 문의부터
+                <br />
+                비즈니스 제휴까지
+                <br />
+                무엇이든 물어보세요.
+              </span>
             </h2>
           </div>
           <div className={styles.inputContainer}>

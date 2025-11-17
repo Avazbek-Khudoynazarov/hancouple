@@ -166,6 +166,13 @@
 
 @media (max-width: 480px) {
   .certificateGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+    row-gap: 40px;
+  }
+
+  .certificateTitle {
+    font-size: 14px;
+    margin-top: 15px;
   }
 }

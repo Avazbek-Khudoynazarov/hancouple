@@ -9,16 +9,37 @@ interface RemoteInspectionLayoutProps {
   setActiveMenu: (menu: string) => void;
 }
 
-export default function RemoteInspectionLayout({ activeMenu, setActiveMenu }: RemoteInspectionLayoutProps) {
+export default function RemoteInspectionLayout({
+  activeMenu,
+  setActiveMenu,
+}: RemoteInspectionLayoutProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const menuItems = [
-    { title: "실시간 피크전력 모니터링", href: "/remote-inspection?menu=실시간 피크전력 모니터링" },
-    { title: "배전반 차단기별 전력관리 모니터링", href: "/remote-inspection?menu=배전반 차단기별 전력관리 모니터링" },
-    { title: "차단기별 전기 화재 안전 모니터링", href: "/remote-inspection?menu=차단기별 전기 화재 안전 모니터링" },
-    { title: "위험성 판단 & 2차 사고 예방 모니터링", href: "/remote-inspection?menu=위험성 판단 %26 2차 사고 예방 모니터링" },
-    { title: "에너지 절감 운영매뉴얼 제공", href: "/remote-inspection?menu=에너지 절감 운영매뉴얼 제공" },
-    { title: "전기안전 직무고시 원격계측 / 자동 리포트 생성", href: "/remote-inspection?menu=전기안전 직무고시 원격계측 / 자동 리포트 생성" },
+    {
+      title: "실시간 피크전력 모니터링",
+      href: "/remote-inspection?menu=실시간 피크전력 모니터링",
+    },
+    {
+      title: "배전반 차단기별 전력관리 모니터링",
+      href: "/remote-inspection?menu=배전반 차단기별 전력관리 모니터링",
+    },
+    {
+      title: "차단기별 전기 화재 안전 모니터링",
+      href: "/remote-inspection?menu=차단기별 전기 화재 안전 모니터링",
+    },
+    {
+      title: "위험성 판단 & 2차 사고 예방 모니터링",
+      href: "/remote-inspection?menu=위험성 판단 %26 2차 사고 예방 모니터링",
+    },
+    {
+      title: "에너지 절감 운영매뉴얼 제공",
+      href: "/remote-inspection?menu=에너지 절감 운영매뉴얼 제공",
+    },
+    {
+      title: "전기안전 직무고시 원격계측 / 자동 리포트 생성",
+      href: "/remote-inspection?menu=전기안전 직무고시 원격계측 / 자동 리포트 생성",
+    },
   ];
 
   const toggleDropdown = () => {

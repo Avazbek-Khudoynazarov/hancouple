@@ -46,23 +46,27 @@ export default function Consulting() {
 
     if (!section || !cardsWrapper) return;
 
-    // Calculate the scroll distance
+    const isMobile = () => window.innerWidth <= 768;
+
+    if (isMobile()) {
+      return;
+    }
+
     const cards = cardsWrapper.querySelectorAll(`.${styles.card}`);
     const cardWidth = 656;
     const gap = 22;
     const totalWidth = (cardWidth + gap) * cards.length - gap;
     const paddingLeft = 80;
-    const marginRight = 374; // Stop with 224px margin on the right
+    const marginRight = 374;
     const scrollDistance =
       totalWidth + paddingLeft - (window.innerWidth - marginRight);
 
-    // Create horizontal scroll animation
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${scrollDistance * 1.5}`, // Multiply by 1.5 for smoother scroll
-        scrub: 1, // Smooth scrubbing effect
+        end: () => `+=${scrollDistance * 1.5}`,
+        scrub: 1,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
@@ -74,7 +78,17 @@ export default function Consulting() {
       ease: "none",
     });
 
+    // Handle window resize
+    const handleResize = () => {
+      if (isMobile()) {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
+      window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -124,7 +138,6 @@ export default function Consulting() {
         </div>
       </section>
 
-      {/* Solution Section - Outside pinned area */}
       <section className={styles.solutionSection}>
         <div className={styles.solutionContainer}>
           <div className={styles.solutionLeft}>
@@ -149,7 +162,16 @@ export default function Consulting() {
                 스마트 전기안전 모니터링 솔루션
               </h4>
               <div className={styles.systemImage}>
-                <img src="/assets/homepage/system.png" alt="System Diagram" />
+                <img
+                  src="/assets/homepage/system.png"
+                  alt="System Diagram"
+                  className={styles.desktopImage}
+                />
+                <img
+                  src="/assets/homepage/mob.png"
+                  alt="System Diagram"
+                  className={styles.mobileImage}
+                />
               </div>
             </div>
           </div>
@@ -158,6 +180,12 @@ export default function Consulting() {
             <img
               src="/assets/homepage/rightblock.png"
               alt="Smart Monitoring Solution"
+              className={styles.desktopImage}
+            />
+            <img
+              src="/assets/homepage/mob2.png"
+              alt="Smart Monitoring Solution"
+              className={styles.mobileImage}
             />
             <div className={styles.imageCaption}></div>
           </div>

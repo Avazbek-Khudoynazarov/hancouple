@@ -9,7 +9,10 @@ interface IntroductionLayoutProps {
   setActiveMenu: (menu: string) => void;
 }
 
-export default function IntroductionLayout({ activeMenu, setActiveMenu }: IntroductionLayoutProps) {
+export default function IntroductionLayout({
+  activeMenu,
+  setActiveMenu,
+}: IntroductionLayoutProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const menuItems = [

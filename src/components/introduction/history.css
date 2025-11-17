@@ -221,8 +221,8 @@
   .timeline-section.left,
   .timeline-section.right {
     justify-content: flex-start;
-    padding-left: 80px;
-    padding-right: 0;
+    padding-left: 50px;
+    padding-right: 20px;
   }
 
   .timeline-text {
@@ -231,6 +231,7 @@
 
   .text-position {
     padding: 20px;
+    text-align: left !important;
   }
 
   .history-year-style {
@@ -239,11 +240,18 @@
 
   .timeline-text p {
     font-size: 14px;
+    justify-content: flex-start !important;
+    text-align: left;
+  }
+
+  .timeline-text p span:not(.month) {
+    text-align: left !important;
   }
 
   .timeline-text .month {
     font-size: 14px;
     min-width: 25px;
+    order: -1;
   }
 }
 

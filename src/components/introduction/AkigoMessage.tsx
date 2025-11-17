@@ -1,8 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./AkigoMessage.module.css";
 
 export default function AkigoMessage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -14,7 +28,11 @@ export default function AkigoMessage() {
 
         <div className={styles.diagramContainer}>
           <img
-            src="/assets/introduction/akigo.png"
+            src={
+              isMobile
+                ? "/assets/introduction/mobImage.png"
+                : "/assets/introduction/akigo.png"
+            }
             alt="Akigo Message Diagram"
             className={styles.diagram}
           />

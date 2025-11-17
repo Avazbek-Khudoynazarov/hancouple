@@ -65,6 +65,14 @@
   line-height: 1.4;
 }
 
+.desktopBreak {
+  display: inline;
+}
+
+.mobileBreak {
+  display: none;
+}
+
 .inputContainer {
   position: relative;
   max-width: 380px;
@@ -267,7 +275,7 @@
 /* Hide on mobile - will be implemented later */
 @media (max-width: 768px) {
   .contactmain {
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
 
   .contact {
@@ -285,6 +293,7 @@
   }
 
   .mainText {
+    width: 100%;
     margin: 10px 0;
   }
 
@@ -293,8 +302,18 @@
     line-height: 1.4;
   }
 
+  .desktopBreak {
+    display: none;
+  }
+
+  .mobileBreak {
+    display: inline;
+  }
+
   .backgroundText {
-    max-width: 70%;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
   }
 
   .inputContainer {

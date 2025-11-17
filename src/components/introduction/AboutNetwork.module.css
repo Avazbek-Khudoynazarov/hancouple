@@ -85,6 +85,9 @@
   letter-spacing: 0%;
   word-break: keep-all;
 }
+.mobileLine {
+  display: none;
+}
 
 /* Responsive - Tablet and Desktop */
 @media (max-width: 1600px) {
@@ -248,7 +251,7 @@
   }
 
   .leftSection {
-    max-width: 350px;
+    max-width: 100%;
   }
 
   .subtitle {
@@ -266,5 +269,9 @@
   .description p {
     font-size: 14px;
     line-height: 1.7;
+  }
+
+  .mobileLine {
+    display: block;
   }
 }

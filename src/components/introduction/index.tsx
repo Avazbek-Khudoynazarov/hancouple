@@ -10,6 +10,7 @@ import Certificates from "./Certificates";
 import History from "./History";
 import Location from "./Location";
 import Footer from "../home/Footer";
+import BackToTop from "../home/BackToTop";
 
 export default function Introduction() {
   const searchParams = useSearchParams();
@@ -51,9 +52,13 @@ export default function Introduction() {
 
   return (
     <>
-      <IntroductionLayout activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+      <IntroductionLayout
+        activeMenu={activeMenu}
+        setActiveMenu={setActiveMenu}
+      />
       {renderContent()}
       <Footer />
+      <BackToTop />
     </>
   );
 }

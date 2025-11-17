@@ -157,6 +157,15 @@
   margin: 0;
 }
 
+/* Desktop/Mobile Image Toggle */
+.desktopImage {
+  display: block;
+}
+
+.mobileImage {
+  display: none !important;
+}
+
 /* Responsive - Tablet and Desktop */
 @media (max-width: 1600px) {
   .header {
@@ -340,45 +349,118 @@
   }
 }
 
-/* Hide on mobile - will be implemented later */
+/* Mobile (768px and below) */
 @media (max-width: 768px) {
-  .header {
-    padding: 0 24px;
-    margin-bottom: 35px;
+  .consulting {
+    min-height: auto;
+    overflow-x: hidden;
   }
 
-  .cardsWrapper {
-    padding-left: 24px;
+  .content {
+    min-height: auto;
+    padding: 60px 0;
+    overflow-x: hidden;
+  }
+
+  .header {
+    padding: 0 24px;
+    margin-bottom: 40px;
+    max-width: 100%;
   }
 
   .category {
-    font-size: 18px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: 700;
   }
 
   .title {
-    font-size: 26px;
+    font-size: 24px;
+    line-height: 150%;
+    margin-bottom: 24px;
+  }
+
+  .moreButton {
+    font-size: 13px;
+    padding: 8px 16px;
+    gap: 6px;
+  }
+
+  .moreButton svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Disable horizontal scrolling on mobile */
+  .cardsContainer {
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .cardsOverflow {
+    overflow-x: hidden;
+  }
+
+  .cardsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 24px;
+    width: 100%;
+    transform: none !important;
   }
 
   .card {
-    width: 420px;
-    height: 240px;
-    padding: 28px 20px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    padding: 32px 24px;
+    border: 1px solid #a1d5ff;
+    flex-shrink: 1;
+    box-sizing: border-box;
+  }
+
+  .card:hover {
+    box-shadow: none;
   }
 
   .cardNumber {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 800;
     margin-bottom: 16px;
   }
 
+  .cardContent {
+    flex: 1;
+  }
+
   .cardTitle {
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 130%;
+    font-weight: 700;
   }
 
   .cardIcon {
-    width: 80px;
-    height: 80px;
+    width: 88px;
+    height: 88px;
     right: 24px;
-    top: 24px;
+    top: 32px;
+  }
+
+  .cardIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .desktopImage {
+    display: none !important;
+  }
+
+  .mobileImage {
+    display: block !important;
   }
 }
 
@@ -606,38 +688,187 @@
   }
 }
 
-/* Hide on mobile - will be implemented later */
+/* Mobile (768px and below) - Solution Section */
 @media (max-width: 768px) {
   .solutionSection {
-    padding: 70px 0;
+    padding: 60px 0;
   }
 
   .solutionContainer {
     padding: 0 24px;
     gap: 40px;
+    flex-direction: column;
+  }
+
+  .solutionLeft,
+  .solutionRight {
+    max-width: 100%;
   }
 
   .category {
-    font-size: 18px;
+    font-size: 14px;
+    margin-bottom: 12px;
   }
 
   .title {
-    font-size: 26px;
+    font-size: 24px;
+    line-height: 150%;
+    margin-bottom: 20px;
+  }
+
+  .solutionDescription {
+    font-size: 14px;
+    line-height: 160%;
+    margin-bottom: 32px;
+  }
+
+  .solutionBox {
+    padding: 24px 20px;
+  }
+
+  .solutionBoxHeader {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .solutionBoxTitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .systemImage {
+    margin-top: 20px;
+  }
+
+  .solutionRight img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .imageCaption {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+}
+
+/* Mobile Small (480px and below) */
+@media (max-width: 480px) {
+  .consulting {
+    overflow-x: hidden;
+  }
+
+  .content {
+    padding: 50px 0;
+    overflow-x: hidden;
+  }
+
+  .header {
+    padding: 0 20px;
+    margin-bottom: 35px;
+  }
+
+  .category {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 22px;
+    line-height: 145%;
+    margin-bottom: 20px;
+  }
+
+  .moreButton {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+
+  .moreButton svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cardsContainer {
+    overflow-x: hidden;
+  }
+
+  .cardsOverflow {
+    overflow-x: hidden;
+  }
+
+  .cardsWrapper {
+    padding: 0 20px;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    min-height: 180px;
+    padding: 28px 20px;
+    box-sizing: border-box;
+  }
+
+  .cardNumber {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .cardIcon {
+    width: 80px;
+    height: 80px;
+    right: 20px;
+    top: 28px;
+  }
+
+  /* Solution Section */
+  .solutionSection {
+    padding: 50px 0;
+  }
+
+  .solutionContainer {
+    padding: 0 20px;
+    gap: 35px;
+  }
+
+  .category {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 22px;
   }
 
   .solutionDescription {
     font-size: 13px;
+    margin-bottom: 28px;
   }
 
   .solutionBox {
-    padding: 20px;
+    padding: 20px 16px;
+    background: #ffffff;
+    border: 1px solid #a1d5ff;
   }
 
   .solutionBoxHeader {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .solutionBoxTitle {
-    font-size: 17px;
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .systemImage {
+    margin-top: 18px;
+  }
+
+  .imageCaption {
+    font-size: 12px;
   }
 }

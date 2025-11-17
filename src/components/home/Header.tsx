@@ -149,23 +149,27 @@ export default function Header() {
                 y: 0,
                 transition: {
                   duration: 0.7,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                },
               }}
               exit={{
                 opacity: 0,
                 transition: {
                   duration: 0.3,
-                  ease: "easeOut"
-                }
-              }}
-            >
-              {slides[currentSlide].title.split('\n').map((line: string, index: number) => (
-                <span key={index}>
-                  {line}
-                  {index < slides[currentSlide].title.split('\n').length - 1 && <br />}
-                </span>
-              ))}
+                  ease: "easeOut",
+                },
+              }}>
+              {slides[currentSlide].title
+                .split("\n")
+                .map((line: string, index: number) => (
+                  <span key={index}>
+                    {line}
+                    {index <
+                      slides[currentSlide].title.split("\n").length - 1 && (
+                      <br />
+                    )}
+                  </span>
+                ))}
             </motion.h2>
           </AnimatePresence>
 
@@ -180,30 +184,30 @@ export default function Header() {
                 transition: {
                   duration: 0.7,
                   delay: 0.15,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                },
               }}
               exit={{
                 opacity: 0,
                 transition: {
                   duration: 0.3,
-                  ease: "easeOut"
-                }
-              }}
-            >
-              {slides[currentSlide].description.split('\n').map((line: string, index: number) => (
-                <span key={index}>
-                  {line}
-                  {index < slides[currentSlide].description.split('\n').length - 1 && <br />}
-                </span>
-              ))}
+                  ease: "easeOut",
+                },
+              }}>
+              {slides[currentSlide].description
+                .split("\n")
+                .map((line: string, index: number) => (
+                  <span key={index}>
+                    {line}
+                    {index <
+                      slides[currentSlide].description.split("\n").length -
+                        1 && <br />}
+                  </span>
+                ))}
             </motion.p>
           </AnimatePresence>
         </div>
-
-        {/* Controls */}
         <div className={styles.controls}>
-          {/* Pause/Play Button with Progress Circle */}
           <div className={styles.pauseContainer}>
             <svg className={styles.progressRing} width="60" height="60">
               <circle
@@ -243,7 +247,6 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Navigation Arrows */}
           <button
             className={styles.navButton}
             onClick={handlePrev}
@@ -251,7 +254,6 @@ export default function Header() {
             <img src="/assets/homepage/prev.svg" alt="Previous" />
           </button>
 
-          {/* Slide Counter */}
           <div className={styles.counter}>
             <span className={styles.currentNumber}>
               {String(currentSlide + 1).padStart(2, "0")}
@@ -270,7 +272,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Scroll Indicator */}
         <div className={styles.scrollIndicator}>
           <span className={styles.scrollText}>SCROLL</span>
           <div className={styles.scrollIcon}>

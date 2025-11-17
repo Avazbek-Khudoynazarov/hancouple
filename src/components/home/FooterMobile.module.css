@@ -1,0 +1,144 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.footer {
+  width: 100%;
+  background: #ffffff;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* Top Navigation */
+.topNav {
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(1, 8, 40, 0.3);
+  padding: 24px 20px;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navLink {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #010828;
+  text-decoration: none;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(1, 8, 40, 0.1);
+  transition: color 0.2s ease;
+}
+
+.navLink:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.navLink:hover {
+  color: #0099ff;
+}
+
+/* Main Footer */
+.mainFooter {
+  width: 100%;
+  padding: 40px 20px;
+  background: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Logo Row */
+.logoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.mainLogo {
+  width: 110px;
+  height: auto;
+}
+
+.naverLogo {
+  width: 35px;
+  height: auto;
+}
+
+/* Company Information */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+  line-height: 2;
+  color: #333333;
+}
+
+.label {
+  font-weight: 700;
+  color: #333333;
+  margin-right: 5px;
+}
+
+.value {
+  font-weight: 400;
+  color: #333333;
+  margin-right: 8px;
+}
+
+.separator {
+  color: #333333;
+  margin: 0 5px;
+}
+
+/* Copyright */
+.copyright {
+  font-size: 9px;
+  line-height: 1.6;
+  color: #333333;
+  font-weight: 400;
+  margin: 12px 0 0 0;
+}
+
+/* Partner Logos */
+.partnerLogos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto auto;
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.partnerLogo {
+  width: auto;
+  height: auto;
+  max-width: 60px;
+  max-height: 30px;
+  object-fit: contain;
+}
+
+/* First logo (Samsung) positioned separately */
+.partnerLogo:first-child {
+  grid-column: 1 / -1;
+  justify-self: end;
+  max-width: 85px;
+  max-height: 33px;
+  margin-bottom: 10px;
+}

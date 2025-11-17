@@ -8,10 +8,11 @@ export default function AboutNetwork() {
       <div className={styles.containerMainTitle}>
         <h3 className={styles.subtitle}>About Networkkorea</h3>
         <h1 className={styles.title}>
-          네트워크코리아는 정밀한 전력 진단으로
+          네트워크코리아는 <br className={styles.mobileLine} /> 정밀한 전력
+          진단으로
           <br />
           <span className={styles.highlight}>
-            에너지 사용을 과학적으로 설계
+            에너지 사용을 <br className={styles.mobileLine} /> 과학적으로 설계
           </span>
           합니다.
         </h1>

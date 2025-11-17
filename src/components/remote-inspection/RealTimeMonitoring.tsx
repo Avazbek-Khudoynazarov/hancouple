@@ -23,7 +23,6 @@ export default function RealTimeMonitoring() {
                 </div>
               </div>
             </div>
-
             <div className={styles.connector}>
               <div className={styles.verticalLine}></div>
             </div>
