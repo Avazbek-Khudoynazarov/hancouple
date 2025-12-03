@@ -1,0 +1,373 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  position: relative;
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  padding: 221px 0 86px 0;
+}
+
+/* Title Section */
+.titleSection {
+  text-align: center;
+  margin-bottom: 100px;
+  padding: 0 40px;
+}
+
+.subtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+  color: #333333;
+  letter-spacing: -0.3px;
+  line-height: 1.6;
+}
+
+.subtitle b {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #0088ff 0%, #375a85 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.5;
+}
+
+/* Two Cards Container */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+/* Left Card - Temperature */
+.cardLeft {
+  position: relative;
+  min-height: 600px;
+  background-image: url("/assets/operation/temperature7.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.cardLeft::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Right Card - Fire */
+.cardRight {
+  position: relative;
+  min-height: 600px;
+  background-image: url("/assets/operation/fire7.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.cardRight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Card Content */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 59px;
+}
+
+.cardTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 30px 0;
+  letter-spacing: -0.5px;
+  background: #375a85;
+  padding: 12px 61px;
+  border-radius: 27px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cardDescription {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.bottomSection {
+  position: relative;
+  width: 100%;
+  min-height: 550px;
+  background-image: url("/assets/operation/bottomF7.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.bottomSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.bottomContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1472px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 30px;
+  background-color: rgba(235, 244, 255, 0.35);
+  padding: 54px 0 77px 0;
+  margin-top: 128px;
+}
+
+.bottomTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 40px 0;
+  letter-spacing: -0.5px;
+  background: #375a85;
+  padding: 12px 81px;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.bottomDescription {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.3px;
+  line-height: 1.7;
+}
+
+/* Responsive Design */
+/* Tablet (1200px and below) */
+@media (max-width: 1200px) {
+  .titleSection {
+    margin-bottom: 80px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .cardLeft,
+  .cardRight {
+    min-height: 500px;
+    padding: 50px 30px;
+  }
+
+  .cardTitle {
+    font-size: 24px;
+    padding: 14px 35px;
+  }
+
+  .cardDescription {
+    font-size: 18px;
+  }
+
+  .bottomSection {
+    min-height: 450px;
+    padding: 80px 30px;
+  }
+
+  .bottomTitle {
+    font-size: 28px;
+    padding: 14px 45px;
+  }
+
+  .bottomDescription {
+    font-size: 20px;
+  }
+}
+
+/* Tablet Small (1024px and below) */
+@media (max-width: 1024px) {
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .mainTitle {
+    font-size: 26px;
+  }
+
+  .cardLeft,
+  .cardRight {
+    min-height: 450px;
+    padding: 40px 25px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+    padding: 12px 30px;
+  }
+
+  .cardDescription {
+    font-size: 17px;
+  }
+
+  .bottomTitle {
+    font-size: 26px;
+    padding: 12px 40px;
+  }
+
+  .bottomDescription {
+    font-size: 19px;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0 0 0;
+  }
+
+  .titleSection {
+    margin-bottom: 60px;
+    padding: 0 20px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .mainTitle {
+    font-size: 22px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .cardLeft,
+  .cardRight {
+    min-height: 400px;
+    padding: 40px 20px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    padding: 12px 28px;
+    margin-bottom: 20px;
+  }
+
+  .cardDescription {
+    font-size: 16px;
+  }
+
+  .arrowDown {
+    padding: 30px 0;
+  }
+
+  .arrowCircle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bottomSection {
+    min-height: 400px;
+    padding: 60px 20px;
+  }
+
+  .bottomTitle {
+    font-size: 22px;
+    padding: 12px 35px;
+    margin-bottom: 30px;
+  }
+
+  .bottomDescription {
+    font-size: 17px;
+  }
+}
+
+/* Mobile Small (480px and below) */
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .mainTitle {
+    font-size: 20px;
+  }
+
+  .cardLeft,
+  .cardRight {
+    min-height: 350px;
+    padding: 30px 16px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    padding: 10px 24px;
+  }
+
+  .cardDescription {
+    font-size: 15px;
+  }
+
+  .bottomTitle {
+    font-size: 20px;
+    padding: 10px 30px;
+  }
+
+  .bottomDescription {
+    font-size: 16px;
+  }
+}

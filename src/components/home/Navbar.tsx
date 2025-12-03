@@ -70,26 +70,30 @@ const navDataKor: NavItem[] = [
   },
   {
     title: "업종별 운영방안 제안",
-    href: "/industry-solutions",
+    href: "/operation",
     children: [
       {
         title: "요양시설 · 장애인복지시설",
-        href: "/industry-solutions/care-facilities",
+        href: "/operation?menu=요양시설 · 장애인복지시설",
       },
-      { title: "병원 · 의료기관", href: "/industry-solutions/medical" },
-      { title: "제조업 공장", href: "/industry-solutions/manufacturing" },
-      { title: "초 ·중 ·고 · 대학교", href: "/industry-solutions/education" },
+      { title: "병원 · 의료기관", href: "/operation?menu=병원 · 의료기관" },
+      { title: "제조업 공장", href: "/operation?menu=제조업 공장" },
+      { title: "초 ·중 ·고 · 대학교", href: "/operation?menu=초 ·중 ·고 · 대학교" },
       {
         title: "전통시장 · 소상공인",
-        href: "/industry-solutions/small-business",
+        href: "/operation?menu=전통시장 · 소상공인",
       },
       {
         title: "대형 쇼핑몰 · 다중이용시설",
-        href: "/industry-solutions/shopping-mall",
+        href: "/operation?menu=대형 쇼핑몰 · 다중이용시설",
       },
       {
         title: "캠핑장 · 야영장 시설",
-        href: "/industry-solutions/camping",
+        href: "/operation?menu=캠핑장 · 야영장 시설",
+      },
+      {
+        title: "전기차 충전시설",
+        href: "/operation?menu=전기차 충전시설",
       },
     ],
   },
@@ -185,8 +189,8 @@ const navDataEng: NavItem[] = [
     ],
   },
   {
-    title: "Industry Solutions",
-    href: "/industry-solutions",
+    title: "operation",
+    href: "/operation",
     children: [
       {
         title: "Care Facilities · Welfare Centers",
