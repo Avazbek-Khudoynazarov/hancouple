@@ -8,6 +8,12 @@ import styles from "./Header.module.css";
 
 const slides = [
   {
+    image: "/assets/homepage/back/11.png",
+    title: "AI가 전기를 분석하고, 위험을 예측하고\n비용을 줄어드립니다.",
+    description:
+      "AI로 전력 사용을 실시간 분석해 위험과 낭비를 즉시 찾아냅니다.\n데이터 기반 진단으로 더 안전하고 효율적인 건물 운영을 제공합니다.",
+  },
+  {
     image: "/assets/homepage/back/1.png",
     title: "전기안전사고 예방의\n출발점",
     description: "상시계측서비스",
