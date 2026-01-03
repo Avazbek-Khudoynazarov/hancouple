@@ -1,0 +1,219 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0;
+}
+
+.header {
+  max-width: 1296px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 60px;
+}
+
+.sectionLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cardsWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.card {
+  flex: 1;
+  min-height: 616px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.card.green::before {
+  background: linear-gradient(
+    180deg,
+    rgba(76, 175, 147, 0.85) 0%,
+    rgba(56, 142, 118, 0.85) 100%
+  );
+}
+
+.card.teal::before {
+  background: linear-gradient(
+    180deg,
+    rgba(72, 166, 167, 0.85) 0%,
+    rgba(52, 136, 137, 0.85) 100%
+  );
+}
+
+.card.blue::before {
+  background: linear-gradient(
+    180deg,
+    rgba(120, 150, 180, 0.85) 0%,
+    rgba(100, 130, 160, 0.85) 100%
+  );
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px;
+}
+
+.tag {
+  display: inline-block;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  width: 204px;
+  color: #333333;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  padding: 12px 0;
+  margin-bottom: 40px;
+}
+
+.textWrapper {
+  margin-top: 60px;
+}
+
+.cardTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+  text-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+}
+
+.cardSubtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.5;
+  text-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+
+  .card {
+    min-height: 400px;
+  }
+
+  .cardTitle,
+  .cardSubtitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .sectionLabel {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .cardsWrapper {
+    flex-direction: column;
+  }
+
+  .card {
+    min-height: 300px;
+  }
+
+  .tag {
+    width: none;
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+
+  .textWrapper {
+    margin-top: 40px;
+  }
+
+  .cardTitle,
+  .cardSubtitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .card {
+    min-height: 250px;
+  }
+
+  .cardContent {
+    padding: 30px 20px;
+  }
+
+  .tag {
+    font-size: 13px;
+    padding: 8px 20px;
+    margin-bottom: 30px;
+  }
+
+  .textWrapper {
+    margin-top: 30px;
+  }
+
+  .cardTitle,
+  .cardSubtitle {
+    font-size: 16px;
+  }
+}

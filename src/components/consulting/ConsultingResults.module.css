@@ -1,0 +1,261 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0 120px 0;
+}
+
+.content {
+  max-width: 1296px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pageTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  margin: 0 0 24px 0;
+}
+
+.mainTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 80px 0;
+  line-height: 1.4;
+}
+
+.highlight {
+  color: #0088ff;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 3px solid rgba(0, 136, 255, 0.2);
+  border-radius: 16px;
+  padding: 60px 80px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(180deg, #00c6ff 0%, #0088ff 100%);
+  border-radius: 16px 0 0 16px;
+  transition: width 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 136, 255, 0.5);
+  background-color: rgba(0, 136, 255, 0.05);
+}
+
+.cardContent {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0088ff;
+  margin: 0 0 16px 0;
+}
+
+.cardDescription {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #333333;
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tag {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666666;
+  background: #ffffff;
+  box-shadow: 0px 0px 20.5px 0px rgba(0, 136, 255, 0.1);
+  border-radius: 20px;
+  padding: 8px 16px;
+}
+
+.cardArrow {
+  width: 84px;
+  height: 84px;
+  min-width: 56px;
+  border-radius: 50%;
+  background: rgba(0, 136, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cardArrow svg {
+  font-size: 34px;
+  color: #0088ff;
+  transition: all 0.3s ease;
+}
+
+.card:hover .cardArrow {
+  background: #0088ff;
+}
+
+.card:hover .cardArrow svg {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .content {
+    padding: 0 40px;
+  }
+
+  .mainTitle {
+    font-size: 32px;
+    margin-bottom: 60px;
+  }
+
+  .card {
+    padding: 32px 36px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+  }
+
+  .cardDescription {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0 80px 0;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+
+  .pageTitle {
+    font-size: 14px;
+  }
+
+  .mainTitle {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    flex-direction: column;
+    padding: 24px;
+    align-items: flex-start;
+  }
+
+  .card::before {
+    width: 100%;
+    height: 0;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .card:hover::before {
+    width: 100%;
+    height: 6px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .cardDescription {
+    font-size: 14px;
+  }
+
+  .tags {
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .cardArrow {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    margin-left: 0;
+    margin-top: 24px;
+    align-self: flex-end;
+  }
+
+  .cardArrow svg {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardDescription {
+    font-size: 13px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh root@183.111.154.144 \"pm2 list && echo ''---'' && ls -la /var/www 2>/dev/null || echo ''No /var/www'' && echo ''---'' && ls -la /home 2>/dev/null\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

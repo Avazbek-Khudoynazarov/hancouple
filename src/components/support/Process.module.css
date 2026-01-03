@@ -1,0 +1,81 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.imageWrapper {
+  width: 100%;
+}
+
+.processImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  margin-top: 100px;
+  margin-bottom: 322px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .sectionLabel {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+}

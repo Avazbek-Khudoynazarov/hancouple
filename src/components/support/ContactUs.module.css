@@ -1,0 +1,274 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+}
+
+/* Section 1: Header */
+.headerSection {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 80px 0 60px 0;
+  text-align: center;
+}
+
+.pageTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  margin: 0 0 24px 0;
+}
+
+.mainTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.highlight {
+  color: #0088ff;
+}
+
+/* Section 2: AI Description with Background */
+.aiSection {
+  width: 100%;
+  position: relative;
+  padding: 80px 0;
+}
+
+.aiSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/contact/backCentered.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.aiSection::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  z-index: 0;
+}
+
+.aiContent {
+  max-width: 1296px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.aiSubtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 0.7);
+  margin: 0 0 16px 0;
+}
+
+.aiTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 40px 0;
+}
+
+.aiQuote {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #333333;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+
+.aiDescription {
+  margin: 0 0 40px 0;
+}
+
+.aiDescription p {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+}
+
+.aiDescription p:last-child {
+  margin-bottom: 0;
+}
+
+.aiConclusion {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin: 0;
+}
+
+/* Section 3: Solution Summary */
+.solutionSection {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.solutionText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 12px 0;
+}
+
+.solutionHighlight {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+}
+
+.verticalLine {
+  display: block;
+  height: 167px;
+  margin: 350px auto 0 auto;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .headerSection {
+    padding: 60px 40px 50px 40px;
+  }
+
+  .mainTitle {
+    font-size: 40px;
+  }
+
+  .aiContent {
+    padding: 0 40px;
+  }
+
+  .aiTitle {
+    font-size: 30px;
+  }
+
+  .solutionSection {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerSection {
+    padding: 50px 20px 40px 20px;
+  }
+
+  .pageTitle {
+    font-size: 14px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .aiSection {
+    padding: 60px 0;
+  }
+
+  .aiContent {
+    padding: 0 20px;
+  }
+
+  .aiSubtitle {
+    font-size: 14px;
+  }
+
+  .aiTitle {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .aiQuote {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .aiDescription p {
+    font-size: 14px;
+  }
+
+  .aiConclusion {
+    font-size: 14px;
+  }
+
+  .solutionSection {
+    padding: 50px 20px;
+  }
+
+  .solutionText {
+    font-size: 16px;
+  }
+
+  .solutionHighlight {
+    font-size: 18px;
+  }
+
+  .verticalLine {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 24px;
+  }
+
+  .aiTitle {
+    font-size: 20px;
+  }
+
+  .solutionText {
+    font-size: 14px;
+  }
+
+  .solutionHighlight {
+    font-size: 16px;
+  }
+
+  .verticalLine {
+    margin-top: 25px;
+  }
+}

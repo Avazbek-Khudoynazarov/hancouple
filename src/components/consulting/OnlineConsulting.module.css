@@ -1,0 +1,60 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  min-height: 400px;
+  background: #ffffff;
+  padding: 80px 0;
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  text-align: center;
+}
+
+.pageTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0088ff;
+  margin: 0 0 16px 0;
+}
+
+.mainTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 40px 0;
+}
+
+.description {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
