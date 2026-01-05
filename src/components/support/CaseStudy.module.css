@@ -1,0 +1,166 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0;
+  padding-top: 196px;
+}
+
+.content {
+  max-width: 1296px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 120px;
+}
+
+.sectionLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.highlight {
+  color: #0088ff;
+}
+
+.cardsSection {
+  margin-bottom: 60px;
+}
+
+.cardsWrapper {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cardImage {
+  flex: 1;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+.note {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  text-align: right;
+}
+
+.bottomSection {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.bottomText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 274px 0;
+  line-height: 1.5;
+}
+
+.verticalLine {
+  display: block;
+  height: 167px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+
+  .cardsWrapper {
+    gap: 16px;
+  }
+
+  .cardImage {
+    max-width: 300px;
+  }
+
+  .bottomText {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .sectionLabel {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .cardsWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cardImage {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .note {
+    text-align: center;
+  }
+
+  .bottomText {
+    font-size: 22px;
+  }
+
+  .verticalLine {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .bottomText {
+    font-size: 18px;
+  }
+
+  .verticalLine {
+    height: 100px;
+  }
+}

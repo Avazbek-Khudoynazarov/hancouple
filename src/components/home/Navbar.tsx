@@ -131,7 +131,7 @@ const navDataKor: NavItem[] = [
       {
         title: "Q&A",
         subtitle: "직무고시 대응, 자동보고 활용법",
-        href: "/support?menu=Q&A",
+        href: "/support?menu=Q%26A",
       },
     ],
   },
@@ -256,7 +256,7 @@ const navDataEng: NavItem[] = [
       {
         title: "Q&A",
         subtitle: "Duty report response, auto-report usage",
-        href: "/support?menu=Q&A",
+        href: "/support?menu=Q%26A",
       },
     ],
   },

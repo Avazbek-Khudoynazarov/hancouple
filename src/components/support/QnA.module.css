@@ -1,0 +1,456 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  padding: 120px 0 180px 0;
+}
+
+.content {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0088ff;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.qnaList {
+  width: 100%;
+}
+
+.qnaItem {
+  position: relative;
+}
+
+.qnaLine {
+  width: 100%;
+  height: 1px !important;
+  background: rgba(0, 136, 255, 0.5) !important;
+}
+
+.qnaQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.qnaQuestion:hover {
+  background: rgba(0, 136, 255, 0.03);
+}
+
+.questionContent {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-align: left;
+}
+
+.qMark {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #0088ff;
+  flex-shrink: 0;
+}
+
+.questionText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.arrowButton {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 136, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background 0.2s ease;
+}
+
+.arrowButton:hover {
+  background: rgba(0, 136, 255, 0.05);
+}
+
+.arrowButton.expanded {
+  transform: rotate(180deg);
+}
+
+.qnaAnswer {
+  padding: 32px 20px;
+  background: rgba(0, 136, 255, 0.05);
+  animation: slideDown 0.3s ease;
+  border-top: 1.5px solid rgba(0, 136, 255, 0.5);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.answerContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.aMark {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #636363;
+  flex-shrink: 0;
+}
+
+.answerText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.answerText p {
+  margin: 0 0 8px 0;
+}
+
+.answerText strong {
+  font-weight: 700;
+  color: #333333;
+}
+
+.formattedLines {
+  margin-bottom: 24px;
+}
+
+.subSection {
+  margin-top: 16px;
+}
+
+.subSectionTitle {
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 12px 0;
+}
+
+.bulletList {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.bulletList li {
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+.imageAnswer {
+  width: 100%;
+}
+
+.imageAnswerTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 24px 0;
+}
+
+.answerImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+.richTextAnswer {
+  width: 100%;
+}
+
+.richTextAnswer p {
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+}
+
+.richTextAnswer p:last-child {
+  margin-bottom: 0;
+}
+
+.richTextAnswer strong {
+  font-weight: 700;
+  color: #333333;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 80px;
+}
+
+.pageButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #999999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton:hover:not(:disabled) {
+  color: #0088ff;
+  background: rgba(0, 136, 255, 0.05);
+}
+
+.pageButton:disabled {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pageNumber {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #999999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageNumber:hover:not(.activePage) {
+  color: #0088ff;
+  background: rgba(0, 136, 255, 0.05);
+}
+
+.activePage {
+  background: #0088ff;
+  color: #ffffff;
+}
+
+.activePage:hover {
+  background: #0077e6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 40px;
+  }
+
+  .qMark,
+  .aMark {
+    font-size: 28px;
+  }
+
+  .questionText {
+    font-size: 20px;
+  }
+
+  .arrowButton {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 0 120px 0;
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .sectionLabel {
+    font-size: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .qnaQuestion {
+    padding: 24px 16px;
+  }
+
+  .questionContent {
+    gap: 16px;
+  }
+
+  .qMark,
+  .aMark {
+    font-size: 24px;
+  }
+
+  .questionText {
+    font-size: 16px;
+  }
+
+  .arrowButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrowButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .qnaAnswer {
+    padding: 24px 20px;
+  }
+
+  .answerContent {
+    gap: 20px;
+  }
+
+  .answerText {
+    font-size: 15px;
+  }
+
+  .formattedLines {
+    margin-bottom: 16px;
+  }
+
+  .bulletList {
+    padding-left: 16px;
+  }
+
+  .pagination {
+    margin-top: 60px;
+    gap: 4px;
+  }
+
+  .pageButton,
+  .pageNumber {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .imageAnswerTitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .qnaQuestion {
+    padding: 20px 12px;
+  }
+
+  .questionContent {
+    gap: 12px;
+  }
+
+  .qMark,
+  .aMark {
+    font-size: 20px;
+  }
+
+  .questionText {
+    font-size: 14px;
+  }
+
+  .arrowButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .arrowButton svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .qnaAnswer {
+    padding: 20px 16px;
+  }
+
+  .answerContent {
+    gap: 12px;
+  }
+
+  .answerText {
+    font-size: 14px;
+  }
+
+  .pageButton,
+  .pageNumber {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .imageAnswerTitle {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+}

@@ -1,20 +1,35 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./SupportLayout.module.css";
 
-export default function SupportLayout() {
+interface SupportLayoutProps {
+  activeMenu: string;
+  setActiveMenu: (menu: string) => void;
+}
+
+export default function SupportLayout({ activeMenu, setActiveMenu }: SupportLayoutProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const router = useRouter();
 
   const menuItems = [
     { title: "문의하기", isStatic: false },
-    { title: "설치/적용 사례", isStatic: true },
-    { title: "Q&A", isStatic: true },
+    { title: "설치/적용 사례", isStatic: false },
+    { title: "Q&A", isStatic: false },
   ];
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleMenuClick = (item: { title: string; isStatic: boolean }) => {
+    if (!item.isStatic) {
+      setActiveMenu(item.title);
+      router.push(`/support?menu=${encodeURIComponent(item.title)}`);
+      setIsDropdownOpen(false);
+    }
   };
 
   return (
@@ -40,7 +55,7 @@ export default function SupportLayout() {
 
           <div className={styles.navRight}>
             <button className={styles.dropdownToggle} onClick={toggleDropdown}>
-              <span className={styles.currentMenu}>문의하기</span>
+              <span className={styles.currentMenu}>{activeMenu}</span>
               <img
                 src="/assets/introduction/arrow.svg"
                 alt="Dropdown"
@@ -57,13 +72,9 @@ export default function SupportLayout() {
                   <span
                     key={index}
                     className={`${styles.dropdownItem} ${
-                      item.title === "문의하기" ? styles.active : ""
+                      item.title === activeMenu ? styles.active : ""
                     } ${item.isStatic ? styles.static : ""}`}
-                    onClick={() => {
-                      if (!item.isStatic) {
-                        setIsDropdownOpen(false);
-                      }
-                    }}>
+                    onClick={() => handleMenuClick(item)}>
                     {item.title}
                   </span>
                 ))}

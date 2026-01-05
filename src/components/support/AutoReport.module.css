@@ -1,0 +1,168 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+.container {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0;
+  padding-bottom: 190px;
+}
+
+.content {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.mainHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 190px;
+}
+
+.subTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 0.7);
+  margin: 0 0 16px 0;
+}
+
+.mainTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 24px 0;
+  line-height: 1.4;
+}
+
+.description {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 0.8);
+  margin: 0;
+}
+
+.tableWrapper {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.tableImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+.checkTableImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  box-shadow: 0px 0px 30.8px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.checkSection {
+  margin-top: 250px;
+}
+
+.checkHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.checkLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.checkLabel01 {
+  color: #77e8c4;
+}
+
+.checkLabel02 {
+  color: #1cd0f5;
+}
+
+.checkLabel03 {
+  color: #0088ff;
+}
+
+.checkTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .checkTitle {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 60px 0;
+  }
+
+  .mainHeader {
+    margin-bottom: 40px;
+  }
+
+  .subTitle {
+    font-size: 14px;
+  }
+
+  .mainTitle {
+    font-size: 24px;
+  }
+
+  .checkSection {
+    margin-top: 60px;
+  }
+
+  .checkHeader {
+    margin-bottom: 30px;
+  }
+
+  .checkTitle {
+    font-size: 20px;
+  }
+
+  .tableWrapper {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 20px;
+  }
+
+  .checkTitle {
+    font-size: 18px;
+  }
+
+  .tableWrapper {
+    margin-bottom: 20px;
+  }
+}
