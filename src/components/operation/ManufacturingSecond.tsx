@@ -10,8 +10,9 @@ export default function ManufacturingSecond() {
       </div>
       <div className={styles.titleSection}>
         <p className={styles.subtitle}>
-          순차제어, 열화상 모니터링, 역률보정으로 <br />{" "}
-          <b> 제조업 공장의 리스크를</b>
+          순차제어, 열화상 모니터링, <br className={styles.vision} />
+          역률보정으로{" "}
+          <b>제조업 공장의 <br className={styles.vision} />리스크를</b>
           줄이세요.
         </p>
       </div>
@@ -47,8 +48,12 @@ export default function ManufacturingSecond() {
           <h3 className={styles.bottomTitle}>예방 및 솔루션</h3>
           <p className={styles.bottomDescription}>
             <b>기동 순차제어로 전력 부하를 분산</b>하고,{" "}
-            <b>열화상 모니터링과 방폭설비</b>로 과열·화재를 <br /> 예방합니다.
-            또한 <b>VFD와 역률보정</b>으로 에너지 효율과 설비 안정성을 높입니다.
+            <br className={styles.vision} />
+            <b>열화상 모니터링과 방폭설비</b>로 <br className={styles.vision} />
+            과열·화재를 예방합니다.
+            <br />
+            또한 <b>VFD와 역률보정</b>으로 <br className={styles.vision} />
+            에너지 효율과 설비 안정성을 높입니다.
           </p>
         </div>
       </div>

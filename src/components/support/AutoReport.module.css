@@ -107,6 +107,9 @@
   margin: 0;
   line-height: 1.4;
 }
+.important {
+  display: none;
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -129,7 +132,7 @@
   }
 
   .subTitle {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .mainTitle {
@@ -151,11 +154,29 @@
   .tableWrapper {
     margin-bottom: 30px;
   }
+
+  .scrollableTable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scrollableTable .checkTableImage {
+    min-width: 700px;
+    width: auto;
+    height: 250px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+  .important {
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
   .mainTitle {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .checkTitle {

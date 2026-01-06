@@ -10,10 +10,12 @@ export default function CareFacilitiesSecond() {
       </div>
       <div className={styles.titleSection}>
         <p className={styles.subtitle}>
-          불빛 하나, 온기 하나에도 책임이 따릅니다.
+          불빛 하나, 온기 하나에도 <br className={styles.vision} /> 책임이
+          따릅니다.
         </p>
         <h2 className={styles.mainTitle}>
-          작은 주의와 관리가 모두의 평안을 만듭니다.
+          작은 주의와 관리가 <br className={styles.vision} /> 모두의 평안을
+          만듭니다.
         </h2>
       </div>
 
@@ -49,11 +51,14 @@ export default function CareFacilitiesSecond() {
         <div className={styles.bottomContent}>
           <h3 className={styles.bottomTitle}>예방 및 솔루션</h3>
           <p className={styles.bottomDescription}>
-            <b>차단기별 부하를 체한</b>하고 <b>야간 부하를 분산</b>하며, 누전과
-            절연저항을
+            <b>차단기별 부하를 체한</b>하고 <br className={styles.vision} />{" "}
+            <b>야간 부하를 분산</b>하며, 누전과 절연저항을
             <br />
-            정기 점검하고 <b> 차단기 모니터링과 야간 알람</b>으로 사고를
-            예방합니다.
+            정기 점검하고
+            <b>
+              차단기 모니터링과 <br className={styles.vision} /> 야간 알람
+            </b>
+            으로 사고를 예방합니다.
           </p>
         </div>
       </div>

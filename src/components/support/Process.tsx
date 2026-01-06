@@ -15,7 +15,13 @@ export default function Process() {
           <img
             src="/assets/contact/lastImg.png"
             alt="진행 절차"
-            className={styles.processImage}
+            className={`${styles.processImage} ${styles.imageDesktop}`}
+            draggable={false}
+          />
+          <img
+            src="/assets/contact/mobile/lastImg.png"
+            alt="진행 절차"
+            className={`${styles.processImage} ${styles.imageMobile}`}
             draggable={false}
           />
         </div>

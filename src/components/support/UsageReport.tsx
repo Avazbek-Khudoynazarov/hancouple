@@ -31,7 +31,7 @@ export default function UsageReport() {
                   전기요금 (원)
                 </button>
               </div>
-              <p className={styles.note}>
+              <p className={`${styles.note} ${styles.noteDesktop}`}>
                 * 연꽃마을 (2024년 대비 2025년 사용량 비교 분석 1월 ~ 9월 누계)
               </p>
             </div>
@@ -53,6 +53,10 @@ export default function UsageReport() {
                 />
               )}
             </div>
+
+            <p className={`${styles.note} ${styles.noteMobile}`}>
+              * 연꽃마을 (2024년 대비 2025년 사용량 비교 분석 1월 ~ 9월 누계)
+            </p>
           </div>
         </div>
       </div>

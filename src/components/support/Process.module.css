@@ -49,6 +49,14 @@
   margin-bottom: 322px;
 }
 
+.imageDesktop {
+  display: block;
+}
+
+.imageMobile {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .sectionTitle {
@@ -58,7 +66,8 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 60px 0;
+    padding: 60px 0 30px 0;
+    height: 100vh;
   }
 
   .header {
@@ -71,6 +80,14 @@
 
   .sectionTitle {
     font-size: 28px;
+  }
+
+  .imageDesktop {
+    display: none;
+  }
+
+  .imageMobile {
+    display: block;
   }
 }
 

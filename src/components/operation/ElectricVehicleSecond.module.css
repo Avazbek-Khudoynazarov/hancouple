@@ -11,6 +11,11 @@
   padding: 221px 0 86px 0;
 }
 
+.dots img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Title Section */
 .titleSection {
   text-align: center;
@@ -135,7 +140,7 @@
 .bottomSection {
   position: relative;
   width: 100%;
-  min-height: 550px;
+  min-height: 600px;
   background-image: url("/assets/operation/bottomF8.png");
   background-size: cover;
   background-position: center;
@@ -193,14 +198,26 @@
   line-height: 1.7;
 }
 
+.vision {
+  display: none;
+}
+
 /* Responsive Design */
 /* Tablet (1200px and below) */
 @media (max-width: 1200px) {
+  .dots {
+    padding: 150px 0 60px 0;
+  }
+
   .titleSection {
     margin-bottom: 80px;
   }
 
   .subtitle {
+    font-size: 22px;
+  }
+
+  .subtitle b {
     font-size: 22px;
   }
 
@@ -240,7 +257,15 @@
 
 /* Tablet Small (1024px and below) */
 @media (max-width: 1024px) {
+  .dots {
+    padding: 120px 0 50px 0;
+  }
+
   .subtitle {
+    font-size: 20px;
+  }
+
+  .subtitle b {
     font-size: 20px;
   }
 
@@ -276,7 +301,11 @@
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
   .container {
-    padding: 60px 0 0 0;
+    padding: 0;
+  }
+
+  .dots {
+    padding: 80px 0 40px 0;
   }
 
   .titleSection {
@@ -285,6 +314,10 @@
   }
 
   .subtitle {
+    font-size: 18px;
+  }
+
+  .subtitle b {
     font-size: 18px;
   }
 
@@ -298,18 +331,22 @@
 
   .cardLeft,
   .cardRight {
-    min-height: 400px;
+    min-height: 350px;
     padding: 40px 20px;
   }
 
+  .cardContent {
+    margin-bottom: 40px;
+  }
+
   .cardTitle {
-    font-size: 20px;
-    padding: 12px 28px;
-    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 10px 24px;
+    margin-bottom: 16px;
   }
 
   .cardDescription {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .arrowDown {
@@ -322,52 +359,91 @@
   }
 
   .bottomSection {
-    min-height: 400px;
-    padding: 60px 20px;
+    min-height: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottomContent {
+    margin-top: 0;
+    padding: 30px 20px 40px 20px;
+    border-radius: 20px;
   }
 
   .bottomTitle {
-    font-size: 22px;
-    padding: 12px 35px;
-    margin-bottom: 30px;
+    font-size: 18px;
+    padding: 10px 30px;
+    margin-bottom: 20px;
   }
 
   .bottomDescription {
-    font-size: 17px;
+    font-size: 15px;
+    padding: 0 10px;
+  }
+
+  .vision {
+    display: block;
   }
 }
 
 /* Mobile Small (480px and below) */
 @media (max-width: 480px) {
+  .dots {
+    padding: 60px 0 30px 0;
+  }
+
   .subtitle {
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .subtitle b {
+    font-size: 15px;
   }
 
   .mainTitle {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .cardLeft,
   .cardRight {
-    min-height: 350px;
+    min-height: 300px;
     padding: 30px 16px;
   }
 
+  .cardContent {
+    margin-bottom: 30px;
+  }
+
   .cardTitle {
-    font-size: 18px;
-    padding: 10px 24px;
+    font-size: 16px;
+    padding: 8px 20px;
+    margin-bottom: 12px;
   }
 
   .cardDescription {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .bottomSection {
+    padding: 30px 16px 50px 16px;
+  }
+
+  .bottomContent {
+    padding: 24px 16px 30px 16px;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10.9px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
   }
 
   .bottomTitle {
-    font-size: 20px;
-    padding: 10px 30px;
+    font-size: 16px;
+    padding: 8px 24px;
+    margin-bottom: 16px;
   }
 
   .bottomDescription {
-    font-size: 16px;
+    font-size: 14px;
+    padding: 0;
   }
 }

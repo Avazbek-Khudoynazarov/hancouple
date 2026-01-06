@@ -1,9 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./CareFacilities.module.css";
 import CareFacilitiesSecond from "./CareFacilitiesSecond";
 
 export default function CareFacilities() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -15,28 +28,44 @@ export default function CareFacilities() {
 
         {/* Cards Section */}
         <div className={styles.cardsSection}>
-          <img src="/assets/operation/message1.png" alt="" draggable={false} />
+          <img
+            src={
+              isMobile
+                ? "/assets/operation/mobile/first1.png"
+                : "/assets/operation/message1.png"
+            }
+            alt=""
+            draggable={false}
+          />
         </div>
 
         {/* Background Image */}
-        <div className={styles.backgroundImage}>
+        <div
+          className={`${styles.backgroundImage} ${
+            isMobile ? styles.backgroundImageMobile : ""
+          }`}>
           <div className={styles.bottomContent}>
             <div className={styles.textContent}>
               <h3 className={styles.bottomTitle}>
-                따뜻해야 할 공간이, 순식간에 위험해질 수 있습니다.
+                따뜻해야 할 공간이,
+                <br className={styles.vision} /> 순식간에 위험해질 수 있습니다.
               </h3>
               <p className={styles.bottomDescription}>
-                무심코 지나친 콘센트 하나, 오래 켜둔 전열기 하나가 큰 피해로
-                이어집니다.
-                <br />
-                요양시설의 전기 사용, 점식의 불상도 화재로 변질 수 있습니다.
+                무심코 지나친 콘센트 하나, 오래 켜둔 전열기 하나가{" "}
+                <br className={styles.vision} /> 큰 피해로 이어집니다.
+                <br className={styles.vision2} />
+                요양시설의 전기 사용, <br className={styles.vision} /> 점식의
+                불상도 화재로 변질 수 있습니다.
               </p>
             </div>
 
             <div className={styles.emphasisText}>
               <p className={styles.emphasisLine}>
-                <strong>입소자의 안전, 시설의 일상을 지키기 위한 관리</strong>가
-                필요합니다.
+                <strong>
+                  입소자의 안전, <br className={styles.vision} /> 시설의 일상을
+                  지키기 위한 관리
+                </strong>
+                가 필요합니다.
               </p>
             </div>
           </div>

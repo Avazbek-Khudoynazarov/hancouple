@@ -38,9 +38,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
 }
 .cardsSection img {
   max-width: 890px;
+  width: 100%;
+  height: auto;
 }
 
 /* Bottom Content Section */
@@ -94,7 +97,7 @@
 /* Background Image */
 .backgroundImage {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,6 +106,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.backgroundImageMobile {
+  background-image: url("/assets/operation/mobile/third2.png");
 }
 
 /* Responsive Design */
@@ -244,6 +253,12 @@
 
   .backgroundImage {
     margin-top: 50px;
+    min-height: 80vh;
+    padding: 40px 20px;
+  }
+
+  .mainTitleSmall {
+    font-size: 16px;
   }
 }
 
@@ -288,5 +303,11 @@
 
   .backgroundImage {
     margin-top: 40px;
+    min-height: 70vh;
+    padding: 30px 16px;
+  }
+
+  .mainTitleSmall {
+    font-size: 14px;
   }
 }

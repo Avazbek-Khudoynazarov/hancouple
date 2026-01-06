@@ -10,8 +10,10 @@ export default function SmallBusinessSecond() {
       </div>
       <div className={styles.titleSection}>
         <p className={styles.subtitle}>
-          점포별 회로 알람과 부하 제어로, 화재를 예방하고 <br />{" "}
-          <b> 안정적인 전력 사용</b>으로 비용까지 절감하세요.
+          점포별 회로 알람과 부하 제어로, <br className={styles.vision} />
+          화재를 예방하고{" "}
+          <b>안정적인 전력 사용</b>으로 <br className={styles.vision} />
+          비용까지 절감하세요.
         </p>
       </div>
 
@@ -45,9 +47,11 @@ export default function SmallBusinessSecond() {
         <div className={styles.bottomContent}>
           <h3 className={styles.bottomTitle}>예방 및 솔루션</h3>
           <p className={styles.bottomDescription}>
-            <b>점포별 회로제한과 센서 제어</b>로 과부하와 화재 위험을 예방하고,{" "}
+            <b>점포별 회로제한과 센서 제어</b>로 <br className={styles.vision} />
+            과부하와 화재 위험을 예방하고,{" "}
             <br />
-            <b>효율적인 전력 관리</b>로 안전과 비용 절감을 실현합니다.
+            <b>효율적인 전력 관리</b>로 <br className={styles.vision} />
+            안전과 비용 절감을 실현합니다.
           </p>
         </div>
       </div>

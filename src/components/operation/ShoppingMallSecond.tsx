@@ -10,8 +10,10 @@ export default function ShoppingMallSecond() {
       </div>
       <div className={styles.titleSection}>
         <p className={styles.subtitle}>
-          하루 수천 명이 드나드는 공간일수록 <br />{" "}
-          <b>전력의 ‘안정’은 가장 확실한 ‘서비스’</b>입니다.
+          하루 수천 명이 드나드는 <br className={styles.vision} />
+          공간일수록{" "}
+          <b>전력의 '안정'은 <br className={styles.vision} />
+          가장 확실한 '서비스'</b>입니다.
         </p>
       </div>
 
@@ -46,8 +48,10 @@ export default function ShoppingMallSecond() {
         <div className={styles.bottomContent}>
           <h3 className={styles.bottomTitle}>예방 및 솔루션</h3>
           <p className={styles.bottomDescription}>
-            <b>피크 시간대 전력 분산과 설비 로테이션</b>으로 <br /> 과부하를
-            줄이고 대규모 피해를 미리 차단합니다.
+            <b>피크 시간대 전력 분산과 <br className={styles.vision} />
+            설비 로테이션</b>으로{" "}
+            과부하를 줄이고 <br className={styles.vision} />
+            대규모 피해를 미리 차단합니다.
           </p>
         </div>
       </div>

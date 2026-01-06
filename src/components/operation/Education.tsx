@@ -1,9 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./Education.module.css";
 import EducationSecond from "./EducationSecond";
 
 export default function Education() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -17,10 +30,21 @@ export default function Education() {
 
         {/* Cards Section */}
         <div className={styles.cardsSection}>
-          <img src="/assets/operation/message4.png" alt="" draggable={false} />
+          <img
+            src={
+              isMobile
+                ? "/assets/operation/mobile/fourth1.png"
+                : "/assets/operation/message4.png"
+            }
+            alt=""
+            draggable={false}
+          />
         </div>
 
-        <div className={styles.backgroundImage}>
+        <div
+          className={`${styles.backgroundImage} ${
+            isMobile ? styles.backgroundImageMobile : ""
+          }`}>
           <div className={styles.bottomContent}>
             <div className={styles.textContent}>
               <h3 className={styles.bottomTitle}>

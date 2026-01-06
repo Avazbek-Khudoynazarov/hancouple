@@ -10,8 +10,8 @@ export default function MedicalSecond() {
       </div>
       <div className={styles.titleSection}>
         <p className={styles.subtitle}>
-          중대 재해를 예방하고,
-          <br /> <b>의료기관의 전력·설비를 안정적으로 운영</b>하세요.
+          중대 재해를 예방하고, <br className={styles.vision} />
+          <b>의료기관의 전력·설비를 <br className={styles.vision} />안정적으로 운영</b>하세요.
         </p>
       </div>
 
@@ -43,9 +43,11 @@ export default function MedicalSecond() {
         <div className={styles.bottomContent}>
           <h3 className={styles.bottomTitle}>예방 및 솔루션</h3>
           <p className={styles.bottomDescription}>
-            <b>중요 부하 회로를 분리하고 이중화</b>하여 전력 장애를 최소화하고,{" "}
+            <b>중요 부하 회로를 분리하고 이중화</b>하여 <br className={styles.vision} />
+            전력 장애를 최소화하고,{" "}
             <br />
-            <b>배터리룸 환기 시스템을 강화</b>해 발열 및 가스 축적을 방지합니다.
+            <b>배터리룸 환기 시스템을 강화</b>해 <br className={styles.vision} />
+            발열 및 가스 축적을 방지합니다.
           </p>
         </div>
       </div>

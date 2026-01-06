@@ -167,6 +167,9 @@
   margin: 350px auto 0 auto;
   user-select: none;
 }
+.important {
+  display: none;
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -213,7 +216,7 @@
   }
 
   .aiSubtitle {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .aiTitle {
@@ -222,16 +225,16 @@
   }
 
   .aiQuote {
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 30px;
   }
 
   .aiDescription p {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .aiConclusion {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .solutionSection {
@@ -249,23 +252,26 @@
   .verticalLine {
     margin-top: 30px;
   }
+  .important {
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
   .mainTitle {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .aiTitle {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .solutionText {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .solutionHighlight {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .verticalLine {

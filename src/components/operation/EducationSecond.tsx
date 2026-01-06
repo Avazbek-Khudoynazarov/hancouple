@@ -10,8 +10,10 @@ export default function EducationSecond() {
       </div>
       <div className={styles.titleSection}>
         <p className={styles.subtitle}>
-          부하 관리와 전열기 알람으로 위험을 줄이고,
-          <br /> <b>효율적인 전력 운영</b>으로 쾌적한 학교를 유지하세요.
+          부하 관리와 전열기 알람으로 <br className={styles.vision} />
+          위험을 줄이고,{" "}
+          <b>효율적인 전력 운영</b>으로 <br className={styles.vision} />
+          쾌적한 학교를 유지하세요.
         </p>
       </div>
 
@@ -47,10 +49,11 @@ export default function EducationSecond() {
         <div className={styles.bottomContent}>
           <h3 className={styles.bottomTitle}>예방 및 솔루션</h3>
           <p className={styles.bottomDescription}>
-            <b>시간표 연동 부하제어와 전열기 관리</b>로 전력 부하와 화재 위험을
-            줄이고,
+            <b>시간표 연동 부하제어와 전열기 관리</b>로 <br className={styles.vision} />
+            전력 부하와 화재 위험을 줄이고,
             <br />
-            <b>효율적인 전력 운영</b>으로 학생 안전과 에너지 절감을 실현합니다.
+            <b>효율적인 전력 운영</b>으로 <br className={styles.vision} />
+            학생 안전과 에너지 절감을 실현합니다.
           </p>
         </div>
       </div>

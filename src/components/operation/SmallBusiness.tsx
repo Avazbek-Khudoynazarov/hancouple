@@ -1,9 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./SmallBusiness.module.css";
 import SmallBusinessSecond from "./SmallBusinessSecond";
 
 export default function SmallBusiness() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -17,11 +30,22 @@ export default function SmallBusiness() {
 
         {/* Cards Section */}
         <div className={styles.cardsSection}>
-          <img src="/assets/operation/message5.png" alt="" draggable={false} />
+          <img
+            src={
+              isMobile
+                ? "/assets/operation/mobile/fifth1.png"
+                : "/assets/operation/message5.png"
+            }
+            alt=""
+            draggable={false}
+          />
         </div>
 
         {/* Background Image */}
-        <div className={styles.backgroundImage}>
+        <div
+          className={`${styles.backgroundImage} ${
+            isMobile ? styles.backgroundImageMobile : ""
+          }`}>
           <div className={styles.bottomContent}>
             <div className={styles.textContent}>
               <h3 className={styles.bottomTitle}>

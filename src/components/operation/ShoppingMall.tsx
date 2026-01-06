@@ -1,9 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./ShoppingMall.module.css";
 import ShoppingMallSecond from "./ShoppingMallSecond";
 
 export default function ShoppingMall() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -17,11 +30,22 @@ export default function ShoppingMall() {
 
         {/* Cards Section */}
         <div className={styles.cardsSection}>
-          <img src="/assets/operation/message6.png" alt="" draggable={false} />
+          <img
+            src={
+              isMobile
+                ? "/assets/operation/mobile/sixth1.png"
+                : "/assets/operation/message6.png"
+            }
+            alt=""
+            draggable={false}
+          />
         </div>
 
         {/* Background Image */}
-        <div className={styles.backgroundImage}>
+        <div
+          className={`${styles.backgroundImage} ${
+            isMobile ? styles.backgroundImageMobile : ""
+          }`}>
           <div className={styles.bottomContent}>
             <div className={styles.textContent}>
               <h3 className={styles.bottomTitle}>

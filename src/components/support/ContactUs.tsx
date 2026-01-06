@@ -13,7 +13,7 @@ export default function ContactUs() {
         <h1 className={styles.mainTitle}>
           절약금액을 운영하고,
           <br />
-          초기 투자비 부담 없는{" "}
+          초기 투자비 부담 없는 <br className={styles.important} />
           <span className={styles.highlight}>장기 렌탈(임대) 서비스</span> 제공
         </h1>
       </div>

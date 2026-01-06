@@ -100,6 +100,14 @@
   margin: 0;
 }
 
+.noteDesktop {
+  display: block;
+}
+
+.noteMobile {
+  display: none;
+}
+
 .graphWrapper {
   width: 100%;
 }
@@ -141,22 +149,53 @@
   }
 
   .card {
-    padding: 24px;
+    padding: 0;
     border-radius: 16px;
   }
 
   .tabHeader {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0;
+  }
+
+  .tabs {
+    width: 80%;
   }
 
   .tab {
+    flex: 1;
     font-size: 14px;
     padding: 12px 24px;
+    text-align: center;
+  }
+
+  .tab.active {
+    padding: 24px 24px 15px 24px;
   }
 
   .note {
     font-size: 12px;
+  }
+
+  .noteDesktop {
+    display: none;
+  }
+
+  .noteMobile {
+    display: block;
+    padding: 16px 20px;
+  }
+
+  .graphWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .graphImage {
+    min-width: 700px;
+    width: auto;
+    height: 445px;
   }
 }
 
@@ -166,17 +205,29 @@
   }
 
   .card {
-    padding: 16px;
+    padding: 0;
   }
 
   .tabs {
-    width: 100%;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: end;
   }
 
   .tab {
     flex: 1;
     font-size: 13px;
-    padding: 12px 16px;
+    height: 40px;
+    padding: 12px 16px !important;
     text-align: center;
+  }
+
+  .tab.active {
+    height: 45px !important;
+  }
+
+  .noteMobile {
+    padding: 16px;
   }
 }
