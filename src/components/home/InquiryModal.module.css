@@ -21,7 +21,7 @@
   max-width: 1200px;
   max-height: 90vh;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 30px;
   z-index: 9999;
   overflow-y: auto;
   animation: modalFadeIn 0.3s ease;
@@ -41,7 +41,7 @@
 /* Header */
 .header {
   background: #0088ff;
-  padding: 30px 60px;
+  padding: 25px 60px;
   position: relative;
   text-align: center;
 }
@@ -118,8 +118,8 @@
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 35px 60px;
-  margin-bottom: 35px;
+  gap: 30px 60px;
+  margin-bottom: 30px;
 }
 
 .formGroup {
