@@ -5,7 +5,7 @@ import EastRoundedIcon from "@mui/icons-material/EastRounded";
 
 export default function ConsultingResults() {
   return (
-    <div className={styles.container}>
+    <div id="results" className={styles.container}>
       <div className={styles.content}>
         <h3 className={styles.pageTitle}>
           결과 제공 (피크 원인·낭비 전력 진단 요약 리포트)
@@ -34,9 +34,14 @@ export default function ConsultingResults() {
                 <span className={styles.tag}>CSV 리포트</span>
               </div>
             </div>
-            <div className={styles.cardArrow}>
+            <a
+              href="/assets/electrical-safety-report.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cardArrow}
+            >
               <EastRoundedIcon />
-            </div>
+            </a>
           </div>
 
           <div className={styles.card}>
@@ -54,9 +59,14 @@ export default function ConsultingResults() {
                 <span className={styles.tag}>설비별 피크 기여도</span>
               </div>
             </div>
-            <div className={styles.cardArrow}>
+            <a
+              href="/assets/peak-power-report.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cardArrow}
+            >
               <EastRoundedIcon />
-            </div>
+            </a>
           </div>
         </div>
       </div>

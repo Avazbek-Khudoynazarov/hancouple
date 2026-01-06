@@ -7,11 +7,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import InquiryModal from "./InquiryModal";
 
 interface SubItem {
   title: string;
   subtitle?: string;
   href: string;
+  openInNewTab?: boolean;
 }
 
 interface NavItem {
@@ -78,7 +80,10 @@ const navDataKor: NavItem[] = [
       },
       { title: "병원 · 의료기관", href: "/operation?menu=병원 · 의료기관" },
       { title: "제조업 공장", href: "/operation?menu=제조업 공장" },
-      { title: "초 ·중 ·고 · 대학교", href: "/operation?menu=초 ·중 ·고 · 대학교" },
+      {
+        title: "초 ·중 ·고 · 대학교",
+        href: "/operation?menu=초 ·중 ·고 · 대학교",
+      },
       {
         title: "전통시장 · 소상공인",
         href: "/operation?menu=전통시장 · 소상공인",
@@ -104,12 +109,14 @@ const navDataKor: NavItem[] = [
       {
         title: "서비스 안내",
         subtitle: "고지서 역산, 계약전력 최적화",
-        href: "/consulting?menu=서비스 안내",
+        href: "/assets/service-info.html",
+        openInNewTab: true,
       },
       {
         title: "온라인 무료컨설팅",
         subtitle: "최근 3개월 전기요금고지서",
-        href: "/consulting?menu=온라인 무료컨설팅",
+        href: "/assets/online-consulting.html",
+        openInNewTab: true,
       },
       {
         title: "결과 제공",
@@ -229,12 +236,14 @@ const navDataEng: NavItem[] = [
       {
         title: "Service Information",
         subtitle: "Bill reverse calculation, contract power optimization",
-        href: "/consulting?menu=서비스 안내",
+        href: "/assets/service-info.html",
+        openInNewTab: true,
       },
       {
         title: "Free Online Consulting",
         subtitle: "Last 3 months electricity bills",
-        href: "/consulting?menu=온라인 무료컨설팅",
+        href: "/assets/online-consulting.html",
+        openInNewTab: true,
       },
       {
         title: "Results Delivery",
@@ -272,7 +281,10 @@ export default function Navbar() {
   const [mobileExpandedItem, setMobileExpandedItem] = useState<number | null>(
     null
   );
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
   const navItemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const langDropdownRef = useRef<HTMLDivElement | null>(null);
 
   const navData = language === "KOR" ? navDataKor : navDataEng;
 
@@ -287,8 +299,21 @@ export default function Navbar() {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        langDropdownRef.current &&
+        !langDropdownRef.current.contains(event.target as Node)
+      ) {
+        setLangDropdownOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleMouseEnter = (index: number) => {
@@ -360,30 +385,57 @@ export default function Navbar() {
                     <div
                       className={styles.dropdownContent}
                       style={{ paddingLeft: `${dropdownPosition}px` }}>
-                      {item.children.map((child, childIndex) => (
-                        <Link
-                          key={childIndex}
-                          href={child.href}
-                          className={styles.dropdownItem}>
-                          <div className={styles.dropdownItemContent}>
-                            <span className={styles.childTitle}>
-                              {child.title}
-                            </span>
-                            {child.subtitle && (
-                              <span className={styles.childSubtitle}>
-                                {index === 1 && "→ "}
-                                {child.subtitle}
+                      {item.children.map((child, childIndex) =>
+                        child.openInNewTab ? (
+                          <a
+                            key={childIndex}
+                            href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.dropdownItem}>
+                            <div className={styles.dropdownItemContent}>
+                              <span className={styles.childTitle}>
+                                {child.title}
                               </span>
-                            )}
-                          </div>
-                          <div className={styles.childArrow}>
-                            <img
-                              src="/assets/homepage/childRight.svg"
-                              alt="arrow"
-                            />
-                          </div>
-                        </Link>
-                      ))}
+                              {child.subtitle && (
+                                <span className={styles.childSubtitle}>
+                                  {index === 1 && "→ "}
+                                  {child.subtitle}
+                                </span>
+                              )}
+                            </div>
+                            <div className={styles.childArrow}>
+                              <img
+                                src="/assets/homepage/childRight.svg"
+                                alt="arrow"
+                              />
+                            </div>
+                          </a>
+                        ) : (
+                          <Link
+                            key={childIndex}
+                            href={child.href}
+                            className={styles.dropdownItem}>
+                            <div className={styles.dropdownItemContent}>
+                              <span className={styles.childTitle}>
+                                {child.title}
+                              </span>
+                              {child.subtitle && (
+                                <span className={styles.childSubtitle}>
+                                  {index === 1 && "→ "}
+                                  {child.subtitle}
+                                </span>
+                              )}
+                            </div>
+                            <div className={styles.childArrow}>
+                              <img
+                                src="/assets/homepage/childRight.svg"
+                                alt="arrow"
+                              />
+                            </div>
+                          </Link>
+                        )
+                      )}
                     </div>
                   </div>
                 )}
@@ -391,22 +443,44 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className={styles.languageToggle}>
-            <button
-              className={`${styles.langButton} ${
-                language === "KOR" ? styles.active : ""
-              }`}
-              onClick={() => toggleLanguage("KOR")}>
-              KOR
-            </button>
-            <span className={styles.separator}>|</span>
-            <button
-              className={`${styles.langButton} ${
-                language === "ENG" ? styles.active : ""
-              }`}
-              onClick={() => toggleLanguage("ENG")}>
-              ENG
-            </button>
+          <div className={styles.rightActions}>
+            <button className={styles.inquiryButton} onClick={() => setInquiryModalOpen(true)}>문의하기</button>
+            <div className={styles.languageDropdown} ref={langDropdownRef}>
+              <button
+                className={styles.langToggleButton}
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}>
+                {language}
+                {langDropdownOpen ? (
+                  <KeyboardArrowUpIcon className={styles.langArrow} />
+                ) : (
+                  <KeyboardArrowDownIcon className={styles.langArrow} />
+                )}
+              </button>
+              {langDropdownOpen && (
+                <div className={styles.langDropdownMenu}>
+                  <button
+                    className={`${styles.langOption} ${
+                      language === "KOR" ? styles.active : ""
+                    }`}
+                    onClick={() => {
+                      toggleLanguage("KOR");
+                      setLangDropdownOpen(false);
+                    }}>
+                    KOR
+                  </button>
+                  <button
+                    className={`${styles.langOption} ${
+                      language === "ENG" ? styles.active : ""
+                    }`}
+                    onClick={() => {
+                      toggleLanguage("ENG");
+                      setLangDropdownOpen(false);
+                    }}>
+                    ENG
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -447,36 +521,58 @@ export default function Navbar() {
 
               {item.children && mobileExpandedItem === index && (
                 <div className={styles.mobileSubmenu}>
-                  {item.children.map((child, childIndex) => (
-                    <Link
-                      key={childIndex}
-                      href={child.href}
-                      className={styles.mobileSubmenuItem}
-                      onClick={toggleMobileMenu}>
-                      {child.title}
-                    </Link>
-                  ))}
+                  {item.children.map((child, childIndex) =>
+                    child.openInNewTab ? (
+                      <a
+                        key={childIndex}
+                        href={child.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.mobileSubmenuItem}
+                        onClick={toggleMobileMenu}>
+                        {child.title}
+                      </a>
+                    ) : (
+                      <Link
+                        key={childIndex}
+                        href={child.href}
+                        className={styles.mobileSubmenuItem}
+                        onClick={toggleMobileMenu}>
+                        {child.title}
+                      </Link>
+                    )
+                  )}
                 </div>
               )}
             </div>
           ))}
         </div>
 
-        <div className={styles.mobileLanguageToggle}>
+        <div className={styles.mobileBottomBar}>
+          <div className={styles.mobileLanguageToggle}>
+            <button
+              className={`${styles.mobileLangButton} ${
+                language === "KOR" ? styles.active : ""
+              }`}
+              onClick={() => toggleLanguage("KOR")}>
+              KOR
+            </button>
+            <span className={styles.separator}>|</span>
+            <button
+              className={`${styles.mobileLangButton} ${
+                language === "ENG" ? styles.active : ""
+              }`}
+              onClick={() => toggleLanguage("ENG")}>
+              ENG
+            </button>
+          </div>
           <button
-            className={`${styles.mobileLangButton} ${
-              language === "KOR" ? styles.active : ""
-            }`}
-            onClick={() => toggleLanguage("KOR")}>
-            KOR
-          </button>
-          <span className={styles.separator}>|</span>
-          <button
-            className={`${styles.mobileLangButton} ${
-              language === "ENG" ? styles.active : ""
-            }`}
-            onClick={() => toggleLanguage("ENG")}>
-            ENG
+            className={styles.mobileInquiryButton}
+            onClick={() => {
+              toggleMobileMenu();
+              setInquiryModalOpen(true);
+            }}>
+            문의하기
           </button>
         </div>
       </div>
@@ -485,6 +581,12 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className={styles.mobileMenuOverlay} onClick={toggleMobileMenu} />
       )}
+
+      {/* Inquiry Modal */}
+      <InquiryModal
+        isOpen={inquiryModalOpen}
+        onClose={() => setInquiryModalOpen(false)}
+      />
     </nav>
   );
 }

@@ -1,0 +1,602 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+/* Main Modal Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+/* Main Modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 20px;
+  z-index: 9999;
+  overflow-y: auto;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Header */
+.header {
+  background: #0088ff;
+  padding: 40px 60px;
+  position: relative;
+  text-align: center;
+}
+
+.title {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.subtitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+.emailInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.emailLabel {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.emailValue {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.closeButton:hover {
+  opacity: 0.7;
+}
+
+.closeButton svg {
+  font-size: 28px;
+}
+
+/* Form */
+.form {
+  padding: 50px 80px 60px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  margin-bottom: 40px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroupFull {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.label {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+.required {
+  color: #ff3939;
+}
+
+.input {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #333333;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+  outline: none;
+  background: transparent;
+  transition: border-color 0.2s ease;
+}
+
+.input::placeholder {
+  color: rgba(51, 51, 51, 0.4);
+}
+
+.input:focus {
+  border-bottom-color: #00b4e5;
+}
+
+/* Date Picker */
+.datePickerRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dateSelects {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.dateSelect {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(51, 51, 51, 0.4);
+  padding: 12px 8px;
+  border: none;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  min-width: 80px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23666666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+}
+
+.dateSelect:disabled {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Checkbox */
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #00b4e5;
+  cursor: pointer;
+}
+
+.checkboxText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(51, 51, 51, 0.4);
+}
+
+/* Textarea */
+.textareaWrapper {
+  position: relative;
+}
+
+.textarea {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #333333;
+  width: 100%;
+  min-height: 80px;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+  outline: none;
+  background: transparent;
+  resize: none;
+  transition: border-color 0.2s ease;
+}
+
+.textarea::placeholder {
+  color: #999999;
+}
+
+.textarea:focus {
+  border-bottom-color: #00b4e5;
+}
+
+.charCount {
+  position: absolute;
+  bottom: 12px;
+  right: 0;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 0.4);
+}
+
+/* Privacy Row */
+.privacyRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.privacyText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(51, 51, 51, 0.4);
+}
+
+.viewButton {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(51, 51, 51, 0.3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.viewButton:hover {
+  color: rgba(51, 51, 51, 0.6);
+}
+
+/* Submit Button */
+.submitButton {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  background: #0088ff;
+  border: none;
+  border-radius: 30px;
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background: #009dd4;
+}
+
+.submitButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ff3939;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Privacy Modal */
+.privacyOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+}
+
+.privacyModal {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 993px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10001;
+  animation: modalFadeIn 0.2s ease;
+}
+
+.privacyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 40px 20px;
+  position: relative;
+}
+
+.privacyTitle {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+.privacyCloseButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #999999;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.privacyCloseButton:hover {
+  color: #666666;
+}
+
+.privacyCloseButton svg {
+  font-size: 24px;
+}
+
+.privacyContent {
+  padding: 0 40px 40px;
+}
+
+.privacyIntro {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+  letter-spacing: -1%;
+  margin: 0 0 24px 0;
+}
+
+.privacyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.privacyList li {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.8;
+}
+
+.privacyList li strong {
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Success Modal */
+.successOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+}
+
+.successModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 993px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10001;
+  padding: 60px 40px;
+  text-align: center;
+  animation: modalFadeIn 0.2s ease;
+}
+
+.successCloseButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #cdcdcd;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successCloseButton:hover {
+  color: #666666;
+}
+
+.successCloseButton svg {
+  font-size: 30px;
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successText {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 0 12px 0;
+}
+
+.successSubtext {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .modal {
+    max-width: 90%;
+  }
+
+  .form {
+    padding: 40px 50px;
+  }
+
+  .formGrid {
+    gap: 30px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .header {
+    padding: 30px 24px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .form {
+    padding: 30px 24px 40px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .datePickerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .dateSelects {
+    width: 100%;
+  }
+
+  .dateSelect {
+    flex: 1;
+    min-width: 60px;
+  }
+
+  .privacyModal {
+    max-width: 90%;
+    border-radius: 12px;
+  }
+
+  .privacyHeader {
+    padding: 24px 24px 16px;
+  }
+
+  .privacyTitle {
+    font-size: 18px;
+  }
+
+  .privacyContent {
+    padding: 0 24px 30px;
+  }
+
+  .successModal {
+    max-width: 90%;
+    padding: 50px 24px;
+  }
+
+  .successText {
+    font-size: 18px;
+  }
+
+  .successSubtext {
+    font-size: 16px;
+  }
+}

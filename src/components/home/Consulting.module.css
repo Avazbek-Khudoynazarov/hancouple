@@ -51,7 +51,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 0;
   background: transparent;
   border-radius: 4px;
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
@@ -62,6 +62,23 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
+  position: relative;
+}
+
+.moreButton::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 2px;
+  background-color: #333333;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.moreButton:hover::after {
+  transform: scaleX(1);
 }
 
 .moreButton svg {

@@ -8,9 +8,9 @@ export default function ConsultingLayout() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const menuItems = [
-    { title: "서비스 안내", isStatic: true },
-    { title: "온라인 무료컨설팅", isStatic: true },
-    { title: "결과 제공", isStatic: false },
+    { title: "서비스 안내", href: "/assets/service-info.html", openInNewTab: true },
+    { title: "온라인 무료컨설팅", href: "/assets/online-consulting.html", openInNewTab: true },
+    { title: "결과 제공", href: "/consulting?menu=결과 제공", isActive: true },
   ];
 
   const toggleDropdown = () => {
@@ -53,20 +53,29 @@ export default function ConsultingLayout() {
 
             {isDropdownOpen && (
               <div className={styles.dropdown}>
-                {menuItems.map((item, index) => (
-                  <span
-                    key={index}
-                    className={`${styles.dropdownItem} ${
-                      item.title === "결과 제공" ? styles.active : ""
-                    } ${item.isStatic ? styles.static : ""}`}
-                    onClick={() => {
-                      if (!item.isStatic) {
-                        setIsDropdownOpen(false);
-                      }
-                    }}>
-                    {item.title}
-                  </span>
-                ))}
+                {menuItems.map((item, index) =>
+                  item.openInNewTab ? (
+                    <a
+                      key={index}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.dropdownItem}
+                      onClick={() => setIsDropdownOpen(false)}>
+                      {item.title}
+                    </a>
+                  ) : (
+                    <Link
+                      key={index}
+                      href={item.href}
+                      className={`${styles.dropdownItem} ${
+                        item.isActive ? styles.active : ""
+                      }`}
+                      onClick={() => setIsDropdownOpen(false)}>
+                      {item.title}
+                    </Link>
+                  )
+                )}
               </div>
             )}
           </div>

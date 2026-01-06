@@ -28,21 +28,21 @@ export default function Footer() {
       {/* Top Navigation */}
       <div className={styles.topNav}>
         <div className={styles.topNavContainer}>
-          <a href="/introduction" className={styles.navLink}>
+          <Link href="/introduction" className={styles.navLink}>
             회사소개
-          </a>
-          <a href="/remote-inspection" className={styles.navLink}>
-            전자결함/리포트생성
-          </a>
-          <a href="#" className={styles.navLink}>
-            법홍팔 문의방안 계긴
-          </a>
-          <a href="#" className={styles.navLink}>
-            제재적인 전기요금 컨설팅
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link href="/remote-inspection" className={styles.navLink}>
+            원격점검/리포트생성
+          </Link>
+          <Link href="/operation" className={styles.navLink}>
+            업종별 운영방안 제안
+          </Link>
+          <Link href="/consulting" className={styles.navLink}>
+            체계적인 전기요금 컨설팅
+          </Link>
+          <Link href="/support" className={styles.navLink}>
             고객지원
-          </a>
+          </Link>
           <div className={styles.naverLogo}>
             <Link href={"https://blog.naver.com/network_korea01"}>
               <img src="/assets/homepage/naver.svg" alt="Naver Blog" />
@@ -73,13 +73,13 @@ export default function Footer() {
                   <span className={styles.value}>053-326-0114</span>
                   <span className={styles.separator}>|</span>
                   <span className={styles.label}>Fax</span>
-                  <span className={styles.value}>부기능산업진고판호</span>
+                  <span className={styles.value}>부가통신사업신고번호</span>
                 </div>
               </div>
               <div className={styles.infoRow}>
                 <div className={styles.addressofproject}>
                   <span className={styles.label}>대표</span>
-                  <span className={styles.value}>신동일</span>
+                  <span className={styles.value}>신동환</span>
                   <span className={styles.separator}>|</span>
                   <span className={styles.label}>주소</span>
                   <span className={styles.value}>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>전기안전 홈페이지 v20 · 주)네트워크코리아</title>
+  <meta name="description" content="차단기(설비) 단위 실시간 원격점검 · 전기안전 9종 모니터링 · 피크/낭비 전력 분석 · 자동 리포트"> 
+  <!-- Nanum Gothic (UI 기본 폰트) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --nk-red:#E02424; /* 위험/브랜드 레드 */
+      --nk-blue:#2563eb; /* 보조 포인트 */
+      --nk-black:#0B0B0C;
+      --nk-gray:#6B7280;
+      --bg:#0f1115; /* 다크 배경 (사용자 다크모드 선호) */
+      --card:#151922;
+      --line:#232836;
+      --ok:#16a34a;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --muted:#9CA3AF;
+    }
+    html,body{height:100%}
+    body{margin:0; padding:0; background:var(--bg); color:#E5E7EB; font-family:'Nanum Gothic', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+    .wrap{max-width:1200px; margin:0 auto; padding:24px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:linear-gradient(180deg, rgba(15,17,21,.9), rgba(15,17,21,.6)); border-bottom:1px solid var(--line);}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 24px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .brand svg{height:22px}
+    .brand b{color:#fff; font-size:18px}
+    .nav a{color:#cbd5e1; text-decoration:none; font-size:14px; padding:8px 10px; border-radius:10px}
+    .nav a:hover{background:#1f2431}
+    .cta{background:var(--nk-red); color:#fff !important; font-weight:700}
+
+    .hero{display:grid; grid-template-columns:1.3fr 1fr; gap:24px; align-items:center; padding:36px 24px 8px}
+    .hero h1{font-size:34px; margin:0 0 8px 0}
+    .hero p{color:#c0c6d3; margin:0 0 16px 0}
+    .pill{display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#fff; background:#1f2431; border:1px solid var(--line); border-radius:999px; padding:6px 10px; margin-bottom:10px}
+    .pill .blink{width:8px; height:8px; border-radius:999px; background:var(--danger); box-shadow:0 0 12px rgba(239,68,68,.8); animation:bl 1.5s infinite}
+    @keyframes bl{0%,100%{opacity:1}50%{opacity:.25}}
+
+    .card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px}
+    .kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    .kpi{padding:16px; border-radius:14px; background:#111521; border:1px solid var(--line)}
+    .kpi .label{font-size:12px; color:var(--muted)}
+    .kpi .value{font-size:22px; font-weight:800;}
+    .kpi .delta{font-size:12px}
+    .delta.up{color:var(--ok)} .delta.down{color:var(--danger)}
+
+    .section{margin:24px 0 12px}
+    .section h2{font-size:20px; margin:0 0 8px}
+    .sub{color:#9aa3b2; font-size:13px}
+
+    .badges{display:flex; gap:8px; flex-wrap:wrap}
+    .badge{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid var(--line); background:#161b26; color:#d1d5db}
+    .badge.danger{background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.35); color:#fecaca}
+    .badge.warn{background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.35); color:#fde68a}
+    .badge.off{background:#0f141d; color:#a1a1aa}
+
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+
+    .list{display:grid; gap:8px}
+    .row{display:grid; grid-template-columns:140px 1fr 72px; gap:10px; align-items:center; padding:10px 12px; background:#111521; border:1px solid var(--line); border-radius:12px}
+    .row .tag{font-size:11px; color:#a3a3a3}
+    .sev.ok{color:var(--ok)} .sev.warn{color:var(--warn)} .sev.danger{color:var(--danger)}
+
+    .mini9{display:grid; grid-template-columns:repeat(9,1fr); gap:8px}
+    .mcard{background:#111521; border:1px solid var(--line); border-radius:12px; padding:10px}
+    .mcard h4{margin:0 0 6px; font-size:12px; color:#cbd5e1}
+    .spark{height:44px; width:100%; display:block; background:linear-gradient(180deg,#1a2030,#0e1220); border:1px dashed #2a3040; border-radius:8px}
+
+    .foot{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:18px 0 30px; color:#9aa3b2}
+    .foot .brand b{font-size:14px}
+
+    .floating{position:fixed; right:22px; bottom:22px; display:flex; gap:10px}
+    .float-btn{border-radius:999px; padding:12px 14px; background:var(--nk-red); color:#fff; font-weight:800; border:none; cursor:pointer}
+
+    /* Cards: 성공사례/FAQ/다운로드 */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .case{padding:16px; border-radius:16px; background:#111521; border:1px solid var(--line)}
+    .case h3{margin:0 0 8px; font-size:16px}
+    .case .meta{font-size:12px; color:#9aa3b2}
+    details{background:#111521; border:1px solid var(--line); border-radius:12px; padding:12px}
+    details+details{margin-top:8px}
+    summary{cursor:pointer; font-weight:700}
+
+    .downloads{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:#0f141d; color:#e5e7eb; text-decoration:none}
+
+    .icon{width:18px; height:18px; fill:currentColor}
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;}
+      .kpi-grid{grid-template-columns:repeat(2,1fr)}
+      .grid-2{grid-template-columns:1fr}
+      .mini9{grid-template-columns:repeat(3,1fr)}
+      .cards{grid-template-columns:1fr}
+      .downloads{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG 아이콘 스프라이트 (아이콘 세트 연결 + 전기안전 9종 추가) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" fill="none" stroke-width="2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h7l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 21h16" stroke="currentColor" fill="none" stroke-width="2"/></symbol>
+    <symbol id="i-nk" viewBox="0 0 120 24"><rect width="120" height="24" rx="6" fill="currentColor" opacity=".08"/><path d="M10 18V6l8 8V6h4v12l-8-8v8h-4Zm30 0V6h4v12h-4Zm8 0V6h4l6 7V6h4v12h-4l-6-7v7h-4Z" fill="currentColor"/></symbol>
+    
+    <!-- 전기안전 9종 아이콘 -->
+    <symbol id="i-voltage" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 12-16h-8Z"/></symbol>
+    <symbol id="i-current" viewBox="0 0 24 24"><path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-leak" viewBox="0 0 24 24"><path d="M12 3s6 6 6 10a6 6 0 1 1-12 0c0-4 6-10 6-10Z"/></symbol>
+    <symbol id="i-phase" viewBox="0 0 24 24"><path d="M4 12h16M8 6l8 12" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-meg" viewBox="0 0 24 24"><path d="M4 7h16v10H4zM8 7v10M16 7v10"/></symbol>
+    <symbol id="i-thdi" viewBox="0 0 24 24"><path d="M4 18V6m0 8 4-4 4 6 4-8 4 10" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-pf" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9v9H3Z"/></symbol>
+    <symbol id="i-temp" viewBox="0 0 24 24"><path d="M14 14.5A3.5 3.5 0 1 1 9 12V6a3 3 0 1 1 6 0v6.5Z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11.5" cy="15.5" r="2.5"/></symbol>
+    <symbol id="i-unbal" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v6" stroke="#0f1115" stroke-width="2"/></symbol>
+  </svg>
+
+  <header>
+    <div class="nav wrap">
+      <div class="brand">
+        <!-- NK 로고(SVG) -->
+        <svg viewBox="0 0 120 24" aria-label="Network Korea" style="color:var(--nk-red)"><use href="#i-nk"/></svg>
+        <b>실시간 원격점검</b>
+        <span class="muted" style="color:#94a3b8; font-size:12px; margin-left:8px">v20</span>
+      </div>
+      <nav style="display:flex; gap:6px">
+        <a href="#features">기능</a>
+        <a href="#alerts">위험알림</a>
+        <a href="#mini9">전기안전 9종</a>
+        <a href="#trend">트렌드</a>
+        <a href="#cases">성공사례</a>
+        <a href="#faq">FAQ</a>
+        <a href="#downloads" class="cta" style="background:var(--nk-blue)">자료실</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="pill"><span class="blink"></span> 실시간 위험알림(접근금지) · 자동 리포트</span>
+        <h1>차단기(설비) 레벨 전기안전 원격점검 · <span style="color:var(--nk-red)">9종</span> 위험 상시 모니터링</h1>
+        <p>과부하·누전·이상전압·이상주파수·전원OFF·연결끊김·부하변동·최대온도·불평형. 
+          회로별 실시간 트렌드와 Top5 위험 알림으로 사고를 <b>사전에 차단</b>합니다.</p>
+        <div class="badges" id="quick-badges"></div>
+      </div>
+      <div class="card">
+        <div class="kpi-grid" id="kpi"></div>
+      </div>
+    </section>
+
+    <!-- FEATURES / TOP & ALERTS -->
+    <section id="features" class="section">
+      <h2>실시간 위험알림(해당 구역)</h2>
+      <div class="sub">Top5 자동 순환(5초) · 선택 시 알림 필터 연동</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="list" id="top5"></div>
+        </div>
+        <div id="alerts" class="card">
+          <div class="badges" id="alert-badges" style="margin-bottom:10px"></div>
+          <div class="list" id="alert-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INLINE 9 (MINI CHART PLACEHOLDERS) -->
+    <section id="mini9" class="section">
+      <h2>전기안전 9종 인라인 미니차트</h2>
+      <div class="sub">아이콘+라벨 · 항목별 Y축 프리셋 · 클릭 시 팝업 확대</div>
+      <div class="mini9" id="mini"></div>
+    </section>
+
+    <!-- TREND PLACEHOLDER -->
+    <section id="trend" class="section">
+      <h2>선택 회로 트렌드(60분↔6시간)</h2>
+      <div class="sub">useTrendSeries(tsUrl,fallback) 개념 반영 · 서버 미연결 시 예시 데이터로 표시</div>
+      <div class="card">
+        <div class="spark" id="trend-spark" title="여기에 라인차트가 연결됩니다 (샘플)"></div>
+        <div style="display:flex; gap:8px; margin-top:10px">
+          <button class="badge" onclick="setRange('60m')">60분</button>
+          <button class="badge" onclick="setRange('6h')">6시간</button>
+          <span class="badge off" id="range-label">현재: 60분</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 성공사례 -->
+    <section id="cases" class="section">
+      <h2>성공사례</h2>
+      <div class="sub">공공·산단·주거 현장에서 검증된 전기안전·절감 성과</div>
+      <div class="cards">
+        <div class="case">
+          <h3><svg class="icon"><use href="#i-bolt"/></svg> 공공청사 A</h3>
+          <div class="meta">차단기(설비) 128회로 · 3개월</div>
+          <ul style="margin:8px 0 0 16px; padding:0; line-height:1.7">
+            <li>누전 조기 차단 6건(사고 0건 유지)</li>
+            <li>피크수요 7.8%↓ · 전기요금 6.2%↓</li>
+            <li>자동리포트 주간/월간 발행</li>
+          </ul>
+        </div>
+        <div class="case">
+          <h3><svg class="icon"><use href="#i-bolt"/></svg> 제조공장 B</h3>
+          <div class="meta">분전반 9대 · 246회로</div>
+          <ul style="margin:8px 0 0 16px; padding:0; line-height:1.7">
+            <li>불평형 15%→6% 개선, 설비 트립 0건</li>
+            <li>THD‑I 상시감시로 구동계 진동감소</li>
+            <li>근로자 접근 전 원격 사전점검 정착</li>
+          </ul>
+        </div>
+        <div class="case">
+          <h3><svg class="icon"><use href="#i-bolt"/></svg> 대형주거 C</h3>
+          <div class="meta">세대·공용 혼합 모니터링</div>
+          <ul style="margin:8px 0 0 16px; padding:0; line-height:1.7">
+            <li>경보 체계화(접근금지/주의/정상) 구축</li>
+            <li>문자발생내용 통합 · 민원 38%↓</li>
+            <li>전원OFF/통신끊김 자동복구 가이드</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <h2>FAQ</h2>
+      <details>
+        <summary>설치 없이 바로 쓸 수 있나요?</summary>
+        <div class="sub">현장 조건에 따라 클립온 CT/센서로 비침습 설치가 가능하며, 기존 설비 연동도 지원합니다.</div>
+      </details>
+      <details>
+        <summary>지원하는 전기안전 항목은?</summary>
+        <div class="sub">9종: 전압, 전류, 누설전류, 위상각, 절연저항, 고조파(THD‑I), 역률(PF), 온도, 불평형. 전원꺼짐/통신끊김은 상태로 별도 관리합니다.</div>
+      </details>
+      <details>
+        <summary>리포트는 어떻게 받나요?</summary>
+        <div class="sub">일/월 통계와 Top5 위험, 문자발생내용 요약을 자동 PDF로 제공합니다(브랜드 로고/주소/서명 포함).</div>
+      </details>
+    </section>
+
+    <!-- 다운로드 -->
+    <section id="downloads" class="section">
+      <h2>자료실 · 다운로드</h2>
+      <div class="downloads">
+        <a class="btn" href="#"><svg class="icon"><use href="#i-file"/></svg> 회사/제품 브로슈어(PDF)</a>
+        <a class="btn" href="#"><svg class="icon"><use href="#i-file"/></svg> 전기안전 대시보드 소개(PPT)</a>
+        <a class="btn" href="#"><svg class="icon"><use href="#i-download"/></svg> 웹 패키지 v20 (HTML)</a>
+        <a class="btn" href="#"><svg class="icon"><use href="#i-download"/></svg> 웹 패키지 v20 (JSP)</a>
+        <a class="btn" href="#"><svg class="icon"><use href="#i-file"/></svg> 개발자 매뉴얼/체크리스트(PDF)</a>
+        <a class="btn" href="#"><svg class="icon"><use href="#i-file"/></svg> 성공사례 모음(PDF)</a>
+      </div>
+      <div class="sub" style="margin-top:8px">※ 요청 시 NanumGothic 폰트 임베딩/브랜드 컬러(NK‑Red) 적용 PDF 제공</div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section id="contact" class="section">
+      <h2>데모 요청</h2>
+      <div class="sub">주)네트워크코리아 · 조달청 혁신제품 · KC/시험성적서 보유</div>
+      <div class="card">
+        <form onsubmit="event.preventDefault(); alert('데모 요청이 접수되었습니다!');">
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px">
+            <input required placeholder="회사명" class="inp">
+            <input required placeholder="담당자" class="inp">
+            <input required placeholder="연락처/이메일" class="inp">
+          </div>
+          <textarea class="inp" placeholder="현장 규모/관심 항목(예: 누전/불평형/피크절감)" style="margin-top:12px; height:90px"></textarea>
+          <div style="display:flex; justify-content:flex-end; margin-top:10px"><button class="float-btn">보내기</button></div>
+        </form>
+      </div>
+    </section>
+
+    <div class="foot">
+      <div class="brand"><svg viewBox="0 0 120 24" style="color:var(--nk-red)"><use href="#i-nk"/></svg><b>주)네트워크코리아</b></div>
+      <div>© 2003–2025 Network Korea Co., Ltd. All rights reserved.</div>
+    </div>
+  </main>
+
+  <!-- Floating quick actions -->
+  <div class="floating">
+    <button class="float-btn" onclick="scrollToEl('#mini9')">전기안전 9종</button>
+    <button class="float-btn" onclick="scrollToEl('#downloads')">자료실</button>
+    <button class="float-btn" onclick="scrollToEl('#contact')">데모 요청</button>
+  </div>
+
+  <style>.inp{background:#0f141d; color:#e5e7eb; border:1px solid var(--line); border-radius:12px; padding:10px; width:100%}</style>
+
+  <script>
+    // ---- INIT (샘플 데이터; 서버 미연결 시 표시) ---------------------------------
+    const INIT_DATA = {
+      kpis:[
+        {label:'모니터링 회로', value: 384, delta:'+12', dir:'up'},
+        {label:'접근금지(오늘)', value: 3, delta:'-2', dir:'down'},
+        {label:'주의(오늘)', value: 11, delta:'+4', dir:'up'},
+        {label:'평균 PF', value: '0.94', delta:'+0.02', dir:'up'},
+      ],
+      top5:[
+        {zone:'A동 · 2F · 분전반#3', issue:'누전 22 mA', sev:'danger'},
+        {zone:'B동 · 1F · 펌프실', issue:'불평형 12%', sev:'warn'},
+        {zone:'본관 · 3F · 공조', issue:'최대온도 71°C', sev:'danger'},
+        {zone:'A동 · 1F · 상업', issue:'역률 0.62', sev:'warn'},
+        {zone:'C동 · 2F · 사무동', issue:'고조파 THD‑I 18%', sev:'warn'},
+      ],
+      alerts:[
+        {when:'07:21', text:'A-2F 분전반#3 누전 22 mA (접근금지)', sev:'danger'},
+        {when:'08:03', text:'본관-3F 공조 최대온도 71°C', sev:'danger'},
+        {when:'08:45', text:'B-1F 펌프실 불평형 12%', sev:'warn'},
+        {when:'09:10', text:'A-1F 상업 PF 0.62', sev:'warn'},
+        {when:'09:24', text:'C-2F 사무동 THD‑I 18%', sev:'warn'},
+      ],
+      mini9:[
+        {key:'VRMS', name:'전압', icon:'i-voltage'},
+        {key:'IRMS', name:'전류', icon:'i-current'},
+        {key:'LEAK', name:'누설전류', icon:'i-leak'},
+        {key:'PHASE', name:'위상각', icon:'i-phase'},
+        {key:'MEG', name:'절연저항', icon:'i-meg'},
+        {key:'THDI', name:'고조파(THD‑I)', icon:'i-thdi'},
+        {key:'PF', name:'역률(PF)', icon:'i-pf'},
+        {key:'TEMP', name:'온도(°C)', icon:'i-temp'},
+        {key:'UNBAL', name:'불평형', icon:'i-unbal'},
+      ]
+    };
+
+    // ---- UTIL --------------------------------------------------------------
+    const $ = sel => document.querySelector(sel);
+    const el = (tag, cls, text) => { const n=document.createElement(tag); if(cls) n.className=cls; if(text) n.textContent=text; return n; };
+    function scrollToEl(id){ document.querySelector(id)?.scrollIntoView({behavior:'smooth'}) }
+
+    // ---- KPI render --------------------------------------------------------
+    function renderKPI(){
+      const root = $('#kpi'); root.innerHTML='';
+      INIT_DATA.kpis.forEach(k=>{
+        const box = el('div','kpi');
+        const label = el('div','label', k.label);
+        const value = el('div','value', String(k.value));
+        const delta = el('div',`delta ${k.dir}`,(k.dir==='up'?'▲ ':'▼ ')+k.delta);
+        box.append(label,value,delta); root.append(box);
+      });
+    }
+
+    // ---- Top5 rotating list -----------------------------------------------
+    let topIndex = 0;
+    function renderTop5(){
+      const list = $('#top5'); list.innerHTML='';
+      const items = INIT_DATA.top5.slice(topIndex).concat(INIT_DATA.top5.slice(0, topIndex)).slice(0,5);
+      items.forEach(it=>{
+        const row = el('div','row');
+        row.append(el('div','tag',it.zone));
+        row.append(el('div',null,it.issue));
+        const sev = el('div',`sev ${it.sev}`, it.sev.toUpperCase());
+        row.append(sev); list.append(row);
+      })
+    }
+    setInterval(()=>{ topIndex=(topIndex+1)%INIT_DATA.top5.length; renderTop5(); }, 5000);
+
+    // ---- Alerts ------------------------------------------------------------
+    function renderAlerts(){
+      const badges = $('#alert-badges'); badges.innerHTML='';
+      const b1 = el('div','badge danger','접근금지 2');
+      const b2 = el('div','badge warn','주의 3');
+      const b3 = el('div','badge off','전원 꺼짐 0 / 통신 끊김 0');
+      badges.append(b1,b2,b3);
+
+      const list = $('#alert-list'); list.innerHTML='';
+      INIT_DATA.alerts.forEach(a=>{
+        const row = el('div','row');
+        row.append(el('div','tag',a.when));
+        const text = el('div',null,a.text);
+        row.append(text);
+        row.append(el('div',`sev ${a.sev}`, a.sev.toUpperCase()));
+        list.append(row);
+      })
+    }
+
+    // ---- Inline 9 mini cards ----------------------------------------------
+    function renderMini(){
+      const root = $('#mini'); root.innerHTML='';
+      INIT_DATA.mini9.forEach(m=>{
+        const card = el('div','mcard');
+        const title = document.createElement('h4');
+        const icon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        icon.setAttribute('class','icon');
+        const use = document.createElementNS('http://www.w3.org/2000/svg','use');
+        use.setAttribute('href','#'+m.icon);
+        icon.appendChild(use);
+        const label = document.createTextNode(' '+m.name);
+        title.appendChild(icon);
+        title.appendChild(label);
+        const spark = el('div','spark');
+        spark.onclick = ()=> alert(`[팝업] ${m.name} 확대 차트 (샘플)`);
+        card.append(title, spark); root.append(card);
+      })
+    }
+
+    // ---- Trend range toggle ------------------------------------------------
+    function setRange(key){
+      $('#range-label').textContent = '현재: ' + (key==='60m'?'60분':'6시간');
+    }
+
+    // ---- Quick badges in hero ---------------------------------------------
+    function renderQuickBadges(){
+      const root = $('#quick-badges');
+      ['차단기(설비) 단위 원격점검','9종 위험 상시모니터링','Top5 자동순환','CSV 리포트'].forEach(t=>{
+        root.append(el('div','badge',t));
+      })
+    }
+
+    // ---- Init render -------------------------------------------------------
+    renderKPI();
+    renderTop5();
+    renderAlerts();
+    renderMini();
+    renderQuickBadges();
+  </script>
+
+  <!-- JSP 버전 가이드 (동일 레이아웃을 JSP로 사용 시) ---------------------------------
+  예시 파일명: safety_v20.jsp
+  
+  <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <%-- JSTL 사용 시 --%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <!— 서버에서 전달받은 KPI/알림을 JSON으로 직렬화하여 주입 —>
+  <script>
+    const INIT_DATA = ${initDataJson}; // Controller에서 model.addAttribute("initDataJson", jsonString)
+  </script>
+  <c:forEach var="a" items="${alerts}">
+    <%-- 알림 리스트 렌더 예: ${a.time} ${a.text} ${a.sev} --%>
+  </c:forEach>
+  
+  정적 리소스는 /nk/nk.css 등 공용 리소스를 사용(중복 주입 방지). 
+  -->
+</body>
+</html>

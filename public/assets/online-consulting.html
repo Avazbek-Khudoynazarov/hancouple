@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>전기안전·피크전력·요금 설문 – 컨설팅 폼 + 리스트/내보내기/권한</title>
+<style>
+:root{--brand:#d61f26;--ink:#0b1220;--brand-soft:#fee2e2}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f7f9fc;color:#0b1220}
+/* 공통 컨테이너 */
+.survey-wrap{max-width:1200px;margin:16px auto;padding:12px;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+/* 상단 배너 */
+.survey-banner{position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:10px;justify-content:center;padding:10px 14px;background:rgba(255,255,255,.95);border-bottom:1px solid #e8eef6;font-weight:800}
+.free-badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#d61f26;color:#fff;font-weight:800}
+/* 버튼 */
+.btn{background:var(--brand);border:1px solid var(--brand);color:#fff;padding:8px 14px;border-radius:10px;font-weight:600;cursor:pointer}
+.btn.secondary{background:#fff;color:#0f172a;border-color:#e5e7eb}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+/* 상단 탭 */
+.top-tabs{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap}
+.tabbar{display:flex;gap:8px}
+.subtabs2{display:flex;gap:8px;flex-wrap:wrap}
+.subtabs2 .subtab2{position:relative;padding:10px 16px;border-radius:14px;background:linear-gradient(180deg,#e53935,#c81d1d);border:2px solid #9f1b1b;color:#fff;font-weight:800}
+.subtabs2 .subtab2.active{background:linear-gradient(180deg,#ef4444,#b91c1c);border-color:#7f1d1d}
+.subtabs2 .mini{display:block;font-size:11px;opacity:.9;font-weight:700}
+/* 섹션 타이틀 */
+.sec-title{margin:18px 0 8px;padding:8px 12px;border-left:6px solid var(--brand);background:linear-gradient(#ffffff,#fafcff);border-radius:10px;font-weight:900}
+.sec-hint{margin:-4px 0 8px 14px;color:#475569;font-size:13px}
+.question{padding:10px 12px;margin:8px 0;border-radius:10px;border:1px solid #eef2f7;background:#fff}
+.question legend{font-weight:800;margin-bottom:6px}
+.badge-hint{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:999px;border:1px solid #fecaca;background:var(--brand-soft);font-size:12px;color:#7f1d1d}
+/* 리스트 */
+.search_area{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#tbl_list{background:#fff;border-collapse:collapse;width:100%;border:1px solid #e5e7eb;font-size:14px}
+#tbl_list thead th{position:sticky;top:0;background:#f3f6fb;color:#0f172a;border-bottom:1px solid #e5e7eb;padding:8px;z-index:1}
+#tbl_list td{border-top:1px solid #f0f2f6;padding:8px}
+/* 모달 */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:3000}
+.modal{background:#fff;padding:20px;border-radius:12px;max-width:420px;box-shadow:0 10px 30px rgba(0,0,0,0.3);text-align:center}
+.modal h3{margin-top:0;color:#b91c1c}
+/* === Dark Mode === */
+body[data-theme="dark"]{background:#0f172a;color:#e5e7eb}
+body[data-theme="dark"] .survey-wrap{background:#111827;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+body[data-theme="dark"] .survey-banner{background:#111827;border-bottom-color:#1f2937}
+body[data-theme="dark"] .btn.secondary{background:#1f2937;color:#e5e7eb;border-color:#374151}
+body[data-theme="dark"] .question{background:#0b1320;border-color:#1f2937}
+body[data-theme="dark"] #tbl_list{background:#0b1320;border-color:#1f2937}
+body[data-theme="dark"] #tbl_list thead th{background:#0f172a;color:#e5e7eb;border-bottom-color:#1f2937}
+body[data-theme="dark"] #tbl_list td{border-top-color:#1f2937}
+body[data-theme="dark"] .badge-hint{background:#3f1d1d;border-color:#7f1d1d;color:#ffcccc}
+</style>
+</head>
+<body>
+  <div class="survey-banner">⚡ <span>60초 설문으로 전기요금 절감·안전 개선에 바로 반영됩니다.</span> <span class="free-badge" style="margin-left:8px;">설문 주시면 무료 컨설팅</span></div>
+  <div class="survey-wrap">
+    <div class="top-tabs">
+      <button id="toggleDark" class="btn secondary" style="margin-left:auto" title="다크 모드 전환">🌓 Dark</button>
+      <nav class="tabbar">
+        <button class="btn tab" data-view="survey">설문지</button>
+        <button class="btn tab" data-view="list">설문 리스트</button>
+      </nav>
+      <div class="subtabs2" aria-label="서브 탭">
+        <button type="button" class="btn subtab2" data-page="safety" title="안전 상태 점검">🛡️ 전기안전점검 설문조사<span class="mini">Safety</span></button>
+        <button type="button" class="btn subtab2 active" data-page="peak" title="피크전력 컨설팅">⚡ 피크전력 컨설팅<span class="mini">Peak</span></button>
+        <button type="button" class="btn subtab2" data-page="saving" title="요금절감 무료 컨설팅">💡 전기요금절감 무료컨설팅<span class="mini">Saving</span></button>
+        <button type="button" class="btn subtab2" data-page="cases" title="절감사례 보기">⭐ 절감사례보기<span class="mini">Cases</span></button>
+      </div>
+    </div>
+
+    <!-- 설문지 화면 -->
+    <section id="view-survey" hidden>
+      <form id="surveyForm">
+        <div class="form-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:12px;">
+          <label>고객명<input name="cust" type="text" class="form-control" placeholder="(예) 한빛병원" required></label>
+          <label>전화번호<input name="phone" type="text" class="form-control" placeholder="010-0000-0000" required></label>
+          <label>이메일<input name="email" type="email" class="form-control" placeholder="you@company.com" required></label>
+        </div>
+
+        <!-- 분리 페이지: 안전 / 피크 / 절감 / 사례 -->
+        <div id="page-safety" class="subpage" hidden>
+          <div class="subview" id="sub-safe">
+            <h2 class="sec-title">❶ 전기안전점검 설문조사(예가 4개 이하면 전기안전 솔루셔 도입요구)</h2>
+            <div class="sec-hint">기본 안전 상태와 최근 이슈 여부를 간단히 확인합니다.</div>
+            <fieldset class="question"><legend>전기안전점검을 현장 직접 방문하여 계측하고 있나요?<span class="badge-hint">예: 월 1회 정기점검</span></legend>
+              <label><input type="radio" name="safe_visit_check" value="예" required> 예</label>
+              <label><input type="radio" name="safe_visit_check" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 전기안전점검을 원격으로 수행하고 있나요?<span class="badge-hint">예: 대시보드 24/7 모니터링</span></legend>
+              <label><input type="radio" name="safe_remote_check" value="예" required> 예</label>
+              <label><input type="radio" name="safe_remote_check" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 전기안전점검을 차단기(설비)별로 모두 점검(측정)하고 있나요?<span class="badge-hint">예: 주요 설비 라인 포함</span></legend>
+              <label><input type="radio" name="safe_all_breakers_check" value="예" required> 예</label>
+              <label><input type="radio" name="safe_all_breakers_check" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>설비 담당자는 차단기별 실측 전력 데이터를 자동으로 관리하는가요?<span class="badge-hint">예: 최근 1개월 내 리포트 보유</span></legend>
+              <label><input type="radio" name="safe_measured_month" value="예" required> 예</label>
+              <label><input type="radio" name="safe_measured_month" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 최근 3개월 내 차단기 트립·누전·과열 이슈를 파악하고 있나요?</legend>
+              <label><input type="radio" name="safe_issue_trip" value="예" required> 예</label>
+              <label><input type="radio" name="safe_issue_trip" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 최근 3개월 내 과부하(과전류) 이슈를 파악하고 있나요?<span class="badge-hint">예: 정격 대비 과부하 이벤트 기록 보유</span></legend>
+              <label><input type="radio" name="safe_issue_overload" value="예" required> 예</label>
+              <label><input type="radio" name="safe_issue_overload" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 최근 3개월 내 불평형(삼상 언밸런스 %) 이슈를 파악하고 있나요?<span class="badge-hint">예: 기준 3–5% 초과 시 알림</span></legend>
+              <label><input type="radio" name="safe_issue_unbalance" value="예" required> 예</label>
+              <label><input type="radio" name="safe_issue_unbalance" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 최근 3개월 내 고조파(THD) 이슈를 파악하고 있나요?<span class="badge-hint">예: THD‑I 15% 초과 등 기준</span></legend>
+              <label><input type="radio" name="safe_issue_harmonics" value="예" required> 예</label>
+              <label><input type="radio" name="safe_issue_harmonics" value="아니오"> 아니오</label>
+            </fieldset>
+          </div>
+        </div>
+
+        <div id="page-peak" class="subpage">
+          <div class="subview" id="sub-save">
+            <h2 class="sec-title">❶ 피크전력 컨설팅 <span class='badge-hint btn-link' onclick='openDetailModal()' style='font-size:13px;margin-left:10px;cursor:help;'>⚡ 정밀진단은 유료로 제공됩니다. (자세히)</span></h2>
+            <div class="sec-hint">피크 시간대와 동시 사용 패턴을 알아야 절감처방이 정확해집니다.</div>
+            <fieldset class="question"><legend>귀사는  피크 시간대(요일/시간대)를 알고 계십니까?</legend>
+              <label><input type="radio" name="save_peak_known" value="예" required> 예</label>
+              <label><input type="radio" name="save_peak_known" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 동시 사용(겹치는) 설비 패턴을 분석해 본 적이 있습니까?</legend>
+              <label><input type="radio" name="save_simul_analysis" value="예" required> 예</label>
+              <label><input type="radio" name="save_simul_analysis" value="아니오"> 아니오</label>
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 절감 목표(%)가 있다면 입력해 주세요.</legend>
+              <input type="number" min="0" max="100" step="1" name="save_goal_pct" placeholder="예: 10" class="form-control" style="max-width:220px;">
+            </fieldset>
+            <fieldset class="question"><legend>귀사는 피크전력 정밀진단 측정을 원하시나요? <span class="badge-hint">유료제공</span></legend>
+              <label><input type="radio" name="save_precise_diagnosis" value="예"> 예</label>
+              <label><input type="radio" name="save_precise_diagnosis" value="아니오"> 아니오</label>
+            </fieldset>
+            <!-- 정밀진단 안내 모달 스크립트 -->
+            <script>
+              function openDetailModal(){
+                const modal=document.createElement('div');
+                modal.className='modal-overlay';
+                modal.innerHTML=`<div class="modal">
+                    <h3>⚡ 정밀진단 서비스 안내</h3>
+                    <p>전문 장비를 활용한 실시간 피크 진단 및 부하 분석은 유료로 제공됩니다.<br>측정 장비 설치, 분석, 리포트 제공이 포함됩니다.<br><br><strong>문의:</strong> 053-326-0114 / networkkorea.co.kr</p>
+                    <button onclick="this.closest('.modal-overlay').remove()" class="btn secondary">닫기</button>
+                  </div>`;
+                document.body.appendChild(modal);
+              }
+            </script>
+          </div>
+        </div>
+
+        <div id="page-saving" class="subpage" hidden>
+          <div class="subview" id="sub-bill">
+            <h2 class="sec-title">❷ 전기요금고지서 분석</h2>
+            <div class="sec-hint">파워플래너 제공 또는 고지서 제공 중 한 가지 방식으로 데이터를 전달해 주세요.</div>
+            <fieldset class="question"><legend>(전기요금고지서 분석): 데이터 제공 방식</legend>
+              <label><input type="radio" name="collect_mode" value="planner" required checked> 파워플래너 ID·비밀번호 제공</label>
+              <label><input type="radio" name="collect_mode" value="bill"> 전기요금 고지서 제공</label>
+              <p id="collect-summary" style="margin:8px 0 0; font-size:13px; font-weight:700;">현재 선택: 파워플래너 제공</p>
+            </fieldset>
+            <div id="collect-planner" class="question" style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+              <label>파워플래너 ID<input type="text" name="planner_id" class="form-control" placeholder="예: hb_hospital" autocomplete="username"></label>
+              <label>임시 비밀번호<input type="password" name="planner_pw" class="form-control" placeholder="임시 비밀번호" autocomplete="current-password"></label>
+              <label style="display:flex; align-items:center; gap:8px;"><input type="checkbox" name="planner_consent" value="Y"> 보안 동의(검토 후 즉시 파기)</label>
+            </div>
+            <fieldset class="question"><legend>(전기요금고지서 분석): 동의</legend>
+              <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="consent_consult" value="Y" required> 컨설팅 동의(무상 진단 및 결과 안내에 동의합니다)</label>
+              <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="consent_privacy" value="Y" required> 개인정보 처리방침 동의</label>
+            </fieldset>
+            <fieldset class="question"><legend>(전기요금고지서 분석): 월렌탈 옵션</legend>
+              <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="rent_want" value="Y"> 월렌탈 상담 신청 (선택)</label>
+              <div class="sec-hint">전기절감요금으로 월렌탈하세요(장치당/월1만원). <strong style="color:#b91c1c">(전기안전점검은 제외)</strong></div>
+            </fieldset>
+            <div id="collect-bill" class="question" hidden>
+              <label>전기요금 고지서 파일(앞/뒷면)<input type="file" class="form-control" multiple></label>
+            </div>
+          </div>
+        </div>
+
+        <div id="page-cases" class="subpage" hidden>
+          <div class="subview" id="sub-cases">
+            <h2 class="sec-title">❸ 절감사례보기</h2>
+            <div class="sec-hint">실제 고객의 전기요금 절감 사례를 요약했습니다.</div>
+            <div class="case-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+              <div class="question case-card" data-title="병원 A" data-savings="월 18% 절감" data-points="피크제어, 야간절전" data-notes="피크 시간대 분산 및 야간 비필수 부하 차단" data-before="월 1,100만원" data-after="월 902만원">
+                <legend>병원 A</legend>
+                <p>피크제어+야간절전으로 <b>월 18%</b> 절감</p>
+                <div><span class="badge-hint">계약전력 -10kW</span> <span class="badge-hint">정밀진단 O</span></div>
+              </div>
+              <div class="question case-card" data-title="공장 B" data-savings="월 12% 절감" data-points="동시사용 패턴 최적화, 피크분산" data-notes="생산 라인 교대 시점 전환으로 피크 겹침 해소" data-before="월 2,450만원" data-after="월 2,156만원">
+                <legend>공장 B</legend>
+                <p>동시사용 패턴 최적화로 <b>월 12%</b> 절감</p>
+                <div><span class="badge-hint">패턴개선</span> <span class="badge-hint">피크분산</span></div>
+              </div>
+              <div class="question case-card" data-title="요양원 C" data-savings="월 25% 절감" data-points="피크전력 제어, 계약요금 최적화" data-notes="일과/야간 부하 분리 및 불필요 부하 자동 차단" data-before="월 780만원" data-after="월 585만원">
+                <legend>요양원 C</legend>
+                <p>피크전력로 <b>월 25%</b> 절감</p>
+                <div><span class="badge-hint">계약요금 최적화</span> <span class="badge-hint">원격모니터링</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:10px;">
+          <button type="submit" class="btn">무료 컨설팅 요청 제출</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 리스트 화면 -->
+    <section id="view-list" hidden>
+      <div class="search_area">
+        <strong>고객명</strong> <input id="f_cust" type="text" placeholder="검색..."/>
+        <strong style="margin-left:12px;">전화번호</strong> <input id="f_phone" type="text" placeholder="검색..."/>
+        <button class="btn" id="btnFilter" style="margin-left:12px;">검색</button>
+        <div style="flex:1"></div>
+        <span style="font-weight:600;">정렬</span>
+        <select id="sortOrder" class="form-control" style="min-width:160px;">
+          <option value="ts_desc" selected>최신 제출 우선</option>
+          <option value="ts_asc">오래된 제출 우선</option>
+          <option value="name_asc">고객명 ↑</option>
+          <option value="name_desc">고객명 ↓</option>
+        </select>
+        <label style="display:inline-flex;align-items:center;gap:6px;margin-left:10px;">
+          <input type="checkbox" id="onlyPrecise"> 정밀진단=예만
+        </label>
+        <button class="btn secondary" id="btnCsv" title="CSV 내보내기">CSV</button>
+        <button class="btn secondary" id="btnXlsx" title="XLSX(간편)">XLSX</button>
+      </div>
+
+      <div class="tbl_wrap">
+        <table id="tbl_list">
+          <thead>
+            <tr>
+              <th style="width:60px">No</th><th>제출일시</th><th>고객명</th><th>전화번호</th><th>이메일</th><th>수집ID</th>
+              <th>전기안전점검 설문조사</th><th>(피크전력 컨설팅)</th><th>렌탈희망</th><th>수집방식</th><th>(전기요금고지서 분석)</th>
+            </tr>
+          </thead>
+          <tbody id="tbody_list"></tbody>
+        </table>
+      </div>
+
+      <div class="paging" id="paging"></div>
+    </section>
+  </div>
+
+<script>
+// ===== 라우팅 & 가드 =====
+const views={survey:document.getElementById('view-survey'), list:document.getElementById('view-list')};
+const tabBtns=document.querySelectorAll('.tabbar .tab');
+function show(view){ Object.values(views).forEach(v=>{ if(v) v.hidden=true; }); if(views[view]) views[view].hidden=false; tabBtns.forEach(b=>b.classList.toggle('active', b.dataset.view===view)); location.hash=view; }
+window.addEventListener('hashchange',()=>{ const v=(location.hash.replace('#','')||'survey'); show(v in views?v:'survey'); });
+show((location.hash.replace('#',''))||'survey');
+
+// ===== 서브 페이지 탭 =====
+const pages={safety:document.getElementById('page-safety'), peak:document.getElementById('page-peak'), saving:document.getElementById('page-saving'), cases:document.getElementById('page-cases')};
+const subBtns=document.querySelectorAll('.subtabs2 .subtab2');
+function showPage(name){ Object.values(pages).forEach(p=>{ if(p) p.hidden=true; }); if(pages[name]) pages[name].hidden=false; subBtns.forEach(b=>b.classList.toggle('active', b.dataset.page===name)); }
+subBtns.forEach(b=> b.addEventListener('click',()=> showPage(b.dataset.page)));
+showPage('peak');
+
+// ===== 저장/로드/리스트 렌더 =====
+const KEY='nk_survey_entries_v3_precise_filter';
+const $form=document.getElementById('surveyForm');
+const $tbody=document.getElementById('tbody_list');
+const $paging=document.getElementById('paging');
+function lsLoad(){ try{ return JSON.parse(localStorage.getItem(KEY))||[] }catch(e){ return [] } }
+function lsSave(rows){ localStorage.setItem(KEY, JSON.stringify(rows)); }
+function badge(txt){ return `<span style="padding:2px 8px;border-radius:10px;border:1px solid #e5e7eb;background:#fff;">${txt}</span>` }
+async function loadAll(page=1,size=10,kw={}){ let rows=lsLoad().filter(r=> (!kw.cust||r.cust.includes(kw.cust)) && (!kw.phone||r.phone.includes(kw.phone)) ); const order=(document.getElementById('sortOrder')||{}).value||'ts_desc'; rows.forEach(r=>{ if(!('ts_epoch' in r)) r.ts_epoch=Date.parse(r.ts)||0; }); const cmp={ ts_desc:(a,b)=>b.ts_epoch-a.ts_epoch, ts_asc:(a,b)=>a.ts_epoch-b.ts_epoch, name_asc:(a,b)=>(a.cust||'').localeCompare(b.cust||''), name_desc:(a,b)=>(b.cust||'').localeCompare(a.cust||'') }[order] || ((a,b)=>b.ts_epoch-a.ts_epoch); rows=rows.sort(cmp); return {items:rows.slice((page-1)*size, page*size), total:rows.length}; }
+async function render(page=1, kw={}){ const size=10; const {items,total}=await loadAll(page,size,kw); const pages=Math.max(1,Math.ceil(total/size)); $tbody.innerHTML = items.map((r,i)=>`<tr data-precise="${r.save_precise_diagnosis==='예'?'Y':'N'}"><td>${(page-1)*size+i+1}</td><td>${r.ts}</td><td>${r.cust}</td><td>${r.phone}</td><td>${r.email}</td><td>${r.collect_id_masked||''}</td><td>${badge(r.safety_recommendation||r.safe_status)}</td><td>${badge(r.save_status)}</td><td>${badge(r.rent_want==='Y'?'희망':'-')}</td><td>${badge(r.collect_mode==='planner'?'파워플래너':'고지서 제공')}</td><td>${badge(r.bill_status)}</td></tr>`).join(''); $paging.innerHTML = Array.from({length:pages}, (_,i)=>`<a href="#" data-pg="${i+1}" class="${i+1===page?'active':''}">${i+1}</a>`).join(''); $paging.querySelectorAll('a').forEach(a=>a.addEventListener('click',(e)=>{e.preventDefault();render(+a.dataset.pg,kw);})); const only=(document.getElementById('onlyPrecise')||{}).checked; if(only){ $tbody.querySelectorAll('tr').forEach(tr=>{ if(tr.dataset.precise!=='Y') tr.style.display='none'; }); } }
+
+// 제출 처리
+if($form){ $form.addEventListener('submit', async (e)=>{ e.preventDefault(); const fd=new FormData($form); // 모드별 필수
+ const mode=fd.get('collect_mode')||'planner'; if(mode==='planner'){ if(!(fd.get('planner_id')||'').trim() || !(fd.get('planner_pw')||'').trim()){ alert('파워플래너 ID/임시PW를 입력해 주세요.'); return; } if(fd.get('planner_consent')!=="Y"){ alert('보안 동의에 체크해 주세요.'); return; } }
+ if(fd.get('consent_consult')!=="Y" || fd.get('consent_privacy')!=="Y"){ alert('동의 항목에 체크해 주세요.'); return; }
+ // 안전 예 카운트(도입요구 자동판정)
+ const safeYes=['safe_visit_check','safe_remote_check','safe_all_breakers_check','safe_measured_month','safe_issue_trip','safe_issue_overload','safe_issue_unbalance','safe_issue_harmonics'].filter(n=>fd.get(n)==='예').length;
+ const recommendation = (safeYes<=4)?'도입요구':'관찰중';
+ const saveYes=['save_peak_known','save_simul_analysis'].filter(n=>fd.get(n)==='예').length;
+ const pid=(fd.get('planner_id')||'').trim(); const maskedId= pid? pid.replace(/.(?=.{2})/g,'*') : '';
+ const row={ ts:new Date().toLocaleString(), ts_epoch:Date.now(), cust:fd.get('cust')||'', phone:fd.get('phone')||'', email:fd.get('email')||'', collect_mode:mode, collect_id_masked:maskedId, safety_recommendation:recommendation, safe_status: safeYes>=2?'기초 정보 확보':'추가 확인 필요', save_status: saveYes>=1 ? (fd.get('save_goal_pct')?`목표 ${fd.get('save_goal_pct')}%`:'관심 있음') : '진단 필요', bill_status: mode==='planner' ? (maskedId?`파워플래너(${maskedId})`:'파워플래너') : '고지서 제공', safe_measured_month:fd.get('safe_measured_month')||'', safe_issue_trip:fd.get('safe_issue_trip')||'', safe_issue_overload:fd.get('safe_issue_overload')||'', safe_issue_unbalance:fd.get('safe_issue_unbalance')||'', safe_issue_harmonics:fd.get('safe_issue_harmonics')||'', save_peak_known:fd.get('save_peak_known')||'', save_simul_analysis:fd.get('save_simul_analysis')||'', save_goal_pct:fd.get('save_goal_pct')||'', save_precise_diagnosis:fd.get('save_precise_diagnosis')||'', consent_consult:fd.get('consent_consult')||'', consent_privacy:fd.get('consent_privacy')||'', rent_want:fd.get('rent_want')||'' };
+ const rows=lsLoad(); rows.unshift(row); lsSave(rows); alert('제출 완료! 설문 리스트 화면에서 확인하세요.'); $form.reset(); show('list'); render(1); }); }
+
+// 툴바 이벤트
+const $fBtn=document.getElementById('btnFilter'); const $sort=document.getElementById('sortOrder'); const $only=document.getElementById('onlyPrecise');
+if($fBtn){ $fBtn.addEventListener('click',()=>{ const kw={ cust:(document.getElementById('f_cust')||{}).value||'', phone:(document.getElementById('f_phone')||{}).value||'' }; render(1,kw); }); }
+if($sort){ $sort.addEventListener('change', ()=>{ const kw={ cust:(document.getElementById('f_cust')||{}).value||'', phone:(document.getElementById('f_phone')||{}).value||'' }; render(1,kw); }); }
+if($only){ const saved = localStorage.getItem('only_precise')==='1'; if(saved){ $only.checked=true; } $only.addEventListener('change', ()=>{ localStorage.setItem('only_precise', $only.checked?'1':'0'); const kw={ cust:(document.getElementById('f_cust')||{}).value||'', phone:(document.getElementById('f_phone')||{}).value||'' }; render(1,kw); }); }
+
+// CSV/XLSX 내보내기
+function toCSV(rows){ const header=['ts','cust','phone','email','safe_status','save_status','rent_want','save_precise_diagnosis','collect_mode','bill_status','safety_recommendation']; const esc=v=>(''+(v??'')).replaceAll('"','""'); const lines=[header.join(',')].concat(rows.map(r=>header.map(k=>`"${esc(r[k])}"`).join(','))); return lines.join('\r\n'); }
+function exportRows(){ const kw={ cust:(document.getElementById('f_cust')||{}).value||'', phone:(document.getElementById('f_phone')||{}).value||'' }; const only=(document.getElementById('onlyPrecise')||{}).checked; let rows=lsLoad().filter(r=>(!kw.cust||r.cust.includes(kw.cust)) && (!kw.phone||r.phone.includes(kw.phone))); if(only){ rows=rows.filter(r=>r.save_precise_diagnosis==='예'); } return rows; }
+const $btnCsv=document.getElementById('btnCsv'); const $btnXlsx=document.getElementById('btnXlsx');
+function download(filename, text){ const blob=new Blob([text],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),500); }
+if($btnCsv){ $btnCsv.addEventListener('click', ()=>{ download('survey_export.csv', toCSV(exportRows())); }); }
+if($btnXlsx){ $btnXlsx.addEventListener('click', ()=>{ download('survey_export.xlsx', toCSV(exportRows())); }); }
+
+// 절감사례 모달 상세보기
+function openCaseModal(card){
+  if(!card) return;
+  const title=card.dataset.title||'사례';
+  const savings=card.dataset.savings||'';
+  const points=card.dataset.points||'';
+  const notes=card.dataset.notes||'';
+  const before=card.dataset.before||'';
+  const after=card.dataset.after||'';
+  const modal=document.createElement('div');
+  modal.className='modal-overlay';
+  modal.innerHTML=`<div class="modal" role="dialog" aria-label="절감사례 상세">
+      <h3>⭐ ${title}</h3>
+      <p style="margin:6px 0 10px;">${savings}</p>
+      <table style="width:100%;text-align:left;border-collapse:collapse;font-size:14px;margin:8px 0 12px;">
+        <tr><th style="padding:6px;border-bottom:1px solid #eee;width:34%">핵심 조치</th><td style="padding:6px;border-bottom:1px solid #eee;">${points}</td></tr>
+        <tr><th style="padding:6px;border-bottom:1px solid #eee;">비고</th><td style="padding:6px;border-bottom:1px solid #eee;">${notes}</td></tr>
+        <tr><th style="padding:6px;border-bottom:1px solid #eee;">도입 전</th><td style="padding:6px;border-bottom:1px solid #eee;">${before}</td></tr>
+        <tr><th style="padding:6px;">도입 후</th><td style="padding:6px;">${after}</td></tr>
+      </table>
+      <div style="display:flex;gap:8px;justify-content:flex-end;">
+        <button class="btn secondary" onclick="this.closest('.modal-overlay').remove()">닫기</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+// 카드 클릭 바인딩(최초 1회)
+(function bindCaseCards(){
+  document.querySelectorAll('.case-card').forEach(card=>{
+    card.style.cursor='pointer';
+    if(!card.dataset.bound){ card.addEventListener('click',()=>openCaseModal(card)); card.dataset.bound='1'; }
+  });
+})();
+
+// === Dark Mode Toggle ===
+(function initTheme(){
+  const saved=localStorage.getItem('theme')||'light';
+  if(saved==='dark') document.body.setAttribute('data-theme','dark');
+  const btn=document.getElementById('toggleDark');
+  if(btn){ btn.addEventListener('click',()=>{
+    const cur=document.body.getAttribute('data-theme')==='dark'?'dark':'light';
+    const next= cur==='dark'?'light':'dark';
+    document.body.setAttribute('data-theme', next==='dark'?'dark':'');
+    localStorage.setItem('theme', next);
+    btn.textContent = next==='dark'?'🌞 Light':'🌓 Dark';
+  });
+    btn.textContent = (saved==='dark')?'🌞 Light':'🌓 Dark';
+  }
+})();
+
+// 초기 렌더
+render(1);
+
+// ===== 자가 테스트 =====
+(function selfTest(){ try{
+  console.assert(document.querySelectorAll('#view-list').length===1,'[TEST] view-list 1개');
+  console.assert(document.getElementById('page-safety')&&document.getElementById('page-peak')&&document.getElementById('page-saving')&&document.getElementById('page-cases'),'[TEST] 서브페이지 존재');
+  console.assert(document.querySelectorAll('.subtabs2 .subtab2').length>=3,'[TEST] 서브탭 존재');
+  console.assert(document.getElementById('onlyPrecise'),'[TEST] 정밀진단=예만 체크박스 존재');
+} catch(e){ console.warn('SELFTEST:', e); }})();
+</script>
+</body>
+</html>

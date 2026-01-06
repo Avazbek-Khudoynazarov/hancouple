@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>전기안전·피크전력·원격점검 — 주)네트워크코리아</title>
+  <meta name="description" content="브레이커(설비) 단위로 화재, 감전, 피크전력을 한 번에 케어하는 전기안전 원격점검 솔루션" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --nk-red:#E1262D; /* NK 레드 */
+      --nk-black:#111217;
+      --nk-gray:#6B7380;
+      --nk-bg:#0B0C10; /* 다크 배경 */
+      --card:#151821;
+      --ok:#00B37E;
+      --warn:#FFB020;
+      --danger:#FF4757;
+      --ring: 0 0 0 8px rgb(225 38 45 / .16);
+      --shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--nk-bg);color:#E9ECF1;font-family:'Nanum Gothic', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    .hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(135deg, #151821 0%, #0c0f16 100%);padding:56px 28px;box-shadow:var(--shadow)}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(225,38,45,.12);color:#fff;border:1px solid rgba(225,38,45,.35);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.2px}
+    .hero h1{margin:18px 0 12px;font-size:42px;line-height:1.18;font-weight:800}
+    .hero h1 .red{color:var(--nk-red)}
+    .hero p.lead{margin:0 0 18px;font-size:18px;color:#C8CFDA}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:var(--nk-red);color:#fff;padding:14px 18px;border-radius:16px;font-weight:800;border:0;cursor:pointer;box-shadow:var(--shadow)}
+    .btn:focus{outline:none;box-shadow:var(--shadow), var(--ring)}
+    .btn.alt{background:#232838;color:#fff;border:1px solid #2d3445}
+    .grid{display:grid;gap:16px}
+    @media(min-width:920px){.hero{padding:68px 56px}.hero h1{font-size:56px}}
+    /* Key panels */
+    .pillars{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .pillar{background:var(--card);border:1px solid #242938;border-radius:20px;padding:18px;min-height:160px}
+    .pillar h3{margin:10px 0 4px;font-size:18px}
+    .pillar p{margin:0;color:#C8CFDA;font-size:14px}
+    .kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:20px}
+    .kpi .card{background:#0E111A;border:1px solid #242938;border-radius:16px;padding:16px;text-align:center}
+    .kpi .v{font-size:28px;font-weight:800}
+    .kpi .t{font-size:12px;color:#AAB3C2}
+
+    /* Why breaker-level */
+    section{margin-top:48px}
+    .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .sec-title .dot{width:10px;height:10px;border-radius:999px;background:var(--nk-red)}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid #242938;border-radius:18px;padding:18px}
+    .card h4{margin:2px 0 6px}
+    .card p{margin:0;color:#C8CFDA}
+    .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#212635;border:1px solid #2c3346;color:#C8CFDA;font-size:12px}
+
+    /* Dashboard preview */
+    .preview{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .screen{background:#0E111A;border:1px solid #242938;border-radius:18px;min-height:320px;padding:14px}
+    .screen .top{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+    .dot3{display:flex;gap:6px}
+    .dot3 i{display:block;width:10px;height:10px;border-radius:50%}
+    .dot3 i:nth-child(1){background:var(--nk-red)}
+    .dot3 i:nth-child(2){background:#FFB020}
+    .dot3 i:nth-child(3){background:#2DD4BF}
+    .mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .mini .box{background:#121725;border:1px solid #242938;border-radius:12px;padding:10px}
+    .mini .box .label{font-size:12px;color:#AAB3C2;margin-bottom:6px}
+    .mini .bar{height:8px;background:#1e2434;border-radius:999px;overflow:hidden}
+    .mini .bar span{display:block;height:100%;background:var(--nk-red);width:40%}
+
+    .check9{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .check9 .chip{display:flex;align-items:center;gap:8px;background:#101420;border:1px solid #23283a;border-radius:12px;padding:10px}
+    .sig{width:8px;height:8px;border-radius:999px}
+    .sig.ok{background:var(--ok)}
+    .sig.warn{background:var(--warn)}
+    .sig.danger{background:var(--danger)}
+
+    /* Proof & badges */
+    .proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .proof .badgec{background:#10131b;border:1px solid #23283a;border-radius:16px;padding:16px;display:flex;gap:12px;align-items:center}
+    .proof svg{width:28px;height:28px}
+
+    /* Footer CTA */
+    .ctafoot{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px}
+    footer{margin:48px 0 24px;text-align:center;color:#AAB3C2}
+
+    /* Responsive */
+    @media(max-width:1024px){
+      .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .kpi{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .preview{grid-template-columns:1fr}
+      .proof{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap" aria-label="Top">
+    <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 16px">
+      <div style="display:flex;align-items:center;gap:10px;font-weight:800">
+        <div style="width:28px;height:28px;border-radius:8px;background:var(--nk-red);"></div>
+        <span>주)네트워크코리아 · Smart Electrical Safety</span>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="tag" href="#why">왜 브레이커 단위인가</a>
+        <a class="tag" href="#solution">우리 솔루션</a>
+        <a class="tag" href="#preview">실시간 미리보기</a>
+        <a class="tag" href="#proof">검증/인증</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" role="banner">
+      <span class="badge">브레이커(설비)별 · 365일 상시계측 · 원격점검</span>
+      <h1>
+        화재·감전·<span class="red">피크전력</span>을 <br/>
+        한 번에 케어하는 <span class="red">전기안전 메인 플랫폼</span>
+      </h1>
+      <p class="lead">메인 수배전반이 아닌 <b>차단기(설비) 단위</b>에서 위험을 먼저 잡아냅니다. 전기안전직무고시 준수, 피크전력 최적화, 원격점검·자동리포트까지 하나의 화면에서.</p>
+      <div class="cta">
+        <a class="btn" href="#demo">데모 요청</a>
+        <a class="btn alt" href="#selfcheck">3분 셀프 진단</a>
+        <a class="btn alt" href="#brochure">브로셔 다운로드</a>
+      </div>
+
+      <div class="kpi" aria-label="핵심 KPI">
+        <div class="card"><div class="v" data-k="32">32%</div><div class="t">피크전력 평균 절감(케이스)</div></div>
+        <div class="card"><div class="v" data-k="1.0">1.0s</div><div class="t">위험감지→알림까지</div></div>
+        <div class="card"><div class="v" data-k="9">9종</div><div class="t">전기안전 체크 항목</div></div>
+        <div class="card"><div class="v" data-k="365">365일</div><div class="t">상시 원격점검</div></div>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section id="solution">
+      <div class="sec-title"><span class="dot"></span><h2>우리 솔루션, 이렇게 다릅니다</h2></div>
+      <div class="grid pillars">
+        <div class="pillar">
+          <h3>① 화재 예방</h3>
+          <p>과부하·온도·누전·절연저항을 실시간 계측하고 임계치 초과 시 즉시 차단·알림.</p>
+        </div>
+        <div class="pillar">
+          <h3>② 감전사고 방지</h3>
+          <p>누설전류·절연저항 저하 조기 경보로 작업자 접근 전 위험 차단.</p>
+        </div>
+        <div class="pillar">
+          <h3>③ 피크전력 감소</h3>
+          <p>브레이커별 동시사용·피크 기여도를 분석해 설비 스케줄링·자동 제어.</p>
+        </div>
+        <div class="pillar">
+          <h3>④ 직무고시 준수</h3>
+          <p>전기안전직무고시 점검항목(9종)·점검주기·로그 자동화로 감사 대응.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY BREAKER-LEVEL -->
+    <section id="why">
+      <div class="sec-title"><span class="dot"></span><h2>왜 ‘차단기(설비) 단위’ 관리가 필수인가</h2></div>
+      <div class="cards">
+        <div class="card">
+          <h4>화재는 설비 단에서 시작</h4>
+          <p>발열·접촉불량·누전은 말단 설비에서 먼저 발생. 상위(MSB)만 봐선 놓칩니다.</p>
+        </div>
+        <div class="card">
+          <h4>감전은 순간, 예방은 상시</h4>
+          <p>누설전류·절연저항 저하는 ‘사전 신호’. 현장 순시만으로는 포착이 어렵습니다.</p>
+        </div>
+        <div class="card">
+          <h4>피크전력의 진짜 원인</h4>
+          <p>동시에 켜지는 설비 조합이 피크를 만듭니다. 브레이커별 동시사용을 봐야 합니다.</p>
+        </div>
+        <div class="card">
+          <h4>직무고시·ESG·감사 대응</h4>
+          <p>점검 이력·로그·리포트 자동화로 법정 점검과 ESG 평가에 즉시 제출 가능합니다.</p>
+        </div>
+        <div class="card">
+          <h4>현실의 한계</h4>
+          <p>인력 부족·간헐 점검·데이터 사일로·통신 끊김… 자동화·원격화가 해법입니다.</p>
+        </div>
+        <div class="card">
+          <h4>우리가 다르게 한 이유</h4>
+          <p>브레이커 레벨 상시계측 + 실시간 분석 + 원격 제어 + 자동 리포트까지 일체형.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD PREVIEW -->
+    <section id="preview">
+      <div class="sec-title"><span class="dot"></span><h2>실시간 대시보드 미리보기</h2></div>
+      <div class="preview">
+        <div class="screen" aria-label="Dashboard mock">
+          <div class="top">
+            <div class="dot3"><i></i><i></i><i></i></div>
+            <span class="tag">A동·2F·분전반 #MSB-02</span>
+            <span class="tag">회로: CH-07 (펌프)</span>
+          </div>
+          <div class="mini" aria-label="미니 차트">
+            <div class="box"><div class="label">누설전류 (mA)</div><div class="bar"><span style="width:62%"></span></div></div>
+            <div class="box"><div class="label">온도 (°C)</div><div class="bar"><span style="width:45%"></span></div></div>
+            <div class="box"><div class="label">역률 (PF)</div><div class="bar"><span style="width:70%"></span></div></div>
+            <div class="box"><div class="label">불평형 (%)</div><div class="bar"><span style="width:30%"></span></div></div>
+            <div class="box"><div class="label">THD‑I (%)</div><div class="bar"><span style="width:52%"></span></div></div>
+            <div class="box"><div class="label">피크(15분) (kW)</div><div class="bar"><span style="width:40%"></span></div></div>
+          </div>
+          <div style="margin-top:12px" class="check9" aria-label="전기안전 9종">
+            <div class="chip"><span class="sig ok"></span> 전압(VRMS)</div>
+            <div class="chip"><span class="sig ok"></span> 전류(IRMS)</div>
+            <div class="chip"><span class="sig warn"></span> 누설전류</div>
+            <div class="chip"><span class="sig ok"></span> 위상각</div>
+            <div class="chip"><span class="sig ok"></span> 절연저항</div>
+            <div class="chip"><span class="sig ok"></span> 고조파(THD‑I)</div>
+            <div class="chip"><span class="sig ok"></span> 역률(PF)</div>
+            <div class="chip"><span class="sig ok"></span> 온도(°C)</div>
+            <div class="chip"><span class="sig ok"></span> 불평형</div>
+          </div>
+        </div>
+        <aside class="screen" style="padding:16px">
+          <h3 style="margin:6px 0 8px">자동 리포트 & 경보</h3>
+          <ul style="margin:0 0 12px 18px;color:#C8CFDA;line-height:1.6">
+            <li>접근금지/주의/정상 배지로 위험 등급화</li>
+            <li>SMS/푸시/경광등 연동(옵션) · 1초 내 알림</li>
+            <li>월간 요약 · 피크 기여도 · 낭비전력 리포트</li>
+            <li>CSV/PDF 내보내기 · NanumGothic 임베딩</li>
+          </ul>
+          <div class="card" style="margin-top:8px">
+            <h4 style="margin:0 0 6px">전기안전직무고시 체크리스트(예)</h4>
+            <p style="margin:0;color:#C8CFDA;font-size:14px">9종 항목 자동 기록, 점검주기 준수, 이력 열람, 감사·인증 제출용 증빙 파일 생성.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROOF & BADGES -->
+    <section id="proof">
+      <div class="sec-title"><span class="dot"></span><h2>검증된 레퍼런스·인증</h2></div>
+      <div class="proof">
+        <div class="badgec">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7l3-7z"/></svg>
+          <div>
+            <b>조달청 혁신제품</b><br><span style="color:#AAB3C2">제2021-486호 · 시범사용 ‘성공’ 판정</span>
+          </div>
+        </div>
+        <div class="badgec">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+          <div>
+            <b>KC/시험성적</b><br><span style="color:#AAB3C2">CTS-P23-0045/0048 · EMC 적합</span>
+          </div>
+        </div>
+        <div class="badgec">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l7-9 7 9-7 9-7-9z"/></svg>
+          <div>
+            <b>대형 레퍼런스</b><br><span style="color:#AAB3C2">공공·전통시장·공장·아파트 단지 적용</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <section id="demo" style="margin-top:36px">
+      <div class="card" style="text-align:center;padding:28px">
+        <h3 style="margin:0 0 6px">지금, 설비 앞단에서 위험을 끝냅시다</h3>
+        <p style="margin:0 0 14px;color:#C8CFDA">브레이커(설비) 단위 전기안전·피크 관리. 원격점검으로 간편하게, 자동리포트로 확실하게.</p>
+        <div class="ctafoot">
+          <a class="btn" href="#">데모 미팅 잡기</a>
+          <a class="btn alt" href="#">PDF 브로셔</a>
+          <a class="btn alt" href="#selfcheck">3분 셀프 진단</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENERGY SAVING CASES -->
+    <section id="savingcases">
+      <div class="sec-title"><span class="dot"></span><h2>전기요금 절감 사례</h2></div>
+      <div class="cards">
+        <div class="card">
+          <h4>공공청사</h4>
+          <p>기존 대비 피크전력 28% 절감, 연간 약 1,200만원 요금 절감. 피크 시간대 냉난방 설비 제어 자동화로 달성.</p>
+        </div>
+        <div class="card">
+          <h4>전통시장</h4>
+          <p>노후 전력설비 교체 없이 차단기 단위 원격제어만으로 월 평균 전력요금 18% 절감, 화재사고 0건 유지.</p>
+        </div>
+        <div class="card">
+          <h4>아파트 단지</h4>
+          <p>세대별 피크 관리 도입 후 공용전기요금 22% 절감, 누전 알림 기능으로 감전사고 위험 100% 감소.</p>
+        </div>
+        <div class="card">
+          <h4>공장·산업현장</h4>
+          <p>브레이커 단위 부하 모니터링과 피크제어로 월 평균 30% 절감, ROI 8개월 내 회수.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:18px">
+        <a class="btn" href="#">더 많은 절감 사례 보기</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> (주)네트워크코리아 · Smart Electrical Safety & Energy Saving
+  </footer>
+
+  <script>
+    // 연도
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 단순 KPI 애니메이션
+    const els = document.querySelectorAll('.kpi .v[data-k]');
+    els.forEach(el=>{
+      const target = el.getAttribute('data-k');
+      if(target.indexOf('%')>-1 || target.indexOf('s')>-1) return; // 고정 텍스트 제외
+      const num = parseFloat(target);
+      let cur = 0; const step = num/30;
+      const tick = ()=>{cur+=step; if(cur>=num){el.textContent = target;return;} el.textContent = Math.round(cur); requestAnimationFrame(tick)}; tick();
+    });
+  </script>
+</body>
+</html>

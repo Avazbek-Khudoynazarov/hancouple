@@ -3,6 +3,7 @@
 import { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import styles from "./Consulting.module.css";
 import EastIcon from "@mui/icons-material/East";
 
@@ -103,10 +104,10 @@ export default function Consulting() {
               전기요금 절감책으로 월 렌탈 하세요 !<br />
               체계적인 전기요금 컨설팅
             </h2>
-            <button className={styles.moreButton}>
-              자세한 보기
+            <Link href="/consulting#results" className={styles.moreButton}>
+              자세히 보기
               <EastIcon />
-            </button>
+            </Link>
           </div>
 
           <div className={styles.cardsContainer}>
