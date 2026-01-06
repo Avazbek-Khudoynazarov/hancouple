@@ -41,7 +41,7 @@
 /* Header */
 .header {
   background: #0088ff;
-  padding: 40px 60px;
+  padding: 30px 60px;
   position: relative;
   text-align: center;
 }
@@ -52,7 +52,7 @@
   font-weight: 700;
   font-size: 28px;
   color: #ffffff;
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
 }
 
 .subtitle {
@@ -61,7 +61,7 @@
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
 }
 
 .emailInfo {
@@ -112,14 +112,14 @@
 
 /* Form */
 .form {
-  padding: 50px 80px 60px;
+  padding: 40px 80px 30px;
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px 60px;
-  margin-bottom: 40px;
+  gap: 45px 60px;
+  margin-bottom: 35px;
 }
 
 .formGroup {
