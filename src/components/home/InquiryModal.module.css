@@ -118,7 +118,7 @@
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 45px 60px;
+  gap: 35px 60px;
   margin-bottom: 35px;
 }
 

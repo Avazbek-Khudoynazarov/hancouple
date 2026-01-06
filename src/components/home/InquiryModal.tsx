@@ -85,9 +85,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     }
   };
 
-  const handleSuccessClose = () => {
-    setShowSuccessModal(false);
-    onClose();
+  const resetForm = () => {
     setFormData({
       name: "",
       phone: "",
@@ -101,13 +99,24 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
       content: "",
       privacyAgreed: false,
     });
+    setErrorMessage("");
+  };
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
+
+  const handleSuccessClose = () => {
+    setShowSuccessModal(false);
+    handleClose();
   };
 
   if (!isOpen) return null;
 
   return (
     <>
-      <div className={styles.overlay} onClick={onClose} />
+      <div className={styles.overlay} onClick={handleClose} />
       <div className={styles.modal}>
         {/* Header */}
         <div className={styles.header}>
@@ -119,7 +128,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             <span className={styles.emailLabel}>E-mail</span>
             <span className={styles.emailValue}>nk@networkkorea.co.kr</span>
           </div>
-          <button className={styles.closeButton} onClick={onClose}>
+          <button className={styles.closeButton} onClick={handleClose}>
             <CloseIcon />
           </button>
         </div>
