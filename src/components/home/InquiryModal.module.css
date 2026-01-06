@@ -24,7 +24,13 @@
   border-radius: 30px;
   z-index: 9999;
   overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
   animation: modalFadeIn 0.3s ease;
+}
+
+.modal::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 @keyframes modalFadeIn {
