@@ -14,7 +14,7 @@ export default function CampingSecond() {
         {language === "KOR" ? (
           <p className={styles.subtitle}>
             한순간의 불꽃이 <br className={styles.vision} />
-            캠핑장의 밤을 바꿉니다. <b>안심할 수 있는 캠핑</b>을{" "}
+            캠핑장의 밤을 바꿉니다. <br /> <b>안심할 수 있는 캠핑</b>을{" "}
             <br className={styles.vision} />
             함께 만드세요.
           </p>

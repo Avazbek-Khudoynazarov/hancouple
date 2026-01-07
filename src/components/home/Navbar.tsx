@@ -203,31 +203,35 @@ const navDataEng: NavItem[] = [
     children: [
       {
         title: "Care Facilities",
-        href: "/industry-solutions/care-facilities",
+        href: "/operation?menu=요양시설 · 장애인복지시설",
       },
       {
         title: "Hospitals",
-        href: "/industry-solutions/medical",
+        href: "/operation?menu=병원 · 의료기관",
       },
       {
         title: "Manufacturing Plants",
-        href: "/industry-solutions/manufacturing",
+        href: "/operation?menu=제조업 공장",
       },
       {
         title: "Schools & Universities",
-        href: "/industry-solutions/education",
+        href: "/operation?menu=초 ·중 ·고 · 대학교",
       },
       {
         title: "Traditional Markets & SMEs",
-        href: "/industry-solutions/small-business",
+        href: "/operation?menu=전통시장 · 소상공인",
+      },
+      {
+        title: "Shopping Malls & Public Facilities",
+        href: "/operation?menu=대형 쇼핑몰 · 다중이용시설",
       },
       {
         title: "Campground & Camping Site Facilities",
-        href: "/industry-solutions/shopping-mall",
+        href: "/operation?menu=캠핑장 · 야영장 시설",
       },
       {
         title: "EV Charging Facilities",
-        href: "/industry-solutions/camping",
+        href: "/operation?menu=전기차 충전시설",
       },
     ],
   },

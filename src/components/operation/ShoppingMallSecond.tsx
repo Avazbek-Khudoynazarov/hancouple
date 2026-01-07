@@ -14,7 +14,8 @@ export default function ShoppingMallSecond() {
         {language === "KOR" ? (
           <p className={styles.subtitle}>
             하루 수천 명이 드나드는 <br className={styles.vision} />
-            공간일수록{" "}
+            공간일수록
+            <br />
             <b>
               전력의 &apos;안정&apos;은 <br className={styles.vision} />
               가장 확실한 &apos;서비스&apos;
@@ -25,7 +26,10 @@ export default function ShoppingMallSecond() {
           <p className={styles.subtitle}>
             In spaces frequented by thousands daily,
             <br />{" "}
-            <b>power &apos;stability&apos; is the most reliable &apos;service&apos;.</b>
+            <b>
+              power &apos;stability&apos; is the most reliable
+              &apos;service&apos;.
+            </b>
           </p>
         )}
       </div>
@@ -71,8 +75,8 @@ export default function ShoppingMallSecond() {
             <p className={styles.cardDescription}>
               {language === "KOR" ? (
                 <>
-                  에스컬레이터 과열, 전광판 분전반 화재 등 <br /> 집중 부하로 인한
-                  과열·누전 사고 다수 발생
+                  에스컬레이터 과열, 전광판 분전반 화재 등 <br /> 집중 부하로
+                  인한 과열·누전 사고 다수 발생
                 </>
               ) : (
                 <>

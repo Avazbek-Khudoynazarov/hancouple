@@ -15,7 +15,8 @@ export default function ManufacturingSecond() {
         {language === "KOR" ? (
           <p className={styles.subtitle}>
             순차제어, 열화상 모니터링, <br className={styles.vision} />
-            역률보정으로{" "}
+            역률보정으로
+            <br />
             <b>
               제조업 공장의 <br className={styles.vision} />
               리스크를

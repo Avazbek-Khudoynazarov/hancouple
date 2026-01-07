@@ -14,7 +14,7 @@ export default function MedicalSecond() {
       <div className={styles.titleSection}>
         {language === "KOR" ? (
           <p className={styles.subtitle}>
-            중대 재해를 예방하고, <br className={styles.vision} />
+            중대 재해를 예방하고, <br />
             <b>
               의료기관의 전력·설비를 <br className={styles.vision} />
               안정적으로 운영

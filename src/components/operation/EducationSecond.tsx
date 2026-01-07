@@ -15,7 +15,8 @@ export default function EducationSecond() {
         {language === "KOR" ? (
           <p className={styles.subtitle}>
             부하 관리와 전열기 알람으로 <br className={styles.vision} />
-            위험을 줄이고, <b>효율적인 전력 운영</b>으로{" "}
+            위험을 줄이고,
+            <br /> <b>효율적인 전력 운영</b>으로{" "}
             <br className={styles.vision} />
             쾌적한 학교를 유지하세요.
           </p>

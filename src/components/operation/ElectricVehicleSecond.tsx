@@ -14,7 +14,8 @@ export default function ElectricVehicleSecond() {
         {language === "KOR" ? (
           <p className={styles.subtitle}>
             한 번의 충전으로 <br className={styles.vision} />
-            수많은 일상이 시작됩니다. <b>그 시작이 언제나 안전하도록,</b>{" "}
+            수많은 일상이 시작됩니다.
+            <br /> <b>그 시작이 언제나 안전하도록,</b>{" "}
             <br className={styles.vision} />
             안정성과 효율을 동시에 잡으세요.
           </p>
