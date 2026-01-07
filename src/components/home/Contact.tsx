@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./Contact.module.css";
+import InquiryModal from "./InquiryModal";
 
 export default function Contact() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className={styles.contactmain}>
       <section className={styles.contact}>
@@ -29,7 +33,7 @@ export default function Contact() {
               </span>
             </h2>
           </div>
-          <div className={styles.inputContainer}>
+          <div className={styles.inputContainer} onClick={() => setIsModalOpen(true)}>
             문의하기
             <button className={styles.button}>
               <svg
@@ -47,6 +51,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      <InquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

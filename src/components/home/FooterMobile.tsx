@@ -9,21 +9,21 @@ export default function FooterMobile() {
       {/* Mobile Navigation */}
       <div className={styles.topNav}>
         <nav className={styles.navContainer}>
-          <a href="#" className={styles.navLink}>
+          <Link href="/introduction" className={styles.navLink}>
             회사소개
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link href="/remote-inspection" className={styles.navLink}>
             원격점검/리포트생성
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link href="/operation" className={styles.navLink}>
             업종별 운영방안 제안
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link href="/consulting" className={styles.navLink}>
             체계적인 전기요금 컨설팅
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link href="/support" className={styles.navLink}>
             고객지원
-          </a>
+          </Link>
         </nav>
       </div>
 
@@ -58,7 +58,7 @@ export default function FooterMobile() {
             </div>
             <div className={styles.infoLine}>
               <span className={styles.label}>대표</span>
-              <span className={styles.value}>신동일</span>
+              <span className={styles.value}>신동환</span>
               <span className={styles.separator}>|</span>
               <span className={styles.label}>주소</span>
               <span className={styles.value}>
@@ -70,7 +70,7 @@ export default function FooterMobile() {
               <span className={styles.value}>053-326-0114</span>
               <span className={styles.separator}>|</span>
               <span className={styles.label}>Fax</span>
-              <span className={styles.value}>부기능산업진고번호</span>
+              <span className={styles.value}>부가통신사업신고번호</span>
             </div>
             <div className={styles.infoLine}>
               <span className={styles.label}>E-mail</span>

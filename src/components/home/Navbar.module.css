@@ -8,7 +8,7 @@
   top: 0;
   z-index: 1000 !important;
   transition: all 0.3s ease;
-  border-bottom: 1px solid #ffffff03;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .navbar:hover {
@@ -54,6 +54,10 @@
   height: 80px;
 }
 
+.navbarContainerEng {
+  padding: 0;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -63,7 +67,8 @@
 }
 
 .logoDefault,
-.logoHover {
+.logoHover,
+.logoEng {
   height: 40px;
   width: auto;
   transition: opacity 0.3s ease;
@@ -79,6 +84,10 @@
   left: 0;
 }
 
+.logoEng {
+  opacity: 1;
+}
+
 .navbar:hover .logoDefault {
   opacity: 0;
 }
@@ -92,12 +101,21 @@
   align-items: center;
   gap: 120px;
 }
+
+.mainConNavLinksEng {
+  gap: 50px;
+}
+
 .navLinks {
   display: flex;
   align-items: center;
   gap: 87px;
   flex: 1;
   justify-content: flex-end;
+}
+
+.navLinksEng {
+  gap: 40px;
 }
 
 .navItem {

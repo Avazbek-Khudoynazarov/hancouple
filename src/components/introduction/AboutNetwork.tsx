@@ -53,6 +53,9 @@ export default function AboutNetwork() {
               앞으로도 365일 고객의 시설을 지키며 <br /> 안전하고 효율적인
               에너지 환경을 만들어 나가겠습니다. <br /> 감사합니다.
             </p>
+            <p style={{ textAlign: "end", fontWeight: 700 }}>
+              ㈜네트워크코리아 대표 드림
+            </p>
           </div>
         </div>
       </div>

@@ -146,7 +146,7 @@ const navDataKor: NavItem[] = [
 
 const navDataEng: NavItem[] = [
   {
-    title: "Company",
+    title: "About Us",
     href: "/introduction",
     children: [
       { title: "Greeting", href: "/introduction?menu=인사말" },
@@ -160,7 +160,7 @@ const navDataEng: NavItem[] = [
     ],
   },
   {
-    title: "Remote Inspection/Reports",
+    title: "Remote Inspection / Reports",
     href: "/remote-inspection",
     children: [
       {
@@ -169,42 +169,43 @@ const navDataEng: NavItem[] = [
         href: "/remote-inspection?menu=실시간 피크전력 모니터링",
       },
       {
-        title: "Circuit Breaker Power Management",
+        title: "Breaker-level Power Management Monitoring",
         subtitle: "",
         href: "/remote-inspection?menu=배전반 차단기별 전력관리 모니터링",
       },
       {
-        title: "Electrical Fire Safety Monitoring",
-        subtitle: "Instant shutdown on leakage, overload, temp. abnormality",
+        title: "Breaker-level Electrical Fire Safety Monitoring",
+        subtitle:
+          "Immediate Shutdown for Leakage, Overload, Temperature Abnormalities",
         href: "/remote-inspection?menu=차단기별 전기 화재 안전 모니터링",
       },
       {
         title: "Risk Assessment & Secondary Accident Prevention",
-        subtitle: "Prevent secondary accidents from power issues",
+        subtitle: "Secondary Accidents Caused by Power Shutdown",
         href: "/remote-inspection?menu=위험성 판단 %26 2차 사고 예방 모니터링",
       },
       {
-        title: "Energy Saving Operation Manual",
-        subtitle: "Before & after savings execution guide",
+        title: "Energy Saving Manual",
+        subtitle: "Post-diagnosis Action Guide",
         href: "/remote-inspection?menu=에너지 절감 운영매뉴얼 제공",
       },
       {
-        title: "Remote Submission / Auto Report Generation",
+        title: "Electrical Safety Regulation Remote Monitoring / Auto Reports",
         subtitle: "",
         href: "/remote-inspection?menu=전기안전 직무고시 원격계측 / 자동 리포트 생성",
       },
     ],
   },
   {
-    title: "operation",
+    title: "Industry-Specific Operation Plan Proposals",
     href: "/operation",
     children: [
       {
-        title: "Care Facilities · Welfare Centers",
+        title: "Care Facilities",
         href: "/industry-solutions/care-facilities",
       },
       {
-        title: "Hospitals · Medical Institutions",
+        title: "Hospitals",
         href: "/industry-solutions/medical",
       },
       {
@@ -212,59 +213,59 @@ const navDataEng: NavItem[] = [
         href: "/industry-solutions/manufacturing",
       },
       {
-        title: "Schools · Universities",
+        title: "Schools & Universities",
         href: "/industry-solutions/education",
       },
       {
-        title: "Traditional Markets · Small Businesses",
+        title: "Traditional Markets & SMEs",
         href: "/industry-solutions/small-business",
       },
       {
-        title: "Shopping Malls · Multi-use Facilities",
+        title: "Campground & Camping Site Facilities",
         href: "/industry-solutions/shopping-mall",
       },
       {
-        title: "Camping Sites · Facilities",
+        title: "EV Charging Facilities",
         href: "/industry-solutions/camping",
       },
     ],
   },
   {
-    title: "Electricity Bill Consulting",
+    title: "Systematic Electricity Bill Consulting",
     href: "/consulting",
     children: [
       {
-        title: "Service Information",
-        subtitle: "Bill reverse calculation, contract power optimization",
+        title: "Service Guide",
+        subtitle: "(Bill Analysis, Contract Optimization)",
         href: "/assets/service-info.html",
         openInNewTab: true,
       },
       {
-        title: "Free Online Consulting",
-        subtitle: "Last 3 months electricity bills",
+        title: "Free Online Consultation",
+        subtitle: "(Recent 3-Month Electricity Bills Required)",
         href: "/assets/online-consulting.html",
         openInNewTab: true,
       },
       {
-        title: "Results Delivery",
-        subtitle: "Peak cause & power waste diagnostic summary report",
+        title: "Results Provided",
+        subtitle: "(Summary Report Diagnosing Peak Causes & Wasted Power)",
         href: "/consulting?menu=결과 제공",
       },
     ],
   },
   {
-    title: "Customer Support",
+    title: "Support",
     href: "/support",
     children: [
       {
         title: "Contact Us",
-        subtitle: "Product/solution selection, file attachment available",
+        subtitle: "(Select products/solutions, attach files)",
         href: "/support?menu=문의하기",
       },
-      { title: "Installation Cases", href: "/support?menu=설치/적용 사례" },
+      { title: "Case Studies", href: "/support?menu=설치/적용 사례" },
       {
         title: "Q&A",
-        subtitle: "Duty report response, auto-report usage",
+        subtitle: "(Compliance/Auto Reporting)",
         href: "/support?menu=Q%26A",
       },
     ],
@@ -347,26 +348,39 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
-      <div className={styles.navbarContainer}>
+      <div className={`${styles.navbarContainer} ${language === "ENG" ? styles.navbarContainerEng : ""}`}>
         <Link href="/" className={styles.logo}>
-          <img
-            src="/assets/homepage/mainLogo2.svg"
-            alt="NetWork Korea"
-            className={styles.logoDefault}
-          />
-          <img
-            src="/assets/homepage/mainLogo.svg"
-            alt="NetWork Korea"
-            className={styles.logoHover}
-          />
+          {language === "ENG" ? (
+            <img
+              src="/assets/homepage/mainLogo3.svg"
+              alt="NetWork Korea"
+              className={styles.logoEng}
+            />
+          ) : (
+            <>
+              <img
+                src="/assets/homepage/mainLogo2.svg"
+                alt="NetWork Korea"
+                className={styles.logoDefault}
+              />
+              <img
+                src="/assets/homepage/mainLogo.svg"
+                alt="NetWork Korea"
+                className={styles.logoHover}
+              />
+            </>
+          )}
         </Link>
 
         <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
           <MenuIcon />
         </button>
 
-        <div className={styles.mainConNavLinks}>
-          <div className={styles.navLinks}>
+        <div className={`${styles.mainConNavLinks} ${language === "ENG" ? styles.mainConNavLinksEng : ""}`}>
+          <div
+            className={`${styles.navLinks} ${
+              language === "ENG" ? styles.navLinksEng : ""
+            }`}>
             {navData.map((item, index) => (
               <div
                 key={index}
@@ -444,7 +458,11 @@ export default function Navbar() {
           </div>
 
           <div className={styles.rightActions}>
-            <button className={styles.inquiryButton} onClick={() => setInquiryModalOpen(true)}>문의하기</button>
+            <button
+              className={styles.inquiryButton}
+              onClick={() => setInquiryModalOpen(true)}>
+              {language === "ENG" ? "Contact Us" : "문의하기"}
+            </button>
             <div className={styles.languageDropdown} ref={langDropdownRef}>
               <button
                 className={styles.langToggleButton}
@@ -572,7 +590,7 @@ export default function Navbar() {
               toggleMobileMenu();
               setInquiryModalOpen(true);
             }}>
-            문의하기
+            {language === "ENG" ? "Contact Us" : "문의하기"}
           </button>
         </div>
       </div>

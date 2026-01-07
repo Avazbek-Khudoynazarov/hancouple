@@ -116,8 +116,10 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
 
   return (
     <>
-      <div className={styles.overlay} onClick={handleClose} />
-      <div className={styles.modal}>
+      {!showSuccessModal && (
+        <>
+          <div className={styles.overlay} onClick={handleClose} />
+          <div className={styles.modal}>
         {/* Header */}
         <div className={styles.header}>
           <h2 className={styles.title}>상담 및 문의하기</h2>
@@ -370,6 +372,8 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
               </ul>
             </div>
           </div>
+        </>
+      )}
         </>
       )}
 
