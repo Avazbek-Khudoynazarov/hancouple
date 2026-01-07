@@ -64,8 +64,11 @@
 }
 
 .navLeft {
+  max-width: 560px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -101,17 +104,21 @@
   font-size: 20px;
   font-weight: 700;
   color: #c0c0c0;
-  padding: 0 317px 0 11px;
 }
 
 /* Dropdown Section */
 .navRight {
   position: relative;
+  max-width: 480px;
+  width: 100%;
 }
 
 .dropdownToggle {
+  max-width: 480px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
   background: transparent;
   border: none;
@@ -129,7 +136,7 @@
   font-size: 20px;
   font-weight: 700;
   color: #ffffff;
-  padding: 0 317px 0 39px;
+  margin-left: 40px;
 }
 
 .arrowIcon {
@@ -145,7 +152,7 @@
 
 .dropdown {
   position: absolute;
-  width: 465px;
+  width: 480px;
   top: calc(100% + 18px);
   right: 0;
   background: #ffffff;

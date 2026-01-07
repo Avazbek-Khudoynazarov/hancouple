@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import styles from "./Location.module.css";
+import { useLanguage } from "@/context/LanguageContext";
 
 declare global {
   interface Window {
@@ -10,6 +11,7 @@ declare global {
 }
 
 export default function Location() {
+  const { language } = useLanguage();
   const mapContainer1 = useRef<HTMLDivElement>(null);
   const mapContainer2 = useRef<HTMLDivElement>(null);
   const [mapsReady, setMapsReady] = useState(false);
@@ -119,9 +121,19 @@ export default function Location() {
       <div className={styles.content}>
         <h3 className={styles.subtitle}>Location</h3>
         <h1 className={styles.title}>
-          네트워크코리아로 가는
-          <br />
-          <span className={styles.highlight}>가장 빠른 길</span>
+          {language === "KOR" ? (
+            <>
+              네트워크코리아로 가는
+              <br />
+              <span className={styles.highlight}>가장 빠른 길</span>
+            </>
+          ) : (
+            <>
+              <span className={styles.highlight}>The Fastest Path</span>
+              <br />
+              to Network Korea
+            </>
+          )}
         </h1>
 
         {/* Head Office Section */}
@@ -129,12 +141,16 @@ export default function Location() {
           <div ref={mapContainer1} className={styles.mapContainer}></div>
           <div className={styles.infoContainer}>
             <h4 className={styles.officeLabel}>Head Office</h4>
-            <h2 className={styles.officeName}>네트워크코리아 (본사)</h2>
+            <h2 className={styles.officeName}>
+              {language === "KOR" ? "네트워크코리아 (본사)" : "Network Korea (Office)"}
+            </h2>
 
             <div className={styles.infoRow}>
               <span className={styles.infoLabel}>Address</span>
               <span className={styles.infoValue}>
-                대구광역시 대천로 9길 11-5 3층
+                {language === "KOR"
+                  ? "대구광역시 대천로 9길 11-5 3층"
+                  : "3F, 11-5, Daecheon-ro 9-gil, Buk-gu, Daegu, Republic of Korea"}
               </span>
             </div>
 
@@ -155,13 +171,16 @@ export default function Location() {
           <div ref={mapContainer2} className={styles.mapContainer}></div>
           <div className={styles.infoContainer}>
             <h4 className={styles.officeLabel}>Branch Office</h4>
-            <h2 className={styles.officeName}>네트워크코리아 (R&D Center)</h2>
+            <h2 className={styles.officeName}>
+              {language === "KOR" ? "네트워크코리아 (R&D Center)" : "Network Korea (R&D Center)"}
+            </h2>
 
             <div className={styles.infoRow}>
               <span className={styles.infoLabel}>Address</span>
               <span className={styles.infoValue}>
-                경상북도 칠곡군 지천면 금송로 60 영진글로벌 캠퍼스 기업연구관
-                306호
+                {language === "KOR"
+                  ? "경상북도 칠곡군 지천면 금송로 60 영진글로벌 캠퍼스 기업연구관 306호"
+                  : "Room 306, Yeongjin Global Campus, 60 Geumsong-ro, Jicheon-myeon, Chilgok-gun, Gyeongsangbuk-do, Republic of Korea"}
               </span>
             </div>
 

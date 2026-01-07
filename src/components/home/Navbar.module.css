@@ -32,6 +32,14 @@
   opacity: 1;
 }
 
+.navbar.scrolled .logoDefaultEng {
+  opacity: 0;
+}
+
+.navbar.scrolled .logoHoverEng {
+  opacity: 1;
+}
+
 .navbar.scrolled .langButton {
   color: rgba(51, 51, 51, 0.4);
 }
@@ -68,7 +76,8 @@
 
 .logoDefault,
 .logoHover,
-.logoEng {
+.logoDefaultEng,
+.logoHoverEng {
   height: 40px;
   width: auto;
   transition: opacity 0.3s ease;
@@ -84,8 +93,14 @@
   left: 0;
 }
 
-.logoEng {
+.logoDefaultEng {
   opacity: 1;
+}
+
+.logoHoverEng {
+  opacity: 0;
+  position: absolute;
+  left: 0;
 }
 
 .navbar:hover .logoDefault {
@@ -93,6 +108,14 @@
 }
 
 .navbar:hover .logoHover {
+  opacity: 1;
+}
+
+.navbar:hover .logoDefaultEng {
+  opacity: 0;
+}
+
+.navbar:hover .logoHoverEng {
   opacity: 1;
 }
 .mainConNavLinks {

@@ -50,7 +50,7 @@
 
 .certificateGrid {
   display: grid;
-  grid-template-columns: repeat(5, 264px);
+  grid-template-columns: repeat(5, 270px);
   column-gap: 38px;
   row-gap: 78px;
   justify-content: center;
@@ -58,7 +58,7 @@
 }
 
 .certificateItem {
-  width: 264px;
+  width: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,7 +78,7 @@
 }
 
 .certificateImage {
-  width: 264px;
+  width: 270px;
   height: 346px;
   object-fit: cover;
   background-color: #f8f9fa;
@@ -95,7 +95,7 @@
 /* Tablet */
 @media (max-width: 1540px) {
   .certificateGrid {
-    grid-template-columns: repeat(4, 264px);
+    grid-template-columns: repeat(4, 270px);
   }
 }
 
@@ -105,7 +105,7 @@
   }
 
   .certificateGrid {
-    grid-template-columns: repeat(3, 264px);
+    grid-template-columns: repeat(3, 270px);
   }
 
   .title {
@@ -115,7 +115,7 @@
 
 @media (max-width: 900px) {
   .certificateGrid {
-    grid-template-columns: repeat(2, 264px);
+    grid-template-columns: repeat(2, 270px);
   }
 
   .title {

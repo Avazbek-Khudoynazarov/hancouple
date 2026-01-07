@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 import FooterMobile from "./FooterMobile";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { language } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -29,19 +31,19 @@ export default function Footer() {
       <div className={styles.topNav}>
         <div className={styles.topNavContainer}>
           <Link href="/introduction" className={styles.navLink}>
-            회사소개
+            {language === "KOR" ? "회사소개" : "About Us"}
           </Link>
           <Link href="/remote-inspection" className={styles.navLink}>
-            원격점검/리포트생성
+            {language === "KOR" ? "원격점검/리포트생성" : "Remote Inspection/ Report"}
           </Link>
           <Link href="/operation" className={styles.navLink}>
-            업종별 운영방안 제안
+            {language === "KOR" ? "업종별 운영방안 제안" : "Industry-Specific Operation Plan Proposals"}
           </Link>
           <Link href="/consulting" className={styles.navLink}>
-            체계적인 전기요금 컨설팅
+            {language === "KOR" ? "체계적인 전기요금 컨설팅" : "Systematic Electricity Bill Consulting"}
           </Link>
           <Link href="/support" className={styles.navLink}>
-            고객지원
+            {language === "KOR" ? "고객지원" : "Support"}
           </Link>
           <div className={styles.naverLogo}>
             <Link href={"https://blog.naver.com/network_korea01"}>
@@ -62,28 +64,44 @@ export default function Footer() {
             <div className={styles.infoGroup}>
               <div className={styles.infoRow}>
                 <div className={styles.addressofproject}>
-                  <span className={styles.label}>사업자등록번호</span>
+                  <span className={styles.label}>
+                    {language === "KOR" ? "사업자등록번호" : "Business Registration Number"}
+                  </span>
                   <span className={styles.value}>504-81-55802</span>
                   <span className={styles.separator}>|</span>
-                  <span className={styles.label}>통신판매업신고번호</span>
-                  <span className={styles.value}>제 2004-대구달서-00070호</span>
+                  <span className={styles.label}>
+                    {language === "KOR" ? "통신판매업신고번호" : "Mail-Order Sales Registration Number"}
+                  </span>
+                  <span className={styles.value}>
+                    {language === "KOR" ? "제 2004-대구달서-00070호" : "No. 2004-Daegu Buk-gu-00070"}
+                  </span>
                 </div>
                 <div className={styles.contactRow}>
                   <span className={styles.label}>Tel</span>
                   <span className={styles.value}>053-326-0114</span>
                   <span className={styles.separator}>|</span>
                   <span className={styles.label}>Fax</span>
-                  <span className={styles.value}>부가통신사업신고번호</span>
+                  <span className={styles.value}>
+                    {language === "KOR" ? "부가통신사업신고번호" : "Value-Added Telecommunications Service Registration Number"}
+                  </span>
                 </div>
               </div>
               <div className={styles.infoRow}>
                 <div className={styles.addressofproject}>
-                  <span className={styles.label}>대표</span>
-                  <span className={styles.value}>신동환</span>
-                  <span className={styles.separator}>|</span>
-                  <span className={styles.label}>주소</span>
+                  <span className={styles.label}>
+                    {language === "KOR" ? "대표" : "Representative"}
+                  </span>
                   <span className={styles.value}>
-                    대구광역시 북구 대공원로 11-5 3층 (읍내동)
+                    {language === "KOR" ? "신동환" : "Dong Hwan - Shin"}
+                  </span>
+                  <span className={styles.separator}>|</span>
+                  <span className={styles.label}>
+                    {language === "KOR" ? "주소" : "Address"}
+                  </span>
+                  <span className={styles.value}>
+                    {language === "KOR"
+                      ? "대구광역시 북구 대공원로 11-5 3층 (읍내동)"
+                      : "3F, 11-5, Daecheon-ro 9-gil, Buk-gu, Daegu, Republic of Korea"}
                   </span>
                 </div>
                 <div className={styles.contactRow}>
@@ -93,7 +111,9 @@ export default function Footer() {
               </div>
             </div>
             <p className={styles.copyright}>
-              COPYRIGHT © 2025 (주)네트워크코리아. ALL RIGHTS RESERVED.
+              {language === "KOR"
+                ? "COPYRIGHT © 2025 (주)네트워크코리아. ALL RIGHTS RESERVED."
+                : "COPYRIGHT © 2025 Network Korea Co., Ltd. ALL RIGHTS RESERVED."}
             </p>
           </div>
 

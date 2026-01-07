@@ -47,6 +47,10 @@
   margin: 0 0 32px 0;
 }
 
+.titleEng {
+  font-size: 45px;
+}
+
 .moreButton {
   display: inline-flex;
   align-items: center;
@@ -119,7 +123,7 @@
   background: #ffffff;
   border: 1.4px solid #a1d5ff;
   border-radius: 12px;
-  padding: 48px 40px;
+  padding: 48px 15px 48px 34px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -159,7 +163,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 32px;
 }
 
 /* Card Title */
@@ -172,6 +175,10 @@
   letter-spacing: -2%;
   color: #081032;
   margin: 0;
+}
+
+.cardTitleEng {
+  font-size: 30px;
 }
 
 /* Desktop/Mobile Image Toggle */
@@ -502,7 +509,7 @@
 
 .solutionLeft {
   flex: 1;
-  max-width: 656px;
+  max-width: 756px;
   background-image: url("../../../public/assets/homepage/leftBack.png");
   background-position: top;
   background-repeat: no-repeat;

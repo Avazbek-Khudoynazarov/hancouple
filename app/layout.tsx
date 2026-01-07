@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/home/Navbar";
 import KakaoMapScript from "@/components/KakaoMapScript";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <KakaoMapScript />
-        <Navbar />
-        {children}
+        <Providers>
+          <KakaoMapScript />
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );

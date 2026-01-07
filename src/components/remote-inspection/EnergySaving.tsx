@@ -2,13 +2,24 @@
 
 import styles from "./RealTimeMonitoring.module.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function EnergySaving() {
+  const { language } = useLanguage();
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h3 className={styles.pageTitle}>진단 후 절감 실행 가이드</h3>
-        <h1 className={styles.mainTitle}>에너지 절감 운영매뉴얼 제공</h1>
+        <h3 className={styles.pageTitle}>
+          {language === "KOR"
+            ? "진단 후 절감 실행 가이드"
+            : "Post-diagnosis Action Guide"}
+        </h3>
+        <h1 className={styles.mainTitle}>
+          {language === "KOR"
+            ? "에너지 절감 운영매뉴얼 제공"
+            : "Energy Saving Manual"}
+        </h1>
 
         <div className={styles.comparisonContainer}>
           {/* First Column */}
@@ -17,10 +28,18 @@ export default function EnergySaving() {
               <div className={styles.cardNumber}>1</div>
               <h4 className={styles.cardLabel}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
-                <p className={styles.cardSubtitle}>정전 캠페인 수준 관리</p>
+                <p className={styles.cardSubtitle}>
+                  {language === "KOR"
+                    ? "정전 캠페인 수준 관리"
+                    : "Managing the level of the energy-saving campaign"}
+                </p>
                 <div className={styles.cardContent}>
                   <ArrowForwardIcon className={styles.arrowIcon} />
-                  <p className={styles.cardText}>실질 절감 효과 낮음</p>
+                  <p className={styles.cardText}>
+                    {language === "KOR"
+                      ? "실질 절감 효과 낮음"
+                      : "Low actual savings effects"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -36,13 +55,27 @@ export default function EnergySaving() {
                 <img src="/assets/remote/table.svg" alt="Data table" />
               </div>
               <div className={styles.cardContentCenterMain}>
-                <p className={styles.cardBottomText}>데이터 기반 맞춤</p>
                 <div className={styles.cardHighlight}>
-                  <ArrowForwardIcon className={styles.arrowIconHighlight} />
-                  <span className={styles.highlightText}>
-                    절감 매뉴얼 자동 제공
-                    <span className={styles.highlightUnderlineEnergy1}></span>
-                  </span>
+                  {language === "KOR" ? (
+                    <>
+                      <p className={styles.cardBottomText}>데이터 기반 맞춤</p>
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <ArrowForwardIcon className={styles.arrowIconHighlight} />
+                        <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                          절감 매뉴얼 자동 제공
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className={styles.highlightMultiLine}>
+                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                        Data-based customized savings
+                      </span>
+                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                        manual automatically provided
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -55,7 +88,9 @@ export default function EnergySaving() {
               <h4 className={styles.cardLabel2}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardContentCenter}>
-                  절감 실행 후 효과 검증 어려움
+                  {language === "KOR"
+                    ? "절감 실행 후 효과 검증 어려움"
+                    : "Difficulty verifying effectiveness after savings implementation"}
                 </p>
               </div>
             </div>
@@ -72,10 +107,20 @@ export default function EnergySaving() {
               </div>
               <div className={styles.cardHighlight}>
                 <div className={styles.cardContentCenterMain}>
-                  <span className={styles.highlightText}>
-                    절감 전/후 효과 리포트 수치화 제공
-                    <span className={styles.highlightUnderlineEnergy2}></span>
-                  </span>
+                  {language === "KOR" ? (
+                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      절감 전/후 효과 리포트 수치화 제공
+                    </span>
+                  ) : (
+                    <div className={styles.highlightMultiLine}>
+                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                        Quantified pre-/post-savings
+                      </span>
+                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                        effect reports provided
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -88,7 +133,9 @@ export default function EnergySaving() {
               <h4 className={styles.cardLabel3}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardContentCenter}>
-                  피크 적격 관리 미흡으로 비용 증가
+                  {language === "KOR"
+                    ? "피크 적격 관리 미흡으로 비용 증가"
+                    : "Increased costs due to inadequate peak power management"}
                 </p>
               </div>
             </div>
@@ -104,10 +151,23 @@ export default function EnergySaving() {
                 <img src="/assets/remote/line.svg" alt="Energy chart" />
               </div>
               <div className={styles.cardContentCenterMain}>
-                <span className={styles.highlightText}>
-                  피크·대기전력·설비 최적화 실행
-                  <span className={styles.highlightUnderlineEnergy3}></span>
-                </span>
+                {language === "KOR" ? (
+                  <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    피크·대기전력·설비 최적화 실행
+                  </span>
+                ) : (
+                  <div className={styles.highlightMultiLine}>
+                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                      Peak, standby power, and
+                    </span>
+                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                      equipment optimization
+                    </span>
+                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                      implementation
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

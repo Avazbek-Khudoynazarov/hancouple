@@ -8,6 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import InquiryModal from "./InquiryModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface SubItem {
   title: string;
@@ -274,7 +275,7 @@ const navDataEng: NavItem[] = [
 
 export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
-  const [language, setLanguage] = useState<"KOR" | "ENG">("KOR");
+  const { language, setLanguage } = useLanguage();
   const [dropdownPosition, setDropdownPosition] = useState<number>(0);
   const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -329,10 +330,7 @@ export default function Navbar() {
     setActiveDropdown(null);
   };
 
-  const toggleLanguage = (lang: "KOR" | "ENG") => {
-    setLanguage(lang);
-  };
-
+  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
     setMobileExpandedItem(null);
@@ -351,11 +349,18 @@ export default function Navbar() {
       <div className={`${styles.navbarContainer} ${language === "ENG" ? styles.navbarContainerEng : ""}`}>
         <Link href="/" className={styles.logo}>
           {language === "ENG" ? (
-            <img
-              src="/assets/homepage/mainLogo3.svg"
-              alt="NetWork Korea"
-              className={styles.logoEng}
-            />
+            <>
+              <img
+                src="/assets/homepage/mainLogo4.svg"
+                alt="NetWork Korea"
+                className={styles.logoDefaultEng}
+              />
+              <img
+                src="/assets/homepage/mainLogo3.svg"
+                alt="NetWork Korea"
+                className={styles.logoHoverEng}
+              />
+            </>
           ) : (
             <>
               <img
@@ -481,7 +486,7 @@ export default function Navbar() {
                       language === "KOR" ? styles.active : ""
                     }`}
                     onClick={() => {
-                      toggleLanguage("KOR");
+                      setLanguage("KOR");
                       setLangDropdownOpen(false);
                     }}>
                     KOR
@@ -491,7 +496,7 @@ export default function Navbar() {
                       language === "ENG" ? styles.active : ""
                     }`}
                     onClick={() => {
-                      toggleLanguage("ENG");
+                      setLanguage("ENG");
                       setLangDropdownOpen(false);
                     }}>
                     ENG
@@ -572,7 +577,7 @@ export default function Navbar() {
               className={`${styles.mobileLangButton} ${
                 language === "KOR" ? styles.active : ""
               }`}
-              onClick={() => toggleLanguage("KOR")}>
+              onClick={() => setLanguage("KOR")}>
               KOR
             </button>
             <span className={styles.separator}>|</span>
@@ -580,7 +585,7 @@ export default function Navbar() {
               className={`${styles.mobileLangButton} ${
                 language === "ENG" ? styles.active : ""
               }`}
-              onClick={() => toggleLanguage("ENG")}>
+              onClick={() => setLanguage("ENG")}>
               ENG
             </button>
           </div>

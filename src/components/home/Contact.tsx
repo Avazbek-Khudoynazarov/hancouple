@@ -3,8 +3,10 @@
 import { useState } from "react";
 import styles from "./Contact.module.css";
 import InquiryModal from "./InquiryModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
+  const { language } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -19,22 +21,41 @@ export default function Contact() {
               className={styles.backgroundText}
             />
             <h2 className={styles.heading}>
-              <span className={styles.desktopBreak}>
-                제품 문의부터 비즈니스 제휴까지
-                <br />
-                무엇이든 물어보세요.
-              </span>
-              <span className={styles.mobileBreak}>
-                제품 문의부터
-                <br />
-                비즈니스 제휴까지
-                <br />
-                무엇이든 물어보세요.
-              </span>
+              {language === "KOR" ? (
+                <>
+                  <span className={styles.desktopBreak}>
+                    제품 문의부터 비즈니스 제휴까지
+                    <br />
+                    무엇이든 물어보세요.
+                  </span>
+                  <span className={styles.mobileBreak}>
+                    제품 문의부터
+                    <br />
+                    비즈니스 제휴까지
+                    <br />
+                    무엇이든 물어보세요.
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className={styles.desktopBreak}>
+                    From product inquiries to business partnerships
+                    <br />
+                    Ask us anything.
+                  </span>
+                  <span className={styles.mobileBreak}>
+                    From product inquiries
+                    <br />
+                    to business partnerships
+                    <br />
+                    Ask us anything.
+                  </span>
+                </>
+              )}
             </h2>
           </div>
           <div className={styles.inputContainer} onClick={() => setIsModalOpen(true)}>
-            문의하기
+            {language === "KOR" ? "문의하기" : "Contact us"}
             <button className={styles.button}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

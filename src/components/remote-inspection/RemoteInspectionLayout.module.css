@@ -64,8 +64,11 @@
 }
 
 .navLeft {
+  max-width: 560px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
@@ -101,17 +104,21 @@
   font-size: 20px;
   font-weight: 700;
   color: #c0c0c0;
-  padding: 0 217px 0 11px;
 }
 
 /* Dropdown Section */
 .navRight {
   position: relative;
+  max-width: 480px;
+  width: 100%;
 }
 
 .dropdownToggle {
+  max-width: 480px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
   background: transparent;
   border: none;
@@ -129,10 +136,7 @@
   font-size: 20px;
   font-weight: 700;
   color: #ffffff;
-  padding-left: 39px;
-  white-space: nowrap;
-  width: 410px !important;
-  text-align: start;
+  margin-left: 40px;
 }
 
 .arrowIcon {
@@ -148,7 +152,7 @@
 
 .dropdown {
   position: absolute;
-  width: 465px;
+  width: 480px;
   top: calc(100% + 18px);
   right: 0;
   background: #ffffff;
@@ -157,7 +161,7 @@
   min-width: 200px;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 400px;
+  max-height: 450px;
   z-index: 1000;
   will-change: auto;
 }
@@ -223,91 +227,21 @@
 }
 
 /* Responsive */
-/* Tablet (1200px and below) */
-@media (max-width: 1200px) {
-  .header {
-    min-height: 500px;
-    padding: 140px 30px 60px 30px;
-  }
-
+@media (max-width: 1024px) {
   .navContainer {
-    padding: 0 30px;
-    height: 75px;
-  }
-
-  .currentMenu {
-    font-size: 18px;
-    padding-left: 35px;
-    width: 370px !important;
-  }
-
-  .arrowIcon {
-    width: 11px;
-    height: 11px;
-    margin-right: 16px;
-  }
-
-  .title {
-    font-size: 40px;
-    margin-bottom: 18px;
-  }
-
-  .subtitle {
-    font-size: 17px;
-  }
-
-  .dropdown {
-    min-width: 370px;
-  }
-
-  .dropdownItem {
-    padding: 14px 22px;
-    font-size: 18px;
+    padding: 0 40px;
   }
 
   .content {
-    padding: 60px;
-  }
-}
-
-/* Tablet Small (1024px and below) */
-@media (max-width: 1024px) {
-  .header {
-    min-height: 480px;
-    padding: 130px 25px 55px 25px;
-  }
-
-  .navContainer {
-    padding: 0 25px;
-    height: 70px;
-  }
-
-  .currentMenu {
-    font-size: 17px;
-    padding-left: 32px;
-    width: 350px !important;
+    padding: 40px;
   }
 
   .title {
-    font-size: 38px;
-    margin-bottom: 16px;
+    font-size: 36px;
   }
 
   .subtitle {
     font-size: 16px;
-  }
-
-  .dropdown {
-    min-width: 350px;
-  }
-
-  .dropdownItem {
-    padding: 13px 20px;
-    font-size: 17px;
-  }
-
-  .content {
-    padding: 50px;
   }
 }
 

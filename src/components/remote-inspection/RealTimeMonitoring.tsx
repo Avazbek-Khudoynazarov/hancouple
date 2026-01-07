@@ -2,13 +2,22 @@
 
 import styles from "./RealTimeMonitoring.module.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function RealTimeMonitoring() {
+  const { language } = useLanguage();
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h3 className={styles.pageTitle}>요금 폭탄 방지</h3>
-        <h1 className={styles.mainTitle}>실시간 피크전력 모니터링</h1>
+        <h3 className={styles.pageTitle}>
+          {language === "KOR" ? "요금 폭탄 방지" : "Preventing Bill Shock"}
+        </h3>
+        <h1 className={styles.mainTitle}>
+          {language === "KOR"
+            ? "실시간 피크전력 모니터링"
+            : "Real-time Peak Power Monitoring"}
+        </h1>
 
         <div className={styles.comparisonContainer}>
           <div className={styles.column}>
@@ -16,10 +25,18 @@ export default function RealTimeMonitoring() {
               <div className={styles.cardNumber}>1</div>
               <h4 className={styles.cardLabel}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
-                <p className={styles.cardSubtitle}>월별 고지서만 확인</p>
+                <p className={styles.cardSubtitle}>
+                  {language === "KOR"
+                    ? "월별 고지서만 확인"
+                    : "Checking only monthly bills"}
+                </p>
                 <div className={styles.cardContent}>
                   <ArrowForwardIcon className={styles.arrowIcon} />
-                  <p className={styles.cardText}>피크 발생 원인 불명확</p>
+                  <p className={styles.cardText}>
+                    {language === "KOR"
+                      ? "피크 발생 원인 불명확"
+                      : "Unclear causes of peak usage"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -35,13 +52,16 @@ export default function RealTimeMonitoring() {
               </div>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardBottomText}>
-                  15분 단위 실시간 모니터링
+                  {language === "KOR"
+                    ? "15분 단위 실시간 모니터링"
+                    : "15-minute real-time monitoring"}
                 </p>
                 <div className={styles.cardHighlight}>
                   <ArrowForwardIcon className={styles.arrowIconHighlight} />
-                  <span className={styles.highlightText}>
-                    피크 원인 추적 가능
-                    <span className={styles.highlightUnderline1}></span>
+                  <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                    {language === "KOR"
+                      ? "피크 원인 추적 가능"
+                      : "Traceable peak causes"}
                   </span>
                 </div>
               </div>
@@ -54,7 +74,15 @@ export default function RealTimeMonitoring() {
               <h4 className={styles.cardLabel2}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardContentCenter}>
-                  관리자는 사후 대응만 가능
+                  {language === "KOR" ? (
+                    "관리자는 사후 대응만 가능"
+                  ) : (
+                    <>
+                      Managers can only react
+                      <br />
+                      after the issue occurs.
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -71,10 +99,20 @@ export default function RealTimeMonitoring() {
               </div>
               <div className={styles.cardHighlight}>
                 <div className={styles.cardContentCenterMain}>
-                  <span className={styles.highlightText}>
-                    자동 알림 & 절감 가이드 제공
-                    <span className={styles.highlightUnderline2}></span>
-                  </span>
+                  {language === "KOR" ? (
+                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      자동 알림 & 절감 가이드 제공
+                    </span>
+                  ) : (
+                    <div className={styles.highlightMultiLine}>
+                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                        Automatic alerts & savings
+                      </span>
+                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                        guidance provided
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -86,8 +124,16 @@ export default function RealTimeMonitoring() {
               <div className={styles.cardNumber3}>3</div>
               <h4 className={styles.cardLabel3}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
-                <p className={styles.cardSubtitle}>계약전력 초과로</p>
-                <p className={styles.cardContentCenter}>불필요한 요금 지출</p>
+                <p className={styles.cardSubtitle}>
+                  {language === "KOR"
+                    ? "계약전력 초과로"
+                    : "Unnecessary expenses"}
+                </p>
+                <p className={styles.cardContentCenter}>
+                  {language === "KOR"
+                    ? "불필요한 요금 지출"
+                    : "due to exceeding contracted power"}
+                </p>
               </div>
             </div>
 
@@ -102,10 +148,15 @@ export default function RealTimeMonitoring() {
                 <img src="/assets/remote/down.svg" alt="Cost reduction" />
               </div>
               <div className={styles.cardContentCenterMain}>
-                <p className={styles.cardBottomText}>계약전력 최적화로</p>
-                <span className={styles.highlightText}>
-                  연간 요금 절감
-                  <span className={styles.highlightUnderline3}></span>
+                <p className={styles.cardBottomText}>
+                  {language === "KOR"
+                    ? "계약전력 최적화로"
+                    : "through contracted power optimization"}
+                </p>
+                <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                  {language === "KOR"
+                    ? "연간 요금 절감"
+                    : "Annual cost savings"}
                 </span>
               </div>
             </div>

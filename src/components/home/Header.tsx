@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import PauseIcon from "@mui/icons-material/Pause";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import styles from "./Header.module.css";
+import { useLanguage } from "@/context/LanguageContext";
 
-const slides = [
+const slidesKor = [
   {
     image: "/assets/homepage/back/11.png",
     title: "AI가 전기를 분석하고, 위험을 예측하고\n비용을 줄어드립니다.",
@@ -65,13 +66,79 @@ const slides = [
   },
 ];
 
+const slidesEng = [
+  {
+    image: "/assets/homepage/back/11.png",
+    title: "AI analyzes electricity,\npredicts risks, and reduces costs.",
+    description:
+      "AI analyzes power usage in real time to immediately identify risks and waste.\nData-driven diagnostics enable safer, more efficient building operations.",
+  },
+  {
+    image: "/assets/homepage/back/1.png",
+    title: "The starting point for preventing\nelectrical safety accidents",
+    description: "Continuous Monitoring Service",
+  },
+  {
+    image: "/assets/homepage/back/2.png",
+    title: "Efficient usage monitoring\nand peak power minimization",
+    description: "electricity cost-saving operation solution",
+  },
+  {
+    image: "/assets/homepage/back/3.png",
+    title: "If electricity bills are\na concern",
+    description: "Savings & Contract Power Optimization",
+  },
+  {
+    image: "/assets/homepage/back/4.png",
+    title:
+      "If you need to comply with the\nSerious Accidents Punishment Act\ncaused by worker injuries",
+    description: "AI Remote Electrical Safety",
+  },
+  {
+    image: "/assets/homepage/back/5.png",
+    title: "If you're constantly exposed to\nfire risks and need management",
+    description: "Real-time Prevention per Circuit Breaker",
+  },
+  {
+    image: "/assets/homepage/back/6.png",
+    title:
+      "If you want to know the electricity\nusage per circuit breaker (equipment)",
+    description: "Real-time Analysis Reporth",
+  },
+  {
+    image: "/assets/homepage/back/7.png",
+    title: "If You're Worried About\nAdditional Charges from Peak Power",
+    description: "15-Minute Interval Analysis & Alerts",
+  },
+  {
+    image: "/assets/homepage/back/8.png",
+    title:
+      "Want to see electrical safety,\npeak usage, and wasted power\nat a glance",
+    description: "Integrated Dashboard Provided",
+  },
+  {
+    image: "/assets/homepage/back/9.png",
+    title: "Need carbon neutrality and\nESG management evaluations",
+    description:
+      "Provide automated savings performance & carbon reduction reports",
+  },
+  {
+    image: "/assets/homepage/back/10.png",
+    title: "Want to prevent major disasters\nand fires proactively",
+    description:
+      "Real-time electrical safety monitoring & automatic alerts per circuit breaker",
+  },
+];
+
 export default function Header() {
+  const { language } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  const slides = language === "KOR" ? slidesKor : slidesEng;
   const totalSlides = slides.length;
 
   const startAutoSlide = () => {

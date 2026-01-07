@@ -11,7 +11,6 @@
 .content {
   max-width: 1294px;
   width: 100%;
-  padding: 0 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +56,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 390px;
+  max-width: 394px;
 }
 
 /* Top Cards (AS-IS) */
@@ -369,7 +368,7 @@
   background: rgba(245, 254, 255, 0.4);
   border: 1.5px solid rgba(37, 196, 146, 0.5);
   border-radius: 16px;
-  padding: 40px 10px;
+  padding: 40px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -383,7 +382,7 @@
   background: rgba(245, 254, 255, 0.4);
   border: 1.5px solid rgba(0, 183, 221, 0.5);
   border-radius: 16px;
-  padding: 40px 10px;
+  padding: 40px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -397,7 +396,7 @@
   background: rgba(245, 254, 255, 0.4);
   border: 1.5px solid rgba(0, 136, 255, 0.5);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -531,9 +530,63 @@
   font-size: 20px;
   font-weight: 700;
   color: #333333;
-  line-height: 150%;
+  line-height: 200%;
   position: relative;
-  display: inline-block;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 4px;
+  width: fit-content;
+  align-self: center;
+}
+
+/* Multi-line highlight backgrounds - uses gradient to create bottom underline effect */
+.highlight1 {
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(106, 240, 198, 0.3) 65%
+  );
+}
+
+.highlight2 {
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(0, 183, 221, 0.2) 65%
+  );
+}
+
+.highlight3 {
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(0, 136, 255, 0.2) 65%
+  );
+}
+
+.highlight4 {
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(255, 179, 0, 0.2) 65%
+  );
+}
+
+.highlightReport2 {
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(40, 199, 200, 0.2) 65%
+  );
+}
+
+/* Container for multi-line highlights */
+.highlightMultiLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
 /* Highlight underlines with specific colors and dimensions */
@@ -975,6 +1028,7 @@
 
   .highlightText {
     font-size: 14px;
+    line-height: 180%;
   }
 
   .highlightUnderline1,
@@ -1053,6 +1107,7 @@
 
   .highlightText {
     font-size: 13px;
+    line-height: 180%;
   }
   .highlightUnderline1 {
     width: 130px;

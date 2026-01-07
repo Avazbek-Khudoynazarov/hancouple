@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./InquiryModal.module.css";
 import CloseIcon from "@mui/icons-material/Close";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface InquiryModalProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface InquiryModalProps {
 }
 
 export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -75,11 +77,11 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
         setShowSuccessModal(true);
       } else {
         const data = await response.json();
-        setErrorMessage(data.message || "문의 접수 중 오류가 발생했습니다.");
+        setErrorMessage(data.message || (language === "KOR" ? "문의 접수 중 오류가 발생했습니다." : "An error occurred while submitting your inquiry."));
       }
     } catch (error) {
       console.error("Submit error:", error);
-      setErrorMessage("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
+      setErrorMessage(language === "KOR" ? "네트워크 오류가 발생했습니다. 다시 시도해주세요." : "A network error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -122,9 +124,13 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
           <div className={styles.modal}>
         {/* Header */}
         <div className={styles.header}>
-          <h2 className={styles.title}>상담 및 문의하기</h2>
+          <h2 className={styles.title}>
+            {language === "KOR" ? "상담 및 문의하기" : "Support & Inquiries"}
+          </h2>
           <p className={styles.subtitle}>
-            궁금한 사항을 남겨주시면 빠른 시일 내에 답변 드리겠습니다.
+            {language === "KOR"
+              ? "궁금한 사항을 남겨주시면 빠른 시일 내에 답변 드리겠습니다."
+              : "Please leave your questions, and we will respond promptly."}
           </p>
           <div className={styles.emailInfo}>
             <span className={styles.emailLabel}>E-mail</span>
@@ -141,28 +147,28 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             {/* Row 1 */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                이름 (담당자) <span className={styles.required}>*</span>
+                {language === "KOR" ? "이름 (담당자)" : "Name (Person in Charge)"} <span className={styles.required}>*</span>
               </label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="이름을 입력해주세요"
+                placeholder={language === "KOR" ? "이름을 입력해주세요" : "Please enter your name"}
                 className={styles.input}
                 required
               />
             </div>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                연락처 <span className={styles.required}>*</span>
+                {language === "KOR" ? "연락처" : "Contact"} <span className={styles.required}>*</span>
               </label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                placeholder="하이픈(-) 없이 01012345678 형태로 입력해주세요"
+                placeholder={language === "KOR" ? "하이픈(-) 없이 01012345678 형태로 입력해주세요" : "Please enter in the format 01012345678 without hyphens (-)"}
                 className={styles.input}
                 required
               />
@@ -171,28 +177,28 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             {/* Row 2 */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                기업명 <span className={styles.required}>*</span>
+                {language === "KOR" ? "기업명" : "Company Name"} <span className={styles.required}>*</span>
               </label>
               <input
                 type="text"
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                placeholder="기업명을 입력해주세요"
+                placeholder={language === "KOR" ? "기업명을 입력해주세요" : "Please enter your company name"}
                 className={styles.input}
                 required
               />
             </div>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                부서(직위) <span className={styles.required}>*</span>
+                {language === "KOR" ? "부서(직위)" : "Department (Position)"} <span className={styles.required}>*</span>
               </label>
               <input
                 type="text"
                 name="department"
                 value={formData.department}
                 onChange={handleInputChange}
-                placeholder="부서를 입력해주세요"
+                placeholder={language === "KOR" ? "부서를 입력해주세요" : "Please enter your department"}
                 className={styles.input}
                 required
               />
@@ -201,21 +207,21 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             {/* Row 3 */}
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                이메일 <span className={styles.required}>*</span>
+                {language === "KOR" ? "이메일" : "E-mail"} <span className={styles.required}>*</span>
               </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="이메일을 입력해주세요"
+                placeholder={language === "KOR" ? "이메일을 입력해주세요" : "Please enter your company E-mail"}
                 className={styles.input}
                 required
               />
             </div>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                희망 시공 일정 <span className={styles.required}>*</span>
+                {language === "KOR" ? "희망 시공 일정" : "Preferred construction schedule"} <span className={styles.required}>*</span>
               </label>
               <div className={styles.datePickerRow}>
                 <div className={styles.dateSelects}>
@@ -226,7 +232,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     className={styles.dateSelect}
                     disabled={formData.noSchedule}
                   >
-                    <option value="">년도</option>
+                    <option value="">{language === "KOR" ? "년도" : "YYYY"}</option>
                     {years.map((year) => (
                       <option key={year} value={year}>
                         {year}
@@ -240,7 +246,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     className={styles.dateSelect}
                     disabled={formData.noSchedule}
                   >
-                    <option value="">월</option>
+                    <option value="">{language === "KOR" ? "월" : "MM"}</option>
                     {months.map((month) => (
                       <option key={month} value={month}>
                         {month}
@@ -254,7 +260,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     className={styles.dateSelect}
                     disabled={formData.noSchedule}
                   >
-                    <option value="">일</option>
+                    <option value="">{language === "KOR" ? "일" : "DD"}</option>
                     {days.map((day) => (
                       <option key={day} value={day}>
                         {day}
@@ -270,7 +276,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     onChange={handleInputChange}
                     className={styles.checkbox}
                   />
-                  <span className={styles.checkboxText}>정해진 기간 없음</span>
+                  <span className={styles.checkboxText}>{language === "KOR" ? "정해진 기간 없음" : "No set period"}</span>
                 </label>
               </div>
             </div>
@@ -279,14 +285,14 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
           {/* Content */}
           <div className={styles.formGroupFull}>
             <label className={styles.label}>
-              문의 상세 내용 <span className={styles.required}>*</span>
+              {language === "KOR" ? "문의 상세 내용" : "Inquiry Details"} <span className={styles.required}>*</span>
             </label>
             <div className={styles.textareaWrapper}>
               <textarea
                 name="content"
                 value={formData.content}
                 onChange={handleInputChange}
-                placeholder="문의 세부 내용을 입력해주세요"
+                placeholder={language === "KOR" ? "문의 세부 내용을 입력해주세요" : "Please enter the details of your inquiry"}
                 className={styles.textarea}
                 maxLength={1000}
                 required
@@ -308,14 +314,16 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                 className={styles.checkbox}
                 required
               />
-              <span className={styles.privacyText}>개인정보 수집 및 이용 동의</span>
+              <span className={styles.privacyText}>
+                {language === "KOR" ? "개인정보 수집 및 이용 동의" : "Consent to Collection and Use of Personal Information"}
+              </span>
             </label>
             <button
               type="button"
               className={styles.viewButton}
               onClick={() => setShowPrivacyModal(true)}
             >
-              보기
+              {language === "KOR" ? "보기" : "View"}
             </button>
           </div>
 
@@ -330,7 +338,9 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             className={styles.submitButton}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "접수 중..." : "문의하기"}
+            {isSubmitting
+              ? (language === "KOR" ? "접수 중..." : "Sending...")
+              : (language === "KOR" ? "문의하기" : "Send Inquiry")}
           </button>
         </form>
       </div>
@@ -344,7 +354,9 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
           />
           <div className={styles.privacyModal}>
             <div className={styles.privacyHeader}>
-              <h3 className={styles.privacyTitle}>개인정보 수집 및 이용 동의</h3>
+              <h3 className={styles.privacyTitle}>
+                {language === "KOR" ? "개인정보 수집 및 이용 동의" : "Consent to Collection and Use of Personal Information"}
+              </h3>
               <button
                 className={styles.privacyCloseButton}
                 onClick={() => setShowPrivacyModal(false)}
@@ -354,20 +366,25 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             </div>
             <div className={styles.privacyContent}>
               <p className={styles.privacyIntro}>
-                수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유
-                및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+                {language === "KOR"
+                  ? "수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다."
+                  : "Please read carefully and agree after reviewing the items of personal information collected, the purpose of collection and use, and the retention and use period."}
               </p>
               <ul className={styles.privacyList}>
                 <li>
-                  <strong>· 수집 및 이용목적</strong> : 문의 접수 및 처리, 처리 내역
-                  보관 용도, 중복 상담 확인
+                  <strong>{language === "KOR" ? "· 수집 및 이용목적" : "· Purpose of Collection and Use"}</strong> : {language === "KOR"
+                    ? "문의 접수 및 처리, 처리 내역 보관 용도, 중복 상담 확인"
+                    : "Receiving and processing inquiries, storing and processing records, verifying duplicate consultations"}
                 </li>
                 <li>
-                  <strong>· 항목</strong> : (필수) 이름, 연락처, 기업명, 부서(직위),
-                  이메일, 희망 시공 일정, 문의 상세 내용
+                  <strong>{language === "KOR" ? "· 항목" : "· Items"}</strong> : {language === "KOR"
+                    ? "(필수) 이름, 연락처, 기업명, 부서(직위), 이메일, 희망 시공 일정, 문의 상세 내용"
+                    : "(Required) Name, Contact, Company Name, Department (Position), Email, Preferred Construction Schedule, Inquiry Details"}
                 </li>
                 <li>
-                  <strong>· 보관기간</strong> : 수집·이용 동의일로부터 12개월
+                  <strong>{language === "KOR" ? "· 보관기간" : "· Retention Period"}</strong> : {language === "KOR"
+                    ? "수집·이용 동의일로부터 12개월"
+                    : "12 months from the date of consent to collection and use"}
                 </li>
               </ul>
             </div>
@@ -390,10 +407,14 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             </button>
             <div className={styles.successContent}>
               <p className={styles.successText}>
-                상담 및 문의가 성공적으로 접수되었습니다.
+                {language === "KOR"
+                  ? "상담 및 문의가 성공적으로 접수되었습니다."
+                  : "Your consultation and inquiry have been successfully received."}
               </p>
               <p className={styles.successSubtext}>
-                확인 후 빠른 시일 내에 답변드리겠습니다.
+                {language === "KOR"
+                  ? "확인 후 빠른 시일 내에 답변드리겠습니다."
+                  : "We will respond promptly after review."}
               </p>
             </div>
           </div>

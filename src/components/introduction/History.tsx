@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import "./history.css";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Marker = { topPct: number; year: string };
 type TimelineItem = {
@@ -15,7 +16,7 @@ type TimelineItem = {
   mobileAnchorRatio?: number;
 };
 
-const timelineData: TimelineItem[] = [
+const timelineDataKor: TimelineItem[] = [
   {
     year: "2024",
     monthList: ["12", "11", "01"],
@@ -138,7 +139,134 @@ const timelineData: TimelineItem[] = [
   },
 ];
 
+const timelineDataEng: TimelineItem[] = [
+  {
+    year: "2024",
+    monthList: ["12", "11", "01"],
+    texts: [
+      "Acquired SME Technology Market Certification",
+      "Obtained Direct Production Confirmation Certificate",
+      "Procurement Registration (Designated as Excellent Product) Smart Electrical Safety Solution enabling monitoring and control",
+    ],
+    anchorRatio: 0.005,
+    mobileAnchorRatio: -0.18,
+  },
+  {
+    year: "2023",
+    monthList: ["08", "05"],
+    texts: [
+      "Registered with the Korea Occupational Safety and Health Agency for Smart Safety Equipment Items",
+      "Registered as a Samsung C&T Partner Company",
+    ],
+    anchorPx: 10,
+    mobileAnchorPx: -45,
+  },
+  {
+    year: "2022",
+    monthList: ["05", "03", "01"],
+    texts: [
+      "Registered as a Green Specialized Company",
+      "Registered as an Energy Service Company (ESCO)",
+      "Registered as a Carbon Voucher Implementation Agency with the Ministry of SMEs and Startups",
+    ],
+    anchorRatio: 0.09,
+    mobileAnchorRatio: -0.07,
+  },
+  {
+    year: "2021",
+    monthList: ["12", "10", "09", "04"],
+    texts: [
+      "Obtained Technology Innovation SME (Inno-Biz) Certificate Obtained Innovative Product Designation Certificate (SBP-E01-64W)",
+      "Registered as Smart Factory Supplier",
+      "Obtained Green Technology Product Certification Obtained Green Technology Certification for IoT Power Analysis and Control Device (1BF-16-5, SMF-E11-16W, SBP-E01-64W)",
+      "Obtained Green Technology Certification Monitoring and Control Technology Optimized through Hazardous Power and Wasted Power Analysis (All-in-one Service)",
+    ],
+    anchorPx: 60,
+    mobileAnchorPx: -1,
+  },
+  {
+    year: "2020",
+    monthList: ["11", "05"],
+    texts: [
+      "Selected as a Military Service Designated Company (Industrial Enterprise)",
+      "Selected as an Innovative Prototype Product by the Public Procurement Service for its Power Monitoring Automatic Disconnection System",
+    ],
+    mobileAnchorRatio: 0.07,
+  },
+  {
+    year: "2019",
+    monthList: ["12", "04"],
+    texts: [
+      "Selected for Venture Korea Registration with 8 Smart Power Control Solutions",
+      "Selected as an Outstanding Company by Visitors at the National Marketplace Exhibition (Awarded the Public Procurement Service Commissioner's Award)",
+    ],
+    anchorPx: 110,
+    mobileAnchorPx: 45,
+  },
+  {
+    year: "2018",
+    monthList: ["06", "05"],
+    texts: [
+      "Awarded Certificate of Commendation (Minister of SMEs and Startups) Selected as 'Hidden Star 5' at the SME Marketing Fair (2018) Appeared on MBC's special live broadcast 'Cheer Up, SMEs' TV program Selected as a promotional company for the Korea SMEs and Startups Agency's HIT500 (Outstanding SME Promising Products) Registered two patents",
+      "KC(Korea Certification) Acquired certifications Participated in Spain's MWC and Germany's CEBIT exhibitions ISO9001/14001 Acquired certifications",
+    ],
+    anchorRatio: 0.45,
+    mobileAnchorRatio: 0.17,
+  },
+  {
+    year: "2017",
+    monthList: ["12", "09", "01~12"],
+    texts: [
+      "Obtained Wireless Electromagnetic Compatibility Registration, Registered 2 Patents Designated as Export-Promising SME by Ministry of SMEs and Startups",
+      "Launched Smart Outlet [3CYS AKIGO]",
+      "Participated in World-Leading Exhibitions: CES (USA), COMMUNIC ASIA (Singapore), GITEX (UAE), BIGS (UAE), ELECTRONICS (Hong Kong)",
+    ],
+    anchorPx: 160,
+    mobileAnchorPx: 95,
+  },
+  {
+    year: "2016",
+    monthList: ["11", "10"],
+    texts: ["Filed European Patent Application", "Trademark Registration"],
+    anchorPx: 160,
+    mobileAnchorPx: 95,
+  },
+  {
+    year: "2015",
+    monthList: ["12", "09", "07"],
+    texts: [
+      "Software Quality Certification(GS)",
+      "Patent Registration (Emergency Reporting Device and Its Control Method) and four other registrations",
+      "Recognized as a company-affiliated research institute designated by the Ministry of SMEs and Startups",
+    ],
+    anchorPx: 160,
+    mobileAnchorPx: 95,
+  },
+  {
+    year: "2014",
+    monthList: ["07"],
+    texts: ["Contracted for the Small and Medium Business Administration R&D Technology Development Project"],
+    anchorPx: 160,
+    mobileAnchorPx: 95,
+  },
+  {
+    year: "2003~2013",
+    monthList: [""],
+    texts: ["Contracted for KT, SKT, and LG Uplus wireless and transmission network facility construction projects"],
+    anchorPx: 160,
+    mobileAnchorPx: 95,
+  },
+  {
+    year: "2003",
+    monthList: ["09"],
+    texts: ["Incorporated as Network Korea Co., Ltd."],
+    anchorPx: 160,
+    mobileAnchorPx: 95,
+  },
+];
+
 export default function History() {
+  const { language } = useLanguage();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sectionsRef = useRef<HTMLDivElement[]>([]);
   const [markers, setMarkers] = useState<Marker[]>([]);
@@ -148,6 +276,8 @@ export default function History() {
   const [snappedIndex, setSnappedIndex] = useState(-1);
   const lastRawPctRef = useRef(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  const timelineData = language === "KOR" ? timelineDataKor : timelineDataEng;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1000);
@@ -293,7 +423,7 @@ export default function History() {
     if (ro && containerRef.current) ro.observe(containerRef.current);
 
     return () => ro?.disconnect();
-  }, [isMobile]);
+  }, [isMobile, language]);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -323,8 +453,17 @@ export default function History() {
       <div className="introduce-header">
         <p className="introduce-tab">History</p>
         <h2 className="introduce-title">
-          네트워크코리아가 걸어온 길,
-          <br /> <span style={{ color: "#0088ff" }}>미래를 향한 발걸음</span>
+          {language === "KOR" ? (
+            <>
+              네트워크코리아가 걸어온 길,
+              <br /> <span style={{ color: "#0088ff" }}>미래를 향한 발걸음</span>
+            </>
+          ) : (
+            <>
+              Network Korea's Company History:
+              <br /> <span style={{ color: "#0088ff" }}>Steps Toward the Future</span>
+            </>
+          )}
         </h2>
       </div>
 
