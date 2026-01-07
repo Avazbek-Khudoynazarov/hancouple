@@ -80,11 +80,11 @@
   margin-top: 20px;
   width: 100%;
   padding: 0 80px 0 30px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #0099ff;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0088ff;
   background: #ffffff;
-  border: 2px solid #0099ff;
+  border: 2px solid rgba(0, 136, 255, 0.2);
   border-radius: 50px;
   outline: none;
   transition: all 0.3s ease;
@@ -111,13 +111,21 @@
   transition: all 0.3s ease;
 }
 
-.button:hover {
-  background: #0077cc;
+.button svg path {
+  transition: fill 0.3s ease;
 }
 
-.penIcon {
-  width: 24px;
-  height: 24px;
+.inputContainer:hover {
+  background: #0088ff;
+  color: #ffffff;
+}
+
+.inputContainer:hover .button {
+  background: #ffffff;
+}
+
+.inputContainer:hover .button svg path {
+  fill: #0088ff;
 }
 
 /* Responsive - Tablet and Desktop */
