@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./QnA.module.css";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -9,23 +9,29 @@ interface TextSegment {
   bold?: boolean;
 }
 
+interface FormattedContent {
+  lines: { label?: string; text: string }[];
+  subSection?: {
+    title: string;
+    bullets: string[];
+  };
+}
+
+interface ImageContent {
+  title: string;
+  imageSrc: string;
+}
+
+interface RichTextContent {
+  lines: TextSegment[][];
+}
+
 interface AnswerContent {
   type: "text" | "formatted" | "image" | "richText";
   content?: string;
-  formattedContent?: {
-    lines: { label?: string; text: string }[];
-    subSection?: {
-      title: string;
-      bullets: string[];
-    };
-  };
-  imageContent?: {
-    title: string;
-    imageSrc: string;
-  };
-  richTextContent?: {
-    lines: TextSegment[][];
-  };
+  formattedContent?: FormattedContent;
+  imageContent?: ImageContent;
+  richTextContent?: RichTextContent;
 }
 
 interface QnAItemData {
@@ -34,146 +40,24 @@ interface QnAItemData {
   answer: AnswerContent;
 }
 
-const qnaDataKor: QnAItemData[] = [
-  {
-    id: 1,
-    question: "법정 점검주기는 어떻게 되나요 ? (직무고시 기준)",
-    answer: {
-      type: "formatted",
-      formattedContent: {
-        lines: [
-          {
-            label: "수시점검",
-            text: " : 상시 전기설비 점검 (사고 발생 위험, 이상 징후 발견 시)",
-          },
-          { label: "월간점검", text: " : 매월 1회 이상" },
-          {
-            label: "분기점검",
-            text: " : 3개월마다 1회 이상 (대규모 수용가/특정 시설)",
-          },
-          {
-            label: "반기·연간점검",
-            text: " : 일부 항목은 6개월~1년 주기 (절연저항, 접지저항, 차단기 성능시험 등)",
-          },
-        ],
-        subSection: {
-          title: "점검일지 보관기간 :",
-          bullets: [
-            "「전기안전관리 직무고시」 제 17조 : 3년간 보관 의무",
-            "점검일지는 법적 감사 · 사고 조사 시 제출해야 함",
-          ],
-        },
-      },
-    },
-  },
-  {
-    id: 2,
-    question: "종래 기술방식과 네트워크 제품방식의 차이는 무엇인가요 ?",
-    answer: {
-      type: "image",
-      imageContent: {
-        title: "종래방식 vs 우리 제품 솔루션 비교",
-        imageSrc: "/assets/contact/QnA.png",
-      },
-    },
-  },
-  {
-    id: 3,
-    question: "형식 포인트는 무엇인가요 ?",
-    answer: {
-      type: "richText",
-      richTextContent: {
-        lines: [
-          [{ text: "종래방식은 법정 최소 준수 + 사후 점검 중심이고," }],
-          [
-            { text: "저희 네트워크코리아의 제품은 " },
-            {
-              text: "법정 준수 + 실시간 사전 예방 + 자동 보고 + 3년 전자보관",
-              bold: true,
-            },
-            { text: "으로" },
-          ],
-          [
-            { text: "효율성과 안전성 모두 강화", bold: true },
-            { text: " 시켰습니다." },
-          ],
-        ],
-      },
-    },
-  },
-];
-
-const qnaDataEng: QnAItemData[] = [
-  {
-    id: 1,
-    question:
-      "What is the statutory inspection cycle? (Based on job description)",
-    answer: {
-      type: "formatted",
-      formattedContent: {
-        lines: [
-          {
-            label: "Ad hoc inspection",
-            text: " : Continuous electrical equipment inspection (when accident risk or abnormal signs are detected)",
-          },
-          { label: "Monthly inspection", text: " : At least once per month" },
-          {
-            label: "Quarterly Inspection",
-            text: " : At least once every 3 months (for large-scale consumers/specific facilities)",
-          },
-          {
-            label: "Semi-annual/Annual Inspection",
-            text: " : Some items at 6-month to 1-year intervals (insulation resistance, ground resistance, circuit breaker performance tests, etc.)",
-          },
-        ],
-        subSection: {
-          title: "Inspection Log Retention Period :",
-          bullets: [
-            "Article 17 of the \"Electrical Safety Management Duties Notice\": Mandatory 3-year retention",
-            "Inspection logs must be submitted during legal audits and accident investigations.",
-          ],
-        },
-      },
-    },
-  },
-  {
-    id: 2,
-    question:
-      "What is the difference between conventional technology methods and network product methods?",
-    answer: {
-      type: "image",
-      imageContent: {
-        title: "Traditional Approach vs. Our Product Solution Comparison",
-        imageSrc: "/assets/contact/QnAEng.png",
-      },
-    },
-  },
-  {
-    id: 3,
-    question: "What is a formal point?",
-    answer: {
-      type: "richText",
-      richTextContent: {
-        lines: [
-          [
-            {
-              text: "The conventional approach focuses on minimum legal compliance + post-inspection checks,",
-            },
-          ],
-          [
-            { text: "while Network Korea's product enhances " },
-            { text: "both efficiency and safety", bold: true },
-            { text: " through " },
-            {
-              text: "legal compliance, real-time proactive prevention, automated reporting, and 3-year electronic archiving.",
-              bold: true,
-            },
-          ],
-        ],
-      },
-    },
-  },
-];
+interface ApiQnAItem {
+  id: number;
+  questionKor: string;
+  questionEng: string;
+  answerType: "text" | "formatted" | "image" | "richText";
+  answerKor: {
+    content?: string;
+    formattedContent?: FormattedContent;
+    imageContent?: ImageContent;
+    richTextContent?: RichTextContent;
+  };
+  answerEng: {
+    content?: string;
+    formattedContent?: FormattedContent;
+    imageContent?: ImageContent;
+    richTextContent?: RichTextContent;
+  };
+}
 
 const ITEMS_PER_PAGE = 3;
 
@@ -181,8 +65,41 @@ export default function QnA() {
   const { language } = useLanguage();
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [apiData, setApiData] = useState<ApiQnAItem[]>([]);
 
-  const qnaData = language === "KOR" ? qnaDataKor : qnaDataEng;
+  useEffect(() => {
+    const fetchQnaData = async () => {
+      try {
+        const response = await fetch("/api/qna");
+        if (response.ok) {
+          const data = await response.json();
+          setApiData(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch Q&A data:", error);
+      }
+    };
+    fetchQnaData();
+  }, []);
+
+  // Convert API data to component format based on language
+  const qnaData: QnAItemData[] = apiData.map((item) => {
+    const isKorean = language === "KOR";
+    const answerData = isKorean ? item.answerKor : item.answerEng;
+
+    return {
+      id: item.id,
+      question: isKorean ? item.questionKor : item.questionEng,
+      answer: {
+        type: item.answerType,
+        content: answerData.content,
+        formattedContent: answerData.formattedContent,
+        imageContent: answerData.imageContent,
+        richTextContent: answerData.richTextContent,
+      },
+    };
+  });
+
   const totalPages = Math.ceil(qnaData.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = qnaData.slice(startIndex, startIndex + ITEMS_PER_PAGE);

@@ -41,7 +41,9 @@ export default function Camping() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/seventh1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/seventh1.png"
+                  : "/assets/operation/mobile/seventh1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message7.png"
                 : "/assets/operation/message7Eng.png"

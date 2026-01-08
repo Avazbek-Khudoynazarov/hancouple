@@ -41,7 +41,9 @@ export default function SmallBusiness() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/fifth1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/fifth1.png"
+                  : "/assets/operation/mobile/fifth1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message5.png"
                 : "/assets/operation/message5Eng.png"

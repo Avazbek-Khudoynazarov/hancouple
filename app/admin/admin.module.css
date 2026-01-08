@@ -1,0 +1,668 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+
+/* Login Page */
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.loginBox {
+  background: #ffffff;
+  padding: 48px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+}
+
+.loginTitle {
+  font-family: "Wanted Sans Variable", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loginInput {
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.loginInput:focus {
+  border-color: #0088ff;
+}
+
+.loginButton {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #0088ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.loginButton:hover {
+  background: #0066cc;
+}
+
+/* Admin Layout with Sidebar */
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: "Wanted Sans Variable", sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.sidebarHeader {
+  padding: 32px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebarTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.sidebarNav {
+  flex: 1;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.navItemActive {
+  background: rgba(0, 136, 255, 0.3);
+  color: #ffffff;
+}
+
+.navIcon {
+  font-size: 18px;
+}
+
+.sidebarFooter {
+  padding: 24px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoutButton {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logoutButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+}
+
+.header {
+  background: #ffffff;
+  padding: 24px 48px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.content {
+  padding: 48px;
+}
+
+/* Form Section */
+.formSection {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.sectionDescription {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.input {
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: #0088ff;
+}
+
+.fileInput {
+  padding: 12px;
+  font-size: 14px;
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.fileInput:hover {
+  border-color: #0088ff;
+}
+
+.imagePreview {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.previewImage {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.submitButton {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #0088ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: fit-content;
+}
+
+.submitButton:hover {
+  background: #0066cc;
+}
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+.errorText {
+  color: #e74c3c;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.successText {
+  color: #27ae60;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Certificate List */
+.listSection {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.certificateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.certificateCard {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificateCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.certificateImage {
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.certificateInfo {
+  text-align: center;
+}
+
+.certTitleKor {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.certTitleEng {
+  font-size: 13px;
+  color: #888;
+}
+
+.deleteButton {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e74c3c;
+  background: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.deleteButton:hover {
+  background: #e74c3c;
+  color: #ffffff;
+}
+
+/* Consulting Links Section */
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.linkCard {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+  border-left: 4px solid #0088ff;
+}
+
+.linkHeader {
+  margin-bottom: 16px;
+}
+
+.linkTitleKor {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.linkTitleEng {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.linkForm {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.linkInput {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  font-family: monospace;
+  transition: border-color 0.3s;
+}
+
+.linkInput:focus {
+  border-color: #0088ff;
+}
+
+.updateButton {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #0088ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.updateButton:hover {
+  background: #0066cc;
+}
+
+.currentUrl {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.currentUrl code {
+  background: #e8e8e8;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #555;
+}
+
+/* Q&A Section */
+.textarea {
+  padding: 14px 16px;
+  font-size: 15px;
+  font-family: "Wanted Sans Variable", sans-serif;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.textarea:focus {
+  border-color: #0088ff;
+}
+
+.select {
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.select:focus {
+  border-color: #0088ff;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cancelButton {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: fit-content;
+}
+
+.cancelButton:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.qnaList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.qnaCard {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid #0088ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.qnaCard:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.qnaCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.qnaType {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0088ff;
+  background: rgba(0, 136, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.qnaId {
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+
+.qnaQuestions {
+  margin-bottom: 16px;
+}
+
+.qnaQuestionKor {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.qnaQuestionEng {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.qnaActions {
+  display: flex;
+  gap: 12px;
+}
+
+.editButton {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0088ff;
+  background: transparent;
+  border: 2px solid #0088ff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.editButton:hover {
+  background: #0088ff;
+  color: #ffffff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .mainContent {
+    margin-left: 220px;
+  }
+
+  .content {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginBox {
+    margin: 20px;
+    padding: 32px 24px;
+  }
+
+  .adminLayout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .sidebarNav {
+    flex-direction: row;
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .navItem {
+    white-space: nowrap;
+  }
+
+  .sidebarFooter {
+    display: none;
+  }
+
+  .mainContent {
+    margin-left: 0;
+  }
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .formSection,
+  .listSection {
+    padding: 20px;
+  }
+
+  .certificateGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .linkForm {
+    flex-direction: column;
+  }
+
+  .updateButton {
+    width: 100%;
+  }
+}

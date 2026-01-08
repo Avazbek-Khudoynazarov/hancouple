@@ -41,7 +41,9 @@ export default function Education() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/fourth1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/fourth1.png"
+                  : "/assets/operation/mobile/fourth1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message4.png"
                 : "/assets/operation/message4Eng.png"

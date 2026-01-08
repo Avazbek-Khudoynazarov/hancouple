@@ -39,7 +39,9 @@ export default function Medical() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/second1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/second1.png"
+                  : "/assets/operation/mobile/second1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message2.png"
                 : "/assets/operation/second1Eng.png"

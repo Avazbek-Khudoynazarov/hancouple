@@ -1,0 +1,125 @@
+{
+  "certificates": [
+    {
+      "id": 1,
+      "titleKor": "녹색기술 인증서",
+      "titleEng": "Green Technology Certificate",
+      "imagePath": "/assets/introduction/certificates/1.png"
+    },
+    {
+      "id": 2,
+      "titleKor": "녹색기술제품 확인서",
+      "titleEng": "Green Technology Product Confirmation Certificate",
+      "imagePath": "/assets/introduction/certificates/2.png"
+    },
+    {
+      "id": 3,
+      "titleKor": "혁신제품 지정 인증서",
+      "titleEng": "Innovative Product Designation Certificate",
+      "imagePath": "/assets/introduction/certificates/3.png"
+    },
+    {
+      "id": 4,
+      "titleKor": "GS인증(1등급)",
+      "titleEng": "GS Certification (Grade 1)",
+      "imagePath": "/assets/introduction/certificates/4.png"
+    },
+    {
+      "id": 5,
+      "titleKor": "상표등록증",
+      "titleEng": "Trademark Registration Certificate",
+      "imagePath": "/assets/introduction/certificates/5.png"
+    },
+    {
+      "id": 6,
+      "titleKor": "특허증",
+      "titleEng": "Patent Certificate",
+      "imagePath": "/assets/introduction/certificates/6.png"
+    },
+    {
+      "id": 7,
+      "titleKor": "특허증",
+      "titleEng": "Patent Certificate",
+      "imagePath": "/assets/introduction/certificates/7.png"
+    },
+    {
+      "id": 8,
+      "titleKor": "특허증",
+      "titleEng": "Patent Certificate",
+      "imagePath": "/assets/introduction/certificates/8.png"
+    },
+    {
+      "id": 9,
+      "titleKor": "특허증",
+      "titleEng": "Patent Certificate",
+      "imagePath": "/assets/introduction/certificates/9.png"
+    },
+    {
+      "id": 10,
+      "titleKor": "대기전력저감우수제품",
+      "titleEng": "Outstanding Product for Reduced Standby Power Consumption",
+      "imagePath": "/assets/introduction/certificates/10.png"
+    },
+    {
+      "id": 11,
+      "titleKor": "대기전력저감우수제품",
+      "titleEng": "Outstanding Product for Reduced Standby Power Consumption",
+      "imagePath": "/assets/introduction/certificates/11.png"
+    },
+    {
+      "id": 12,
+      "titleKor": "벤처기업확인서",
+      "titleEng": "Venture Company Confirmation Certificate",
+      "imagePath": "/assets/introduction/certificates/12.png"
+    },
+    {
+      "id": 13,
+      "titleKor": "기업부설연구소 인정서",
+      "titleEng": "Corporate Research Institute Recognition Certificate",
+      "imagePath": "/assets/introduction/certificates/13.png"
+    },
+    {
+      "id": 14,
+      "titleKor": "녹색전문기업 확인서",
+      "titleEng": "Green Specialized Company Confirmation Certificate",
+      "imagePath": "/assets/introduction/certificates/14.png"
+    },
+    {
+      "id": 15,
+      "titleKor": "조달우수제품지정",
+      "titleEng": "Designation as Outstanding Procurement Products",
+      "imagePath": "/assets/introduction/certificates/15.png"
+    },
+    {
+      "id": 16,
+      "titleKor": "특허증",
+      "titleEng": "Patent Certificate",
+      "imagePath": "/assets/introduction/certificates/16.png"
+    },
+    {
+      "id": 17,
+      "titleKor": "중소기업기술마켓 인증서",
+      "titleEng": "Small and Medium Enterprise Technology Market Certificate",
+      "imagePath": "/assets/introduction/certificates/17.png"
+    },
+    {
+      "id": 18,
+      "titleKor": "직접생산확인증명서",
+      "titleEng": "Direct Production Confirmation Certificate",
+      "imagePath": "/assets/introduction/certificates/18.png"
+    },
+    {
+      "id": 19,
+      "titleKor": "품목별 인증수출자 인증서",
+      "titleEng": "Certificate of Certified Exporter by Product Category",
+      "imagePath": "/assets/introduction/certificates/19.png"
+    },
+    {
+      "id": 20,
+      "titleKor": "특허증",
+      "titleEng": "Patent Certificate",
+      "imagePath": "/assets/introduction/certificates/20.png"
+    }
+  ],
+  "nextId": 22
+}

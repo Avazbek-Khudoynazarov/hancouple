@@ -92,6 +92,14 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+.loading {
+  font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  padding: 60px 0;
+}
+
 /* Tablet */
 @media (max-width: 1540px) {
   .certificateGrid {

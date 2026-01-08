@@ -39,7 +39,9 @@ export default function ElectricVehicle() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/eighth1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/eighth1.png"
+                  : "/assets/operation/mobile/eighth1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message8.png"
                 : "/assets/operation/message8Eng.png"

@@ -39,7 +39,9 @@ export default function Manufacturing() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/third1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/third1.png"
+                  : "/assets/operation/mobile/third1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message3.png"
                 : "/assets/operation/message3Eng.png"

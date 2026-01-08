@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -21,6 +22,13 @@ interface NavItem {
   title: string;
   href: string;
   children?: SubItem[];
+}
+
+interface ConsultingLink {
+  id: string;
+  titleKor: string;
+  titleEng: string;
+  url: string;
 }
 
 const navDataKor: NavItem[] = [
@@ -278,6 +286,7 @@ const navDataEng: NavItem[] = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const { language, setLanguage } = useLanguage();
   const [dropdownPosition, setDropdownPosition] = useState<number>(0);
@@ -289,10 +298,93 @@ export default function Navbar() {
   );
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [inquiryModalOpen, setInquiryModalOpen] = useState(false);
+  const [consultingLinks, setConsultingLinks] = useState<{
+    [key: string]: ConsultingLink;
+  } | null>(null);
   const navItemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const langDropdownRef = useRef<HTMLDivElement | null>(null);
 
-  const navData = language === "KOR" ? navDataKor : navDataEng;
+  // Fetch consulting links from API
+  useEffect(() => {
+    const fetchConsultingLinks = async () => {
+      try {
+        const response = await fetch("/api/consulting-links");
+        if (response.ok) {
+          const data = await response.json();
+          setConsultingLinks(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch consulting links:", error);
+      }
+    };
+    fetchConsultingLinks();
+  }, []);
+
+  // Get nav data with dynamic consulting links
+  const getNavData = (): NavItem[] => {
+    const serviceInfoUrl = consultingLinks?.serviceInfo?.url || "/assets/service-info.html";
+    const onlineConsultingUrl = consultingLinks?.onlineConsulting?.url || "/assets/online-consulting.html";
+
+    if (language === "KOR") {
+      return navDataKor.map((item, index) => {
+        if (index === 3) { // Consulting section (4th item)
+          return {
+            ...item,
+            children: [
+              {
+                title: "서비스 안내",
+                subtitle: "고지서 역산, 계약전력 최적화",
+                href: serviceInfoUrl,
+                openInNewTab: true,
+              },
+              {
+                title: "온라인 무료컨설팅",
+                subtitle: "최근 3개월 전기요금고지서",
+                href: onlineConsultingUrl,
+                openInNewTab: true,
+              },
+              {
+                title: "결과 제공",
+                subtitle: "피크 원인·낭비전력 진단 요약 리포트",
+                href: "/consulting?menu=결과 제공",
+              },
+            ],
+          };
+        }
+        return item;
+      });
+    } else {
+      return navDataEng.map((item, index) => {
+        if (index === 3) { // Consulting section (4th item)
+          return {
+            ...item,
+            children: [
+              {
+                title: "Service Guide",
+                subtitle: "(Bill Analysis, Contract Optimization)",
+                href: serviceInfoUrl,
+                openInNewTab: true,
+              },
+              {
+                title: "Free Online Consultation",
+                subtitle: "(Recent 3-Month Electricity Bills Required)",
+                href: onlineConsultingUrl,
+                openInNewTab: true,
+              },
+              {
+                title: "Results Provided",
+                subtitle: "(Summary Report Diagnosing Peak Causes & Wasted Power)",
+                href: "/consulting?menu=결과 제공",
+              },
+            ],
+          };
+        }
+        return item;
+      });
+    }
+  };
+
+  const navData = getNavData();
 
   useEffect(() => {
     setIsMounted(true);
@@ -321,6 +413,11 @@ export default function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Hide navbar on admin pages
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   const handleMouseEnter = (index: number) => {
     setActiveDropdown(index);

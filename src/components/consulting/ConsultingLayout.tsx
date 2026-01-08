@@ -1,43 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./ConsultingLayout.module.css";
 import { useLanguage } from "@/context/LanguageContext";
 
-const menuItemsKor = [
-  {
-    title: "서비스 안내",
-    href: "/assets/service-info.html",
-    openInNewTab: true,
-  },
-  {
-    title: "온라인 무료컨설팅",
-    href: "/assets/online-consulting.html",
-    openInNewTab: true,
-  },
-  { title: "결과 제공", href: "/consulting?menu=결과 제공", isActive: true },
-];
+interface ConsultingLink {
+  id: string;
+  titleKor: string;
+  titleEng: string;
+  url: string;
+}
 
-const menuItemsEng = [
-  {
-    title: "Service Information",
-    href: "/assets/service-info.html",
-    openInNewTab: true,
-  },
-  {
-    title: "Free Online Consulting",
-    href: "/assets/online-consulting.html",
-    openInNewTab: true,
-  },
-  { title: "Results Provided", href: "/consulting?menu=결과 제공", isActive: true },
-];
+interface MenuItem {
+  title: string;
+  href: string;
+  openInNewTab?: boolean;
+  isActive?: boolean;
+}
 
 export default function ConsultingLayout() {
   const { language } = useLanguage();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [consultingLinks, setConsultingLinks] = useState<{
+    [key: string]: ConsultingLink;
+  } | null>(null);
 
-  const menuItems = language === "KOR" ? menuItemsKor : menuItemsEng;
+  useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const response = await fetch("/api/consulting-links");
+        if (response.ok) {
+          const data = await response.json();
+          setConsultingLinks(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch consulting links:", error);
+      }
+    };
+    fetchLinks();
+  }, []);
+
+  const getMenuItems = (): MenuItem[] => {
+    const serviceInfoUrl = consultingLinks?.serviceInfo?.url || "/assets/service-info.html";
+    const onlineConsultingUrl = consultingLinks?.onlineConsulting?.url || "/assets/online-consulting.html";
+
+    if (language === "KOR") {
+      return [
+        { title: "서비스 안내", href: serviceInfoUrl, openInNewTab: true },
+        { title: "온라인 무료컨설팅", href: onlineConsultingUrl, openInNewTab: true },
+        { title: "결과 제공", href: "/consulting?menu=결과 제공", isActive: true },
+      ];
+    } else {
+      return [
+        { title: "Service Information", href: serviceInfoUrl, openInNewTab: true },
+        { title: "Free Online Consulting", href: onlineConsultingUrl, openInNewTab: true },
+        { title: "Results Provided", href: "/consulting?menu=결과 제공", isActive: true },
+      ];
+    }
+  };
+
+  const menuItems = getMenuItems();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);

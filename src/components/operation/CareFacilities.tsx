@@ -41,7 +41,9 @@ export default function CareFacilities() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/first1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/first1.png"
+                  : "/assets/operation/mobile/first1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message1.png"
                 : "/assets/operation/message1Eng.png"

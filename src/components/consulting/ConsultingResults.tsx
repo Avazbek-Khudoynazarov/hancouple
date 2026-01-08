@@ -1,11 +1,41 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styles from "./ConsultingResults.module.css";
 import EastRoundedIcon from "@mui/icons-material/EastRounded";
 import { useLanguage } from "@/context/LanguageContext";
 
+interface ConsultingLink {
+  id: string;
+  titleKor: string;
+  titleEng: string;
+  url: string;
+}
+
 export default function ConsultingResults() {
   const { language } = useLanguage();
+  const [consultingLinks, setConsultingLinks] = useState<{
+    [key: string]: ConsultingLink;
+  } | null>(null);
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const response = await fetch("/api/consulting-links");
+        if (response.ok) {
+          const data = await response.json();
+          setConsultingLinks(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch consulting links:", error);
+      }
+    };
+    fetchLinks();
+  }, []);
+
+  const electricalSafetyUrl = consultingLinks?.electricalSafetyReport?.url || "/assets/electrical-safety-report.html";
+  const peakPowerUrl = consultingLinks?.peakPowerReport?.url || "/assets/peak-power-report.html";
+
   return (
     <div id="results" className={styles.container}>
       <div className={styles.content}>
@@ -86,7 +116,7 @@ export default function ConsultingResults() {
               </div>
             </div>
             <a
-              href="/assets/electrical-safety-report.html"
+              href={electricalSafetyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.cardArrow}
@@ -140,7 +170,7 @@ export default function ConsultingResults() {
               </div>
             </div>
             <a
-              href="/assets/peak-power-report.html"
+              href={peakPowerUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.cardArrow}

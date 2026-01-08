@@ -41,7 +41,9 @@ export default function ShoppingMall() {
           <img
             src={
               isMobile
-                ? "/assets/operation/mobile/sixth1.png"
+                ? language === "KOR"
+                  ? "/assets/operation/mobile/sixth1.png"
+                  : "/assets/operation/mobile/sixth1Eng.png"
                 : language === "KOR"
                 ? "/assets/operation/message6.png"
                 : "/assets/operation/message6Eng.png"

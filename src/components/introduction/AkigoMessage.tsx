@@ -44,7 +44,9 @@ export default function AkigoMessage() {
           <img
             src={
               isMobile
-                ? "/assets/introduction/mobImage.png"
+                ? language === "KOR"
+                  ? "/assets/introduction/mobImage.png"
+                  : "/assets/introduction/mobImageEng.png"
                 : language === "KOR"
                 ? "/assets/introduction/akigo2.png"
                 : "/assets/introduction/akigoEng.png"
