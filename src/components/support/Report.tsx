@@ -1,9 +1,12 @@
 "use client";
 
 import styles from "./Report.module.css";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Report() {
-  const cards = [
+  const { language } = useLanguage();
+
+  const cardsKor = [
     {
       tag: "전기요금 절감",
       title: "계약전력 · 최대수요전력 문제",
@@ -24,12 +27,37 @@ export default function Report() {
     },
   ];
 
+  const cardsEng = [
+    {
+      tag: "Electricity bill reduction",
+      title: "Contract power & maximum demand power problem diagnosis",
+      subtitle: "+ Operational manual provision",
+      background: "/assets/contact/1.png",
+    },
+    {
+      tag: "Enhanced worker electrical safety",
+      title: "Circuit breaker-specific power pattern Analysis + risk assessment",
+      subtitle: "providing solutions for preventing serious accidents",
+      background: "/assets/contact/2.png",
+    },
+    {
+      tag: "Operational improvement visualization",
+      title: "Pre-and post-diagnosis comparison report provision",
+      subtitle: "",
+      background: "/assets/contact/3.png",
+    },
+  ];
+
+  const cards = language === "KOR" ? cardsKor : cardsEng;
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <span className={styles.sectionLabel}>Solution</span>
         <h2 className={styles.sectionTitle}>
-          네트워크코리아가 제공하는 솔루션
+          {language === "KOR"
+            ? "네트워크코리아가 제공하는 솔루션"
+            : "The solution provided by Network Korea"}
         </h2>
       </div>
 
@@ -40,7 +68,10 @@ export default function Report() {
             className={`${styles.card}`}
             style={{ backgroundImage: `url(${card.background})` }}>
             <div className={styles.cardContent}>
-              <span className={styles.tag}>{card.tag}</span>
+              <span
+                className={`${styles.tag} ${language === "ENG" ? styles.tagEng : ""}`}>
+                {card.tag}
+              </span>
               <div className={styles.textWrapper}>
                 <p className={styles.cardTitle}>{card.title}</p>
                 {card.subtitle && (

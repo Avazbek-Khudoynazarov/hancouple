@@ -89,7 +89,10 @@
   position: relative;
   z-index: 2;
   text-align: center;
+  justify-content: flex-start;
   padding: 40px;
+  max-height: 350px;
+  height: 100%;
 }
 
 .tag {
@@ -104,6 +107,10 @@
   border-radius: 30px;
   padding: 12px 0;
   margin-bottom: 40px;
+}
+
+.tagEng {
+  width: 372px;
 }
 
 .textWrapper {

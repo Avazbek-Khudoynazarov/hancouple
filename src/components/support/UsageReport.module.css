@@ -58,6 +58,7 @@
 .tabs {
   display: flex;
   overflow: hidden;
+  align-items: flex-end;
 }
 
 .tab {
@@ -65,12 +66,13 @@
     BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-weight: 600;
-  padding: 16px 90px;
   border: none;
   background: rgba(51, 51, 51, 0.2);
   color: #666666;
   cursor: pointer;
   transition: all 0.3s ease;
+  height: 50px;
+  width: 268px;
 }
 
 .tab:first-child {
@@ -84,7 +86,11 @@
 .tab.active {
   background: #0088ff;
   color: #ffffff;
-  padding: 22px 90px 14px 90px;
+  height: 60px;
+}
+
+.tabEng {
+  max-width: 268px;
 }
 
 .tab:hover:not(.active) {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./QnA.module.css";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TextSegment {
   text: string;
@@ -33,7 +34,7 @@ interface QnAItemData {
   answer: AnswerContent;
 }
 
-const qnaData: QnAItemData[] = [
+const qnaDataKor: QnAItemData[] = [
   {
     id: 1,
     question: "법정 점검주기는 어떻게 되나요 ? (직무고시 기준)",
@@ -102,12 +103,86 @@ const qnaData: QnAItemData[] = [
   },
 ];
 
+const qnaDataEng: QnAItemData[] = [
+  {
+    id: 1,
+    question:
+      "What is the statutory inspection cycle? (Based on job description)",
+    answer: {
+      type: "formatted",
+      formattedContent: {
+        lines: [
+          {
+            label: "Ad hoc inspection",
+            text: " : Continuous electrical equipment inspection (when accident risk or abnormal signs are detected)",
+          },
+          { label: "Monthly inspection", text: " : At least once per month" },
+          {
+            label: "Quarterly Inspection",
+            text: " : At least once every 3 months (for large-scale consumers/specific facilities)",
+          },
+          {
+            label: "Semi-annual/Annual Inspection",
+            text: " : Some items at 6-month to 1-year intervals (insulation resistance, ground resistance, circuit breaker performance tests, etc.)",
+          },
+        ],
+        subSection: {
+          title: "Inspection Log Retention Period :",
+          bullets: [
+            "Article 17 of the \"Electrical Safety Management Duties Notice\": Mandatory 3-year retention",
+            "Inspection logs must be submitted during legal audits and accident investigations.",
+          ],
+        },
+      },
+    },
+  },
+  {
+    id: 2,
+    question:
+      "What is the difference between conventional technology methods and network product methods?",
+    answer: {
+      type: "image",
+      imageContent: {
+        title: "Traditional Approach vs. Our Product Solution Comparison",
+        imageSrc: "/assets/contact/QnAEng.png",
+      },
+    },
+  },
+  {
+    id: 3,
+    question: "What is a formal point?",
+    answer: {
+      type: "richText",
+      richTextContent: {
+        lines: [
+          [
+            {
+              text: "The conventional approach focuses on minimum legal compliance + post-inspection checks,",
+            },
+          ],
+          [
+            { text: "while Network Korea's product enhances " },
+            { text: "both efficiency and safety", bold: true },
+            { text: " through " },
+            {
+              text: "legal compliance, real-time proactive prevention, automated reporting, and 3-year electronic archiving.",
+              bold: true,
+            },
+          ],
+        ],
+      },
+    },
+  },
+];
+
 const ITEMS_PER_PAGE = 3;
 
 export default function QnA() {
+  const { language } = useLanguage();
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const qnaData = language === "KOR" ? qnaDataKor : qnaDataEng;
   const totalPages = Math.ceil(qnaData.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = qnaData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
@@ -133,10 +208,14 @@ export default function QnA() {
       <div className={styles.content}>
         <div className={styles.header}>
           <span className={styles.sectionLabel}>
-            Q&A(직무고시 대응, 자동보고 활용법)
+            {language === "KOR"
+              ? "Q&A(직무고시 대응, 자동보고 활용법)"
+              : "Q&A(Compliance/Auto Reporting)"}
           </span>
           <h2 className={styles.sectionTitle}>
-            전기안전 직무고시 & 당사 솔루션 비교
+            {language === "KOR"
+              ? "전기안전 직무고시 & 당사 솔루션 비교"
+              : "Electrical Safety Job Description & Our Solution Comparison"}
           </h2>
         </div>
 
