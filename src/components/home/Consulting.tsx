@@ -214,9 +214,9 @@ export default function Consulting() {
             <p className={styles.solutionDescription}>
               {language === "KOR" ? (
                 <>
-                  성상과 한국산업안전보건공단, 초당청이 인정한 핵심기술
+                  삼성과 한국산업안전보건공단, 조달청이 인정한 핵심기술
                   <br />
-                  위험 요소를 조기에 발견하고, 플필요한 낭비 전력을 줄이며, 자동
+                  위험 요소를 조기에 발견하고, 불필요한 낭비 전력을 줄이며, 자동
                   리포트를 제공합니다.
                 </>
               ) : (
@@ -242,7 +242,8 @@ export default function Consulting() {
                   "스마트 전기안전 모니터링 솔루션"
                 ) : (
                   <>
-                    Smart Electrical Safety<br />
+                    Smart Electrical Safety
+                    <br />
                     Monitoring Solution
                   </>
                 )}

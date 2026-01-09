@@ -103,7 +103,7 @@ const slidesEng = [
     image: "/assets/homepage/back/6.png",
     title:
       "If you want to know the electricity\nusage per circuit breaker (equipment)",
-    description: "Real-time Analysis Reporth",
+    description: "Real-time Analysis Report",
   },
   {
     image: "/assets/homepage/back/7.png",

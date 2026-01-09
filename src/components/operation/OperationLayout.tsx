@@ -60,12 +60,12 @@ const menuItemsEng = [
     href: "/operation?menu=요양시설 · 장애인복지시설",
   },
   {
-    title: "Hospitals & Medical Institutions",
+    title: "Hospitals ",
     key: "병원 · 의료기관",
     href: "/operation?menu=병원 · 의료기관",
   },
   {
-    title: "Manufacturing Factories",
+    title: "Manufacturing Plants",
     key: "제조업 공장",
     href: "/operation?menu=제조업 공장",
   },
@@ -75,7 +75,7 @@ const menuItemsEng = [
     href: "/operation?menu=초 ·중 ·고 · 대학교",
   },
   {
-    title: "Traditional Markets & Small Businesses",
+    title: "Traditional Markets & SMEs",
     key: "전통시장 · 소상공인",
     href: "/operation?menu=전통시장 · 소상공인",
   },
@@ -85,7 +85,7 @@ const menuItemsEng = [
     href: "/operation?menu=대형 쇼핑몰 · 다중이용시설",
   },
   {
-    title: "Campgrounds & Camping Facilities",
+    title: "Campgrounds & Camping Site Facilities",
     key: "캠핑장 · 야영장 시설",
     href: "/operation?menu=캠핑장 · 야영장 시설",
   },

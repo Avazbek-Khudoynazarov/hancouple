@@ -76,7 +76,6 @@
 .infoSection {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
 .infoLine {
@@ -102,16 +101,16 @@
 
 .separator {
   color: #333333;
-  margin: 0 5px;
+  margin: 0 15px 0 5px;
 }
 
 /* Copyright */
 .copyright {
-  font-size: 9px;
+  font-size: 12px;
+
   line-height: 1.6;
-  color: #333333;
-  font-weight: 400;
-  margin: 12px 0 0 0;
+  color: rgba(1, 8, 40, 0.5);
+  font-weight: 700;
 }
 
 /* Partner Logos */
