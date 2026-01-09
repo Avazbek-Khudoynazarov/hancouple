@@ -1,120 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
 import styles from "./Location.module.css";
 import { useLanguage } from "@/context/LanguageContext";
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
-
 export default function Location() {
   const { language } = useLanguage();
-  const mapContainer1 = useRef<HTMLDivElement>(null);
-  const mapContainer2 = useRef<HTMLDivElement>(null);
-  const [mapsReady, setMapsReady] = useState(false);
-
-  useEffect(() => {
-    const checkKakaoMaps = setInterval(() => {
-      if (window.kakao && window.kakao.maps) {
-        clearInterval(checkKakaoMaps);
-        window.kakao.maps.load(() => {
-          setMapsReady(true);
-        });
-      }
-    }, 100);
-
-    const timeout = setTimeout(() => {
-      clearInterval(checkKakaoMaps);
-    }, 10000);
-
-    return () => {
-      clearInterval(checkKakaoMaps);
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (mapsReady) {
-      initializeMaps();
-    }
-  }, [mapsReady]);
-
-  const initializeMaps = () => {
-    // Head Office Map - 대구광역시 대천로 9길 11-5 3층
-    if (mapContainer1.current) {
-      const coords1 = new window.kakao.maps.LatLng(35.8714, 128.5938);
-
-      const mapOption1 = {
-        center: coords1,
-        level: 3,
-      };
-
-      const map1 = new window.kakao.maps.Map(mapContainer1.current, mapOption1);
-
-      new window.kakao.maps.Marker({
-        position: coords1,
-        map: map1,
-      });
-
-      // Use geocoder to get exact coordinates
-      const geocoder = new window.kakao.maps.services.Geocoder();
-      geocoder.addressSearch(
-        "대구광역시 대천로 9길 11-5",
-        function (result: any, status: any) {
-          if (status === window.kakao.maps.services.Status.OK) {
-            const exactCoords = new window.kakao.maps.LatLng(
-              result[0].y,
-              result[0].x
-            );
-            map1.setCenter(exactCoords);
-            new window.kakao.maps.Marker({
-              position: exactCoords,
-              map: map1,
-            });
-          }
-        }
-      );
-    }
-
-    // Branch Office Map - 경상북도 칠곡군 지천면 금송로 60
-    if (mapContainer2.current) {
-      const coords2 = new window.kakao.maps.LatLng(36.0154, 128.4784);
-
-      const mapOption2 = {
-        center: coords2,
-        level: 3,
-      };
-
-      const map2 = new window.kakao.maps.Map(mapContainer2.current, mapOption2);
-
-      new window.kakao.maps.Marker({
-        position: coords2,
-        map: map2,
-      });
-
-      // Use geocoder to get exact coordinates
-      const geocoder = new window.kakao.maps.services.Geocoder();
-      geocoder.addressSearch(
-        "경상북도 칠곡군 지천면 금송로 60",
-        function (result: any, status: any) {
-          if (status === window.kakao.maps.services.Status.OK) {
-            const exactCoords = new window.kakao.maps.LatLng(
-              result[0].y,
-              result[0].x
-            );
-            map2.setCenter(exactCoords);
-            new window.kakao.maps.Marker({
-              position: exactCoords,
-              map: map2,
-            });
-          }
-        }
-      );
-    }
-  };
 
   return (
     <div className={styles.container}>
@@ -138,7 +28,14 @@ export default function Location() {
 
         {/* Head Office Section */}
         <div className={styles.officeSection}>
-          <div ref={mapContainer1} className={styles.mapContainer}></div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231.5!2d128.5515477!3d35.9386623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565e726a70cda1d%3A0x6ee174e6b99a1ebc!2z64yA6rWs6rSR7Jet7IucIOu2geq1rCDrjIDsspzroZw56ri4IDExLTUgM-y4tQ!5e0!3m2!1sko!2skr!4v1704790000000"
+            className={styles.mapContainer}
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
           <div className={styles.infoContainer}>
             <h4 className={styles.officeLabel}>Head Office</h4>
             <h2 className={styles.officeName}>
@@ -168,7 +65,14 @@ export default function Location() {
         </div>
 
         <div className={styles.officeSection}>
-          <div ref={mapContainer2} className={styles.mapContainer}></div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.5!2d128.4784!3d36.0154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6rK97IOB67aB64-EIOy5oOqzoeq1sCDsp4DsspzrqbQg6riI7Iah66GcIDYw!5e0!3m2!1sko!2skr!4v1704790000000"
+            className={styles.mapContainer}
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
           <div className={styles.infoContainer}>
             <h4 className={styles.officeLabel}>Branch Office</h4>
             <h2 className={styles.officeName}>

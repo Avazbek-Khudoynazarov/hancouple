@@ -80,7 +80,7 @@ export default function CareFacilities() {
                   <h3 className={styles.bottomTitle}>
                     A space meant to be warm
                     <br className={styles.vision} /> can become dangerous in an
-                    instant
+                    instant.
                   </h3>
                   <p className={styles.bottomDescription}>
                     A single overlooked outlet or a single heating appliance

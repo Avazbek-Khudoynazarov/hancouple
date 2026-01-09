@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 const DATA_FILE = path.join(process.cwd(), "data", "certificates.json");
+const UPLOADS_DIR = path.join(process.cwd(), "uploads", "certificates");
 
 interface Certificate {
   id: number;
@@ -72,18 +73,20 @@ export async function POST(request: NextRequest) {
     const data = readData();
     const newId = data.nextId;
 
-    // Save image to public folder
+    // Save image to uploads folder (persistent storage)
     const imageBuffer = Buffer.from(await image.arrayBuffer());
-    const imagePath = `/assets/introduction/certificates/${newId}.png`;
-    const fullImagePath = path.join(process.cwd(), "public", imagePath);
+    const fileName = `${newId}.png`;
+    const fullImagePath = path.join(UPLOADS_DIR, fileName);
 
     // Ensure directory exists
-    const imageDir = path.dirname(fullImagePath);
-    if (!fs.existsSync(imageDir)) {
-      fs.mkdirSync(imageDir, { recursive: true });
+    if (!fs.existsSync(UPLOADS_DIR)) {
+      fs.mkdirSync(UPLOADS_DIR, { recursive: true });
     }
 
     fs.writeFileSync(fullImagePath, imageBuffer);
+
+    // Use API route to serve the image
+    const imagePath = `/api/uploads/certificates/${fileName}`;
 
     // Add new certificate
     const newCertificate: Certificate = {
@@ -143,9 +146,16 @@ export async function DELETE(request: NextRequest) {
 
     // Remove certificate image
     const certificate = data.certificates[certificateIndex];
-    const imagePath = path.join(process.cwd(), "public", certificate.imagePath);
-    if (fs.existsSync(imagePath)) {
-      fs.unlinkSync(imagePath);
+    // Support both old public folder paths and new uploads paths
+    let imageFilePath: string;
+    if (certificate.imagePath.startsWith("/api/uploads/")) {
+      const fileName = path.basename(certificate.imagePath);
+      imageFilePath = path.join(UPLOADS_DIR, fileName);
+    } else {
+      imageFilePath = path.join(process.cwd(), "public", certificate.imagePath);
+    }
+    if (fs.existsSync(imageFilePath)) {
+      fs.unlinkSync(imageFilePath);
     }
 
     // Remove from data

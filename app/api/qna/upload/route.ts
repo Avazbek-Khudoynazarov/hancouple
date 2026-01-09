@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
+const UPLOADS_DIR = path.join(process.cwd(), "uploads", "qna");
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,18 +28,19 @@ export async function POST(request: NextRequest) {
     const timestamp = Date.now();
     const extension = image.name.split(".").pop() || "png";
     const filename = `qna_${language}_${timestamp}.${extension}`;
-    const imagePath = `/assets/qna/${filename}`;
-    const fullImagePath = path.join(process.cwd(), "public", imagePath);
+    const fullImagePath = path.join(UPLOADS_DIR, filename);
 
     // Ensure directory exists
-    const imageDir = path.dirname(fullImagePath);
-    if (!fs.existsSync(imageDir)) {
-      fs.mkdirSync(imageDir, { recursive: true });
+    if (!fs.existsSync(UPLOADS_DIR)) {
+      fs.mkdirSync(UPLOADS_DIR, { recursive: true });
     }
 
     // Save image
     const imageBuffer = Buffer.from(await image.arrayBuffer());
     fs.writeFileSync(fullImagePath, imageBuffer);
+
+    // Use API route to serve the image
+    const imagePath = `/api/uploads/qna/${filename}`;
 
     return NextResponse.json({ imagePath }, { status: 201 });
   } catch (error) {
