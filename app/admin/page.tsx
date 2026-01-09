@@ -63,6 +63,7 @@ type ActiveSection = "certificates" | "consulting" | "qna";
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [adminId, setAdminId] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
   const [activeSection, setActiveSection] = useState<ActiveSection>("certificates");
@@ -176,8 +177,10 @@ export default function AdminPage() {
   // Check if already authenticated via sessionStorage
   useEffect(() => {
     const savedAuth = sessionStorage.getItem("adminAuth");
-    if (savedAuth) {
+    const savedId = sessionStorage.getItem("adminId");
+    if (savedAuth && savedId) {
       setPassword(savedAuth);
+      setAdminId(savedId);
       setIsAuthenticated(true);
     }
   }, []);
@@ -186,22 +189,13 @@ export default function AdminPage() {
     e.preventDefault();
     setAuthError("");
 
-    try {
-      const response = await fetch("/api/certificates", {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${password}`,
-        },
-      });
-
-      if (response.status === 400 || response.status === 200) {
-        setIsAuthenticated(true);
-        sessionStorage.setItem("adminAuth", password);
-      } else if (response.status === 401) {
-        setAuthError("비밀번호가 일치하지 않습니다");
-      }
-    } catch {
-      setAuthError("연결 오류");
+    // Check credentials
+    if (adminId === "hancouple" && password === "123456") {
+      setIsAuthenticated(true);
+      sessionStorage.setItem("adminAuth", password);
+      sessionStorage.setItem("adminId", adminId);
+    } else {
+      setAuthError("아이디 또는 비밀번호가 일치하지 않습니다");
     }
   };
 
@@ -572,8 +566,10 @@ export default function AdminPage() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setAdminId("");
     setPassword("");
     sessionStorage.removeItem("adminAuth");
+    sessionStorage.removeItem("adminId");
   };
 
   if (!isAuthenticated) {
@@ -583,10 +579,17 @@ export default function AdminPage() {
           <h1 className={styles.loginTitle}>관리자 로그인</h1>
           <form onSubmit={handleLogin} className={styles.loginForm}>
             <input
+              type="text"
+              value={adminId}
+              onChange={(e) => setAdminId(e.target.value)}
+              placeholder="아이디를 입력하세요"
+              className={styles.loginInput}
+            />
+            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="관리자 비밀번호를 입력하세요"
+              placeholder="비밀번호를 입력하세요"
               className={styles.loginInput}
             />
             {authError && <p className={styles.errorText}>{authError}</p>}
