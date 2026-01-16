@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./RealTimeMonitoring.module.css";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function RiskAssessment() {
@@ -34,8 +33,19 @@ export default function RiskAssessment() {
                     : "Post-accident cause investigation"}
                 </p>
                 <div className={styles.cardContent}>
-                  <ArrowForwardIcon className={styles.arrowIcon} />
                   <p className={styles.cardText}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      fill="none"
+                      viewBox="0 0 16 14"
+                      className={styles.arrowIcon}>
+                      <path
+                        fill="#333"
+                        d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                      />
+                    </svg>
                     {language === "KOR"
                       ? "2차 피해 확대"
                       : "Secondary damage expansion"}
@@ -61,18 +71,44 @@ export default function RiskAssessment() {
                     : "Immediate primary accident detection"}
                 </p>
                 <div className={styles.cardHighlight}>
-                  <ArrowForwardIcon className={styles.arrowIconHighlight} />
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlightWithArrow} ${styles.highlight1}`}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="14"
+                        fill="none"
+                        viewBox="0 0 16 14"
+                        className={styles.arrowIconHighlight}>
+                        <path
+                          fill="#333"
+                          d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                        />
+                      </svg>
                       2차 사고 전 단계 차단
                     </span>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
-                        Preventing secondary accidents
+                      <span
+                        className={`${styles.highlightText} ${styles.highlightWithArrow} ${styles.highlight1}`}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="14"
+                          fill="none"
+                          viewBox="0 0 16 14"
+                          className={styles.arrowIconHighlight}>
+                          <path
+                            fill="#333"
+                            d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                          />
+                        </svg>
+                        Preventing secondary
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
-                        at an early stage
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
+                        accidents at an early stage
                       </span>
                     </div>
                   )}
@@ -89,14 +125,19 @@ export default function RiskAssessment() {
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
                   <>
-                    <p className={styles.cardSubtitle}>무인 시설·숙면 시설의</p>
+                    <p className={styles.cardSubtitle}>
+                      무인 시설·소규모 시설의
+                    </p>
                     <p className={styles.cardContentCenter}>상시 감시 부재</p>
                   </>
                 ) : (
                   <>
-                    <p className={styles.cardSubtitle}>Absence of constant monitoring</p>
                     <p className={styles.cardContentCenter}>
-                      at automated facilities and small-scale facilities
+                      Absence of constant monitoring
+                    </p>
+                    <p className={styles.cardSubtitle}>
+                      at automated facilities and
+                      <br /> small-scale facilities
                     </p>
                   </>
                 )}
@@ -116,15 +157,18 @@ export default function RiskAssessment() {
               <div className={styles.cardHighlight}>
                 <div className={styles.cardContentCenterMain}>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
                       원격 제어로 신속 대응
                     </span>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         Rapid response via
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         remote control
                       </span>
                     </div>
@@ -142,13 +186,17 @@ export default function RiskAssessment() {
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
                   <>
-                    <p className={styles.cardSubtitle}>사고 전 단계 감지 미비로</p>
+                    <p className={styles.cardSubtitle}>
+                      사고 전 단계 감지 미비로
+                    </p>
                     <p className={styles.cardContentCenter}>안전 확보 어려움</p>
                   </>
                 ) : (
                   <>
-                    <p className={styles.cardSubtitle}>Difficulty ensuring safety</p>
                     <p className={styles.cardContentCenter}>
+                      Difficulty ensuring safety
+                    </p>
+                    <p className={styles.cardSubtitle}>
                       due to inadequate pre-accident detection
                     </p>
                   </>
@@ -168,15 +216,18 @@ export default function RiskAssessment() {
               </div>
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
-                  <span className={`${styles.highlightText} ${styles.highlight3}`}>
-                    사고 예방툴 상승, 안전성 강화
+                  <span
+                    className={`${styles.highlightText} ${styles.highlight3}`}>
+                    사고 예방률 상승, 안전성 강화
                   </span>
                 ) : (
                   <div className={styles.highlightMultiLine}>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       Increased accident prevention
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       rate, enhanced safety
                     </span>
                   </div>

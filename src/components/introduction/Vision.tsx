@@ -44,27 +44,31 @@ export default function Vision() {
               <>
                 <p>네트워크코리아는 단순한 솔루션 제공을 넘어,</p>
                 <p>
-                  전기기술자와 시설 담당자의 효율적인 업무 수행과 전문성 강화를
-                  돕습니다.
+                  전기기술자와 시설 담당자의 효율적인 업무 수행과{" "}
+                  <br className={styles.vision} /> 전문성 강화를 돕습니다.
                 </p>
                 <p>
-                  전기요금에 대한 감정 없이, 전기화재에 대한 두려움 없이, 과학적는
-                  데이터를 보고 판단하고,
+                  전기요금에 대한 걱정 없이, 전기화재에 대한 두려움
+                  <br className={styles.vision} /> 없이, 관리자는 데이터를 보고
+                  판단하고,
                 </p>
                 <p>
-                  전기기술자는 현장 발로 없이 원격으로 분석을 파악하고 조치하는
-                  시대.
+                  전기기술자는 현장 방문 없이 원격으로 원인을
+                  <br className={styles.vision} /> 파악하고 조치하는 시대.
                 </p>
               </>
             ) : (
               <>
                 <p>Network Korea goes beyond simply providing solutions,</p>
                 <p>
-                  We help electrical technicians and facility managers perform their duties efficiently and enhance their expertise.
+                  We help electrical technicians and facility managers perform
+                  their duties efficiently and enhance their expertise.
                 </p>
                 <p>
-                  A time when managers can review data and make decisions without worrying about electricity bills or fearing electrical fires,
-                  and electricians can identify causes and take action remotely without on-site visits.
+                  A time when managers can review data and make decisions
+                  without worrying about electricity bills or fearing electrical
+                  fires, and electricians can identify causes and take action
+                  remotely without on-site visits.
                 </p>
               </>
             )}
@@ -82,7 +86,9 @@ export default function Vision() {
               {language === "KOR" ? "감사합니다." : "Thank you."}
             </p>
             <p className={styles.signature}>
-              {language === "KOR" ? "주식회사 네트워크코리아" : "Network Korea Co., Ltd."}
+              {language === "KOR"
+                ? "주식회사 네트워크코리아"
+                : "Network Korea Co., Ltd."}
             </p>
           </div>
         </div>

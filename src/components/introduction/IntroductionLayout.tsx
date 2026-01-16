@@ -70,7 +70,7 @@ export default function IntroductionLayout({
         </h1>
         <p className={styles.subtitle}>
           {language === "KOR"
-            ? "(주)네트워크코리아는 산업종사의 디지털 문화 발전에 기여합니다."
+            ? "(주)네트워크코리아는 사람중심의 디지털 문화 발전에 기여합니다."
             : "Network Korea contributes to the growth of a digitally driven culture that prioritizes people."}
         </p>
       </div>
@@ -102,12 +102,7 @@ export default function IntroductionLayout({
               <span className={styles.currentMenu}>
                 {getDisplayMenu(activeMenu)}
               </span>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}>
+              <div className={styles.arrowContainer}>
                 <img
                   src="/assets/introduction/arrow.svg"
                   alt="Dropdown"
@@ -126,8 +121,8 @@ export default function IntroductionLayout({
                     key={index}
                     href={item.href}
                     className={`${styles.dropdownItem} ${
-                      activeMenu === item.key ? styles.active : ""
-                    }`}
+                      language === "ENG" ? styles.dropdownItemEng : ""
+                    } ${activeMenu === item.key ? styles.active : ""}`}
                     onClick={() => {
                       setActiveMenu(item.key);
                       setIsDropdownOpen(false);

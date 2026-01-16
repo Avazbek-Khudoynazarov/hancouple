@@ -72,7 +72,7 @@ export default function CareFacilities() {
                     <br className={styles.vision} /> 큰 피해로 이어집니다.
                     <br className={styles.vision2} />
                     요양시설의 전기 사용, <br className={styles.vision} />{" "}
-                    점식의 불상도 화재로 변질 수 있습니다.
+                    잠시의 방심도 화재로 변질 수 있습니다.
                   </p>
                 </>
               ) : (

@@ -92,19 +92,22 @@
           "lines": [
             [
               {
-                "text": "종래방식은 법정 최소 준수 + 사후 점검 중심이고,"
+                "text": "종래방식은 법정 최소 준수 + 사후 점검 중심이고,",
+                "bold": false
               }
             ],
             [
               {
-                "text": "저희 네트워크코리아의 제품은 "
+                "text": "저희 네트워크코리아의 제품은 ",
+                "bold": false
               },
               {
                 "text": "법정 준수 + 실시간 사전 예방 + 자동 보고 + 3년 전자보관",
                 "bold": true
               },
               {
-                "text": "으로"
+                "text": "으로",
+                "bold": false
               }
             ],
             [
@@ -113,7 +116,14 @@
                 "bold": true
               },
               {
-                "text": " 시켰습니다."
+                "text": " 시켰습니다.",
+                "bold": false
+              }
+            ],
+            [
+              {
+                "text": "test",
+                "bold": false
               }
             ]
           ]
@@ -124,12 +134,7 @@
           "lines": [
             [
               {
-                "text": "The conventional approach focuses on minimum legal compliance + post-inspection checks,"
-              }
-            ],
-            [
-              {
-                "text": "while Network Korea's product enhances "
+                "text": "The conventional approach focuses on minimum legal compliance + post-inspection checks,\nwhile Network Korea's product enhances "
               },
               {
                 "text": "both efficiency and safety",
@@ -139,7 +144,7 @@
                 "text": " through "
               },
               {
-                "text": "legal compliance, real-time proactive prevention, automated reporting, and 3-year electronic archiving.",
+                "text": "legal compliance, real-time\nproactive prevention, automated reporting, and 3-year electronic archiving.",
                 "bold": true
               }
             ]

@@ -60,7 +60,7 @@ const menuItemsEng = [
     href: "/remote-inspection?menu=차단기별 전기 화재 안전 모니터링",
   },
   {
-    title: "Risk Assessment & Secondary Accident Prevention",
+    title: "Risk Assessment & Secondary\n Accident Prevention",
     key: "위험성 판단 & 2차 사고 예방 모니터링",
     href: "/remote-inspection?menu=위험성 판단 %26 2차 사고 예방 모니터링",
   },
@@ -75,6 +75,19 @@ const menuItemsEng = [
     href: "/remote-inspection?menu=전기안전 직무고시 원격계측 / 자동 리포트 생성",
   },
 ];
+
+// Helper function to convert \n to <br /> in strings
+const renderWithLineBreaks = (text: string) => {
+  if (!text.includes("\n")) return text;
+  const parts = text.split("\n");
+  return (
+    <>
+      {parts[0]}
+      <br />
+      {parts[1]}
+    </>
+  );
+};
 
 const menuTitleMap: { [key: string]: string } = {
   "실시간 피크전력 모니터링": "Real-time Peak Power Monitoring",
@@ -194,12 +207,7 @@ export default function RemoteInspectionLayout({
               <span className={styles.currentMenu}>
                 {getDisplayMenu(activeMenu)}
               </span>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}>
+              <div className={styles.arrowContainer}>
                 <img
                   src="/assets/introduction/arrow.svg"
                   alt="Dropdown"
@@ -218,13 +226,13 @@ export default function RemoteInspectionLayout({
                     key={index}
                     href={item.href}
                     className={`${styles.dropdownItem} ${
-                      activeMenu === item.key ? styles.active : ""
-                    }`}
+                      language === "ENG" ? styles.dropdownItemEng : ""
+                    } ${activeMenu === item.key ? styles.active : ""}`}
                     onClick={() => {
                       setActiveMenu(item.key);
                       setIsDropdownOpen(false);
                     }}>
-                    {item.title}
+                    {renderWithLineBreaks(item.title)}
                   </Link>
                 ))}
               </div>

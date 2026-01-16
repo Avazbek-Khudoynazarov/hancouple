@@ -51,6 +51,7 @@
   left: 0;
   right: 0;
   z-index: 100;
+  border-top: 1px solid #ffffff;
 }
 
 .navContainer {
@@ -92,7 +93,7 @@
 .divider {
   width: 1px;
   height: 44px;
-  background: rgba(255, 255, 255, 0.5);
+  background: #ffffff;
 }
 
 .navText {
@@ -138,6 +139,12 @@
   text-align: start;
 }
 
+.arrowContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .arrowIcon {
   width: 12px;
   height: 12px;
@@ -167,7 +174,7 @@
 
 .dropdownItem {
   display: block;
-  padding: 16px 24px;
+  padding: 22px 24px 24px 24px;
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 20px;
@@ -175,8 +182,13 @@
   color: rgba(51, 51, 51, 0.6);
   text-decoration: none;
   transition: all 0.3s ease;
-  border-bottom: 1px solid #f0f0f0;
-  cursor: pointer;
+  border-bottom: 1px solid rgba(57, 123, 180, 0.3);
+}
+
+.dropdownItemEng {
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .dropdownItem:last-child {
@@ -444,12 +456,19 @@
     width: auto !important;
   }
 
+  .arrowContainer {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+  }
+
   .arrowIcon {
+    display: block;
     width: 12px;
     height: 12px;
     filter: brightness(0) invert(1);
     margin: 0;
-    padding-right: 20px;
+    padding: 0;
   }
 
   .dropdown {

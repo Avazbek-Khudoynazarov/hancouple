@@ -8,7 +8,8 @@ interface ConsultingLink {
   id: string;
   titleKor: string;
   titleEng: string;
-  url: string;
+  urlKor: string;
+  urlEng: string;
 }
 
 interface ConsultingLinksData {
@@ -28,25 +29,29 @@ function readData(): ConsultingLinksData {
           id: "serviceInfo",
           titleKor: "서비스 안내",
           titleEng: "Service Information",
-          url: "/assets/service-info.html",
+          urlKor: "/assets/service-info.html",
+          urlEng: "/assets/service-info.html",
         },
         onlineConsulting: {
           id: "onlineConsulting",
           titleKor: "온라인 무료컨설팅",
           titleEng: "Free Online Consulting",
-          url: "/assets/online-consulting.html",
+          urlKor: "/assets/online-consulting.html",
+          urlEng: "/assets/online-consulting.html",
         },
         electricalSafetyReport: {
           id: "electricalSafetyReport",
           titleKor: "낭비전력 진단 요약 리포트",
           titleEng: "Waste Power Diagnosis Summary Report",
-          url: "/assets/electrical-safety-report.html",
+          urlKor: "/assets/electrical-safety-report.html",
+          urlEng: "/assets/electrical-safety-report.html",
         },
         peakPowerReport: {
           id: "peakPowerReport",
           titleKor: "피크원인 진단 요약 리포트",
           titleEng: "Peak Cause Diagnosis Summary Report",
-          url: "/assets/peak-power-report.html",
+          urlKor: "/assets/peak-power-report.html",
+          urlEng: "/assets/peak-power-report.html",
         },
       },
     };
@@ -83,9 +88,9 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { id, url } = body;
+    const { id, urlKor, urlEng } = body;
 
-    if (!id || !url) {
+    if (!id || (!urlKor && !urlEng)) {
       return NextResponse.json(
         { message: "Missing required fields" },
         { status: 400 }
@@ -98,7 +103,12 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ message: "Link not found" }, { status: 404 });
     }
 
-    data.links[id].url = url;
+    if (urlKor) {
+      data.links[id].urlKor = urlKor;
+    }
+    if (urlEng) {
+      data.links[id].urlEng = urlEng;
+    }
     writeData(data);
 
     return NextResponse.json(data.links[id], { status: 200 });

@@ -3,7 +3,7 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 196px 0 0 0;
+  padding: 196px 0 120px 0;
   background: #ffffff;
   position: relative;
 }
@@ -187,7 +187,7 @@
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
   .container {
-    padding: 40px 20px 0 20px;
+    padding: 88px 20px 70px 20px;
   }
 
   .titleSection {
@@ -274,7 +274,7 @@
 /* Mobile Small (480px and below) */
 @media (max-width: 480px) {
   .container {
-    padding: 30px 0 0 0;
+    padding: 88px 0 0 0;
   }
 
   .mainTitle {

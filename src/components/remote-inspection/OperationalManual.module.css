@@ -15,7 +15,7 @@
   background-size: auto, auto;
   display: flex;
   justify-content: center;
-  padding: 180px 0 0 0;
+  padding: 196px 0 120px 0;
   margin-bottom: 350px;
   position: relative;
 }
@@ -152,9 +152,9 @@
 }
 
 .manualCard {
-  background: #ffffff;
-  border: 1.5px solid #0088ff80;
-  border-radius: 24px;
+  background-color: rgba(245, 251, 255, 0.4);
+  border: 1.5px solid #0088ff50;
+  border-radius: 20px;
   padding: 60px 50px;
   display: flex;
   flex-direction: row;
@@ -170,7 +170,7 @@
   font-weight: 700;
   color: #333333;
   margin: 0 0 23px 0;
-  text-align: center;
+  text-align: start;
 }
 .manualCardTitleMain {
   display: flex;
@@ -186,21 +186,15 @@
 
 .manualListItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-}
-
-.checkIcon {
-  color: #0088ff;
-  font-size: 24px;
-  flex-shrink: 0;
 }
 
 .manualListItem p {
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   color: #333333;
   margin: 0;
   line-height: 120%;
@@ -364,7 +358,7 @@
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
   .container {
-    padding: 80px 0 0 0;
+    padding: 88px 0 70px 0;
     margin-bottom: 150px;
     min-height: 1000px;
   }
@@ -424,8 +418,8 @@
   }
 
   .manualCard {
-    padding: 35px 45px 35px 25px !important;
-    justify-content: space-between;
+    padding: 35px 25px !important;
+    justify-content: flex-start;
     gap: 25px;
   }
 
@@ -438,11 +432,6 @@
     font-size: 22px;
     margin-bottom: 18px;
   }
-
-  .manualCardTitleMain {
-    align-items: flex-start;
-  }
-
   .manualList {
     gap: 10px;
   }
@@ -507,8 +496,9 @@
   }
 
   .manualCard {
-    padding: 30px 20px;
-    gap: 20px;
+    padding: 25px 20px !important;
+    justify-content: flex-start;
+    gap: 40px;
   }
 
   .manualIconContainer {
@@ -522,12 +512,12 @@
   }
 
   .manualCardTitle {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 15px;
   }
 
   .manualListItem p {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.4;
   }
 

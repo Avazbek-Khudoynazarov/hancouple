@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./RealTimeMonitoring.module.css";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function FireSafety() {
@@ -34,11 +33,28 @@ export default function FireSafety() {
                     : "Focused on periodic inspections"}
                 </p>
                 <div className={styles.cardContent}>
-                  <ArrowForwardIcon className={styles.arrowIcon} />
                   <p className={styles.cardText}>
-                    {language === "KOR"
-                      ? "점검 외 시간대 위험 방치"
-                      : "Risk exposure outside inspection times"}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      fill="none"
+                      viewBox="0 0 16 14"
+                      className={styles.arrowIcon}>
+                      <path
+                        fill="#333"
+                        d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                      />
+                    </svg>
+                    {language === "KOR" ? (
+                      "점검 외 시간대 위험 방치"
+                    ) : (
+                      <>
+                        Risk exposure outside
+                        <br />
+                        inspection times
+                      </>
+                    )}
                   </p>
                 </div>
               </div>
@@ -62,11 +78,13 @@ export default function FireSafety() {
                 </p>
                 <div className={styles.cardHighlight}>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight1}`}>
                       초기 위험 감지
                     </span>
                   ) : (
-                    <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight1}`}>
                       early risk detection
                     </span>
                   )}
@@ -82,9 +100,15 @@ export default function FireSafety() {
               <h4 className={styles.cardLabel2}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardContentCenter}>
-                  {language === "KOR"
-                    ? "누전·과부하 사고 발생 후 대응"
-                    : "Response after leakage/overload incidents"}
+                  {language === "KOR" ? (
+                    "누전·과부하 사고 발생 후 대응"
+                  ) : (
+                    <>
+                      Response after
+                      <br />
+                      leakage/overload incidents
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -97,25 +121,30 @@ export default function FireSafety() {
               <div className={styles.dot2}></div>
               <h4 className={styles.cardLabelBottom2}>TO-BE</h4>
               <div className={styles.imageContainer}>
-                <img src="/assets/remote/temperture.svg" alt="Temperature alert" />
+                <img
+                  src="/assets/remote/temperture.svg"
+                  alt="Temperature alert"
+                />
               </div>
               <div className={styles.cardHighlight}>
                 <div className={styles.cardContentCenterMain}>
                   {language === "KOR" ? (
                     <>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <p className={styles.cardBottomText}>누전·온도 상승 시</p>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         자동 차단 & 알림
                       </span>
-                      <p className={styles.cardBottomText}>누전·온도 상승 시</p>
                     </>
                   ) : (
                     <>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
-                        Automatic shutdown & notification
-                      </span>
                       <p className={styles.cardBottomText}>
                         upon leakage/temperature rise
                       </p>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
+                        Automatic shutdown & notification
+                      </span>
                     </>
                   )}
                 </div>
@@ -130,9 +159,15 @@ export default function FireSafety() {
               <h4 className={styles.cardLabel3}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardContentCenter}>
-                  {language === "KOR"
-                    ? "화재 예방 및 법적 대응 체계 미비"
-                    : "Inadequate fire prevention and legal response systems"}
+                  {language === "KOR" ? (
+                    "화재 예방 및 법적 대응 체계 미비"
+                  ) : (
+                    <>
+                      Inadequate fire prevention
+                      <br />
+                      and legal response systems
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -149,18 +184,22 @@ export default function FireSafety() {
               </div>
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
-                  <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                  <span
+                    className={`${styles.highlightText} ${styles.highlight3}`}>
                     화재 예방과 중대재해처벌법 대응 가능
                   </span>
                 ) : (
                   <div className={styles.highlightMultiLine}>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       Enabling fire prevention,
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       and compliance with the Serious
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       Accidents Punishment Act.
                     </span>
                   </div>

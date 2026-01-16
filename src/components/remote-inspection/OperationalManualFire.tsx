@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./OperationalManual.module.css";
-import CheckIcon from "@mui/icons-material/Check";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function OperationalManualFire() {
@@ -106,7 +105,20 @@ export default function OperationalManualFire() {
                 </h3>
                 <div className={styles.manualList}>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "전기안전 운영매뉴얼"
@@ -114,7 +126,20 @@ export default function OperationalManualFire() {
                     </p>
                   </div>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "에너지 절감 운영매뉴얼"
@@ -138,7 +163,20 @@ export default function OperationalManualFire() {
                 </h3>
                 <div className={styles.manualList}>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "위험 감지· 이상발생 이력"
@@ -146,7 +184,20 @@ export default function OperationalManualFire() {
                     </p>
                   </div>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "사고 예방 건수"

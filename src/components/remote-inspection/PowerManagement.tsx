@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./RealTimeMonitoring.module.css";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function PowerManagement() {
@@ -29,15 +28,32 @@ export default function PowerManagement() {
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardSubtitle}>
                   {language === "KOR"
-                    ? "계량기 총 적산 관리"
+                    ? "계량기 총 전력만 관리 "
                     : "Managing only total meter power"}
                 </p>
                 <div className={styles.cardContent}>
-                  <ArrowForwardIcon className={styles.arrowIcon} />
                   <p className={styles.cardText}>
-                    {language === "KOR"
-                      ? "회로별관부하·불균형 파악 불가"
-                      : "Unable to identify circuit-specific overloads or imbalances"}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      fill="none"
+                      viewBox="0 0 16 14"
+                      className={styles.arrowIcon}>
+                      <path
+                        fill="#333"
+                        d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                      />
+                    </svg>
+                    {language === "KOR" ? (
+                      "회로별과부하·불균형 파악 불가"
+                    ) : (
+                      <>
+                        Unable to identify circuit-specific
+                        <br />
+                        overloads or imbalances
+                      </>
+                    )}
                   </p>
                 </div>
               </div>
@@ -56,15 +72,18 @@ export default function PowerManagement() {
               <div className={styles.cardContentCenterMain}>
                 <div className={styles.cardHighlight}>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight1}`}>
-                      회로별 데이터 기반 관리 효율화
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight1}`}>
+                      차단기별 전류·전압 실시간 분석
                     </span>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
                         Real-time analysis of current
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
                         and voltage per circuit breaker
                       </span>
                     </div>
@@ -79,12 +98,12 @@ export default function PowerManagement() {
               <div className={styles.cardNumber2}>2</div>
               <h4 className={styles.cardLabel2}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
-                <p className={styles.cardSubtitle}>
+                <p className={language === "KOR" ? styles.cardSubtitle : styles.cardContentCenter}>
                   {language === "KOR"
                     ? "특정 회로 이상 발생 시"
                     : "Delayed cause identification"}
                 </p>
-                <p className={styles.cardContentCenter}>
+                <p className={language === "KOR" ? styles.cardContentCenter : styles.cardSubtitle}>
                   {language === "KOR"
                     ? "원인 확인 지연"
                     : "when specific circuit abnormalities occur"}
@@ -105,15 +124,18 @@ export default function PowerManagement() {
               <div className={styles.cardHighlight}>
                 <div className={styles.cardContentCenterMain}>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
                       비정상 부하 즉시 감지 & 원격 제어 가능
                     </span>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         Immediate detection of abnormal
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         loads & remote control capability
                       </span>
                     </div>
@@ -131,8 +153,8 @@ export default function PowerManagement() {
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
                   <>
-                    <p className={styles.cardSubtitle}>
-                      차단기별 설비간 모니터링 및
+                    <p className={styles.cardContentCenter}>
+                      차단기별 실시간 모니터링 및
                     </p>
                     <p className={styles.cardContentCenter}>
                       원격 제어 불가로 관리 효율 저하
@@ -140,11 +162,12 @@ export default function PowerManagement() {
                   </>
                 ) : (
                   <>
-                    <p className={styles.cardSubtitle}>
+                    <p className={styles.cardContentCenter}>
                       Inefficient management due to lack
                     </p>
                     <p className={styles.cardContentCenter}>
-                      of real-time monitoring and remote control per circuit breaker
+                      of real-time monitoring and remote control per circuit
+                      breaker
                     </p>
                   </>
                 )}
@@ -163,15 +186,18 @@ export default function PowerManagement() {
               </div>
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
-                  <span className={`${styles.highlightText} ${styles.highlight3}`}>
-                    회로별 데이터 기반 관리 효율화
+                  <span
+                    className={`${styles.highlightText} ${styles.highlight3}`}>
+                    차단기별 전류·전압 실시간 분석
                   </span>
                 ) : (
                   <div className={styles.highlightMultiLine}>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       Streamlined management
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight3}`}>
                       based on circuit-specific data
                     </span>
                   </div>

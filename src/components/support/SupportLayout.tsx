@@ -96,12 +96,7 @@ export default function SupportLayout({
               <span className={styles.currentMenu}>
                 {getDisplayMenu(activeMenu)}
               </span>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}>
+              <div className={styles.arrowContainer}>
                 <img
                   src="/assets/introduction/arrow.svg"
                   alt="Dropdown"
@@ -120,8 +115,8 @@ export default function SupportLayout({
                     key={index}
                     href={item.href}
                     className={`${styles.dropdownItem} ${
-                      activeMenu === item.key ? styles.active : ""
-                    }`}
+                      language === "ENG" ? styles.dropdownItemEng : ""
+                    } ${activeMenu === item.key ? styles.active : ""}`}
                     onClick={() => {
                       setActiveMenu(item.key);
                       setIsDropdownOpen(false);

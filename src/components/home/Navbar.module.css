@@ -10,11 +10,9 @@
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-
 .navbar:hover {
   background: #ffffff;
 }
-
 .navbar.scrolled {
   background: #ffffff;
   border-bottom: 1px solid #e5e5e5;
@@ -159,6 +157,7 @@
   cursor: pointer;
   transition: color 0.3s ease;
   white-space: nowrap;
+  position: relative;
 }
 
 .navbar:hover .navLink {
@@ -179,9 +178,29 @@
   animation: fadeIn 0.3s ease;
   z-index: 999;
   background: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  border-top: 1px solid #ffffff03;
-  overflow: hidden;
+  box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: visible;
+}
+
+/* Underline for active nav link - using real element for animation replay */
+.dropdownUnderline {
+  position: absolute;
+  top: -2px;
+  height: 3px;
+  background: #333333;
+  z-index: 1000;
+  transform-origin: center;
+  animation: expandFromCenter 0.45s ease-out forwards;
+}
+
+@keyframes expandFromCenter {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 .dropdown::after {
@@ -202,7 +221,6 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
   }
   to {
     opacity: 1;
@@ -231,6 +249,47 @@
   gap: 20px;
   width: auto;
   border-radius: 0;
+  /* Staggered fade-in animation */
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: slideInFromLeft 0.35s ease forwards;
+}
+
+/* Staggered delays for each child link */
+.dropdownItem:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.dropdownItem:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.dropdownItem:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.dropdownItem:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.dropdownItem:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.dropdownItem:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.dropdownItem:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.dropdownItem:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .dropdownItem:hover {

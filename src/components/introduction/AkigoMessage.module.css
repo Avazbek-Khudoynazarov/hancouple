@@ -10,7 +10,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 80px 0;
+  padding: 196px 0 120px 0;
 }
 
 .content {
@@ -183,7 +183,7 @@
 @media (max-width: 768px) {
   .container {
     min-height: 800px;
-    padding: 40px 20px;
+    padding: 88px 20px 70px 20px;
   }
 
   .content {

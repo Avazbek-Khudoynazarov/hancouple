@@ -61,11 +61,17 @@ export default function Medical() {
               {language === "KOR" ? (
                 <>
                   <h3 className={styles.bottomTitle}>
-                    한 순간의 불씨가 병원의 하루를 바꿉니다.
+                    한 순간의 불씨가
+                    <br className={styles.mobileDesign} /> 병원의 하루를
+                    바꿉니다.
                   </h3>
                   <p className={styles.bottomDescription}>
-                    작은 전기적 이상 하나가 병원의 하루를 멈출 수 있습니다.
-                    <br /> 의료기관 화재의 대부분은 전기적 원인에서 시작됩니다.
+                    작은 전기적 이상 하나가 병원의 하루를
+                    <br className={styles.mobileDesign} /> 멈출 수 있습니다.
+                    <br className={styles.mobileDesign2} /> 의료기관 화재의
+                    대부분은
+                    <br className={styles.mobileDesign} /> 전기적 원인에서
+                    시작됩니다.
                   </p>
                 </>
               ) : (
@@ -74,8 +80,8 @@ export default function Medical() {
                     A single spark can change a hospital&apos;s entire day.
                   </h3>
                   <p className={styles.bottomDescription}>
-                    A single slight electrical anomaly can halt a hospital&apos;s
-                    operations.
+                    A single slight electrical anomaly can halt a
+                    hospital&apos;s operations.
                     <br /> Most fires in medical institutions originate from
                     electrical causes.
                   </p>
@@ -86,7 +92,9 @@ export default function Medical() {
             <div className={styles.emphasisText}>
               {language === "KOR" ? (
                 <p className={styles.emphasisLine}>
-                  병원 곳곳의 전력 사용, <strong>놓치면 위험이 됩니다.</strong>
+                  병원 곳곳의 전력 사용,
+                  <br className={styles.mobileDesign} />{" "}
+                  <strong>놓치면 위험이 됩니다.</strong>
                 </p>
               ) : (
                 <p className={styles.emphasisLine}>

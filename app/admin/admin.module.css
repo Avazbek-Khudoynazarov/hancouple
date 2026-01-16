@@ -208,6 +208,41 @@
   line-height: 1.6;
 }
 
+/* Language Tabs */
+.langTabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.langTab {
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #666;
+  background: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.langTab:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+
+.langTabActive {
+  background: #0088ff;
+  color: #ffffff;
+  border-color: #0088ff;
+}
+
+.langTabActive:hover {
+  background: #0066cc;
+  color: #ffffff;
+}
+
 .form {
   display: flex;
   flex-direction: column;

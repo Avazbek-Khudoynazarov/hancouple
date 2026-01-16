@@ -3,7 +3,7 @@
 .container {
   width: 100%;
   background: #ffffff;
-  padding: 80px 0;
+  padding: 196px 0 120px 0;
 }
 
 .content {
@@ -100,9 +100,9 @@
 .note {
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #e57373;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 0.5);
   margin: 0;
 }
 
@@ -139,7 +139,7 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 60px 0;
+    padding: 88px 0 70px 0;
   }
 
   .header {

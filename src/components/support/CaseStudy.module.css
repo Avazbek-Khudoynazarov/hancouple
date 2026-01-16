@@ -3,8 +3,7 @@
 .container {
   width: 100%;
   background: #ffffff;
-  padding: 80px 0;
-  padding-top: 196px;
+  padding: 196px 0 120px 0;
 }
 
 .content {
@@ -127,7 +126,7 @@
     margin: 0 auto;
   }
   .container {
-    padding: 60px 0;
+    padding: 88px 0 70px 0;
   }
 
   .header {

@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 120px 0;
+  padding: 196px 0 120px 0;
   background-color: #ffffff;
 }
 
@@ -400,7 +400,7 @@
 /* Hide on mobile - will be implemented later */
 @media (max-width: 768px) {
   .container {
-    padding: 70px 0;
+    padding: 88px 0 70px 0;
   }
 
   .content {

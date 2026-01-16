@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./OperationalManual.module.css";
-import CheckIcon from "@mui/icons-material/Check";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function OperationalManualPower() {
@@ -17,7 +16,7 @@ export default function OperationalManualPower() {
           </h2>
           <p className={styles.sectionSubtitle}>
             {language === "KOR"
-              ? "아파트 단지, 요양시설, 전통시장, 중소규모 공장 등 피크 시간대 전력 사용이 많은 시설"
+              ? "아파트 단지, 요양시설, 전통시장, 중소규모 공장 등"
               : "Apartment complexes, nursing facilities, traditional markets, small- to medium-sized factories, etc."}
           </p>
 
@@ -26,7 +25,9 @@ export default function OperationalManualPower() {
               <div className={styles.targetImageContainer}>
                 <img
                   src="/assets/remote/appartments.png"
-                  alt={language === "KOR" ? "아파트 단지" : "Apartment complexes"}
+                  alt={
+                    language === "KOR" ? "아파트 단지" : "Apartment complexes"
+                  }
                 />
               </div>
               <h3 className={styles.targetLabel}>
@@ -62,11 +63,17 @@ export default function OperationalManualPower() {
               <div className={styles.targetImageContainer}>
                 <img
                   src="/assets/remote/factory.png"
-                  alt={language === "KOR" ? "중소규모 공장" : "Small-to medium-sized factory"}
+                  alt={
+                    language === "KOR"
+                      ? "중소규모 공장"
+                      : "Small-to medium-sized factory"
+                  }
                 />
               </div>
               <h3 className={styles.targetLabel}>
-                {language === "KOR" ? "중소규모 공장" : "Small-to medium-sized factory"}
+                {language === "KOR"
+                  ? "중소규모 공장"
+                  : "Small-to medium-sized factory"}
               </h3>
             </div>
           </div>
@@ -85,16 +92,35 @@ export default function OperationalManualPower() {
               <div className={styles.manualIconContainer}>
                 <img
                   src="/assets/remote/setting.svg"
-                  alt={language === "KOR" ? "운영매뉴얼 제공" : "Operating manual provided"}
+                  alt={
+                    language === "KOR"
+                      ? "운영매뉴얼 제공"
+                      : "Operating manual provided"
+                  }
                 />
               </div>
               <div className={styles.manualCardTitleMain}>
                 <h3 className={styles.manualCardTitle}>
-                  {language === "KOR" ? "운영매뉴얼 제공" : "Operating manual provided"}
+                  {language === "KOR"
+                    ? "운영매뉴얼 제공"
+                    : "Operating manual provided"}
                 </h3>
                 <div className={styles.manualList}>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "전기안전 운영매뉴얼"
@@ -102,7 +128,20 @@ export default function OperationalManualPower() {
                     </p>
                   </div>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "에너지 절감 운영매뉴얼"
@@ -117,16 +156,35 @@ export default function OperationalManualPower() {
               <div className={styles.manualIconContainer}>
                 <img
                   src="/assets/remote/graph.svg"
-                  alt={language === "KOR" ? "성과 리포트 자동 생성" : "Performance Report"}
+                  alt={
+                    language === "KOR"
+                      ? "성과 리포트 자동 생성"
+                      : "Performance Report"
+                  }
                 />
               </div>
               <div className={styles.manualCardTitleMain}>
                 <h3 className={styles.manualCardTitle}>
-                  {language === "KOR" ? "성과 리포트 자동 생성" : "Performance Report"}
+                  {language === "KOR"
+                    ? "성과 리포트 자동 생성"
+                    : "Performance Report"}
                 </h3>
                 <div className={styles.manualList}>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "회로별 부하 개선율"
@@ -134,9 +192,24 @@ export default function OperationalManualPower() {
                     </p>
                   </div>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
-                      {language === "KOR" ? "전력 절감 효과" : "Power saving effects"}
+                      {language === "KOR"
+                        ? "전력 절감 효과"
+                        : "Power saving effects"}
                     </p>
                   </div>
                 </div>

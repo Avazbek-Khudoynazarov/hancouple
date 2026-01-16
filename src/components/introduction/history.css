@@ -5,7 +5,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: #ffffff;
-  padding: 120px 0;
+  padding: 196px 0 120px 0;
 }
 
 .introduce-header {
@@ -40,7 +40,7 @@
 .config-scroll-bar {
   position: relative;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 80px 80px;
   min-height: 200vh;
@@ -124,7 +124,7 @@
 
 .timeline-text {
   flex: 1;
-  padding: 0 40px;
+  padding: 0 40px 0 0;
 }
 
 .text-position {
@@ -153,7 +153,7 @@
   font-size: 20px;
   font-weight: 700;
   color: #333333;
-  line-height: 1.7;
+  line-height: 1.4;
   margin-bottom: 12px;
 }
 

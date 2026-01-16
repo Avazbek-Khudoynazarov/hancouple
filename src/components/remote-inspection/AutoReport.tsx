@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./RealTimeMonitoring.module.css";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function AutoReport() {
@@ -33,11 +32,28 @@ export default function AutoReport() {
                     : "Manual inspections, monthly checks (manual), manual thermal imaging"}
                 </p>
                 <div className={styles.cardContent}>
-                  <ArrowForwardIcon className={styles.arrowIcon} />
                   <p className={styles.cardText}>
-                    {language === "KOR"
-                      ? "육안 점검·사후 대응 위주"
-                      : "Focused on visual inspection and post-incident response"}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      fill="none"
+                      viewBox="0 0 16 14"
+                      className={styles.arrowIcon}>
+                      <path
+                        fill="#333"
+                        d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                      />
+                    </svg>
+                    {language === "KOR" ? (
+                      "육안 점검·사후 대응 위주"
+                    ) : (
+                      <>
+                        Focused on visual inspection
+                        <br />
+                        and post-incident response
+                      </>
+                    )}
                   </p>
                 </div>
               </div>
@@ -56,19 +72,28 @@ export default function AutoReport() {
               <div className={styles.cardContentCenterMain}>
                 <div className={styles.cardHighlight}>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight1}`}>
-                      AI 기반 실시간 원격 계측/
-                      <br /> 검지/자동 리포트 생성
-                    </span>
+                    <div className={styles.highlightMultiLine}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
+                        AI 기반 실시간 원격 계측/
+                      </span>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
+                        검치/자동 리포트 생성
+                      </span>
+                    </div>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
                         based real-time remote
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
                         metering, inspection, and
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight1}`}>
                         automatic report generation
                       </span>
                     </div>
@@ -84,9 +109,15 @@ export default function AutoReport() {
               <h4 className={styles.cardLabelReport2}>AS-IS</h4>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardContentCenter}>
-                  {language === "KOR"
-                    ? "핵심 지표 관리 미흡, 점검일지 수기작성"
-                    : "Inadequate core metric management, manual inspection log creation"}
+                  {language === "KOR" ? (
+                    <>
+                      핵심 지표 관리 미흡,
+                      <br />
+                      점검일지 수기작성
+                    </>
+                  ) : (
+                    "Inadequate core metric management, manual inspection log creation"
+                  )}
                 </p>
               </div>
             </div>
@@ -105,19 +136,22 @@ export default function AutoReport() {
                 <div className={styles.cardContentCenterMain}>
                   <p className={styles.cardBottomText}>
                     {language === "KOR"
-                      ? "전기안전 원격검침·피크·난비전력"
+                      ? "전기안전 원격검침·피크·낭비전력"
                       : "Remote electrical safety inspection, peak load, and wasted power"}
                   </p>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlightReport2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlightReport2}`}>
                       자동 리포트(Excel) 생성
                     </span>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlightReport2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlightReport2}`}>
                         automatic report (Excel)
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlightReport2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlightReport2}`}>
                         generation
                       </span>
                     </div>
@@ -142,9 +176,12 @@ export default function AutoReport() {
                   </>
                 ) : (
                   <>
-                    <p className={styles.cardSubtitleReport}>Excessive time spent</p>
                     <p className={styles.cardContentCenter}>
-                      on data collection and report generation
+                      Excessive time spent
+                    </p>
+                    <p className={styles.cardSubtitleReport}>
+                      on data collection and
+                      <br /> report generation
                     </p>
                   </>
                 )}
@@ -163,18 +200,28 @@ export default function AutoReport() {
               </div>
               <div className={styles.cardContentCenterMain}>
                 {language === "KOR" ? (
-                  <span className={`${styles.highlightText} ${styles.highlight2}`}>
-                    차단기별 안전·점검·효율 <br /> 지표 통합 관리
-                  </span>
+                  <div className={styles.highlightMultiLine}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
+                      차단기별 안전·절감·효율
+                    </span>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
+                      지표 통합 관리
+                    </span>
+                  </div>
                 ) : (
                   <div className={styles.highlightMultiLine}>
-                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
                       Integrated management of
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
                       safety, savings, and efficiency
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
                       metrics per circuit breaker
                     </span>
                   </div>
@@ -198,9 +245,12 @@ export default function AutoReport() {
                   </>
                 ) : (
                   <>
-                    <p className={styles.cardSubtitleReport}>Management inefficiencies</p>
                     <p className={styles.cardContentCenter}>
-                      due to a lack of shared inspection results per facility
+                      Management inefficiencies
+                    </p>
+                    <p className={styles.cardSubtitleReport}>
+                      due to a lack of shared inspection <br /> results per
+                      facility
                     </p>
                   </>
                 )}
@@ -219,18 +269,23 @@ export default function AutoReport() {
               </div>
               <div className={styles.cardContentCenterMain}>
                 <p className={styles.cardBottomText}>
-                  {language === "KOR" ? "사용자/관리자는" : "Users and managers can"}
+                  {language === "KOR"
+                    ? "사용자/관리자는"
+                    : "Users and managers can"}
                 </p>
                 {language === "KOR" ? (
-                  <span className={`${styles.highlightText} ${styles.highlight4}`}>
+                  <span
+                    className={`${styles.highlightText} ${styles.highlight4}`}>
                     즉시 공유·활용 가능
                   </span>
                 ) : (
                   <div className={styles.highlightMultiLine}>
-                    <span className={`${styles.highlightText} ${styles.highlight4}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight4}`}>
                       immediately share and
                     </span>
-                    <span className={`${styles.highlightText} ${styles.highlight4}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight4}`}>
                       utilize data
                     </span>
                   </div>

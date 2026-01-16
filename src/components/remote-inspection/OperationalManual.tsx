@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./OperationalManual.module.css";
-import CheckIcon from "@mui/icons-material/Check";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function OperationalManual() {
@@ -100,15 +99,47 @@ export default function OperationalManual() {
                 </h3>
                 <div className={styles.manualList}>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
-                      {language === "KOR"
-                        ? "피크전력 관리 운영매뉴얼"
-                        : "Electrical safety operating manual per circuit breaker"}
+                      {language === "KOR" ? (
+                        "차단기별 전기안전 운영매뉴얼"
+                      ) : (
+                        <>
+                          Electrical safety operating
+                          <br />
+                          manual per circuit breaker
+                        </>
+                      )}
                     </p>
                   </div>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "에너지 절감 운영매뉴얼"
@@ -138,7 +169,20 @@ export default function OperationalManual() {
                 </h3>
                 <div className={styles.manualList}>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
                         ? "피크 발생 횟수"
@@ -146,10 +190,23 @@ export default function OperationalManual() {
                     </p>
                   </div>
                   <div className={styles.manualListItem}>
-                    <CheckIcon className={styles.checkIcon} />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        stroke="#08f"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3.2"
+                        d="M5.5 12.5 10 17l9-9.5"
+                      />
+                    </svg>
                     <p>
                       {language === "KOR"
-                        ? "피크 절감 효과"
+                        ? "절감 효과 지표"
                         : "Savings effectiveness metrics"}
                     </p>
                   </div>

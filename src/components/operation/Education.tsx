@@ -31,7 +31,7 @@ export default function Education() {
           </span>
           <h2 className={styles.mainTitle}>
             {language === "KOR"
-              ? "초 ·중 ·고 · 대학교"
+              ? "초 · 중 · 고 · 대학교"
               : "Schools & Universities"}
           </h2>
         </div>

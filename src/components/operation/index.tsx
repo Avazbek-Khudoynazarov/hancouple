@@ -33,7 +33,7 @@ export default function Operation() {
         return <Medical />;
       case "제조업 공장":
         return <Manufacturing />;
-      case "초 ·중 ·고 · 대학교":
+      case "초 · 중 · 고 · 대학교":
         return <Education />;
       case "전통시장 · 소상공인":
         return <SmallBusiness />;

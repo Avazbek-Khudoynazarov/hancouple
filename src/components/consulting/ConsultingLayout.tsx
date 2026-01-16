@@ -9,7 +9,8 @@ interface ConsultingLink {
   id: string;
   titleKor: string;
   titleEng: string;
-  url: string;
+  urlKor: string;
+  urlEng: string;
 }
 
 interface MenuItem {
@@ -42,8 +43,12 @@ export default function ConsultingLayout() {
   }, []);
 
   const getMenuItems = (): MenuItem[] => {
-    const serviceInfoUrl = consultingLinks?.serviceInfo?.url || "/assets/service-info.html";
-    const onlineConsultingUrl = consultingLinks?.onlineConsulting?.url || "/assets/online-consulting.html";
+    const serviceInfoUrl = language === "KOR"
+      ? consultingLinks?.serviceInfo?.urlKor || "/assets/service-info.html"
+      : consultingLinks?.serviceInfo?.urlEng || "/assets/service-info.html";
+    const onlineConsultingUrl = language === "KOR"
+      ? consultingLinks?.onlineConsulting?.urlKor || "/assets/online-consulting.html"
+      : consultingLinks?.onlineConsulting?.urlEng || "/assets/online-consulting.html";
 
     if (language === "KOR") {
       return [
@@ -110,12 +115,7 @@ export default function ConsultingLayout() {
               <span className={styles.currentMenu}>
                 {language === "KOR" ? "결과 제공" : "Results Provided"}
               </span>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}>
+              <div className={styles.arrowContainer}>
                 <img
                   src="/assets/introduction/arrow.svg"
                   alt="Dropdown"
@@ -136,7 +136,9 @@ export default function ConsultingLayout() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.dropdownItem}
+                      className={`${styles.dropdownItem} ${
+                        language === "ENG" ? styles.dropdownItemEng : ""
+                      }`}
                       onClick={() => setIsDropdownOpen(false)}>
                       {item.title}
                     </a>
@@ -145,8 +147,8 @@ export default function ConsultingLayout() {
                       key={index}
                       href={item.href}
                       className={`${styles.dropdownItem} ${
-                        item.isActive ? styles.active : ""
-                      }`}
+                        language === "ENG" ? styles.dropdownItemEng : ""
+                      } ${item.isActive ? styles.active : ""}`}
                       onClick={() => setIsDropdownOpen(false)}>
                       {item.title}
                     </Link>

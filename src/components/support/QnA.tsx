@@ -223,15 +223,23 @@ export default function QnA() {
                             {item.answer.richTextContent.lines.map(
                               (line, lineIdx) => (
                                 <p key={lineIdx}>
-                                  {line.map((segment, segIdx) =>
-                                    segment.bold ? (
+                                  {line.map((segment, segIdx) => {
+                                    const textWithBreaks = segment.text
+                                      .split("\n")
+                                      .map((part, i, arr) => (
+                                        <span key={i}>
+                                          {part}
+                                          {i < arr.length - 1 && <br />}
+                                        </span>
+                                      ));
+                                    return segment.bold ? (
                                       <strong key={segIdx}>
-                                        {segment.text}
+                                        {textWithBreaks}
                                       </strong>
                                     ) : (
-                                      <span key={segIdx}>{segment.text}</span>
-                                    )
-                                  )}
+                                      <span key={segIdx}>{textWithBreaks}</span>
+                                    );
+                                  })}
                                 </p>
                               )
                             )}

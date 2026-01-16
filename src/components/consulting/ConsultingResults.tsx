@@ -9,7 +9,8 @@ interface ConsultingLink {
   id: string;
   titleKor: string;
   titleEng: string;
-  url: string;
+  urlKor: string;
+  urlEng: string;
 }
 
 export default function ConsultingResults() {
@@ -33,8 +34,12 @@ export default function ConsultingResults() {
     fetchLinks();
   }, []);
 
-  const electricalSafetyUrl = consultingLinks?.electricalSafetyReport?.url || "/assets/electrical-safety-report.html";
-  const peakPowerUrl = consultingLinks?.peakPowerReport?.url || "/assets/peak-power-report.html";
+  const electricalSafetyUrl = language === "KOR"
+    ? consultingLinks?.electricalSafetyReport?.urlKor || "/assets/electrical-safety-report.html"
+    : consultingLinks?.electricalSafetyReport?.urlEng || "/assets/electrical-safety-report.html";
+  const peakPowerUrl = language === "KOR"
+    ? consultingLinks?.peakPowerReport?.urlKor || "/assets/peak-power-report.html"
+    : consultingLinks?.peakPowerReport?.urlEng || "/assets/peak-power-report.html";
 
   return (
     <div id="results" className={styles.container}>

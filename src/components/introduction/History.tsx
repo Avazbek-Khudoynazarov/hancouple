@@ -18,12 +18,22 @@ type TimelineItem = {
 
 const timelineDataKor: TimelineItem[] = [
   {
+    year: "2025",
+    monthList: ["08", "07"],
+    texts: [
+      "중소기업기술마켓 인증(한국부동산원)",
+      "안전보건경영시스템 인증서 (ISO 45001:2018)\n중소기업기술마켓 인증 (국토안전관리원)",
+    ],
+    anchorRatio: 0.005,
+    mobileAnchorRatio: -0.18,
+  },
+  {
     year: "2024",
     monthList: ["12", "11", "01"],
     texts: [
       "중소기업기술마켓 인증서 획득",
-      "직접생산확인증명서 획득",
-      "조달등록(우수제품지정)전기안전 모니터링 및 제어 가능한 스마트 전기안전솔루션",
+      "직접생산확인증명서 획득 (빌딩자동제어장치)",
+      "조달등록(우수제품지정)\n전기안전 모니터링 및 제어 가능한 스마트 전기안전솔루션",
     ],
     anchorRatio: 0.005,
     mobileAnchorRatio: -0.18,
@@ -50,10 +60,10 @@ const timelineDataKor: TimelineItem[] = [
     year: "2021",
     monthList: ["12", "10", "09", "04"],
     texts: [
-      "기술혁신형 중소기업(Inno-Biz) 확인서 획득 혁신제품 지정 인증서 획득 (5BP-E01-64W)",
+      "기술혁신형 중소기업(Inno-Biz) 확인서 획득\n 혁신제품 지정 인증서 획득 (5BP-E01-64W)",
       "스마트공장 공급기업등록",
-      "녹색기술제품인증 획득 IoT 전력분석제어장치 (1BF-16-S, 5MF-E11-16W, 5BP-E01-64W)",
-      "녹색기술인증 획득 위험전력, 낭비전력 분석으로 최적화된 모니터링 및 제어 기술 (All-in-one 서비스)",
+      "녹색기술제품인증 획득\n IoT 전력분석제어장치 (1BF-16-S, 5MF-E11-16W, 5BP-E01-64W)",
+      "녹색기술인증 획득 위험전력, 낭비전력 분석으로 최적화된 모니터링 및 제어 기술\n (All-in-one 서비스)",
     ],
     anchorPx: 60,
     mobileAnchorPx: -1,
@@ -81,19 +91,19 @@ const timelineDataKor: TimelineItem[] = [
     year: "2018",
     monthList: ["06", "05"],
     texts: [
-      "표창장(중소벤처기업부장관) 중소기업마케팅페어(2018) '히든스타5' 선정 MBC특별생방송 '힘내라 중소기업' 출연 중소기업진흥공단 HIT500(우수 중소기업 유망제품) 선정 특허등록 2건",
-      "KC(Korea Certification)인증 획득 스페인 MWC, 독일 CEBIT 전시회 참가 ISO9001/14001 인증 획득",
+      "표창장(중소벤처기업부장관)\n 중소기업마케팅페어(2018) '히든스타5' 선정\n MBC특별생방송 '힘내라 중소기업' 출연\n 중소기업진흥공단 HIT500(우수 중소기업 유망제품) 선정\n 특허등록 2건",
+      "KC(Korea Certification)인증 획득\n 스페인 MWC, 독일 CEBIT 전시회 참가\n ISO9001/14001 인증 획득",
     ],
     anchorRatio: 0.45,
     mobileAnchorRatio: 0.17,
   },
   {
     year: "2017",
-    monthList: ["12", "09", "01~12"],
+    monthList: ["12", "09", "01\n~12"],
     texts: [
-      "무선 전자파적합등록필, 특허등록 2건 중소벤처기업부 수출유망중소기업 지정",
+      "무선 전자파적합등록필, 특허등록 2건\n 중소벤처기업부 수출유망중소기업 지정",
       "스마트 콘센트 [3CYS AKIGO] 출시",
-      "미국 CES, 독일 CEBIT, 싱가포르 COMMUNIC ASIA, UAE GITEX, BIG5, 홍콩 ELECTRONICS 등 세계유수 전시회 참가",
+      "미국 CES, 독일 CEBIT, 싱가포르 COMMUNIC ASIA, UAE GITEX, BIG5,\n 홍콩 ELECTRONICS 등 세계유수 전시회 참가",
     ],
     anchorPx: 160,
     mobileAnchorPx: 95,
@@ -141,12 +151,22 @@ const timelineDataKor: TimelineItem[] = [
 
 const timelineDataEng: TimelineItem[] = [
   {
+    year: "2025",
+    monthList: ["08", "07"],
+    texts: [
+      "SME Technology Marketplace Certification\n(Korea Real Estate Board, REB)",
+      "Occupational Health and Safety\n Management System Certification\n(ISO 45001:2018)\n SME Technology Marketplace Certification\n(Korea Authority of Land & Infrastructure Safety)",
+    ],
+    anchorRatio: 0.005,
+    mobileAnchorRatio: -0.18,
+  },
+  {
     year: "2024",
     monthList: ["12", "11", "01"],
     texts: [
       "Acquired SME Technology Market Certification",
-      "Obtained Direct Production Confirmation Certificate",
-      "Procurement Registration (Designated as Excellent Product) Smart Electrical Safety Solution enabling monitoring and control",
+      "Obtained Direct Production Confirmation Certificate\n(Building Automation Control System)",
+      "Procurement Registration (Designated as Excellent Product)\nSmart Electrical Safety Solution enabling monitoring and control",
     ],
     anchorRatio: 0.005,
     mobileAnchorRatio: -0.18,
@@ -176,10 +196,10 @@ const timelineDataEng: TimelineItem[] = [
     year: "2021",
     monthList: ["12", "10", "09", "04"],
     texts: [
-      "Obtained Technology Innovation SME (Inno-Biz) Certificate Obtained Innovative Product Designation Certificate (SBP-E01-64W)",
+      "Obtained Technology Innovation SME (Inno-Biz) Certificate\nObtained Innovative Product Designation Certificate (SBP-E01-64W)",
       "Registered as Smart Factory Supplier",
-      "Obtained Green Technology Product Certification Obtained Green Technology Certification for IoT Power Analysis and Control Device (1BF-16-5, SMF-E11-16W, SBP-E01-64W)",
-      "Obtained Green Technology Certification Monitoring and Control Technology Optimized through Hazardous Power and Wasted Power Analysis (All-in-one Service)",
+      "Obtained Green Technology Product Certification\nObtained Green Technology Certification for\n IoT Power Analysis and Control Device\n (1BF-16-5, SMF-E11-16W, SBP-E01-64W)",
+      "Obtained Green Technology Certification\nMonitoring and Control Technology Optimized through Hazardous Power and Wasted Power Analysis\n (All-in-one Service)",
     ],
     anchorPx: 60,
     mobileAnchorPx: -1,
@@ -207,19 +227,19 @@ const timelineDataEng: TimelineItem[] = [
     year: "2018",
     monthList: ["06", "05"],
     texts: [
-      "Awarded Certificate of Commendation (Minister of SMEs and Startups) Selected as 'Hidden Star 5' at the SME Marketing Fair (2018) Appeared on MBC's special live broadcast 'Cheer Up, SMEs' TV program Selected as a promotional company for the Korea SMEs and Startups Agency's HIT500 (Outstanding SME Promising Products) Registered two patents",
-      "KC(Korea Certification) Acquired certifications Participated in Spain's MWC and Germany's CEBIT exhibitions ISO9001/14001 Acquired certifications",
+      "Awarded Certificate of Commendation\n (Minister of SMEs and Startups)\nSelected as 'Hidden Star 5' at the SME Marketing Fair (2018)\nAppeared on MBC's special live broadcast\n 'Cheer Up, SMEs' TV program\nSelected as a promotional company for the Korea SMEs\n and Startups Agency's HIT500 (Outstanding SME Promising Products)\nRegistered two patents",
+      "KC(Korea Certification) Acquired certifications\nParticipated in Spain's MWC and Germany's CEBIT exhibitions\nISO9001/14001 Acquired certifications",
     ],
     anchorRatio: 0.45,
     mobileAnchorRatio: 0.17,
   },
   {
     year: "2017",
-    monthList: ["12", "09", "01~12"],
+    monthList: ["12", "09", "01\n~12"],
     texts: [
-      "Obtained Wireless Electromagnetic Compatibility Registration, Registered 2 Patents Designated as Export-Promising SME by Ministry of SMEs and Startups",
+      "Obtained Wireless Electromagnetic Compatibility Registration,\n Registered 2 Patents\nDesignated as Export-Promising SME by\n Ministry of SMEs and Startups",
       "Launched Smart Outlet [3CYS AKIGO]",
-      "Participated in World-Leading Exhibitions: CES (USA), COMMUNIC ASIA (Singapore), GITEX (UAE), BIGS (UAE), ELECTRONICS (Hong Kong)",
+      "Participated in World-Leading Exhibitions:\n CES (USA), CEBIT (Germany), COMMUNIC ASIA (Singapore),\n GITEX (UAE), BIG5 (UAE),ELECTRONICS (Hong Kong)",
     ],
     anchorPx: 160,
     mobileAnchorPx: 95,
@@ -245,14 +265,18 @@ const timelineDataEng: TimelineItem[] = [
   {
     year: "2014",
     monthList: ["07"],
-    texts: ["Contracted for the Small and Medium Business Administration R&D Technology Development Project"],
+    texts: [
+      "Contracted for the Small and Medium Business Administration R&D Technology Development Project",
+    ],
     anchorPx: 160,
     mobileAnchorPx: 95,
   },
   {
     year: "2003~2013",
     monthList: [""],
-    texts: ["Contracted for KT, SKT, and LG Uplus wireless and transmission network facility construction projects"],
+    texts: [
+      "Contracted for KT, SKT, and LG Uplus wireless and transmission network facility construction projects",
+    ],
     anchorPx: 160,
     mobileAnchorPx: 95,
   },
@@ -385,24 +409,20 @@ export default function History() {
       const containerHeight = container.scrollHeight;
 
       const next: Marker[] = sectionsRef.current.map((el, i) => {
-        const rect = el.getBoundingClientRect();
-        const item: any = timelineData[i];
+        // Find the year element within this section
+        const yearEl = el.querySelector(".history-year-style");
 
-        const px = isMobile
-          ? item.mobileAnchorPx ?? item.anchorPx
-          : item.anchorPx;
-        const ratio = isMobile
-          ? item.mobileAnchorRatio ?? item.anchorRatio
-          : item.anchorRatio;
+        let refY: number;
+        if (yearEl) {
+          // Position the dot at the vertical center of the year element
+          const yearRect = yearEl.getBoundingClientRect();
+          refY = yearRect.top + window.scrollY + yearRect.height / 2;
+        } else {
+          // Fallback to section top if year element not found
+          const rect = el.getBoundingClientRect();
+          refY = rect.top + window.scrollY + rect.height / 3.5;
+        }
 
-        const offsetFromTop =
-          typeof px === "number"
-            ? px
-            : typeof ratio === "number"
-            ? rect.height * ratio
-            : rect.height / 3.5;
-
-        const refY = rect.top + window.scrollY + offsetFromTop;
         const pct = ((refY - containerTop) / containerHeight) * 100;
 
         return {
@@ -456,12 +476,14 @@ export default function History() {
           {language === "KOR" ? (
             <>
               네트워크코리아가 걸어온 길,
-              <br /> <span style={{ color: "#0088ff" }}>미래를 향한 발걸음</span>
+              <br />{" "}
+              <span style={{ color: "#0088ff" }}>미래를 향한 발걸음</span>
             </>
           ) : (
             <>
               Network Korea's Company History:
-              <br /> <span style={{ color: "#0088ff" }}>Steps Toward the Future</span>
+              <br />{" "}
+              <span style={{ color: "#0088ff" }}>Steps Toward the Future</span>
             </>
           )}
         </h2>
@@ -495,7 +517,7 @@ export default function History() {
         <div className="timeline-content">
           {timelineData.map((item, index) => {
             const isCurrentYear = index === snappedIndex;
-            const isRightSide = index % 2 === 0 && !isMobile;
+            const isRightSide = index % 2 === 1 && !isMobile;
 
             return (
               <div
@@ -545,7 +567,12 @@ export default function History() {
                                   ? "visible"
                                   : "hidden",
                               }}>
-                              {month}
+                              {month?.split("\n").map((line, i, arr) => (
+                                <span key={i}>
+                                  {line}
+                                  {i < arr.length - 1 && <br />}
+                                </span>
+                              ))}
                             </span>
                           )}
 
@@ -554,7 +581,12 @@ export default function History() {
                               flex: 1,
                               textAlign: isRightSide ? "start" : "end",
                             }}>
-                            {text}
+                            {text.split("\n").map((line, i, arr) => (
+                              <span key={i}>
+                                {line}
+                                {i < arr.length - 1 && <br />}
+                              </span>
+                            ))}
                           </span>
 
                           {!isRightSide && (
@@ -565,7 +597,12 @@ export default function History() {
                                   ? "visible"
                                   : "hidden",
                               }}>
-                              {month}
+                              {month?.split("\n").map((line, i, arr) => (
+                                <span key={i}>
+                                  {line}
+                                  {i < arr.length - 1 && <br />}
+                                </span>
+                              ))}
                             </span>
                           )}
                         </p>

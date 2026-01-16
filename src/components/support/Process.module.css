@@ -3,7 +3,7 @@
 .container {
   width: 100%;
   background: #ffffff;
-  padding: 80px 0;
+  padding: 196px 0 120px 0;
 }
 
 .content {
@@ -66,8 +66,8 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 60px 0 30px 0;
-    height: 100vh;
+    padding: 88px 0 70px 0;
+    height: 120vh;
   }
 
   .header {

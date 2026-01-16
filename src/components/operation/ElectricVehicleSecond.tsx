@@ -90,35 +90,21 @@ export default function ElectricVehicleSecond() {
           </h3>
           {language === "KOR" ? (
             <p className={styles.bottomDescription}>
-              <b>
-                DC 누설 대응형 차단기(Type B RCD)와{" "}
-                <br className={styles.vision} />
-                환기·스프링클러
-              </b>
-              를 통해 화재 위험을 최소화하고,
-              <br className={styles.vision} />
-              <b>케이블의 정기 점검</b>으로 접촉저항과 열화를 예방합니다.
-              <br />
-              온도와 전류를 실시간 모니터링하여 <br className={styles.vision} />
+              <b>실시간 점검</b>으로 접촉저항과 열화를
+              <br className={styles.vision} /> 예방합니다. 온도와 전류를&nbsp;
+              <b>실시간 모니터링</b>하여 <br />
               이상 발생 시 즉시 차단되는 안전 충전 환경을 구현하세요.
             </p>
           ) : (
             <p className={styles.bottomDescription}>
-              Minimize fire risk with{" "}
-              <b>
-                DC leakage-responsive circuit breakers (Type B RCD) and
-                ventilation
-                <br />
-                /sprinkler systems
-              </b>
-              , and prevent contact resistance and degradation through{" "}
-              <b>
-                regular cable
-                <br /> inspections
-              </b>
-              . Implement a safe charging environment with real-time monitoring
-              of temperature <br /> and current, ensuring immediate
-              disconnection upon any anomaly.
+              Real-time inspection prevents contact{" "}
+              <br className={styles.vision} />
+              resistance and deterioration.
+              <br /> Implement a safe charging environment with{" "}
+              <br className={styles.vision} />
+              <b>real-time monitoring</b> of temperature <br /> and current,
+              ensuring immediate <br className={styles.vision} /> disconnection
+              upon any anomaly.
             </p>
           )}
         </div>

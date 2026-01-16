@@ -123,37 +123,37 @@ export default function Footer() {
               <img
                 src={language === "KOR" ? "/assets/homepage/footer/1.svg" : "/assets/homepage/footer/1Eng.svg"}
                 alt="Partner 1"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo1}`}
               />
               <img
                 src="/assets/homepage/footer/2.svg"
                 alt="Partner 2"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo2}`}
               />
               <img
                 src="/assets/homepage/footer/3.svg"
                 alt="Partner 3"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo3}`}
               />
               <img
                 src="/assets/homepage/footer/4.svg"
                 alt="Partner 4"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo4}`}
               />
               <img
                 src="/assets/homepage/footer/5.svg"
                 alt="Partner 5"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo5}`}
               />
               <img
                 src={language === "KOR" ? "/assets/homepage/footer/6.svg" : "/assets/homepage/footer/6Eng.svg"}
                 alt="Partner 6"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo6}`}
               />
               <img
                 src="/assets/homepage/footer/7.svg"
                 alt="Partner 7"
-                className={styles.partnerLogo}
+                className={`${styles.partnerLogo} ${styles.partnerLogo7}`}
               />
             </div>
           </div>

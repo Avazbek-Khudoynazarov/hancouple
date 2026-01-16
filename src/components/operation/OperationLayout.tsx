@@ -27,9 +27,9 @@ const menuItemsKor = [
     href: "/operation?menu=제조업 공장",
   },
   {
-    title: "초 ·중 ·고 · 대학교",
-    key: "초 ·중 ·고 · 대학교",
-    href: "/operation?menu=초 ·중 ·고 · 대학교",
+    title: "초 · 중 · 고 · 대학교",
+    key: "초 · 중 · 고 · 대학교",
+    href: "/operation?menu=초 · 중 · 고 · 대학교",
   },
   {
     title: "전통시장 · 소상공인",
@@ -171,12 +171,7 @@ export default function OperationLayout({
               <span className={styles.currentMenu}>
                 {getDisplayMenu(activeMenu)}
               </span>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}>
+              <div className={styles.arrowContainer}>
                 <img
                   src="/assets/introduction/arrow.svg"
                   alt="Dropdown"
@@ -195,8 +190,8 @@ export default function OperationLayout({
                     key={index}
                     href={item.href}
                     className={`${styles.dropdownItem} ${
-                      activeMenu === item.key ? styles.active : ""
-                    }`}
+                      language === "ENG" ? styles.dropdownItemEng : ""
+                    } ${activeMenu === item.key ? styles.active : ""}`}
                     onClick={() => {
                       setActiveMenu(item.key);
                       setIsDropdownOpen(false);

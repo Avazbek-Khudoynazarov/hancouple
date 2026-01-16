@@ -63,11 +63,14 @@ export default function SmallBusiness() {
               {language === "KOR" ? (
                 <>
                   <h3 className={styles.bottomTitle}>
-                    작은 불씨 하나가, 점포의 일상을 멈출 수 있습니다.
+                    작은 불씨 하나가, 점포의{" "}
+                    <br className={styles.mobileDesign} /> 일상을 멈출 수
+                    있습니다.
                   </h3>
                   <p className={styles.bottomDescription}>
                     복잡한 배선과 오래된 전열기기,
-                    <br /> 시장의 하루는 작은 불씨 하나에도 멈출 수 있습니다.
+                    <br /> 시장의 하루는 작은 불씨 하나에도
+                    <br className={styles.mobileDesign} /> 멈출 수 있습니다.
                   </p>
                 </>
               ) : (
@@ -87,7 +90,8 @@ export default function SmallBusiness() {
             <div className={styles.emphasisText}>
               {language === "KOR" ? (
                 <p className={styles.emphasisLine}>
-                  한 곳의 위험이 곧 <strong>전체의 위험</strong>이 됩니다.
+                  한 곳의 위험이 곧<br className={styles.mobileDesign} />{" "}
+                  <strong>전체의 위험</strong>이 됩니다.
                 </p>
               ) : (
                 <p className={styles.emphasisLine}>

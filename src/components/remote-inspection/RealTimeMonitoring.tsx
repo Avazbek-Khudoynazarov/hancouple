@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./RealTimeMonitoring.module.css";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function RealTimeMonitoring() {
@@ -31,8 +30,19 @@ export default function RealTimeMonitoring() {
                     : "Checking only monthly bills"}
                 </p>
                 <div className={styles.cardContent}>
-                  <ArrowForwardIcon className={styles.arrowIcon} />
                   <p className={styles.cardText}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      fill="none"
+                      viewBox="0 0 16 14"
+                      className={styles.arrowIcon}>
+                      <path
+                        fill="#333"
+                        d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                      />
+                    </svg>
                     {language === "KOR"
                       ? "피크 발생 원인 불명확"
                       : "Unclear causes of peak usage"}
@@ -57,8 +67,20 @@ export default function RealTimeMonitoring() {
                     : "15-minute real-time monitoring"}
                 </p>
                 <div className={styles.cardHighlight}>
-                  <ArrowForwardIcon className={styles.arrowIconHighlight} />
-                  <span className={`${styles.highlightText} ${styles.highlight1}`}>
+                  <span
+                    className={`${styles.highlightText} ${styles.highlightWithArrow} ${styles.highlight1}`}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="14"
+                      fill="none"
+                      viewBox="0 0 16 14"
+                      className={styles.arrowIconHighlight}>
+                      <path
+                        fill="#333"
+                        d="M8.262 12.793a1.06 1.06 0 0 1-.352-.82 1.08 1.08 0 0 1 .352-.801l3.437-3.457H1.152A1.135 1.135 0 0 1 0 6.563q0-.48.332-.811.342-.332.82-.342H11.7L8.262 1.953a1 1 0 0 1-.264-.361 1.2 1.2 0 0 1-.088-.44 1.08 1.08 0 0 1 .352-.8q.156-.177.361-.264A1.2 1.2 0 0 1 9.063 0a1.08 1.08 0 0 1 .8.352l5.43 5.41a1.08 1.08 0 0 1 .352.8q0 .47-.352.82l-5.43 5.411a1.08 1.08 0 0 1-.8.352q-.225 0-.44-.088a1 1 0 0 1-.361-.264"
+                      />
+                    </svg>
                     {language === "KOR"
                       ? "피크 원인 추적 가능"
                       : "Traceable peak causes"}
@@ -100,15 +122,18 @@ export default function RealTimeMonitoring() {
               <div className={styles.cardHighlight}>
                 <div className={styles.cardContentCenterMain}>
                   {language === "KOR" ? (
-                    <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                    <span
+                      className={`${styles.highlightText} ${styles.highlight2}`}>
                       자동 알림 & 절감 가이드 제공
                     </span>
                   ) : (
                     <div className={styles.highlightMultiLine}>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         Automatic alerts & savings
                       </span>
-                      <span className={`${styles.highlightText} ${styles.highlight2}`}>
+                      <span
+                        className={`${styles.highlightText} ${styles.highlight2}`}>
                         guidance provided
                       </span>
                     </div>
@@ -153,7 +178,8 @@ export default function RealTimeMonitoring() {
                     ? "계약전력 최적화로"
                     : "through contracted power optimization"}
                 </p>
-                <span className={`${styles.highlightText} ${styles.highlight3}`}>
+                <span
+                  className={`${styles.highlightText} ${styles.highlight3}`}>
                   {language === "KOR"
                     ? "연간 요금 절감"
                     : "Annual cost savings"}

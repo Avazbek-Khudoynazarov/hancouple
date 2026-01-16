@@ -9,7 +9,7 @@
 .headerSection {
   max-width: 1373px;
   margin: 0 auto;
-  padding: 80px 0 60px 0;
+  padding: 196px 0 60px 0;
   text-align: center;
 }
 
@@ -196,7 +196,7 @@
 
 @media (max-width: 768px) {
   .headerSection {
-    padding: 50px 20px 40px 20px;
+    padding: 88px 20px 40px 20px;
   }
 
   .pageTitle {

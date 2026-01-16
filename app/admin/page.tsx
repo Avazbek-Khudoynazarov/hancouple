@@ -15,7 +15,8 @@ interface ConsultingLink {
   id: string;
   titleKor: string;
   titleEng: string;
-  url: string;
+  urlKor: string;
+  urlEng: string;
 }
 
 interface TextSegment {
@@ -86,7 +87,9 @@ export default function AdminPage() {
   const [consultingLinks, setConsultingLinks] = useState<{
     [key: string]: ConsultingLink;
   }>({});
-  const [linkEditValues, setLinkEditValues] = useState<{ [key: string]: string }>({});
+  const [linkLangTab, setLinkLangTab] = useState<"kor" | "eng">("kor");
+  const [linkEditValuesKor, setLinkEditValuesKor] = useState<{ [key: string]: string }>({});
+  const [linkEditValuesEng, setLinkEditValuesEng] = useState<{ [key: string]: string }>({});
   const [linkSubmitStatus, setLinkSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
@@ -141,12 +144,15 @@ export default function AdminPage() {
       if (response.ok) {
         const data = await response.json();
         setConsultingLinks(data);
-        // Initialize edit values
-        const editValues: { [key: string]: string } = {};
+        // Initialize edit values for both languages
+        const editValuesKor: { [key: string]: string } = {};
+        const editValuesEng: { [key: string]: string } = {};
         Object.keys(data).forEach((key) => {
-          editValues[key] = data[key].url;
+          editValuesKor[key] = data[key].urlKor;
+          editValuesEng[key] = data[key].urlEng;
         });
-        setLinkEditValues(editValues);
+        setLinkEditValuesKor(editValuesKor);
+        setLinkEditValuesEng(editValuesEng);
       }
     } catch (error) {
       console.error("Failed to fetch consulting links:", error);
@@ -287,8 +293,8 @@ export default function AdminPage() {
     }
   };
 
-  const handleLinkUpdate = async (linkId: string) => {
-    const newUrl = linkEditValues[linkId];
+  const handleLinkUpdate = async (linkId: string, lang: "kor" | "eng") => {
+    const newUrl = lang === "kor" ? linkEditValuesKor[linkId] : linkEditValuesEng[linkId];
     if (!newUrl) {
       setLinkSubmitStatus({
         type: "error",
@@ -298,19 +304,23 @@ export default function AdminPage() {
     }
 
     try {
+      const body = lang === "kor"
+        ? { id: linkId, urlKor: newUrl }
+        : { id: linkId, urlEng: newUrl };
+
       const response = await fetch("/api/consulting-links", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${password}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: linkId, url: newUrl }),
+        body: JSON.stringify(body),
       });
 
       if (response.ok) {
         setLinkSubmitStatus({
           type: "success",
-          message: "링크가 수정되었습니다!",
+          message: lang === "kor" ? "국문 링크가 수정되었습니다!" : "영문 링크가 수정되었습니다!",
         });
         fetchConsultingLinks();
         setTimeout(() => {
@@ -423,12 +433,64 @@ export default function AdminPage() {
   };
 
   const handleAnswerTypeChange = (type: QnAItem["answerType"]) => {
+    // Don't reset content if we're editing and type hasn't changed
+    if (editingQna && editingQna.answerType === type) {
+      return;
+    }
     setQnaFormData({
       ...qnaFormData,
       answerType: type,
       answerKor: getDefaultAnswerContent(type),
       answerEng: getDefaultAnswerContent(type),
     });
+  };
+
+  // Helper function to convert richText structure to plain text for editing
+  const richTextToPlainText = (richTextContent: RichTextContent | undefined): string => {
+    if (!richTextContent?.lines) return "";
+    return richTextContent.lines
+      .map((line) =>
+        line
+          .map((segment) => (segment.bold ? `**${segment.text}**` : segment.text))
+          .join("")
+      )
+      .join("\n");
+  };
+
+  // Helper function to convert plain text back to richText structure
+  const plainTextToRichText = (text: string): RichTextContent => {
+    const lines = text.split("\n");
+    return {
+      lines: lines.map((line) => {
+        const segments: TextSegment[] = [];
+        // Parse **bold** markers
+        const parts = line.split(/(\*\*.*?\*\*)/g);
+        parts.forEach((part) => {
+          if (part.startsWith("**") && part.endsWith("**")) {
+            segments.push({ text: part.slice(2, -2), bold: true });
+          } else if (part) {
+            segments.push({ text: part, bold: false });
+          }
+        });
+        if (segments.length === 0) {
+          segments.push({ text: "", bold: false });
+        }
+        return segments;
+      }),
+    };
+  };
+
+  // Helper function to convert formatted content to plain text for editing
+  const formattedToPlainText = (formattedContent: FormattedContent | undefined): string => {
+    if (!formattedContent?.lines) return "";
+    let text = formattedContent.lines
+      .map((line) => `${line.label || ""}${line.text}`)
+      .join("\n");
+    if (formattedContent.subSection) {
+      text += `\n\n[${formattedContent.subSection.title}]\n`;
+      text += formattedContent.subSection.bullets.map((b) => `• ${b}`).join("\n");
+    }
+    return text;
   };
 
   const handleQnaSubmit = async (e: React.FormEvent) => {
@@ -772,6 +834,22 @@ export default function AdminPage() {
                   컨설팅 섹션의 HTML 페이지 링크를 수정합니다. 클릭 시 새 탭에서 열립니다.
                 </p>
 
+                {/* Language Tabs */}
+                <div className={styles.langTabs}>
+                  <button
+                    className={`${styles.langTab} ${linkLangTab === "kor" ? styles.langTabActive : ""}`}
+                    onClick={() => setLinkLangTab("kor")}
+                  >
+                    국문
+                  </button>
+                  <button
+                    className={`${styles.langTab} ${linkLangTab === "eng" ? styles.langTabActive : ""}`}
+                    onClick={() => setLinkLangTab("eng")}
+                  >
+                    영문
+                  </button>
+                </div>
+
                 {linkSubmitStatus.type && (
                   <p
                     className={
@@ -788,6 +866,10 @@ export default function AdminPage() {
                 <div className={styles.linksContainer}>
                   {Object.keys(consultingLinks).map((key) => {
                     const link = consultingLinks[key];
+                    const currentEditValues = linkLangTab === "kor" ? linkEditValuesKor : linkEditValuesEng;
+                    const setCurrentEditValues = linkLangTab === "kor" ? setLinkEditValuesKor : setLinkEditValuesEng;
+                    const currentUrl = linkLangTab === "kor" ? link.urlKor : link.urlEng;
+
                     return (
                       <div key={key} className={styles.linkCard}>
                         <div className={styles.linkHeader}>
@@ -797,10 +879,10 @@ export default function AdminPage() {
                         <div className={styles.linkForm}>
                           <input
                             type="text"
-                            value={linkEditValues[key] || ""}
+                            value={currentEditValues[key] || ""}
                             onChange={(e) =>
-                              setLinkEditValues({
-                                ...linkEditValues,
+                              setCurrentEditValues({
+                                ...currentEditValues,
                                 [key]: e.target.value,
                               })
                             }
@@ -808,14 +890,14 @@ export default function AdminPage() {
                             placeholder="URL을 입력하세요 (예: /assets/page.html)"
                           />
                           <button
-                            onClick={() => handleLinkUpdate(key)}
+                            onClick={() => handleLinkUpdate(key, linkLangTab)}
                             className={styles.updateButton}
                           >
                             수정
                           </button>
                         </div>
                         <p className={styles.currentUrl}>
-                          현재: <code>{link.url}</code>
+                          현재 ({linkLangTab === "kor" ? "국문" : "영문"}): <code>{currentUrl}</code>
                         </p>
                       </div>
                     );
@@ -889,8 +971,14 @@ export default function AdminPage() {
                       className={styles.select}
                     >
                       <option value="text">텍스트</option>
+                      <option value="richText">리치텍스트 (볼드 지원)</option>
                       <option value="image">이미지</option>
                     </select>
+                    {qnaFormData.answerType === "richText" && (
+                      <p style={{ fontSize: "12px", color: "#666", marginTop: "8px" }}>
+                        **텍스트** 형식으로 굵은 글씨를 적용할 수 있습니다. 줄바꿈은 Enter로 입력하세요.
+                      </p>
+                    )}
                   </div>
 
                   {/* Text Answer */}
@@ -924,6 +1012,71 @@ export default function AdminPage() {
                           className={styles.textarea}
                           placeholder="영문 답변을 입력하세요"
                           rows={4}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {/* RichText Answer */}
+                  {qnaFormData.answerType === "richText" && (
+                    <>
+                      <div className={styles.formGroup}>
+                        <label className={styles.label}>답변 (한글) - **굵게** 형식 사용 가능</label>
+                        <textarea
+                          value={richTextToPlainText(qnaFormData.answerKor.richTextContent)}
+                          onChange={(e) =>
+                            setQnaFormData({
+                              ...qnaFormData,
+                              answerKor: { richTextContent: plainTextToRichText(e.target.value) },
+                            })
+                          }
+                          className={styles.textarea}
+                          placeholder="한글 답변을 입력하세요 (굵은 글씨: **텍스트**)"
+                          rows={6}
+                        />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.label}>답변 (영문) - **bold** 형식 사용 가능</label>
+                        <textarea
+                          value={richTextToPlainText(qnaFormData.answerEng.richTextContent)}
+                          onChange={(e) =>
+                            setQnaFormData({
+                              ...qnaFormData,
+                              answerEng: { richTextContent: plainTextToRichText(e.target.value) },
+                            })
+                          }
+                          className={styles.textarea}
+                          placeholder="영문 답변을 입력하세요 (bold text: **text**)"
+                          rows={6}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {/* Formatted Answer (Read-only view) */}
+                  {qnaFormData.answerType === "formatted" && (
+                    <>
+                      <div className={styles.formGroup}>
+                        <label className={styles.label}>답변 (한글) - 포맷 형식 미리보기</label>
+                        <textarea
+                          value={formattedToPlainText(qnaFormData.answerKor.formattedContent)}
+                          readOnly
+                          className={styles.textarea}
+                          style={{ backgroundColor: "#f5f5f5", cursor: "not-allowed" }}
+                          rows={8}
+                        />
+                        <p style={{ fontSize: "12px", color: "#888", marginTop: "4px" }}>
+                          포맷 형식은 직접 수정이 어렵습니다. 수정이 필요하면 qna.json 파일을 직접 편집하세요.
+                        </p>
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.label}>답변 (영문) - 포맷 형식 미리보기</label>
+                        <textarea
+                          value={formattedToPlainText(qnaFormData.answerEng.formattedContent)}
+                          readOnly
+                          className={styles.textarea}
+                          style={{ backgroundColor: "#f5f5f5", cursor: "not-allowed" }}
+                          rows={8}
                         />
                       </div>
                     </>
@@ -1085,36 +1238,51 @@ export default function AdminPage() {
                   등록된 Q&A 항목 ({qnaItems.length})
                 </h2>
                 <div className={styles.qnaList}>
-                  {qnaItems.map((item) => (
-                    <div key={item.id} className={styles.qnaCard}>
-                      <div className={styles.qnaCardHeader}>
-                        <span className={styles.qnaType}>{item.answerType}</span>
-                        <span className={styles.qnaId}>#{item.id}</span>
+                  {qnaItems.map((item) => {
+                    // Get answer preview
+                    let answerPreview = "";
+                    if (item.answerType === "text") {
+                      answerPreview = item.answerKor.content || "";
+                    } else if (item.answerType === "richText") {
+                      answerPreview = richTextToPlainText(item.answerKor.richTextContent);
+                    } else if (item.answerType === "formatted") {
+                      answerPreview = formattedToPlainText(item.answerKor.formattedContent);
+                    } else if (item.answerType === "image") {
+                      answerPreview = `[이미지] ${item.answerKor.imageContent?.title || ""}`;
+                    }
+                    // Truncate preview if too long
+                    if (answerPreview.length > 100) {
+                      answerPreview = answerPreview.substring(0, 100) + "...";
+                    }
+
+                    return (
+                      <div key={item.id} className={styles.qnaCard}>
+                        <div className={styles.qnaCardHeader}>
+                          <span className={styles.qnaType}>{item.answerType}</span>
+                          <span className={styles.qnaId}>#{item.id}</span>
+                        </div>
+                        <div className={styles.qnaQuestions}>
+                          <p className={styles.qnaQuestionKor}>
+                            <strong>질문:</strong> {item.questionKor}
+                          </p>
+                        </div>
+                        <div className={styles.qnaActions}>
+                          <button
+                            onClick={() => handleQnaEdit(item)}
+                            className={styles.editButton}
+                          >
+                            수정
+                          </button>
+                          <button
+                            onClick={() => handleQnaDelete(item.id)}
+                            className={styles.deleteButton}
+                          >
+                            삭제
+                          </button>
+                        </div>
                       </div>
-                      <div className={styles.qnaQuestions}>
-                        <p className={styles.qnaQuestionKor}>
-                          <strong>한글:</strong> {item.questionKor}
-                        </p>
-                        <p className={styles.qnaQuestionEng}>
-                          <strong>영문:</strong> {item.questionEng}
-                        </p>
-                      </div>
-                      <div className={styles.qnaActions}>
-                        <button
-                          onClick={() => handleQnaEdit(item)}
-                          className={styles.editButton}
-                        >
-                          수정
-                        </button>
-                        <button
-                          onClick={() => handleQnaDelete(item.id)}
-                          className={styles.deleteButton}
-                        >
-                          삭제
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </section>
             </>

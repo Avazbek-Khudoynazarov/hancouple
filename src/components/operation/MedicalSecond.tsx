@@ -46,7 +46,7 @@ export default function MedicalSecond() {
               {language === "KOR" ? (
                 <>
                   CT·MRI·멸균기 등 고전력 장비와
-                  <br /> 수술실 공조, 냉장·냉동 의약품 보관 설비로 인한 <br />{" "}
+                  <br /> 수술실 공조, 냉장·냉동 의약품 보관 설비로 인한 <br />
                   전력 사용 증가
                 </>
               ) : (
@@ -98,7 +98,7 @@ export default function MedicalSecond() {
               전력 장애를 최소화하고, <br />
               <b>배터리룸 환기 시스템을 강화</b>해{" "}
               <br className={styles.vision} />
-              발열 및 가스 축적을 방지합니다.
+              발열 및 설비 환경 위험을 사전에 예방합니다.
             </p>
           ) : (
             <p className={styles.bottomDescription}>

@@ -10,7 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 const slidesKor = [
   {
     image: "/assets/homepage/back/11.png",
-    title: "AI가 전기를 분석하고, 위험을 예측하고\n비용을 줄어드립니다.",
+    title: "AI가 전기를 분석하고, 위험을 예측하고\n비용을 줄여드립니다.",
     description:
       "AI로 전력 사용을 실시간 분석해 위험과 낭비를 즉시 찾아냅니다.\n데이터 기반 진단으로 더 안전하고 효율적인 건물 운영을 제공합니다.",
   },
@@ -107,7 +107,7 @@ const slidesEng = [
   },
   {
     image: "/assets/homepage/back/7.png",
-    title: "If You're Worried About\nAdditional Charges from Peak Power",
+    title: "If you're worried about additional\ncharges due to peak power",
     description: "15-Minute Interval Analysis & Alerts",
   },
   {

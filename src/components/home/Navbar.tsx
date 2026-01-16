@@ -28,7 +28,8 @@ interface ConsultingLink {
   id: string;
   titleKor: string;
   titleEng: string;
-  url: string;
+  urlKor: string;
+  urlEng: string;
 }
 
 const navDataKor: NavItem[] = [
@@ -65,11 +66,11 @@ const navDataKor: NavItem[] = [
       {
         title: "위험성 판단 & 2차 사고 예방 모니터링",
         subtitle: "전원차점으로 인한 2차 사고방생",
-        href: "/remote-inspection?menu=위험성 판단 & 2차 사고 예방 모니터링",
+        href: "/remote-inspection?menu=위험성 판단 %26 2차 사고 예방 모니터링",
       },
       {
         title: "에너지 절감 운영매뉴얼 제공",
-        subtitle: "전단 후 절감 실행 가이드",
+        subtitle: "진단 후 절감 실행 가이드",
         href: "/remote-inspection?menu=에너지 절감 운영매뉴얼 제공",
       },
       {
@@ -90,8 +91,8 @@ const navDataKor: NavItem[] = [
       { title: "병원 · 의료기관", href: "/operation?menu=병원 · 의료기관" },
       { title: "제조업 공장", href: "/operation?menu=제조업 공장" },
       {
-        title: "초 ·중 ·고 · 대학교",
-        href: "/operation?menu=초 ·중 ·고 · 대학교",
+        title: "초 · 중 · 고 · 대학교",
+        href: "/operation?menu=초 · 중 · 고 · 대학교",
       },
       {
         title: "전통시장 · 소상공인",
@@ -290,6 +291,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const { language, setLanguage } = useLanguage();
   const [dropdownPosition, setDropdownPosition] = useState<number>(0);
+  const [underlineWidth, setUnderlineWidth] = useState<number>(0);
   const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -322,12 +324,21 @@ export default function Navbar() {
 
   // Get nav data with dynamic consulting links
   const getNavData = (): NavItem[] => {
-    const serviceInfoUrl = consultingLinks?.serviceInfo?.url || "/assets/service-info.html";
-    const onlineConsultingUrl = consultingLinks?.onlineConsulting?.url || "/assets/online-consulting.html";
+    const serviceInfoUrl =
+      language === "KOR"
+        ? consultingLinks?.serviceInfo?.urlKor || "/assets/service-info.html"
+        : consultingLinks?.serviceInfo?.urlEng || "/assets/service-info.html";
+    const onlineConsultingUrl =
+      language === "KOR"
+        ? consultingLinks?.onlineConsulting?.urlKor ||
+          "/assets/online-consulting.html"
+        : consultingLinks?.onlineConsulting?.urlEng ||
+          "/assets/online-consulting.html";
 
     if (language === "KOR") {
       return navDataKor.map((item, index) => {
-        if (index === 3) { // Consulting section (4th item)
+        if (index === 3) {
+          // Consulting section (4th item)
           return {
             ...item,
             children: [
@@ -355,7 +366,8 @@ export default function Navbar() {
       });
     } else {
       return navDataEng.map((item, index) => {
-        if (index === 3) { // Consulting section (4th item)
+        if (index === 3) {
+          // Consulting section (4th item)
           return {
             ...item,
             children: [
@@ -373,7 +385,8 @@ export default function Navbar() {
               },
               {
                 title: "Results Provided",
-                subtitle: "(Summary Report Diagnosing Peak Causes & Wasted Power)",
+                subtitle:
+                  "(Summary Report Diagnosing Peak Causes & Wasted Power)",
                 href: "/consulting?menu=결과 제공",
               },
             ],
@@ -424,6 +437,7 @@ export default function Navbar() {
     if (navItemRefs.current[index]) {
       const rect = navItemRefs.current[index]!.getBoundingClientRect();
       setDropdownPosition(rect.left);
+      setUnderlineWidth(rect.width);
     }
   };
 
@@ -431,7 +445,6 @@ export default function Navbar() {
     setActiveDropdown(null);
   };
 
-  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
     setMobileExpandedItem(null);
@@ -447,7 +460,10 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
-      <div className={`${styles.navbarContainer} ${language === "ENG" ? styles.navbarContainerEng : ""}`}>
+      <div
+        className={`${styles.navbarContainer} ${
+          language === "ENG" ? styles.navbarContainerEng : ""
+        }`}>
         <Link href="/" className={styles.logo}>
           {language === "ENG" ? (
             <>
@@ -482,11 +498,15 @@ export default function Navbar() {
           <MenuIcon />
         </button>
 
-        <div className={`${styles.mainConNavLinks} ${language === "ENG" ? styles.mainConNavLinksEng : ""}`}>
+        <div
+          className={`${styles.mainConNavLinks} ${
+            language === "ENG" ? styles.mainConNavLinksEng : ""
+          }`}>
           <div
             className={`${styles.navLinks} ${
               language === "ENG" ? styles.navLinksEng : ""
-            }`}>
+            }`}
+            onMouseLeave={handleMouseLeave}>
             {navData.map((item, index) => (
               <div
                 key={index}
@@ -494,73 +514,85 @@ export default function Navbar() {
                   navItemRefs.current[index] = el;
                 }}
                 className={styles.navItem}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}>
+                onMouseEnter={() => handleMouseEnter(index)}>
                 <Link href={item.href} className={styles.navLink}>
                   {item.title}
                 </Link>
-
-                {item.children && activeDropdown === index && (
-                  <div className={styles.dropdown}>
-                    <div
-                      className={styles.dropdownContent}
-                      style={{ paddingLeft: `${dropdownPosition}px` }}>
-                      {item.children.map((child, childIndex) =>
-                        child.openInNewTab ? (
-                          <a
-                            key={childIndex}
-                            href={child.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.dropdownItem}>
-                            <div className={styles.dropdownItemContent}>
-                              <span className={styles.childTitle}>
-                                {child.title}
-                              </span>
-                              {child.subtitle && (
-                                <span className={styles.childSubtitle}>
-                                  {index === 1 && "→ "}
-                                  {child.subtitle}
-                                </span>
-                              )}
-                            </div>
-                            <div className={styles.childArrow}>
-                              <img
-                                src="/assets/homepage/childRight.svg"
-                                alt="arrow"
-                              />
-                            </div>
-                          </a>
-                        ) : (
-                          <Link
-                            key={childIndex}
-                            href={child.href}
-                            className={styles.dropdownItem}>
-                            <div className={styles.dropdownItemContent}>
-                              <span className={styles.childTitle}>
-                                {child.title}
-                              </span>
-                              {child.subtitle && (
-                                <span className={styles.childSubtitle}>
-                                  {index === 1 && "→ "}
-                                  {child.subtitle}
-                                </span>
-                              )}
-                            </div>
-                            <div className={styles.childArrow}>
-                              <img
-                                src="/assets/homepage/childRight.svg"
-                                alt="arrow"
-                              />
-                            </div>
-                          </Link>
-                        )
-                      )}
-                    </div>
-                  </div>
-                )}
               </div>
             ))}
+
+            {/* Single dropdown that persists - prevents animation replay on switch */}
+            {activeDropdown !== null && navData[activeDropdown]?.children && (
+              <div className={styles.dropdown}>
+                {/* Underline element with key to replay animation on switch */}
+                <span
+                  key={`underline-${activeDropdown}`}
+                  className={styles.dropdownUnderline}
+                  style={
+                    {
+                      left: `${dropdownPosition}px`,
+                      width: `${underlineWidth}px`,
+                    } as React.CSSProperties
+                  }
+                />
+                <div
+                  key={`content-${activeDropdown}`}
+                  className={styles.dropdownContent}
+                  style={{ paddingLeft: `${dropdownPosition}px` }}>
+                  {navData[activeDropdown].children!.map((child, childIndex) =>
+                    child.openInNewTab ? (
+                      <a
+                        key={childIndex}
+                        href={child.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.dropdownItem}>
+                        <div className={styles.dropdownItemContent}>
+                          <span className={styles.childTitle}>
+                            {child.title}
+                          </span>
+                          {child.subtitle && (
+                            <span className={styles.childSubtitle}>
+                              {activeDropdown === 1 && "→ "}
+                              {child.subtitle}
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.childArrow}>
+                          <img
+                            src="/assets/homepage/childRight.svg"
+                            alt="arrow"
+                          />
+                        </div>
+                      </a>
+                    ) : (
+                      <Link
+                        key={childIndex}
+                        href={child.href}
+                        className={styles.dropdownItem}>
+                        <div className={styles.dropdownItemContent}>
+                          <span className={styles.childTitle}>
+                            {child.title}
+                          </span>
+                          {child.subtitle && (
+                            <span className={styles.childSubtitle}>
+                              {activeDropdown === 1 && "→ "}
+                              {child.subtitle}
+                            </span>
+                          )}
+                        </div>
+                        <div className={styles.childArrow}>
+                          <img
+                            src="/assets/homepage/childRight.svg"
+                            alt="arrow"
+                          />
+                        </div>
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className={styles.rightActions}>

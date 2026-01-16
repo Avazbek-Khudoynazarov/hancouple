@@ -61,7 +61,8 @@ export default function Manufacturing() {
               {language === "KOR" ? (
                 <>
                   <h3 className={styles.bottomTitle}>
-                    전력은 생산의 힘이자, 잠재된 위험입니다.
+                    전력은 생산의 힘이자,
+                    <br className={styles.mobileDesign} /> 잠재된 위험입니다.
                   </h3>
                   <p className={styles.bottomDescription}>
                     수많은 설비가 돌아가는 제조현장, <br /> 작은 전류 불안정이
@@ -91,7 +92,8 @@ export default function Manufacturing() {
                 </p>
               ) : (
                 <p className={styles.emphasisLine}>
-                  Stable power management <strong>is production efficiency.</strong>
+                  Stable power management{" "}
+                  <strong>is production efficiency.</strong>
                 </p>
               )}
             </div>

@@ -77,7 +77,7 @@ export default function CareFacilitiesSecond() {
             <p className={styles.cardDescription}>
               {language === "KOR" ? (
                 <>
-                  멀티탭 과부하, 산소장치실명,
+                  멀티탭 과부하, 산소장치발열,
                   <br />
                   세탁실 과열 등으로 화재 위험 발생
                 </>
@@ -102,10 +102,10 @@ export default function CareFacilitiesSecond() {
           </h3>
           {language === "KOR" ? (
             <p className={styles.bottomDescription}>
-              <b>차단기별 부하를 체한</b>하고 <br className={styles.vision} />{" "}
+              <b>차단기별 부하를 → 제한</b>하고 <br className={styles.vision} />{" "}
               <b>야간 부하를 분산</b>하며, 누전과 절연저항을
               <br />
-              정기 점검하고
+              정기 점검하고&nbsp;
               <b>
                 차단기 모니터링과 <br className={styles.vision} /> 야간 알람
               </b>

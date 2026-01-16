@@ -21,7 +21,7 @@ export default function ManufacturingSecond() {
               제조업 공장의 <br className={styles.vision} />
               리스크를
             </b>
-            줄이세요.
+            &nbsp;줄이세요.
           </p>
         ) : (
           <p className={styles.subtitle}>
@@ -109,7 +109,7 @@ export default function ManufacturingSecond() {
               prevent overheating/fires through
               <br />{" "}
               <b>thermal imaging monitoring and explosion-proof equipment.</b>
-              Additionally, enhance <br /> energy efficiency and equipment
+              &nbsp;Additionally, enhance <br /> energy efficiency and equipment
               stability with <b>VFDs and power factor correction.</b>
             </p>
           )}

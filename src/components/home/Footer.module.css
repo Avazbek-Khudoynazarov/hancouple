@@ -20,7 +20,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 45px;
 }
 
 .navLink {
@@ -85,7 +85,7 @@
 }
 
 .infoRow {
-  max-width: 750px;
+  max-width: 700px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -96,7 +96,7 @@
 }
 
 .infoRowEng {
-  max-width: 1100px;
+  max-width: 1070px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,13 +119,19 @@
 }
 
 .label {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
   color: rgba(1, 8, 40, 0.7);
   font-weight: 700;
+  font-size: 14px;
 }
 
 .value {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
   color: #333333;
   font-weight: 400;
+  font-size: 14px;
 }
 
 .separator {
@@ -134,10 +140,13 @@
 }
 
 .copyright {
+  font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
   margin-top: 20px;
-  font-size: 12px;
-  color: #999999;
-  font-weight: 400;
+  font-size: 13px;
+  color: rgba(1, 8, 40, 0.5);
+  font-weight: 700;
+  letter-spacing: -6%;
 }
 
 /* Right Section */
@@ -148,7 +157,7 @@
 .logoGrid {
   display: grid;
   grid-template-columns: repeat(6, auto);
-  gap: 30px 40px;
+  gap: 11px 18px;
   align-items: center;
 }
 
@@ -156,6 +165,35 @@
   width: auto;
   height: 32px;
   object-fit: contain;
+}
+
+/* Individual logo sizes - adjust as needed */
+.partnerLogo1 {
+  height: 33px; /* First logo (spans full width) */
+}
+
+.partnerLogo2 {
+  height: 44px;
+}
+
+.partnerLogo3 {
+  height: 49px;
+}
+
+.partnerLogo4 {
+  height: 52px;
+}
+
+.partnerLogo5 {
+  height: 32px;
+}
+
+.partnerLogo6 {
+  height: 48px;
+}
+
+.partnerLogo7 {
+  height: 54px;
 }
 
 .partnerLogo:first-child {

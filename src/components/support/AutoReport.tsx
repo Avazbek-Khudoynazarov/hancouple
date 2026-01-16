@@ -24,9 +24,9 @@ export default function AutoReport() {
           <p className={styles.description}>
             {language === "KOR" ? (
               <>
-                반기를게 현장에 가서 점검하실 필요 없이 자동으로 생성된{" "}
-                <br className={styles.important} /> 리포트를 원격으로 확인하실 수
-                있습니다.
+                번거롭게 현장에 가서 점검하실 필요 없이 자동으로 생성된{" "}
+                <br className={styles.important} /> 리포트를 원격으로 확인하실
+                수 있습니다.
               </>
             ) : (
               "No need for the hassle of on-site inspections; remotely review automatically generated reports."

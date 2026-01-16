@@ -84,13 +84,15 @@ export default function ElectricVehicle() {
             <div className={styles.emphasisText}>
               {language === "KOR" ? (
                 <p className={styles.emphasisLine}>
-                  충전의 편리함 뒤에는 언제나
+                  충전의 편리함 뒤에는 언제나&nbsp;
                   <strong>&apos;안전 관리&apos;가 필요합니다.</strong>
                 </p>
               ) : (
                 <p className={styles.emphasisLine}>
                   Behind charging convenience,{" "}
-                  <strong>&apos;safety management&apos; is always essential.</strong>
+                  <strong>
+                    &apos;safety management&apos; is always essential.
+                  </strong>
                 </p>
               )}
             </div>

@@ -5,7 +5,7 @@
   background: #ffffff;
   display: flex;
   justify-content: center;
-  padding: 120px 0;
+  padding: 196px 0 120px 0;
 }
 
 .content {
@@ -66,7 +66,7 @@
   background: #ffffff;
   border: 1.5px solid rgba(37, 196, 146, 0.5);
   border-radius: 16px;
-  padding: 40px 10px;
+  padding: 40px 0px 20px 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -79,7 +79,7 @@
   background: #ffffff;
   border: 1.5px solid rgba(0, 183, 221, 0.5);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 40px 0px 20px 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -92,7 +92,7 @@
   background: #ffffff;
   border: 1.5px solid rgba(0, 136, 255, 0.5);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 40px 0px 20px 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -105,7 +105,7 @@
   background: #ffffff;
   border: 1.5px solid rgba(255, 179, 0, 0.5);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 40px 0px 20px 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -118,7 +118,7 @@
   background: #ffffff;
   border: 1.5px solid rgba(40, 199, 200, 0.5);
   border-radius: 16px;
-  padding: 40px 30px;
+  padding: 40px 0px 20px 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -181,10 +181,10 @@
   line-height: 138%;
 }
 .cardLabel {
-  color: #23d8d8;
+  color: rgba(35, 189, 141, 0.5);
 }
 .cardLabel2 {
-  color: #00b7dd80;
+  color: rgba(0, 183, 221, 0.5);
 }
 .cardLabel3 {
   color: rgba(0, 136, 255, 0.5);
@@ -199,7 +199,7 @@
 .cardSubtitle {
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: #333333;
   line-height: 150%;
@@ -208,7 +208,7 @@
 .cardSubtitleReport {
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #333333;
   line-height: 150%;
@@ -216,8 +216,8 @@
 
 .cardContent {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .cardContentCenter {
@@ -233,10 +233,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.arrowIcon {
-  font-size: 16px;
-  color: #333333;
+  align-items: center;
 }
 
 .cardText {
@@ -246,6 +243,14 @@
   font-weight: 700;
   color: #333333;
   line-height: 150%;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.arrowIcon {
+  margin-top: 8px;
+  flex-shrink: 0;
 }
 
 /* Connector */
@@ -437,7 +442,7 @@
     BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-weight: 800;
-  color: #23d8d8;
+  color: #6af0c6;
   margin: 0 0 30px 0;
   letter-spacing: 0%;
   line-height: 138%;
@@ -448,7 +453,7 @@
     BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-weight: 800;
-  color: #00b7dd80;
+  color: #00b7dd;
   margin: 0 0 30px 0;
   letter-spacing: 0%;
   line-height: 138%;
@@ -459,7 +464,7 @@
     BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 18px;
   font-weight: 800;
-  color: rgba(0, 136, 255, 0.5);
+  color: #0088ff;
   margin: 0 0 30px 0;
   letter-spacing: 0%;
   line-height: 138%;
@@ -505,7 +510,7 @@
 .cardBottomText {
   font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: #333333;
   line-height: 150%;
@@ -513,15 +518,10 @@
 
 .cardHighlight {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
   position: relative;
   justify-content: center;
-}
-
-.arrowIconHighlight {
-  font-size: 20px;
-  flex-shrink: 0;
 }
 
 .highlightText {
@@ -530,54 +530,56 @@
   font-size: 20px;
   font-weight: 700;
   color: #333333;
-  line-height: 200%;
+  line-height: 160%;
   position: relative;
-  display: inline;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   padding: 0 4px;
   width: fit-content;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
+
+/* Arrow inside highlight - keeps arrow with first word when text wraps */
 
 /* Multi-line highlight backgrounds - uses gradient to create bottom underline effect */
 .highlight1 {
   background: linear-gradient(
     to bottom,
-    transparent 65%,
-    rgba(106, 240, 198, 0.3) 65%
+    transparent 50%,
+    rgba(106, 240, 198, 0.3) 50%
+  );
+}
+.highlightReport2 {
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(40, 199, 200, 0.3) 50%
   );
 }
 
 .highlight2 {
   background: linear-gradient(
     to bottom,
-    transparent 65%,
-    rgba(0, 183, 221, 0.2) 65%
+    transparent 50%,
+    rgba(0, 183, 221, 0.2) 50%
   );
 }
 
 .highlight3 {
   background: linear-gradient(
     to bottom,
-    transparent 65%,
-    rgba(0, 136, 255, 0.2) 65%
+    transparent 50%,
+    rgba(0, 136, 255, 0.2) 50%
   );
 }
 
 .highlight4 {
   background: linear-gradient(
     to bottom,
-    transparent 65%,
-    rgba(0, 136, 255, 0.2) 65%
-  );
-}
-
-.highlightReport2 {
-  background: linear-gradient(
-    to bottom,
-    transparent 65%,
-    rgba(40, 199, 200, 0.2) 65%
+    transparent 50%,
+    rgba(0, 136, 255, 0.2) 50%
   );
 }
 
@@ -911,7 +913,7 @@
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
   .container {
-    padding: 60px 0;
+    padding: 88px 0 70px 0;
   }
 
   .content {
@@ -995,9 +997,11 @@
 
   .arrowIcon,
   .arrowIconHighlight {
-    font-size: 16px;
-    min-width: 16px;
-    min-height: 16px;
+    width: 15px;
+    height: 12px;
+    min-width: 15px;
+    min-height: 12px;
+    margin-top: 5px;
   }
 
   .column {
@@ -1043,12 +1047,19 @@
   .highlightUnderlineReport4 {
     height: 10px;
   }
+  .card,
+  .card2,
+  .card3,
+  .card4 {
+    min-height: 167px !important;
+    padding: 20px 0px;
+  }
 }
 
 /* Mobile Small (480px and below) */
 @media (max-width: 480px) {
   .container {
-    padding: 40px 0;
+    padding: 88px 0 40px 0;
   }
 
   .content {
@@ -1085,13 +1096,14 @@
 
   .cardSubtitle,
   .cardSubtitleReport {
-    font-size: 13px;
+    font-size: 16px;
   }
-
+  .cardBottomText {
+    font-size: 16px;
+  }
   .cardText,
-  .cardBottomText,
   .cardContentCenter {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .imageContainer {
@@ -1106,7 +1118,7 @@
   }
 
   .highlightText {
-    font-size: 13px;
+    font-size: 18px;
     line-height: 180%;
   }
   .highlightUnderline1 {

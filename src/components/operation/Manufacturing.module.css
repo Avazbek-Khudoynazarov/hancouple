@@ -3,7 +3,7 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 196px 0 0 0;
+  padding: 196px 0 120px 0;
   background: #ffffff;
   position: relative;
 }
@@ -113,7 +113,9 @@
 .backgroundImageMobile {
   background-image: url("/assets/operation/mobile/third2.png");
 }
-
+.mobileDesign {
+  display: none;
+}
 /* Responsive Design */
 /* Tablet (1200px and below) */
 @media (max-width: 1200px) {
@@ -184,7 +186,7 @@
 /* Mobile (768px and below) */
 @media (max-width: 768px) {
   .container {
-    padding: 40px 20px 0 20px;
+    padding: 88px 20px 70px 20px;
   }
 
   .titleSection {
@@ -260,12 +262,15 @@
   .mainTitleSmall {
     font-size: 16px;
   }
+  .mobileDesign {
+    display: block;
+  }
 }
 
 /* Mobile Small (480px and below) */
 @media (max-width: 480px) {
   .container {
-    padding: 30px 16px 0 16px;
+    padding: 88px 0 0 0;
   }
 
   .mainTitle {
@@ -304,7 +309,7 @@
   .backgroundImage {
     margin-top: 40px;
     min-height: 70vh;
-    padding: 30px 16px;
+    padding: 30px 0px;
   }
 
   .mainTitleSmall {
